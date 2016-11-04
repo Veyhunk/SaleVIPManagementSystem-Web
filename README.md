@@ -70,3 +70,8 @@ app/
 ng-controller="MyMainCtrl as myMain"
 ng-controller="MainCtrl as main"
 ```
+
+## 第三方插件的引入
+
+首先通过 `bower` 安装第三方插件，随后到项目根目录下找到`app.scripts.json`文件，按着里面的规则添加下插件信息，重新 gulp 启动，
+这样就引入了第三方插件。
