@@ -1,0 +1,24 @@
+{
+  "name": "sale_vip_management_system_web",
+  "description": "会员管理系统 Web 端开源项目",
+  "main": "index.js",
+  "authors": [
+    "HelloYu <Mr.Yu1991@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "会员管理系统",
+    "AngularJS"
+  ],
+  "homepage": "https://github.com/HelloYu/SaleVIPManagementSystem-Web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.8"
+  }
+}
