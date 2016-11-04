@@ -31,8 +31,8 @@
  * 不再使用 controllers、services、directives等文件夹在具体模块内部。
  * 使用.controller、.service、.direcitve、.tpl在模块内部标识。
 
- 如下格式：
- ```javascript
+如下格式：
+```javascript
 app/
     app.module.js
     app.config.js
@@ -60,7 +60,8 @@ app/
         localstorage.service.js
         logger.service.js   
         spinner.service.js
- ```
+```
+
 注意： `session-detail.controller.js`这样的命名，在 angular 里面应该是`SeesionDetailCtrl`这种 Pascal 命名方式，模块应该尽可能的小和高内聚，
 这样每一个模块并不会有太多的文件。
 
