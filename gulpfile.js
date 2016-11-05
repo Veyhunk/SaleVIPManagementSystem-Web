@@ -29,12 +29,12 @@ var source = {
     html: 'app/**/*.html',
     css: {
         src: [
-            'app/css/*.css'
+            'app/**/*.css'
         ]
     },
     sass: {
         src: [
-            'app/scss/*.scss'
+            'app/**/*.scss'
         ]
     }
 };

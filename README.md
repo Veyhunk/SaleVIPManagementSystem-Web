@@ -2,7 +2,7 @@
 ### 项目结构说明
 ```javascript
  |-app                        // WEB前端模块源码
-    |-_common                 // UI构架模块，不能删除
+    |-shared                  // 共享模块
     |-layout                  // 网页布局
     |-demo                    // 演示模块
         |-module.js           // 模块注册和配置
