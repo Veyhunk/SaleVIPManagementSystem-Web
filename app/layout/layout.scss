@@ -1,6 +1,8 @@
-body {
+#root {
     height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 
 #header,
@@ -10,10 +12,29 @@ body {
 
 #header {
     min-height: 100px;
+     background-color: orangered;
 }
 
-#main {}
+#main {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    div:nth-child(1) {
+        width: 200px;
+         background-color: yellow;
+    }
+    div:nth-child(2) {
+        width: 100%;
+         background-color: green;
+    }
+}
 
 #footer {
     min-height: 100px;
+    background-color: blue;
 }
