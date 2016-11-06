@@ -2,7 +2,7 @@
 $(function() {
 
     // moment.js default language
-    moment.locale('zh-cn')
+    // moment.locale('zh-cn')
 
     angular.bootstrap(document, ['app']);
 

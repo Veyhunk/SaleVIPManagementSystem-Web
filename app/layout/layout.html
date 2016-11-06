@@ -1,0 +1,11 @@
+<!-- HEADER -->
+<div data-ng-include="'app/layout/layout-header.tpl.html'"></div>
+<!-- END HEADER -->
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+    <!-- Left panel : Navigation area -->
+    <div data-ng-include="'app/layout/left-panel.tpl.html'"></div>
+    <div data-ui-view="content" data-autoscroll="false"></div>
+</div>
+<!--FOOTER-->
+<div data-ng-include="'app/layout/layout-footer.tpl.html'"></div>

@@ -1,0 +1,19 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+#header,
+#footer {
+    display: block;
+}
+
+#header {
+    min-height: 100px;
+}
+
+#main {}
+
+#footer {
+    min-height: 100px;
+}

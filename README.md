@@ -73,5 +73,9 @@ ng-controller="MainCtrl as main"
 
 ## 第三方插件的引入
 
-首先通过 `bower` 安装第三方插件，随后到项目根目录下找到`app.scripts.json`文件，按着里面的规则添加下插件信息，重新 gulp 启动，
+首先通过 `bower` 安装第三方插件，记住要加上`--save`参数，这样会自动写入 bower.json 文件，随后到项目根目录下找到`app.scripts.json`文件，按着里面的规则添加下插件信息，重新 gulp 启动，
 这样就引入了第三方插件。
+
+## 插件说明
+### Bootstrap Google Style
+使用 Google 主题的 Bootstrap，查看 [here](http://todc.github.io/todc-bootstrap/components/)。

@@ -98,7 +98,6 @@ gulp.task('js', function() {
 // 如果 js 改变刷新浏览器
 gulp.task('js-watch', ['js'], function() {
     browserSync.reload();
-    done();
 })
 
 // 打包第三方插件到 build/vendor.js

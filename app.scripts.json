@@ -1,12 +1,19 @@
 {
     "chunks": {
-        "vendor": ["jquery", "angular"],
+        "vendor": [
+            "jquery",
+            "angular",
+            "ui-router",
+            "bootstrap"
+        ],
         "vendor.ui": [],
         "vendor.datatables": [],
         "vendor.graphs": []
     },
     "paths": {
         "jquery": "bower_components/jquery/dist/jquery.min.js",
-        "angular": "bower_components/angular/angular.min.js"
+        "angular": "bower_components/angular/angular.min.js",
+        "ui-router": "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+        "bootstrap": "bower_components/todc-bootstrap/dist/js/bootstrap.min.js"
     }
 }
