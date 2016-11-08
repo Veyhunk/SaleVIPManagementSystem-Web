@@ -7,7 +7,7 @@ var _ = require('lodash');
 var scripts = require('./app.scripts.json');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
-
+var watch = require('gulp-watch');
 var source = {
     js: {
         main: 'app/main.js',
@@ -88,38 +88,57 @@ gulp.task('browser-sync', function() {
 // 监听文件变化
 gulp.task('watch', function() {
 
-    gulp.watch(source.css.src, ['css']);
-    gulp.watch(source.sass.src, ['css']);
-    gulp.watch(source.html.src, ['js-watch']);
-    gulp.watch(source.js.src, ['js-watch']);
+    watch(source.css.src, function(e) {
+        css();
+        var time = new Date().toTimeString().split(" ")[0];
+        console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
+    });
+    watch(source.sass.src, function(e) {
+        css();
+        var time = new Date().toTimeString().split(" ")[0];
+        console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
+    });
+    // html 改变立即刷新
+    watch(source.html.src, function(e) {
+        js().on('end', function() {
+            var time = new Date().toTimeString().split(" ")[0];
+            console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
+            browserSync.reload();
+        });
+    });
+    watch(source.js.src, function(e) {
+        js().on('end', function() {
+            var time = new Date().toTimeString().split(" ")[0];
+            console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
+            browserSync.reload();
+        });
+    });
 });
 
-// 处理 scss 合并 css 并自动注入
-gulp.task('css', function() {
-    var sassStream,
-        cssStream;
+var css = function() {
+        var sassStream,
+            cssStream;
 
-    sassStream = gulp.src(source.sass.src)
-        .pipe(sass().on('error', sass.logError));
+        sassStream = gulp.src(source.sass.src)
+            .pipe(sass().on('error', sass.logError));
 
-    cssStream = gulp.src(source.css.src);
+        cssStream = gulp.src(source.css.src);
 
-    return es.merge(sassStream, cssStream)
-        .pipe(concat('style.css'))
-        .pipe(gulp.dest(dest))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('js', function() {
+        return es.merge(sassStream, cssStream)
+            .pipe(concat('style.css'))
+            .pipe(gulp.dest(dest))
+            .pipe(browserSync.stream());
+    }
+    // 处理 scss 合并 css 并自动注入
+gulp.task('css', css);
+var js = function() {
     return gulp.src(source.js.src)
         .pipe(concat('app.js'))
         .pipe(gulp.dest(dest));
-});
+}
+gulp.task('js', js);
 
-// 如果 js 改变刷新浏览器
-gulp.task('js-watch', ['js'], function() {
-    browserSync.reload();
-})
+
 
 // 打包第三方插件到 build/vendor.js
 gulp.task('vendor', function() {
@@ -157,7 +176,7 @@ function getTemplateStream() {
 gulp.task('prod', ['vendor', 'build']);
 
 // 开发模式
-gulp.task('dev', ['watch', 'browser-sync']);
+gulp.task('dev', ['vendor', 'js', 'css', 'watch', 'browser-sync']);
 
 // 项目初始化的时候单独运行
 gulp.task('init', ['vendor', 'js', 'css']);
