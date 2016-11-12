@@ -22,6 +22,13 @@
                         templateUrl: 'app/layout/home.html',
                     }
                 }
+            }).state('app.login', {
+                url: '/login',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/layout/home.html',
+                    }
+                }
             });
 
 
