@@ -1,3 +1,28 @@
+$primary-color-dark: #455A64;
+$primary-color:#cc181e;
+$primary-color-light: #CFD8DC;
+$primary-text-color: #FFFFFF;
+$accent-color: #00BCD4;
+$text-color: #212121;
+$text-color-light: #888;
+$background-color:#eee;
+$component-bg-color:#fff;
+$component-bg-color-gray:#f8f8f8;
+$hover:rgba(0, 0, 0, 0.1);
+$gray-darker: lighten(#000, 13.5%); // #222
+$gray-dark: lighten(#000, 20%); // #333
+$gray: lighten(#000, 33.5%); // #555
+$gray-light: lighten(#000, 46.7%); // #777
+$gray-lighter: lighten(#000, 93.5%); // #eee
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+$item-width:18em;
+$item-height:3em;
+$padding:0.5em;
+$border-width:0.1em;
 #root {
     height: 100vh;
     width: 100vw;
@@ -11,8 +36,8 @@
 }
 
 #header {
-    min-height: 100px;
-    background-color: orangered;
+    height: $item-height;
+    border-bottom: $border-width solid $background-color;
 }
 
 #main {
@@ -27,16 +52,222 @@
 }
 
 #left-menu {
-    width: 200px;
-    background-color: yellow;
+    border-right: $border-width solid $background-color;
+    max-width: $item-width;
+    min-width: $item-width;
+    overflow: auto;
 }
 
 #content {
     width: 100%;
-    background-color: green;
+    padding: $padding;
+    background-color: $background-color;
+    overflow: auto;
 }
 
 #footer {
-    min-height: 100px;
-    background-color: blue;
+    border-top: $border-width solid $background-color;
+    min-height: $item-height;
+    display: none;
+}
+
+// tools
+.padding {
+    padding: $padding;
+}
+
+.padding-lr {
+    padding-left: $padding;
+    padding-right: $padding;
+}
+
+.padding-tb {
+    padding-top: $padding;
+    padding-bottom: $padding;
+}
+
+.placeHold {
+    background-color: $primary-color-light;
+}
+
+.inline {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-center {
+    display: table;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// component
+.content {
+    height: 100%;
+    border: $border-width solid $background-color;
+    background-color: $component-bg-color;
+}
+
+.navbar-nav {
+    width: 63.5%;
+    overflow: hidden;
+    ul {
+        border: 0;
+        li {
+            float: left;
+            text-align: center;
+            padding: (0 * $padding) (2 * $padding);
+            position: inherit;
+            a {
+                padding: 0.55em 0.1em;
+                color: $gray-dark;
+                opacity: .5;
+            }
+        }
+        li:hover .sub-nav {
+            display: block;
+        }
+    }
+    .sub-nav {
+        height: $item-height;
+        line-height: $item-height;
+        width: 100%;
+        background-color: $component-bg-color-gray;
+        position: absolute;
+        left: 0;
+        display: none;
+        ul {
+            list-style-type: none;
+            li {
+                a {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+
+.item-list {
+    padding: $padding ($padding *3);
+    .item {
+        button {
+            padding-left: $padding * 2 !important;
+            padding-right: $padding * 2 !important;
+            width: 100%;
+            text-align: left;
+            color: $text-color-light;
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            padding: $padding;
+            i {
+                margin-right: 1em;
+                color: $text-color-light;
+            }
+        }
+    }
+    .item:hover {
+        background-color: $primary-color;
+        button {
+            color: $primary-text-color;
+            i {
+                color: $primary-text-color;
+            }
+        }
+    }
+    .active {
+        background-color: $primary-color;
+        button {
+            color: $primary-text-color;
+            i {
+                color: $primary-text-color;
+            }
+        }
+    }
+}
+
+.nav-group-vertical {
+    padding: ($padding * 2) ($padding *3);
+    .nav-pills {
+        li {
+            a {
+                color: $gray-dark;
+                opacity: .5;
+                i {
+                    margin-right: 1em;
+                }
+            }
+            a:hover,
+            a:focus {
+                opacity: 1;
+            }
+        }
+        li.active {
+            a,
+            a:hover,
+            a:focus {
+                color: #fff;
+                opacity: 1;
+                background-color: $primary-color;
+            }
+        }
+    }
+}
+
+.head-logo {
+    width: $item-height;
+    height: $item-height;
+    text-align: center;
+    line-height: $item-height;
+}
+
+.head-title {
+    width: $item-width - $item-height;
+    height: $item-height;
+    text-align: left;
+    line-height: $item-height;
+}
+
+.nav-button {
+    min-width: $item-height;
+    height: $item-height;
+    color: $text-color-light;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    padding-left: $padding;
+    padding-right: $padding;
+    i {
+        margin-right: 1em;
+        color: $text-color-light;
+    }
+}
+
+.nav-button:hover {
+    color: $primary-color;
+    i {
+        color: $primary-color;
+    }
+}
+
+// cover
+.nav-tabs-google>li>a:active,
+.nav-tabs-google>li.active>a,
+.nav-tabs-google>li>a:active:hover,
+.nav-tabs-google>li.active>a:hover,
+.nav-tabs-google>li>a:active:focus,
+.nav-tabs-google>li.active>a:focus {
+    border-bottom-color: $primary-color;
+}
+
+.nav-tabs-google>li>a:hover {
+    border-bottom-color: $primary-color;
+}
+
+.nav-tabs-google>li>a:hover,
+.nav-tabs-google>li>a:focus {
+    background-color: transparent;
+    border-top-color: transparent;
 }
