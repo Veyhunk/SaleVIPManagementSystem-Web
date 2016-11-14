@@ -2,11 +2,13 @@
     "chunks": {
         "vendor": [
             "jquery",
+            "lodash",
             "angular",
             "ui-router",
             "bootstrap",
             "moment",
-            "moment-local-zh-cn"
+            "moment-local-zh-cn",
+            "restangular"
         ],
         "vendor.ui": [],
         "vendor.datatables": [],
@@ -14,10 +16,12 @@
     },
     "paths": {
         "jquery": "bower_components/jquery/dist/jquery.min.js",
+        "lodash": "bower_components/lodash/dist/lodash.min.js",
         "angular": "bower_components/angular/angular.min.js",
         "ui-router": "bower_components/angular-ui-router/release/angular-ui-router.min.js",
         "bootstrap": "bower_components/todc-bootstrap/dist/js/bootstrap.min.js",
         "moment": "bower_components/moment/min/moment.min.js",
-        "moment-local-zh-cn": "bower_components/moment/locale/zh-cn.js"
+        "moment-local-zh-cn": "bower_components/moment/locale/zh-cn.js",
+        "restangular": "bower_components/restangular/dist/restangular.min.js"
     }
 }

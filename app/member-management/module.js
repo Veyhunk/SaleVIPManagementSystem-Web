@@ -2,19 +2,19 @@
     'use strict';
 
     angular.module('app.member_management', ['ui.router'])
-        .config(LayoutConfig);
+        .config(MemberManagementConfig);
 
-    LayoutConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+    MemberManagementConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function LayoutConfig($stateProvider, $urlRouterProvider) {
+    function MemberManagementConfig($stateProvider, $urlRouterProvider) {
         $stateProvider
-
             .state('app.member_management', {
+                name: '会员管理',
                 url: '/member_management',
                 abstract: true,
-
             })
             .state('app.member_management.register', {
+                name: '会员登记',
                 url: '/register',
                 views: {
                     'content@app': {
@@ -23,6 +23,7 @@
                 }
             })
             .state('app.member_management.list', {
+                name: '会员列表',
                 url: '/list',
                 views: {
                     'content@app': {
@@ -31,6 +32,7 @@
                 }
             })
             .state('app.member_management.charge', {
+                name: '会员充值',
                 url: '/charge',
                 views: {
                     'content@app': {
@@ -39,6 +41,7 @@
                 }
             })
             .state('app.member_management.level', {
+                name: '会员等级',
                 url: '/level',
                 views: {
                     'content@app': {

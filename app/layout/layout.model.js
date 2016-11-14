@@ -5,16 +5,21 @@
         .module('app.layout')
         .factory('LayoutModel', LayoutModel);
 
-    LayoutModel.$inject = ['$scope'];
+    LayoutModel.$inject = ['Restangular'];
 
-    function LayoutModel($scope) {
+    function LayoutModel(Restangular) {
         var LayoutModel = {
-            exposedFn: exposedFn
+            getMainMenus: getMainMenus
         };
 
         return LayoutModel;
 
         ////////////////
-        function exposedFn() {}
+
+
+        // 获取用户菜单
+        function getMainMenus() {
+            return Restangular.all('menus.json').getList();
+        }
     }
 })();

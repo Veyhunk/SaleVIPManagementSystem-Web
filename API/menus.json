@@ -1,0 +1,122 @@
+[{
+        "id": 1,
+        "name": "会员管理",
+        "url": "#/member_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 2,
+        "name": "会员登记",
+        "url": "#/member_management/register",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 1,
+        "order": 2,
+        "remark": ""
+    },
+    {
+        "id": 3,
+        "name": "会员列表",
+        "url": "#/member_management/list",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 1,
+        "order": 3,
+        "remark": ""
+    },
+    {
+        "id": 4,
+        "name": "会员充值",
+        "url": "#/member_management/charge",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 1,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 5,
+        "name": "会员等级",
+        "url": "#/member_management/level",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 1,
+        "order": 4,
+        "remark": ""
+    },
+    {
+        "id": 6,
+        "name": "商品管理",
+        "url": "#/goods_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 2,
+        "remark": ""
+    },
+    {
+        "id": 7,
+        "name": "商品登记",
+        "url": "#/goods_management/register",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 6,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 8,
+        "name": "商品列表",
+        "url": "#/goods_management/list",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 6,
+        "order": 2,
+        "remark": ""
+    },
+    {
+        "id": 9,
+        "name": "商品分类",
+        "url": "#/goods_management/class",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 6,
+        "order": 3,
+        "remark": ""
+    },
+    {
+        "id": 10,
+        "name": "商品入库",
+        "url": "#/goods_management/inventory",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 6,
+        "order": 4,
+        "remark": ""
+    },
+    {
+        "id": 11,
+        "name": "库存列表",
+        "url": "#/goods_management/inventory_list",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 6,
+        "order": 4,
+        "remark": ""
+    }
+]

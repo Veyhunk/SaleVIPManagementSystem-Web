@@ -23,7 +23,7 @@ $item-width:18em;
 $item-height:3em;
 $padding:0.5em;
 $border-width:0.1em;
-#root {
+#layout {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -98,7 +98,7 @@ $border-width:0.1em;
 }
 
 // component
-.content {
+#content>section {
     height: 100%;
     border: $border-width solid $background-color;
     background-color: $component-bg-color;

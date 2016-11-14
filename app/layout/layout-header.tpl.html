@@ -7,46 +7,13 @@
     </div>
     <nav class="navbar-nav">
         <ul class="nav nav-tabs nav-tabs-google  pull-center">
-            <li class="active">
-                <a href="">会员管理</a>
+            <li ng-repeat="item in layout.mainMenus" ng-class="{'active':item.active}">
+                <a href="">{{item.name}}</a>
                 <div class="sub-nav">
                     <ul class="nav nav-tabs nav-tabs-google  pull-center">
-                        <li><a href="#/billing_system/account_management/registration">账户开户</a></li>
-                        <li><a href="#/billing_system/account_management/cancellation">账务销户</a></li>
-                        <li><a href="#/billing_system/account_management/payment">账务缴费</a></li>
-                        <li><a href="#/billing_system/account_management/reference">账户查询</a></li>
+                        <li ng-repeat="subItem in item.children"><a href="{{subItem.url}}">{{subItem.name}}</a></li>
                     </ul>
                 </div>
-            </li>
-            <li>
-                <a href="">商品管理</a>
-                <div class="sub-nav">
-                    <ul class="nav nav-tabs nav-tabs-google  pull-center">
-                        <li><a href="#/billing_system/account_management/registration">账户开户</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="">会员消费</a>
-                <div class="sub-nav">
-                    <ul class="nav nav-tabs nav-tabs-google  pull-center">
-                        <li><a href="#/billing_system/account_management/registration">账户开户</a></li>
-                        <li><a href="#/billing_system/account_management/cancellation">账务销户</a></li>
-                        <li><a href="#/billing_system/account_management/payment">账务缴费</a></li>
-                        <li><a href="#/billing_system/account_management/reference">账户查询</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="">统计报表</a>
-                <div class="sub-nav">
-                    <ul class="nav nav-tabs nav-tabs-google  pull-center">
-                        <li><a href="#/billing_system/account_management/registration">账户开户</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="">系统管理</a>
             </li>
         </ul>
     </nav>

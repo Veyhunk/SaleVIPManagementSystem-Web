@@ -12,6 +12,8 @@ var source = {
     js: {
         main: 'app/main.js',
         src: [
+            // application config
+            'app.config.js',
 
             // application bootstrap file
             'app/main.js',
