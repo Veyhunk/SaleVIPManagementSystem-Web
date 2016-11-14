@@ -1,18 +1,18 @@
 [{
         "id": 1,
         "name": "会员管理",
-        "url": "#/member_management",
+        "url": "app.member_management",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
         "parent": null,
-        "order": 1,
+        "order": 2,
         "remark": ""
     },
     {
         "id": 2,
         "name": "会员登记",
-        "url": "#/member_management/register",
+        "url": "app.member_management.register",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -23,7 +23,7 @@
     {
         "id": 3,
         "name": "会员列表",
-        "url": "#/member_management/list",
+        "url": "app.member_management.list",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -34,7 +34,7 @@
     {
         "id": 4,
         "name": "会员充值",
-        "url": "#/member_management/charge",
+        "url": "app.member_management.charge",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -45,7 +45,7 @@
     {
         "id": 5,
         "name": "会员等级",
-        "url": "#/member_management/level",
+        "url": "app.member_management.level",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -56,18 +56,18 @@
     {
         "id": 6,
         "name": "商品管理",
-        "url": "#/goods_management",
+        "url": "app.goods_management",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
         "parent": null,
-        "order": 2,
+        "order": 3,
         "remark": ""
     },
     {
         "id": 7,
         "name": "商品登记",
-        "url": "#/goods_management/register",
+        "url": "app.goods_management.register",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -78,7 +78,7 @@
     {
         "id": 8,
         "name": "商品列表",
-        "url": "#/goods_management/list",
+        "url": "app.goods_management.list",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -89,7 +89,7 @@
     {
         "id": 9,
         "name": "商品分类",
-        "url": "#/goods_management/class",
+        "url": "app.goods_management.class",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
@@ -100,7 +100,7 @@
     {
         "id": 10,
         "name": "商品入库",
-        "url": "#/goods_management/inventory",
+        "url": "app.goods_management.inventory",
         "is_API": 0,
         "is_shortcut": 1,
         "method": 1,
@@ -111,12 +111,121 @@
     {
         "id": 11,
         "name": "库存列表",
-        "url": "#/goods_management/inventory_list",
+        "url": "app.goods_management.inventory_list",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
         "parent": 6,
         "order": 4,
+        "remark": ""
+    },
+    {
+        "id": 12,
+        "name": "收银台",
+        "url": "app.consumption_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 13,
+        "name": "商品消费",
+        "url": "app.consumption_management.pay_for_goods",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 12,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 14,
+        "name": "快速消费",
+        "url": "app.consumption_management.quick_pay",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 12,
+        "order": 2,
+        "remark": ""
+    },
+    {
+        "id": 18,
+        "name": "消费记录",
+        "url": "app.consumption_management.record",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 12,
+        "order": 3,
+        "remark": ""
+    },
+    {
+        "id": 15,
+        "name": "统计报表",
+        "url": "app.statistics_report",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 4,
+        "remark": ""
+    },
+    {
+        "id": 16,
+        "name": "会员消费",
+        "url": "app.statistics_report.member_consumption",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 15,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 17,
+        "name": "会员充值",
+        "url": "app.statistics_report.member_charge",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 15,
+        "order": 2,
+        "remark": ""
+    }, {
+        "id": 19,
+        "name": "系统管理",
+        "url": "app.system_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 5,
+        "remark": ""
+    },
+    {
+        "id": 20,
+        "name": "用户管理",
+        "url": "app.system_management.user_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 19,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 21,
+        "name": "角色管理",
+        "url": "app.system_management.role_management",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 19,
+        "order": 2,
         "remark": ""
     }
 ]

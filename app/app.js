@@ -10,6 +10,9 @@
         'app.configs',
         // 业务逻辑模块
         'app.member_management',
-        'app.goods_management'
+        'app.goods_management',
+        'app.consumption_management',
+        'app.system_management',
+        'app.statistics_report'
     ]);
 })();

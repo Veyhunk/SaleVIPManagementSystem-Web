@@ -15,7 +15,7 @@
             })
             .state('app.consumption_management.pay_for_goods', {
                 name: '商品消费',
-                url: '/ pay_for_goods',
+                url: '/pay_for_goods',
                 views: {
                     'content@app': {
                         templateUrl: 'app/consumption-management/pay-for-goods/pay-for-goods.html'
@@ -27,7 +27,16 @@
                 url: '/quick_pay',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/consumption-management/quick_pay/quick_pay.html'
+                        templateUrl: 'app/consumption-management/quick-pay/quick-pay.html'
+                    }
+                }
+            })
+            .state('app.consumption_management.record', {
+                name: '消费记录',
+                url: '/record',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/consumption-management/record/record.html'
                     }
                 }
             });

@@ -7,11 +7,11 @@
     </div>
     <nav class="navbar-nav">
         <ul class="nav nav-tabs nav-tabs-google  pull-center">
-            <li ng-repeat="item in layout.mainMenus" ng-class="{'active':item.active}">
+            <li ng-repeat="item in layout.mainMenus |orderBy:'order'" ng-class="{'active':layout.state.includes(item.url)}">
                 <a href="">{{item.name}}</a>
                 <div class="sub-nav">
                     <ul class="nav nav-tabs nav-tabs-google  pull-center">
-                        <li ng-repeat="subItem in item.children"><a href="{{subItem.url}}">{{subItem.name}}</a></li>
+                        <li ng-repeat="subItem in item.children|orderBy:'order'" ui-sref-active="active"><a ui-sref="{{subItem.url}}">{{subItem.name}}</a></li>
                     </ul>
                 </div>
             </li>

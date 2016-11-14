@@ -1,35 +1,8 @@
 <aside>
     <nav class="nav-group-vertical">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active">
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-reorder"></i>菜单</a>
+            <li ng-repeat="item in layout.shortcutMenus" ng-class="{'active':layout.state.includes(item.url)}">
+                <a ui-sref="{{item.url}}"><i class="fa fa-reorder"></i>{{item.name}}</a>
             </li>
         </ul>
     </nav>
