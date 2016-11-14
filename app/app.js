@@ -2,7 +2,10 @@
     'use strict';
 
     angular.module('app', [
-        // 共享依赖
-        'app.layout'
+        // 布局模块
+        'app.layout',
+
+        // 业务逻辑模块
+        'app.member_management'
     ]);
 })();
