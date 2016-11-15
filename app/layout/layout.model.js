@@ -9,7 +9,7 @@
 
     function LayoutModel(Restangular) {
         var LayoutModel = {
-            getMainMenus: getMainMenus
+            getPermissions: getPermissions
         };
 
         return LayoutModel;
@@ -18,7 +18,7 @@
 
 
         // 获取用户菜单
-        function getMainMenus() {
+        function getPermissions() {
             return Restangular.all('menus.json').getList();
         }
     }

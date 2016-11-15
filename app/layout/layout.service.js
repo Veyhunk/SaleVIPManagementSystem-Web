@@ -9,7 +9,7 @@
 
     function LayoutService() {
 
-        this.parseMenus = parseMenus;
+        this.resolveMenus = resolveMenus;
 
         ////////////////
 
@@ -59,11 +59,11 @@
 
         /**
          * 将从后台获取的菜单数据解析成主菜单和快捷菜单
-         * @method parseMenus
+         * @method resolveMenus
          * @param {Array.<Object>} menus
          * @returns {Menus} result 
          */
-        function parseMenus(menus) {
+        function resolveMenus(menus) {
             var _menus = menus;
             var result = {
                 mainMenus: [],
