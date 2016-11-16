@@ -105,23 +105,40 @@ $border-width:0.1em;
 }
 
 .navbar-nav {
-    width: 63.5%;
-    overflow: hidden;
+    position: absolute;
+    width: 100%;
     ul {
+        //hide ul border 
         border: 0;
         li {
-            float: left;
-            text-align: center;
             padding: (0 * $padding) (2 * $padding);
             position: inherit;
             a {
+                margin-right: 0;
                 padding: 0.55em 0.1em;
-                color: $gray-dark;
-                opacity: .5;
             }
         }
-        li:hover .sub-nav {
-            display: block;
+        li:hover>a {
+            //hold main nav
+            font-weight: bold;
+            color: $text-color;
+            opacity: 1;
+        }
+        li:hover {
+            //hold main nav
+            background-color: $component-bg-color-gray;
+            .sub-nav {
+                //show sub-nav
+                display: block;
+            }
+        }
+        li.active> {
+            a,
+            a:hover,
+            a:focus {
+                color: $text-color;
+                background-color: transparent;
+            }
         }
     }
     .sub-nav {
@@ -132,15 +149,6 @@ $border-width:0.1em;
         position: absolute;
         left: 0;
         display: none;
-        z-index: 1;
-        ul {
-            list-style-type: none;
-            li {
-                a {
-                    color: $text-color;
-                }
-            }
-        }
     }
 }
 
@@ -222,6 +230,9 @@ $border-width:0.1em;
     height: $item-height;
     text-align: left;
     line-height: $item-height;
+    a {
+        color: $text-color;
+    }
 }
 
 .nav-button {
@@ -245,22 +256,6 @@ $border-width:0.1em;
     }
 }
 
-// cover
-.nav-tabs-google>li>a:active,
-.nav-tabs-google>li.active>a,
-.nav-tabs-google>li>a:active:hover,
-.nav-tabs-google>li.active>a:hover,
-.nav-tabs-google>li>a:active:focus,
-.nav-tabs-google>li.active>a:focus {
-    border-bottom-color: $primary-color;
-}
-
-.nav-tabs-google>li>a:hover {
-    border-bottom-color: $primary-color;
-}
-
-.nav-tabs-google>li>a:hover,
-.nav-tabs-google>li>a:focus {
-    background-color: transparent;
-    border-top-color: transparent;
+.btn-toggle-menu {
+    height: $item-height;
 }
