@@ -8,6 +8,8 @@
         'app.layout',
         // 系统配置模块
         'app.configs',
+        // 共享模块
+        'app.shared',
         // 业务逻辑模块
         'app.member_management',
         'app.goods_management',

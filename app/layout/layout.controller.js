@@ -10,7 +10,7 @@
     function LayoutCtrl($scope, $state, LayoutModel, LayoutService) {
         /*----------  界面层资源  ----------*/
         var vm = this;
-        debugger;
+
         vm.state = $state;
         // 系统主菜单
         vm.mainMenus = [];
@@ -20,8 +20,6 @@
         /*----------  内部变量  ----------*/
         var layoutModel = LayoutModel,
             layoutService = LayoutService;
-
-
 
 
 
@@ -37,7 +35,7 @@
                 // 默认激活第一个菜单
                 menus.mainMenus[0].active = true;
                 menus.shortcutMenus[0].active = true;
-                debugger;
+
                 vm.mainMenus = menus.mainMenus;
                 vm.shortcutMenus = menus.shortcutMenus;
             });
