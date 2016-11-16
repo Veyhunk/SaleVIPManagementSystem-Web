@@ -31,9 +31,9 @@
 
         function initMainMenus() {
 
-            layoutModel.getMainMenus().then(result => {
+            layoutModel.getPermissions().then(result => {
                 result = result.plain()
-                var menus = layoutService.parseMenus(result);
+                var menus = layoutService.resolveMenus(result);
                 // 默认激活第一个菜单
                 menus.mainMenus[0].active = true;
                 menus.shortcutMenus[0].active = true;
