@@ -72,9 +72,6 @@ gulp.task('build', function() {
         .pipe(uglify())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(dest));
-
-
-
 });
 
 // Static server
@@ -139,8 +136,6 @@ var js = function() {
         .pipe(gulp.dest(dest));
 }
 gulp.task('js', js);
-
-
 
 // 打包第三方插件到 build/vendor.js
 gulp.task('vendor', function() {
