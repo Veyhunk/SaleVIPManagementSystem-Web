@@ -5,8 +5,7 @@
     <!-- MAIN PANEL -->
     <div id="main" role="main">
         <!-- Left panel : Navigation area -->
-        <div data-ng-include="'app/layout/left-panel.tpl.html'" id="left-menu" [ngClass]="{left-menu-mini :layout.isShortcutMenusMini}" [ngClass]="{layout.isShortcutMenusMini:left-menu-mini }" ngClass="{true:‘left-menu-mini ‘,false:‘left-menu-full‘}[layout.isShortcutMenusMini]"
-            ng-class="{true:‘left-menu-mini‘,false:‘left-menu-full‘}[layout.isShortcutMenusMini]"></div>
+        <div data-ng-include="'app/layout/left-panel.tpl.html'" id="left-menu" ng-class="{true:'left-menu-mini',false:'left-menu-full'}[layout.isShortcutMenusMini]"></div>
         <div data-ui-view="content" data-autoscroll="false" id="content"></div>
     </div>
     <!--FOOTER-->
