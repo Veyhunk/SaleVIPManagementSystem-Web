@@ -10,11 +10,14 @@
     function LayoutCtrl($scope, $state, LayoutModel, LayoutService) {
         /*----------  界面层资源  ----------*/
         var vm = this;
+<<<<<<< HEAD
 
+=======
+        // debugger;
+>>>>>>> 1bb0cd2c86f717b8ec812520924188e3a3ddf466
         vm.state = $state;
         // 系统主菜单
         vm.mainMenus = [];
-
         // 快捷菜单
         vm.shortcutMenus = [];
         /*----------  内部变量  ----------*/
@@ -22,6 +25,7 @@
             layoutService = LayoutService;
 
 
+        vm.isShortcutMenusMini = true;
 
         /*----------  监听区块  ----------*/
         /*----------  逻辑代码区块  ----------*/
@@ -35,7 +39,11 @@
                 // 默认激活第一个菜单
                 menus.mainMenus[0].active = true;
                 menus.shortcutMenus[0].active = true;
+<<<<<<< HEAD
 
+=======
+                // debugger;
+>>>>>>> 1bb0cd2c86f717b8ec812520924188e3a3ddf466
                 vm.mainMenus = menus.mainMenus;
                 vm.shortcutMenus = menus.shortcutMenus;
             });
