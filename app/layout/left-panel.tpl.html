@@ -1,9 +1,9 @@
 <aside>
-    <button class="btn btn-default btn-block btn-toggle-menu">menu</button>
+    <a class="btn btn-block btn-menu-toggle"><i class="fa fa-reorder"></i><span>menu</span></a>
     <nav class="nav-group-vertical">
         <ul class="nav nav-pills nav-stacked">
             <li ng-repeat="item in layout.shortcutMenus | orderBy:'order'" ui-sref-active="active">
-                <a ui-sref="{{item.url}}"><i class="fa fa-reorder"></i>{{item.name}}</a>
+                <a ui-sref="{{item.url}}"><i class="fa fa-star"></i><span>{{item.name}}</span></a>
             </li>
         </ul>
     </nav>
