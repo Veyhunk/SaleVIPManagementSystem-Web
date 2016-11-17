@@ -68,50 +68,100 @@ body {
 #left-menu {
     border-right: $border-width solid $background-color;
     overflow: auto;
-    .full {
-        width: $item-width;
-        /*background-color: $gray-dark*/
-        .nav-group-vertical {
-            /*padding: ($padding * 2) ($padding *3);*/
-            .nav-pills {
-                li {
-                    a {
-                        i {
-                            margin-right: $padding * 2;
-                        }
-                    }
+    .nav-group-vertical {
+        /*padding: ($padding * 2) ($padding *3);*/
+        .nav-pills {
+            li {
+                margin-top: 0;
+                /*width: 100%;*/
+                a {
+                    border-radius: 0;
+                    padding: 0 (2 * $padding);
+                    color: $gray;
+                    opacity: .5;
+                    line-height: $nav-left-item-height;
+                }
+                a:hover,
+                a:focus {
+                    opacity: 1;
                 }
             }
-        }
-        .btn-menu-toggle {
-            text-align: left;
-            i {
-                line-height: $nav-left-item-height;
-                float: right;
+            li.active {
+                a,
+                a:hover,
+                a:focus {
+                    color: $primary-text-color;
+                    opacity: 1;
+                    background-color: $primary-color;
+                }
             }
         }
     }
-    .mini {
-        max-width: $nav-top-item-height;
-        min-width: $nav-top-item-height;
-        .nav-group-vertical {
-            .nav-pills {
-                li {
-                    text-align: center;
-                    a {
-                        text-align: center;
-                        span {
-                            display: none;
-                        }
+    .btn-menu-toggle {
+        padding: 0 (2 * $padding);
+        height: $nav-left-item-height;
+        line-height: $nav-left-item-height;
+        background-color: $gray-dark;
+        border: 0;
+        border-radius: 0;
+        color: $gray-lighter;
+        i {
+            line-height: $nav-left-item-height;
+            /*margin-left: $padding * 2;*/
+            color: $gray-lighter;
+        }
+    }
+    .btn-menu-toggle:hover {
+        background-color: $gray;
+    }
+}
+
+.left-menu-full {
+    max-width: $item-width;
+    min-width: $item-width;
+    /*background-color: $gray-dark*/
+    .nav-group-vertical {
+        /*padding: ($padding * 2) ($padding *3);*/
+        .nav-pills {
+            li {
+                width: 100%;
+                a {
+                    i {
+                        margin-right: $padding * 2;
                     }
                 }
             }
         }
-        .btn-menu-toggle {
-            text-align: center;
-            span {
-                display: none;
+    }
+    .btn-menu-toggle {
+        text-align: left;
+        i {
+            line-height: $nav-left-item-height;
+            float: right;
+        }
+    }
+}
+
+.left-menu-mini {
+    max-width: $nav-top-item-height;
+    min-width: $nav-top-item-height;
+    .nav-group-vertical {
+        .nav-pills {
+            li {
+                text-align: center;
+                a {
+                    text-align: center;
+                    span {
+                        display: none;
+                    }
+                }
             }
+        }
+    }
+    .btn-menu-toggle {
+        text-align: center;
+        span {
+            display: none;
         }
     }
 }
@@ -179,6 +229,7 @@ body {
         height: $nav-top-item-height;
     }
     i {
+        color: $primary-color;
         width: $nav-top-item-height;
         height: $nav-top-item-height;
         line-height: $nav-top-item-height;
@@ -272,54 +323,4 @@ body {
         left: 0;
         display: none;
     }
-}
-
-.nav-group-vertical {
-    /*padding: ($padding * 2) ($padding *3);*/
-    .nav-pills {
-        li {
-            width: $nav-top-item-height;
-            a {
-                border-radius: 0;
-                padding: 0 (2 * $padding);
-                color: $gray;
-                opacity: .5;
-                line-height: $nav-left-item-height;
-            }
-            a:hover,
-            a:focus {
-                opacity: 1;
-            }
-        }
-        li.active {
-            a,
-            a:hover,
-            a:focus {
-                color: #fff;
-                opacity: 1;
-                background-color: $primary-color;
-            }
-        }
-    }
-}
-
-.btn-menu-toggle {
-    padding: 0 (2 * $padding);
-    height: $nav-left-item-height;
-    line-height: $nav-left-item-height;
-    background-color: $gray-dark;
-    /*background-color: transparent;*/
-    border: 0;
-    border-radius: 0;
-    /*border-right: $border-width * 5 solid $primary-color;*/
-    color: $gray-lighter;
-    i {
-        line-height: $nav-left-item-height;
-        /*margin-left: $padding * 2;*/
-        color: $gray-lighter;
-    }
-}
-
-.btn-menu-toggle:hover {
-    background-color: $gray;
 }

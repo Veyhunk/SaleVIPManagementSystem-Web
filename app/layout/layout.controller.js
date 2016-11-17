@@ -14,7 +14,6 @@
         vm.state = $state;
         // 系统主菜单
         vm.mainMenus = [];
-
         // 快捷菜单
         vm.shortcutMenus = [];
         /*----------  内部变量  ----------*/
@@ -22,6 +21,7 @@
             layoutService = LayoutService;
 
 
+        vm.isShortcutMenusMini = true;
 
 
 
