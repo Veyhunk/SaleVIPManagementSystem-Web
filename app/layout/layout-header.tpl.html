@@ -1,6 +1,6 @@
 <header id="header">
     <nav class="navbar-nav">
-        <ul class="nav nav-tabs nav-tabs-google  pull-center">
+        <ul class="nav nav-tabs nav-tabs-google pull-center">
             <li ng-repeat="item in layout.mainMenus |orderBy:'order'" ng-class="{'active':layout.state.includes(item.url)}">
                 <a href="">{{item.name}}</a>
                 <div class="sub-nav">
@@ -23,11 +23,13 @@
         <div class="pull-left">
             <div class="head-logo">
                 <!--<img src="http://placehold.it/30x30?text=logo">-->
-                <i class="fa fa-github-alt"></i>
+                <a href="#/home"><i class="fa fa-github-alt"></i></a>
             </div>
         </div>
         <div class="pull-left">
-            <div class="head-title"><a href="#/home">会员管理系统</a> </div>
+            <a href="#/home">
+                <div class="head-title">会员管理系统</div>
+            </a>
         </div>
     </div>
     <div class="navbar-right">
