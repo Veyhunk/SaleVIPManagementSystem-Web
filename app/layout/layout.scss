@@ -165,10 +165,14 @@ body {
             background-color: $gray-lighter;
             left: 0;
             display: none;
-            border-top: $border-width solid $border-color;
+            /*border-top: $border-width solid $border-color;*/
             border-bottom: $border-width solid $border-color;
         }
     }
+}
+
+#header:hover {
+    /*height: $nav-top-item-height * 2 - $border-width;*/
 }
 
 #main {

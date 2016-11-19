@@ -227,5 +227,81 @@
         "parent": 19,
         "order": 2,
         "remark": ""
+    }, {
+        "id": 100,
+        "name": "页面模板",
+        "url": "app.page_template",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": null,
+        "order": 5,
+        "remark": ""
+    },
+    {
+        "id": 101,
+        "name": "表单",
+        "url": "app.page_template.form",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 1,
+        "remark": ""
+    },
+    {
+        "id": 102,
+        "name": "模态框",
+        "url": "app.page_template.modal",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 2,
+        "remark": ""
+    },
+    {
+        "id": 102,
+        "name": "表格",
+        "url": "app.page_template.table",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 3,
+        "remark": ""
+    },
+    {
+        "id": 102,
+        "name": "文本域",
+        "url": "app.page_template.textarea",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 4,
+        "remark": ""
+    },
+    {
+        "id": 102,
+        "name": "树",
+        "url": "app.page_template.tree",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 5,
+        "remark": ""
+    },
+    {
+        "id": 102,
+        "name": "双视图",
+        "url": "app.page_template.two_view",
+        "is_API": 0,
+        "is_shortcut": 1,
+        "method": 1,
+        "parent": 100,
+        "order": 6,
+        "remark": ""
     }
 ]
