@@ -1,0 +1,40 @@
+//basic-color
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+//gray-color
+$black: lighten(#000, 0%); // #000
+$gray-darker: lighten(#000, 13.5%); // #222
+$gray-dark: lighten(#000, 20%); // #333
+$gray: lighten(#000, 33.5%); // #555
+$gray-light: lighten(#000, 46.7%); // #777
+$gray-lighter: lighten(#000, 93.5%); // #eee
+$white: lighten(#000, 100%); // #fff
+//transparent
+$hover:rgba(0, 0, 0, 0.1);
+//theme-color
+$primary-color-dark: #455A64;
+$primary-color:#cc181e;
+$primary-color-light: #CFD8DC;
+$accent-color: #00BCD4;
+$primary-text-color: $white;
+$component-bg-color:$white;
+$text-color: $gray-darker;
+$text-color-light: $gray-light;
+$background-color:$gray-lighter;
+$border-color:$hover;
+//size
+$pix:1.2rem;
+$item-width:12.4 * $pix;
+$item-height:3 * $pix;
+$nav-top-item-height:4 * $pix;
+$nav-left-item-height:3 * $pix;
+
+/*padding*/
+
+$padding:0.5 * $pix;
+$border-width: 0.1 * $pix;
+
+/*align*/
