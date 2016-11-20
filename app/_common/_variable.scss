@@ -1,9 +1,9 @@
 //basic-color
-$brand-primary: #428bca;
-$brand-success: #5cb85c;
+$brand-primary: #4d90fe;
+$brand-success: #35aa47;
 $brand-info: #5bc0de;
-$brand-warning: #f0ad4e;
-$brand-danger: #d9534f;
+$brand-warning: #faa937;
+$brand-danger: #d84a38;
 //gray-color
 $black: lighten(#000, 0%); // #000
 $gray-darker: lighten(#000, 13.5%); // #222
@@ -16,7 +16,7 @@ $white: lighten(#000, 100%); // #fff
 $hover:rgba(0, 0, 0, 0.1);
 //theme-color
 $primary-color-dark: #455A64;
-$primary-color:#cc181e;
+$primary-color:#4d90fe;
 $primary-color-light: #CFD8DC;
 $accent-color: #00BCD4;
 $primary-text-color: $white;

@@ -277,9 +277,38 @@ body {
     margin-right: auto;
 }
 
+.col-2 {
+    width: 16.66%
+}
+
+.col-3 {
+    width: 25%
+}
+
+.col-4 {
+    width: 33.33%
+}
+
+.col-6 {
+    width: 50%
+}
+
+.col-8 {
+    width: 66.66%
+}
+
+.col-9 {
+    width: 75%
+}
+
+.col-10 {
+    width: 83.33%
+}
+
 // component
 .content-view {
-    width: 50%;
+    width: 60%;
+    padding: $padding * 2.5;
     /*height: 1000px;*/
 }
 

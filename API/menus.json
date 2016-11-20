@@ -273,8 +273,8 @@
     },
     {
         "id": 102,
-        "name": "文本域",
-        "url": "app.page_template.textarea",
+        "name": "文本",
+        "url": "app.page_template.text",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
