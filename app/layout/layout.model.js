@@ -19,7 +19,7 @@
 
         // 获取用户菜单
         function getPermissions() {
-            return Restangular.all('menus.json').getList();
+            return Restangular.all('permissions.json').getList();
         }
     }
 })();
