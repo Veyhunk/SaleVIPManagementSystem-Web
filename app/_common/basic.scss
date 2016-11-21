@@ -70,10 +70,13 @@ body {
                         padding: 0 (2 * $padding);
                         position: inherit;
                         a {
-                            line-height: $nav-top-item-height - 1.6 * $pix;
+                            line-height: $nav-top-item-height - 0.6 * $pix;
+                            height: $nav-top-item-height - 1 * $border-width;
+                            padding: 0;
                             color: $gray-light;
                             margin-right: 0;
-                            padding: 0.55 * $pix 0.1 * $pix;
+                            border-top-width: 0.3 * $pix;
+                            border-bottom-width: 0.3 * $pix;
                         }
                         &:hover {
                             //hold main nav
@@ -90,6 +93,7 @@ body {
                                 font-weight: bold;
                                 color: $text-color;
                                 opacity: 1;
+                                border-bottom-color: $primary-color;
                             }
                         }
                     }
@@ -98,6 +102,7 @@ body {
                         a:hover,
                         a:focus {
                             color: $text-color;
+                            border-bottom-color: $primary-color;
                             background-color: transparent;
                         }
                     }
