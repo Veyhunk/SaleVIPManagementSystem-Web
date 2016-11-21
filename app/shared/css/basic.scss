@@ -70,10 +70,14 @@ body {
                         padding: 0 (2 * $padding);
                         position: inherit;
                         a {
-                            line-height: $nav-top-item-height - 1.6 * $pix;
+                            line-height: $nav-top-item-height - 3 * $border-width;
+                            height: $nav-top-item-height - 1 * $border-width;
+                            /*height: 100%;*/
+                            padding: 0;
                             color: $gray-light;
                             margin-right: 0;
-                            padding: 0.55 * $pix 0.1 * $pix;
+                            border-top-width: 3 * $border-width;
+                            border-bottom-width: 3 * $border-width;
                         }
                         &:hover {
                             //hold main nav
@@ -81,9 +85,6 @@ body {
                             .sub-nav {
                                 //show sub-nav
                                 display: block;
-                                li:hover {
-                                    height: $nav-top-item-height - 2 * $border-width;
-                                }
                             }
                             &>a {
                                 //hold main nav
@@ -92,19 +93,20 @@ body {
                                 opacity: 1;
                             }
                         }
-                    }
-                    li.active> {
-                        a,
-                        a:hover,
-                        a:focus {
-                            color: $text-color;
-                            background-color: transparent;
+                        &.active> {
+                            a,
+                            a:hover,
+                            a:focus {
+                                color: $text-color;
+                                border-bottom-color: $primary-color;
+                                background-color: transparent;
+                            }
                         }
-                    }
-                    li:focus {
-                        .sub-nav {
-                            //show sub-nav
-                            background-color: $brand-danger;
+                        &:focus {
+                            .sub-nav {
+                                //show sub-nav
+                                background-color: $brand-danger;
+                            }
                         }
                     }
                 }
@@ -123,14 +125,16 @@ body {
             }
         }
         #main {
-            height: 100%;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-flow: row nowrap;
-            -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap;
+            & {
+                height: 100%;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-flow: row nowrap;
+                -ms-flex-flow: row nowrap;
+                flex-flow: row nowrap;
+            }
             #left-menu {
                 border-right: $border-width solid $border-color;
                 overflow: auto;
@@ -155,21 +159,22 @@ body {
                             a:focus {
                                 opacity: 1;
                             }
-                        }
-                        li.active {
-                            a,
-                            a:hover,
-                            a:focus {
-                                color: $primary-text-color;
-                                opacity: 1;
-                                background-color: $primary-color;
+                            &.active {
+                                a,
+                                a:hover,
+                                a:focus {
+                                    color: $primary-text-color;
+                                    opacity: 1;
+                                    background-color: $primary-color;
+                                }
                             }
                         }
                     }
                 }
                 .btn-menu-toggle {
-                    background-color: $gray-dark;
-                    color: $gray-lighter;
+                    background-color: $primary-text-color;
+                    color: $gray;
+                    opacity: 0.5;
                     height: $nav-left-item-height;
                     padding: 0;
                     border: 0;
@@ -183,13 +188,20 @@ body {
                         }
                     }
                     &:hover {
-                        background-color: $gray;
+                        /*background-color: $primary-color-light;*/
+                        background-color: $primary-color;
+                        color: $primary-text-color;
                     }
                 }
             }
             .left-menu-full {
                 max-width: $item-width;
                 min-width: $item-width;
+                .btn-menu-toggle {
+                    background-color: $primary-color !important;
+                    opacity: .8 !important;
+                    color: $primary-text-color !important;
+                }
             }
             .left-menu-mini {
                 max-width: $nav-top-item-height;
