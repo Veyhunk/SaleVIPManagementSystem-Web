@@ -22,13 +22,6 @@
                         templateUrl: 'app/home/home.html',
                     }
                 }
-            }).state('app.login', {
-                url: '/login',
-                views: {
-                    'content@app': {
-                        templateUrl: 'app/home/home.html',
-                    }
-                }
             });
 
 
