@@ -40,12 +40,12 @@
                     }
                 }
             })
-            .state('app.page_template.textarea', {
-                name: '文本域',
-                url: '/textarea',
+            .state('app.page_template.text', {
+                name: '文本',
+                url: '/text',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/page-template/textarea/textarea.html'
+                        templateUrl: 'app/page-template/text/text.html'
                     }
                 }
             })

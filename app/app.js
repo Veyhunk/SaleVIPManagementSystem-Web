@@ -15,6 +15,7 @@
         'app.goods_management',
         'app.consumption_management',
         'app.system_management',
-        'app.statistics_report'
+        'app.statistics_report',
+        'app.page_template'
     ]);
 })();
