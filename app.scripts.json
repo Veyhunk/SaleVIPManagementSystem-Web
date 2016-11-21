@@ -8,7 +8,8 @@
             "bootstrap",
             "moment",
             "moment-local-zh-cn",
-            "restangular"
+            "restangular",
+            "angular-local-storage"
         ],
         "vendor.ui": [],
         "vendor.datatables": [],
@@ -22,6 +23,7 @@
         "bootstrap": "bower_components/todc-bootstrap/dist/js/bootstrap.min.js",
         "moment": "bower_components/moment/min/moment.min.js",
         "moment-local-zh-cn": "bower_components/moment/locale/zh-cn.js",
-        "restangular": "bower_components/restangular/dist/restangular.min.js"
+        "restangular": "bower_components/restangular/dist/restangular.min.js",
+        "angular-local-storage": "bower_components/angular-local-storage/dist/angular-local-storage.min.js"
     }
 }

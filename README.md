@@ -78,4 +78,10 @@ ng-controller="MainCtrl as main"
 
 ## 插件说明
 ### Bootstrap Google Style
-使用 Google 主题的 Bootstrap，查看 [here](http://todc.github.io/todc-bootstrap/components/)。
+使用 Google 主题的 Bootstrap，参看[here](http://todc.github.io/todc-bootstrap/components/)。
+### angular-local-storage
+使用 angular-local-storage 进行本地存储操作，参看[here](https://github.com/grevory/angular-local-storage)
+### restangular
+使用 restangular 进行 RESTful API 调用，参看[here](https://github.com/mgonto/restangular)
+### lodash
+使用 lodash 作为工具类扩展，参看[here](https://lodash.com)

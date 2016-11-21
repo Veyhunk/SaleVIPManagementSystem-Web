@@ -8,6 +8,8 @@
         'app.layout',
         // 系统配置模块
         'app.configs',
+        // 授权登录验证模块
+        'app.authentication',
         // 共享模块
         'app.shared',
         // 业务逻辑模块

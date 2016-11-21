@@ -1,3 +1,69 @@
 <section>
-    会员登记
+    <h1>会员登记</h1>
+    <!--"store": "店铺 id @number 暂默认分配",
+    "operator": "操作员 id @number 当前操作员，系统默认", 
+    "level": "等级 id @number",
+    "code": "会员卡号 @string",
+    "portrait":"头像地址",
+    "payment_password": "支付密码 md5加密@string",
+    "balance": "余额@number",
+    "points": "积分@number",
+    "enroll_date": "注册日期 @string 默认今天",
+    "expire_date": "过期时间 @string 默认一个大日期",
+    "expenditure": "总消费额 默认0",
+    "state": "状态 @number 默认正常",
+    "name": "会员姓名 @string",
+    "identity": "身份证@string",
+    "contact": "电话 @string",
+    "birthday": "生日 @string",
+    "sex": "性别 @string",
+    "address": "地址 @string",
+    "remark": "备注 @string"-->
+    <table class="table">
+        <tr>
+            <td>会员卡号：</td>
+            <td>必填{{code}}</td>
+            <td>姓名：</td>
+            <td>必填</td>
+        </tr>
+        <tr>
+            <td>支付密码：</td>
+            <td>必填{{payment_password}}</td>
+            <td>确认密码：</td>
+            <td>必填</td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td>必填{{contact}}</td>
+            <td>身份证：</td>
+            <td>选填{{identity}}</td>
+        </tr>
+        <tr>
+            <td>会员等级：</td>
+            <td>默认一个{{level}}</td>
+            <td>生日：</td>
+            <td>默认20年前{{birthday}}</td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td>默认一个{{sex}}</td>
+            <td>金额：</td>
+            <td>默认0{{balance}}</td>
+        </tr>
+        <tr>
+            <td>积分：</td>
+            <td>默认0{{points}}</td>
+            <td>头像：</td>
+            <td>默认需要在右边{{portrait}}</td>
+        </tr>
+        <tr>
+            <td>
+                地址
+            </td>
+        </tr>
+        <tr>
+            <td>备注：{{remark}}</td>
+
+        </tr>
+    </table>
 </section>
