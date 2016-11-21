@@ -13,7 +13,12 @@ $gray-light: lighten(#000, 46.7%); // #777
 $gray-lighter: lighten(#000, 93.5%); // #eee
 $white: lighten(#000, 100%); // #fff
 //transparent
-$hover:rgba(0, 0, 0, 0.1);
+$hover-dark:rgba(0, 0, 0, 0.1);
+$hover-darker:rgba(0, 0, 0, 0.4);
+$hover-darkest:rgba(0, 0, 0, 0.7);
+$hover-light:rgba(255, 255, 255, 0.1);
+$hover-lighter:rgba(255, 255, 255, 0.4);
+$hover-lightest:rgba(255, 255, 255, 0.7);
 //theme-color
 $primary-color-dark: #04345d;
 $primary-color:#0868b9;
@@ -23,8 +28,8 @@ $primary-text-color: $white;
 $component-bg-color:$white;
 $text-color: $gray-darker;
 $text-color-light: $gray-light;
-$background-color:$gray-lighter;
-$border-color:$hover;
+$background-color:#f1f1f1;
+$border-color:#e2e2e2;
 //size
 $pix:1.2rem;
 $item-width:12.4 * $pix;

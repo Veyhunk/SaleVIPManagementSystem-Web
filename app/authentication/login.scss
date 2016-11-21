@@ -1,30 +1,45 @@
+@import '../shared/css/variable.scss';
+$height: 100vh;
+$width: 100vw;
 #login-container {
     height: 100vh;
     width: 100vw;
     position: relative;
+    background-color: $background-color;
+    #login-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 70%;
+        height: 30 * $pix;
+        &>div {
+            height: 30 * $pix;
+        }
+        #login-product {
+            width: 100%;
+            background-color: $primary-color-light;
+        }
+        #login-dialog {
+            width: 30 * $pix;
+            background-color: $component-bg-color;
+        }
+    }
 }
 
-#login-content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 70%;
-    height: 50%;
-}
-
-#login-content>div {
-    height: 100%;
-}
-
-#login-product {
-    width: 100%;
-    background-color: rgba(22, 22, 233, 0.6);
-}
-
-#login-dialog {
-    width: 300px;
-    background-color: rgba(222, 222, 233, 0.6);
+.logo-large {
+    img {
+        width: 11 * $pix;
+        height: 11 * $pix;
+    }
+    i {
+        color: $primary-color;
+        width: 11 * $pix;
+        height: 11 * $pix;
+        line-height: 11 * $pix;
+        text-align: center;
+        font-size: 8 * $pix;
+    }
 }
