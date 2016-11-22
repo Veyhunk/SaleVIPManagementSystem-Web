@@ -1,7 +1,7 @@
 @import 'variable.scss';
 //frame
 body {
-    font-size: 1.1 * $pix;
+    font-size: $font-size;
     #layout {
         height: 100vh;
         width: 100vw;
@@ -264,6 +264,14 @@ body {
 }
 
 // tools
+.primary-color {
+    color: $primary-color;
+}
+
+.primary-color-in-background {
+    background-color: $primary-color;
+}
+
 .padding {
     padding: $padding;
 }
@@ -327,4 +335,35 @@ body {
 .content-two-view {
     width: 100%;
     /*height: 1000px;*/
+}
+
+.image-group {
+    .img-xm {
+        height: $font-size;
+    }
+    .img-sm {
+        height: $font-size * 3;
+    }
+    .img-lg {
+        height: $font-size * 9;
+    }
+    img {
+        height: $font-size * 6;
+        padding-bottom: $padding / 2;
+    }
+}
+
+img {
+    &.img-xm {
+        height: $font-size;
+    }
+    &.img-sm {
+        height: $font-size * 3;
+    }
+    &.img-nm {
+        height: $font-size * 6;
+    }
+    &.img-lg {
+        height: $font-size * 9;
+    }
 }
