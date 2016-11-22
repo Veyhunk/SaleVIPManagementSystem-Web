@@ -6,6 +6,15 @@ $width: 100vw;
     width: 100vw;
     position: relative;
     background-color: $background-color;
+    #login-brand {
+        padding: $padding;
+        position: absolute;
+        right: 0;
+        h3 {
+            color: $text-color;
+            margin: 0;
+        }
+    }
     #login-content {
         position: absolute;
         top: 0;
@@ -31,14 +40,14 @@ $width: 100vw;
 
 .logo-large {
     img {
-        width: 11 * $pix;
-        height: 11 * $pix;
+        width: 12 * $pix;
+        height: 12 * $pix;
     }
     i {
         color: $primary-color;
-        width: 11 * $pix;
-        height: 11 * $pix;
-        line-height: 11 * $pix;
+        width: 12 * $pix;
+        height: 12 * $pix;
+        line-height: 12 * $pix;
         text-align: center;
         font-size: 8 * $pix;
     }
