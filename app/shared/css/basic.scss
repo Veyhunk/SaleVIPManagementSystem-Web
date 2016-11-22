@@ -338,18 +338,43 @@ body {
 }
 
 .image-group {
-    .img-xm {
-        height: $font-size;
+    @mixin img-sizing ($sizing) {
+        img {
+            height: $font-size * $sizing;
+            /*padding-bottom: $padding / 2;*/
+        }
+        .img-add {
+            width: $font-size * $sizing;
+            height: $font-size * $sizing;
+        }
     }
-    .img-sm {
-        height: $font-size * 3;
+    &.img-xm {
+        @include img-sizing(1);
     }
-    .img-lg {
-        height: $font-size * 9;
+    &.img-sm {
+        @include img-sizing(3);
+    }
+    &.img-nm {
+        @include img-sizing(6);
+    }
+    &.img-lg {
+        @include img-sizing(9);
+    }
+    &.img-xlg {
+        @include img-sizing(12);
+    }
+    &.img-xxlg {
+        @include img-sizing(15);
+    }
+    &.img-xxxlg {
+        @include img-sizing(20);
     }
     img {
-        height: $font-size * 6;
         padding-bottom: $padding / 2;
+    }
+    .img-add {
+        width: $font-size;
+        height: $font-size;
     }
 }
 
