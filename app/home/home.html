@@ -1,5 +1,18 @@
 <section id="home-page" class="padding-lr">
     <h2>首页测试</h2>
-    中文首字母简码转换
-    <input ng-model=" layout.test "> {{layout.test|capitalChinese}}
+    <div>
+        <h3>中文首字母简码转换</h3>
+        <input ng-model="layout.test"> {{layout.test|capitalChinese}}
+    </div>
+    <div>
+        <h3>时间控件测试</h3>
+        <form class="form-inline">
+            <div class="input-group">
+                <input type="text" class="form-control" value="2012-05-15 21:05" id="datetimepicker" datetime-picker data-date-format="yyyy-mm-dd">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+            </div>
+        </form>
+    </div>
 </section>

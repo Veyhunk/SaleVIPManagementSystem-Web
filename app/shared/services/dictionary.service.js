@@ -80,7 +80,7 @@
 
         var DictionaryService = {
             get: get,
-            parse: parse
+            resolve: resolve
         };
 
         return DictionaryService;
@@ -114,7 +114,7 @@
          * var sex = DictionaryService.get('sex',0);
          * console.info(sex) // 女士
          */
-        function parse(type, value) {
+        function resolve(type, value) {
             if (typeof dictionaries[type] !== 'undefined') {
                 return dictionaries[type][value];
             }

@@ -85,3 +85,26 @@ ng-controller="MainCtrl as main"
 使用 restangular 进行 RESTful API 调用，参看[here](https://github.com/mgonto/restangular)
 ### lodash
 使用 lodash 作为工具类扩展，参看[here](https://lodash.com)
+### bootstrap-datetimepicker
+将[bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)进行简单的封装，所有配置参考官网API文档，使用方法如下：
+
+```html
+ <div class='input-group date' datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="DeclarationBasisOwner.dateOption">
+    <input type='text' class="form-control" ng-model="DeclarationBasisOwner.selectYear" />
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+```
+```javascript
+    vm.dateOption = {
+            startView: 'decade',
+            minView: 'decade',
+            format: 'yyyy'
+        };
+```
+直接加在 Input 上
+```
+<input type="text" value="2012-05-15 21:05" id="datetimepicker" datetime-picker  data-date-format="yyyy-mm-dd hh:ii:ss">
+```
+更多使用方法，参考官方文档。
