@@ -32,7 +32,6 @@
                 pickerPosition: 'bottom-right'
             }, options);
 
-            debugger;
             element.datetimepicker(options);
         }
     }

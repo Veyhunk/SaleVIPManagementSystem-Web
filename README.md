@@ -89,22 +89,16 @@ ng-controller="MainCtrl as main"
 将[bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)进行简单的封装，所有配置参考官网API文档，使用方法如下：
 
 ```html
- <div class='input-group date' datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="DeclarationBasisOwner.dateOption">
-    <input type='text' class="form-control" ng-model="DeclarationBasisOwner.selectYear" />
-    <span class="input-group-addon">
-        <span class="glyphicon glyphicon-calendar"></span>
-    </span>
-</div>
-```
-```javascript
-    vm.dateOption = {
-            startView: 'decade',
-            minView: 'decade',
-            format: 'yyyy'
-        };
-```
-直接加在 Input 上
-```
-<input type="text" value="2012-05-15 21:05" id="datetimepicker" datetime-picker  data-date-format="yyyy-mm-dd hh:ii:ss">
+ <form class="form-inline">
+    <div class="input-group date">
+        <input type="text" class="form-control" value="2012-05-15 21:05" id="datetimepicker" datetime-picker data-date-format="yyyy-mm-dd">
+    </div>
+    <div class='input-group date' datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="<object>options">
+        <input type='text' class="form-control" ng-model="xxxx"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+ </form>
 ```
 更多使用方法，参考官方文档。
