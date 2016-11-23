@@ -26,6 +26,7 @@
     "restangular": "^1.5.2",
     "lodash": "^4.16.6",
     "todc-bootstrap": "3.3.7-3.3.7",
-    "angular-local-storage": "^0.5.2"
+    "angular-local-storage": "^0.5.2",
+    "cryptojslib": "^3.1.2"
   }
 }

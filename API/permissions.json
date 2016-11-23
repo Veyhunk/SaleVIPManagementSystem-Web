@@ -4,9 +4,10 @@
         "url": "app.member_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 2,
+        "icon": "",
         "remark": ""
     },
     {
@@ -15,9 +16,10 @@
         "url": "app.member_management.register",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 1,
         "order": 2,
+        "icon": "",
         "remark": ""
     },
     {
@@ -26,9 +28,10 @@
         "url": "app.member_management.list",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 1,
         "order": 3,
+        "icon": "",
         "remark": ""
     },
     {
@@ -37,9 +40,10 @@
         "url": "app.member_management.charge",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 1,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -48,9 +52,10 @@
         "url": "app.member_management.level",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 1,
         "order": 4,
+        "icon": "",
         "remark": ""
     },
     {
@@ -59,9 +64,10 @@
         "url": "app.goods_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 3,
+        "icon": "",
         "remark": ""
     },
     {
@@ -70,9 +76,10 @@
         "url": "app.goods_management.register",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 6,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -81,9 +88,10 @@
         "url": "app.goods_management.list",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 6,
         "order": 2,
+        "icon": "",
         "remark": ""
     },
     {
@@ -92,9 +100,10 @@
         "url": "app.goods_management.class",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 6,
         "order": 3,
+        "icon": "",
         "remark": ""
     },
     {
@@ -103,9 +112,10 @@
         "url": "app.goods_management.inventory",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 6,
         "order": 4,
+        "icon": "",
         "remark": ""
     },
     {
@@ -114,9 +124,10 @@
         "url": "app.goods_management.inventory_list",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 6,
         "order": 4,
+        "icon": "",
         "remark": ""
     },
     {
@@ -125,9 +136,10 @@
         "url": "app.consumption_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -136,9 +148,10 @@
         "url": "app.consumption_management.pay_for_goods",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 12,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -147,9 +160,10 @@
         "url": "app.consumption_management.quick_pay",
         "is_API": 0,
         "is_shortcut": 1,
-        "method": 1,
+        "method": "get",
         "parent": 12,
         "order": 2,
+        "icon": "",
         "remark": ""
     },
     {
@@ -158,9 +172,10 @@
         "url": "app.consumption_management.record",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 12,
         "order": 3,
+        "icon": "",
         "remark": ""
     },
     {
@@ -169,9 +184,10 @@
         "url": "app.statistics_report",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 4,
+        "icon": "",
         "remark": ""
     },
     {
@@ -180,9 +196,10 @@
         "url": "app.statistics_report.member_consumption",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 15,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -191,9 +208,10 @@
         "url": "app.statistics_report.member_charge",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 15,
         "order": 2,
+        "icon": "",
         "remark": ""
     }, {
         "id": 19,
@@ -201,9 +219,10 @@
         "url": "app.system_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 5,
+        "icon": "",
         "remark": ""
     },
     {
@@ -212,9 +231,10 @@
         "url": "app.system_management.user_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 19,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -223,9 +243,10 @@
         "url": "app.system_management.role_management",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 19,
         "order": 2,
+        "icon": "",
         "remark": ""
     }, {
         "id": 100,
@@ -233,9 +254,10 @@
         "url": "app.page_template",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": null,
         "order": 5,
+        "icon": "",
         "remark": ""
     },
     {
@@ -244,9 +266,10 @@
         "url": "app.page_template.form",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 1,
+        "icon": "",
         "remark": ""
     },
     {
@@ -255,9 +278,10 @@
         "url": "app.page_template.modal",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 2,
+        "icon": "",
         "remark": ""
     },
     {
@@ -266,9 +290,10 @@
         "url": "app.page_template.table",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 3,
+        "icon": "",
         "remark": ""
     },
     {
@@ -277,9 +302,10 @@
         "url": "app.page_template.text",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 4,
+        "icon": "",
         "remark": ""
     },
     {
@@ -288,9 +314,10 @@
         "url": "app.page_template.tree",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 5,
+        "icon": "",
         "remark": ""
     },
     {
@@ -299,9 +326,10 @@
         "url": "app.page_template.two_view",
         "is_API": 0,
         "is_shortcut": 0,
-        "method": 1,
+        "method": "get",
         "parent": 100,
         "order": 6,
+        "icon": "",
         "remark": ""
     }
 ]
