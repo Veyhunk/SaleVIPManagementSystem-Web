@@ -7,12 +7,16 @@
     <div>
         <h3>时间控件测试</h3>
         <form class="form-inline">
-            <div class="input-group">
+            <div class="input-group date">
                 <input type="text" class="form-control" value="2012-05-15 21:05" id="datetimepicker" datetime-picker data-date-format="yyyy-mm-dd">
+            </div>
+            <div class='input-group date' datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                <input type='text' class="form-control" />
                 <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-calendar"></i>
+        <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
         </form>
+
     </div>
 </section>

@@ -15,20 +15,25 @@
         var datetimePicker = {
             link: link,
             restrict: 'A',
+            scope: {
+                datetimePickerOptions: '='
+            }
         };
         return datetimePicker;
 
         function link(scope, element, attrs) {
-            if (!scope.datetimePickerOptions) {
-                scope.datetimePickerOptions = {};
+            var options = {};
+            if (scope.datetimePickerOptions) {
+                options = scope.datetimePickerOptions;
             }
-            angular.extend(scope.datetimePickerOptions, {
+            options = angular.extend({
                 autoclose: true,
-                pickerPosition: 'bottom-left',
-                language: 'zh-CN'
-            });
+                language: 'zh-CN',
+                pickerPosition: 'bottom-right'
+            }, options);
+
             debugger;
-            element.datetimepicker(scope.datetimePickerOptions);
+            element.datetimepicker(options);
         }
     }
 })();
