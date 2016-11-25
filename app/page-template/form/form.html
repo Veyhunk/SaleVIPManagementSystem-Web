@@ -1,5 +1,154 @@
 <section class="content-view pull-center">
     <div class="content-view-head">
+        <h2>Example Register form</h2>
+    </div>
+    <hr>
+    <div class="content-view-body">
+        <form class="form-horizontal">
+            <!-- Image -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">一寸照</label>
+                <div class="col-sm-6">
+                    <img src="app/shared/images/img.png" alt="..." class="img-rounded img-photo">
+                    <div class="img-photo-add"><button><i class="fa fa-plus"></i></button></div>
+                </div>
+            </div>
+            <!-- File inpu -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">File input</label>
+                <div class="col-sm-6"> <input type="file">
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>
+                <p class="col-sm-3 help-block">help-block</p>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">会员</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                    <p class="text-success">types：text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">姓名</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-3 control-label">密码</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-3 control-label">重复密码</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">手机</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">身份证</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Select -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">会员等级</label>
+                <div class=" col-sm-6">
+                    <select class="form-control">
+                        <option value="Apple">Apple</option>
+                        <option value="Banana">Banana</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Pear">Pear</option>
+                        <option value="Peach">Peach</option>
+                    </select>
+                </div>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">日期</label>
+                <div class="col-sm-6">
+                    <div class="input-group date" datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Checkboxes and radios -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">性别</label>
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="option1"> 男
+                    </label>
+                    <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="option2"> 女
+                    </label>
+                </div>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">金额</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">积分</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">地址</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- textarea -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注</label>
+                <div class="col-sm-6"><textarea class="form-control" rows="3"></textarea></div>
+                <p class="col-sm-3 help-block">help-block</p>
+            </div>
+            <!-- button -->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="button" class="btn btn-primary btn-block">注册</button>
+                    <!--<button type="submit" class="btn btn-default">default</button>-->
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="content-view-head">
         <h2>表单</h2>
     </div>
     <hr>
@@ -7,7 +156,7 @@
         <form class="form-horizontal">
             <!-- Image -->
             <div class="form-group ">
-                <label for="inputEmail3" class="col-sm-3 control-label">Image</label>
+                <label class="col-sm-3 control-label">Image</label>
                 <div class="col-sm-6">
                     <img src="app/shared/images/img.png" alt="..." class="img-rounded">
                     <img src="app/shared/images/img.png" alt="..." class="img-circle">
@@ -16,7 +165,7 @@
             </div>
             <!-- Image group -->
             <div class="form-group ">
-                <label for="inputEmail3" class="col-sm-3 control-label">Image group</label>
+                <label class="col-sm-3 control-label">Image group</label>
                 <div class="col-sm-6 image-group img-nm">
                     <img src="app/shared/images/img.png" alt="..." class="img-rounded">
                     <img src="app/shared/images/img.png" alt="..." class="img-rounded">
@@ -28,40 +177,40 @@
             </div>
             <!-- input -->
             <div class="form-group ">
-                <label for="inputEmail3" class="col-sm-3 control-label">input</label>
+                <label class="col-sm-3 control-label">input</label>
                 <div class="col-sm-6">
-                    <input class="form-control" id="inputEmail3" placeholder="Email">
+                    <input class="form-control" placeholder="Email">
                     <p class="text-success">types：text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
                 </div>
-                <label for="inputEmail3" class="col-sm-3 help-block">*</label>
+                <label class="col-sm-3 help-block">*</label>
             </div>
             <!-- Password -->
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password">
                 </div>
-                <label for="inputEmail3" class="col-sm-3 help-block">*</label>
+                <label class="col-sm-3 help-block">*</label>
             </div>
             <!-- With addon -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">With addon</label>
+                <label class="col-sm-3 control-label">With addon</label>
                 <div class=" col-sm-6">
                     <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                     <div class="input-group ">
                         <div class="input-group-addon">$</div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                        <input type="text" class="form-control" placeholder="Amount">
                         <div class="input-group-addon">.00</div>
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon" id="sizing-addon2">@</span>
+                        <span class="input-group-addon">@</span>
                         <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
                     </div>
                     <div class="input-group"> <span class="input-group-btn"> <button class="btn btn-default" type="button">Go!</button> </span>
                         <input class="form-control" placeholder="Search for..."> </div>
                     <div class="input-group"> <input class="form-control" placeholder="Search for..."> <span class="input-group-btn"> <button class="btn btn-default" type="button">Go!</button> </span> </div>
                 </div>
-                <p for="exampleInputFile" class="col-sm-3 help-block">help-block</p>
+                <p class="col-sm-3 help-block">help-block</p>
             </div>
             <!-- Static control -->
             <div class="form-group">
@@ -74,11 +223,11 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-3 control-label">textarea</label>
                 <div class="col-sm-6"><textarea class="form-control" rows="3"></textarea></div>
-                <p for="exampleInputFile" class="col-sm-3 help-block">help-block</p>
+                <p class="col-sm-3 help-block">help-block</p>
             </div>
             <!-- Helper classes -->
             <div class="form-group ">
-                <label for="inputEmail3" class="col-sm-3 control-label">Helper classes</label>
+                <label class="col-sm-3 control-label">Helper classes</label>
                 <div class="col-sm-6">
                     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
                     <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -88,19 +237,19 @@
                     <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
                 </div>
 
-                <label for="inputEmail3" class="col-sm-3 help-block">*</label>
+                <label class="col-sm-3 help-block">*</label>
             </div>
             <!-- File inpu -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">File input</label>
-                <div class="col-sm-6"> <input type="file" id="exampleInputFile">
+                <label class="col-sm-3 control-label">File input</label>
+                <div class="col-sm-6"> <input type="file">
                     <p class="help-block">Example block-level help text here.</p>
                 </div>
-                <p for="exampleInputFile" class="col-sm-3 help-block">help-block</p>
+                <p class="col-sm-3 help-block">help-block</p>
             </div>
             <!-- Checkboxes and radios -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">Checkboxes and radios</label>
+                <label class="col-sm-3 control-label">Checkboxes and radios</label>
                 <div class="col-sm-6">
                     <div class="checkbox">
                         <label>
@@ -116,19 +265,19 @@
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            <input type="radio" name="optionsRadios"  value="option1" checked>
                             Option one is this and that&mdash;be sure to include why it's great
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            <input type="radio" name="optionsRadios"  value="option2">
                             Option two can be something else and selecting it will deselect option one
                         </label>
                     </div>
                     <div class="radio disabled">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                            <input type="radio" name="optionsRadios"  value="option3" disabled>
                             Option three is disabled
                         </label>
                     </div>
@@ -136,32 +285,52 @@
             </div>
             <!-- Checkboxes and radios -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">Inline</label>
+                <label class="col-sm-3 control-label">Inline</label>
                 <div class="col-sm-6">
                     <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                    <input type="checkbox"  value="option1"> 1
                     </label>
                     <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                    <input type="checkbox"  value="option2"> 2
                     </label>
                     <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                    <input type="checkbox"  value="option3"> 3
                     </label>
 
                     <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                    <input type="radio" name="inlineRadioOptions"  value="option1"> 1
                     </label>
                     <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                    <input type="radio" name="inlineRadioOptions"  value="option2"> 2
                     </label>
                     <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                    <input type="radio" name="inlineRadioOptions"  value="option3"> 3
                     </label>
+                </div>
+            </div>
+            <!-- Checkboxes and radios addons-->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Checkboxes and radio addons</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="checkbox" aria-label="...">
+                        </span>
+                        <input type="text" class="form-control" aria-label="...">
+                    </div>
+                    <!-- /input-group -->
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" aria-label="...">
+                        </span>
+                        <input type="text" class="form-control" aria-label="...">
+                    </div>
+                    <!-- /input-group -->
                 </div>
             </div>
             <!-- Select -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">Select</label>
+                <label class="col-sm-3 control-label">Select</label>
                 <div class=" col-sm-6">
                     <select class="form-control">
                         <option value="Apple">Apple</option>
@@ -174,7 +343,7 @@
             </div>
             <!-- Select -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">此处与官方不一致</label>
+                <label class="col-sm-3 control-label">此处与官方不一致</label>
                 <div class=" col-sm-6">
                     <select multiple class="form-control">
                         <option value="Apple">Apple</option>
@@ -187,10 +356,10 @@
             </div>
             <!-- Drop -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">Drop</label>
+                <label class="col-sm-3 control-label">Drop</label>
                 <div class=" col-sm-6">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Dropdown
                             <span class="caret"></span>
                         </button>
@@ -237,7 +406,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-3" for="inputSuccess1">Focus</label>
                 <div class="col-sm-6">
-                    <input class="form-control" id="focusedInput" value="Demonstrative focus state">
+                    <input class="form-control" value="Demonstrative focus state">
                 </div>
             </div>
 
@@ -245,14 +414,14 @@
             <div class="form-group">
                 <label class="control-label col-sm-3" for="inputSuccess1">Disabled</label>
                 <div class="col-sm-6">
-                    <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                    <input class="form-control" type="text" placeholder="Disabled input here..." disabled>
                 </div>
             </div>
             <!-- Readonly -->
             <div class="form-group">
                 <label class="control-label col-sm-3" for="inputSuccess1">Readonly</label>
                 <div class="col-sm-6">
-                    <input class="form-control" id="disabledInput" type="text" placeholder="Readonly input here..." Readonly>
+                    <input class="form-control" type="text" placeholder="Readonly input here..." Readonly>
                 </div>
             </div>
             <!-- Disabled fieldset -->
@@ -260,7 +429,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="inputSuccess1">Disabled fieldset</label>
                     <div class="col-sm-6">
-                        <select id="disabledSelect" class="form-control">
+                        <select class="form-control">
                         <option>Disabled select</option>
                     </select>
                     </div>
@@ -277,7 +446,7 @@
                 <!-- button -->
                 <div class="form-group ">
                     <div class="col-sm-offset-3 col-sm-6 ">
-                        <button type="submit " class="btn btn-primary ">Submit</button>
+                        <button type="submit " class="btn btn-primary">Submit</button>
                         <button type="submit " class="btn btn-default ">Sign in</button>
                     </div>
                 </div>
@@ -290,10 +459,10 @@
         <form class="form-horizontal">
             <!-- Drop -->
             <div class="form-group">
-                <label for="exampleInputFile" class="col-sm-3 control-label">Drop</label>
+                <label class="col-sm-3 control-label">Drop</label>
                 <div class=" col-sm-6">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Dropdown
                             <span class="caret"></span>
                         </button>
@@ -318,7 +487,7 @@
                         </ul>
                     </div>
                     <div class="dropup">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropup
                             <span class="caret"></span>
                         </button>
@@ -330,7 +499,7 @@
                             <li><a href="#">Separated link</a></li>
                         </ul>
                     </div>
-                    <div class="bs-example" data-example-id="single-button-dropdown">
+                    <div class="bs-example">
                         <div class="btn-group"> <button class="btn dropdown-toggle btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Default <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -386,7 +555,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="bs-example" data-example-id="split-button-dropdown">
+                    <div class="bs-example">
                         <div class="btn-group"> <button class="btn btn-default" type="button">Default</button> <button class="btn dropdown-toggle btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -571,18 +740,18 @@
                 <!-- Validation -->
                 <div class="form-group has-success ">
                     <label class="control-label col-sm-3" for="inputSuccess1 ">Input with success</label>
-                    <div class="col-sm-6"><input type="text " class="form-control " id="inputSuccess1 " aria-describedby="helpBlock2 ">
-                        <span id="helpBlock2 " class="help-block ">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                    <div class="col-sm-6"><input type="text " class="form-control " aria-describedby="helpBlock2 ">
+                        <span class="help-block ">A block of help text that breaks onto a new line and may extend beyond one line.</span>
                     </div>
                 </div>
                 <div class="form-group has-warning ">
                     <label class="control-label col-sm-3" for="inputWarning1 ">Input with warning</label>
-                    <div class="col-sm-6"><input type="text " class="form-control " id="inputWarning1 ">
+                    <div class="col-sm-6"><input type="text " class="form-control ">
                     </div>
                 </div>
                 <div class="form-group has-error ">
                     <label class="control-label col-sm-3" for="inputError1 ">Input with error</label>
-                    <div class="col-sm-6"><input type="text " class="form-control " id="inputError1 ">
+                    <div class="col-sm-6"><input type="text " class="form-control ">
                     </div>
                 </div>
                 <!-- Checkbox -->
@@ -590,7 +759,7 @@
                     <div class="has-success col-sm-offset-3 col-sm-6">
                         <div class="checkbox">
                             <label>
-                        <input type="checkbox" id="checkboxSuccess " value="option1 ">
+                        <input type="checkbox" value="option1 ">
                         Checkbox with success
                     </label>
                         </div>
@@ -598,7 +767,7 @@
                     <div class="has-warning  col-sm-offset-3 col-sm-6">
                         <div class="checkbox">
                             <label>
-                        <input type="checkbox" id="checkboxWarning " value="option1 ">
+                        <input type="checkbox" value="option1 ">
                         Checkbox with warning
                     </label>
                         </div>
@@ -606,7 +775,7 @@
                     <div class="has-error  col-sm-offset-3 col-sm-6">
                         <div class="checkbox">
                             <label>
-                        <input type="checkbox" id="checkboxError " value="option1 ">
+                        <input type="checkbox" value="option1 ">
                         Checkbox with error
                     </label>
                         </div>
@@ -621,23 +790,23 @@
                 <!-- With optional icons -->
                 <div class="form-group has-success has-feedback">
                     <label class="control-label  col-sm-3" for="inputSuccess2">Input with success</label>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                    <div class="col-sm-6"><input type="text" class="form-control" aria-describedby="inputSuccess2Status">
                         <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                        <span class="sr-only">(success)</span>
                     </div>
                 </div>
                 <div class="form-group has-warning has-feedback">
                     <label class="control-label  col-sm-3" for="inputWarning2">Input with warning</label>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+                    <div class="col-sm-6"><input type="text" class="form-control" aria-describedby="inputWarning2Status">
                         <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-                        <span id="inputWarning2Status" class="sr-only">(warning)</span>
+                        <span class="sr-only">(warning)</span>
                     </div>
                 </div>
                 <div class="form-group has-error has-feedback">
                     <label class="control-label  col-sm-3" for="inputError2">Input with error</label>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+                    <div class="col-sm-6"><input type="text" class="form-control" aria-describedby="inputError2Status">
                         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span id="inputError2Status" class="sr-only">(error)</span>
+                        <span class="sr-only">(error)</span>
                     </div>
                 </div>
                 <div class="form-group has-success has-feedback">
@@ -645,10 +814,10 @@
                     <div class="col-sm-6">
                         <div class="input-group">
                             <span class="input-group-addon">@</span>
-                            <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+                            <input type="text" class="form-control" aria-describedby="inputGroupSuccess1Status">
                         </div>
                         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span id="inputError2Status" class="sr-only">(error)</span>
+                        <span class="sr-only">(error)</span>
                     </div>
                 </div>
             </form>
@@ -708,7 +877,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="inputSuccess1">Focus</label>
                     <div class="col-sm-6">
-                        <input class="form-control" id="focusedInput" value="Demonstrative focus state">
+                        <input class="form-control" value="Demonstrative focus state">
                     </div>
                 </div>
             </form>

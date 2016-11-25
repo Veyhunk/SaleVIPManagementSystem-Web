@@ -1,5 +1,153 @@
-<section>
-    <h1>会员登记</h1>
+<section class="content-view pull-center">
+    <div class="content-view-head">
+        <h2>会员登记</h2>
+    </div>
+    <hr>
+    <div class="content-view-body">
+        <form class="form-horizontal">
+            <!-- Image -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">一寸照</label>
+                <div class="col-sm-6">
+                    <img src="app/shared/images/img.png" alt="..." class="img-rounded img-photo">
+                    <div class="img-photo-add"><button><i class="fa fa-plus"></i></button></div>
+                </div>
+            </div>
+            <!-- File inpu -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">File input</label>
+                <div class="col-sm-6"> <input type="file">
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>
+                <p class="col-sm-3 help-block">help-block</p>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">会员</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                    <p class="text-success">types：text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">姓名</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-3 control-label">密码</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-3 control-label">重复密码</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">手机</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">身份证</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Select -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">会员等级</label>
+                <div class=" col-sm-6">
+                    <select class="form-control">
+                        <option value="Apple">Apple</option>
+                        <option value="Banana">Banana</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Pear">Pear</option>
+                        <option value="Peach">Peach</option>
+                    </select>
+                </div>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">日期</label>
+                <div class="col-sm-6">
+                    <div class="input-group date" datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- Checkboxes and radios -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">性别</label>
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="option1"> 男
+                    </label>
+                    <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="option2"> 女
+                    </label>
+                </div>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">金额</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">积分</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- input -->
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">地址</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="">
+                </div>
+                <label class="col-sm-3 help-block">*</label>
+            </div>
+            <!-- textarea -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注</label>
+                <div class="col-sm-6"><textarea class="form-control" rows="3"></textarea></div>
+                <p class="col-sm-3 help-block">help-block</p>
+            </div>
+            <!-- button -->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="button" class="btn btn-primary btn-block">注册</button>
+                    <!--<button type="submit" class="btn btn-default">default</button>-->
+                </div>
+            </div>
+
+        </form>
+    </div>
     <!--"store": "店铺 id @number 暂默认分配",
     "operator": "操作员 id @number 当前操作员，系统默认", 
     "level": "等级 id @number",
@@ -19,7 +167,7 @@
     "sex": "性别 @string",
     "address": "地址 @string",
     "remark": "备注 @string"-->
-    <table class="table">
+    <table class="table" ng-show="false">
         <tr>
             <td>会员卡号：</td>
             <td>必填{{code}}</td>

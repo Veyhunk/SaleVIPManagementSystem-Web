@@ -370,25 +370,64 @@ body {
         @include img-sizing(20);
     }
     img {
+        padding-right: $padding / 2;
         padding-bottom: $padding / 2;
-    }
-    .img-add {
-        width: $font-size;
-        height: $font-size;
     }
 }
 
 img {
+    @mixin img-sizing ($sizing) {
+        img {
+            height: $font-size * $sizing;
+            /*padding-bottom: $padding / 2;*/
+        }
+        .img-add {
+            width: $font-size * $sizing;
+            height: $font-size * $sizing;
+        }
+    }
     &.img-xm {
-        height: $font-size;
+        @include img-sizing(1);
     }
     &.img-sm {
-        height: $font-size * 3;
+        @include img-sizing(3);
     }
     &.img-nm {
-        height: $font-size * 6;
+        @include img-sizing(6);
     }
     &.img-lg {
-        height: $font-size * 9;
+        @include img-sizing(9);
+    }
+    &.img-xlg {
+        @include img-sizing(12);
+    }
+    &.img-xxlg {
+        @include img-sizing(15);
+    }
+    &.img-xxxlg {
+        @include img-sizing(20);
+    }
+    &.img-photo {
+        height: $font-size * 12;
+        width: $font-size * 9;
+    }
+    float: left;
+}
+
+.img-photo-add {
+    /*margin-top: - $font-size * 6;*/
+    float: left;
+    /*margin-left: $padding;*/
+    height: $font-size * 12;
+    color: $text-color;
+    text-align: center;
+    button {
+        background-color: $background-color;
+        width: $font-size * 9;
+        padding: 0;
+        border: 0;
+        i {
+            line-height: $font-size * 12;
+        }
     }
 }
