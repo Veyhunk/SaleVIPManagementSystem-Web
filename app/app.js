@@ -4,6 +4,7 @@
     angular.module('app', [
         // 第三方插件
         'restangular',
+        'ui.bootstrap',
         // 布局模块
         'app.layout',
         // 系统配置模块

@@ -5,13 +5,16 @@
         .module('app.layout')
         .controller('LayoutCtrl', LayoutCtrl);
 
-    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService'];
+    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService'];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService) {
+    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
         vm.state = $state;
+        //商品测试单位
+        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+        vm.selectedUnit = vm.goodsUnits[0];
         // 系统主菜单
         vm.mainMenus = [];
         // 快捷菜单
