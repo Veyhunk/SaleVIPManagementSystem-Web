@@ -22,20 +22,20 @@
          *       name: '会员管理',
          *       url: '#/member_management',
          *       parent: null,
-         *       order: 1,
+         *       sort: 1,
          *       children: 
          *       [{
          *           id: 2,
          *           name: '会员登记',
          *           url: '#/member_management/register',
          *           parent: 1,
-         *           order: 1,
+         *           sort: 1,
          *          }, {
          *           id: 3,
          *           name: '会员列表',
          *           url: '#/member_management/list',
          *           parent: 1,
-         *           order: 2,
+         *           sort: 2,
          *       }]
          *   }]
          * ```
@@ -46,13 +46,13 @@
          *           name: '会员登记',
          *           url: '#/member_management/register',
          *           parent: 1,
-         *           order: 2,  // parent order + child order
+         *           sort: 2,  // parent sort + child sort
          *          }, {
          *           id: 3,
          *           name: '会员列表',
          *           url: '#/member_management/list',
          *           parent: 1,
-         *           order: 3,
+         *           sort: 3,
          *       }]
          * ```
          */
@@ -95,12 +95,12 @@
 
             });
 
-            // 如果是快捷菜单，要加上父 order
+            // 如果是快捷菜单，要加上父 sort
             // TODO(延平 2016-11-14): 根据需求再作修改
             _.forIn(nodes, (item, key) => {
                 if (item.is_shortcut) {
                     var _item = angular.copy(item);
-                    _item.order = _item.order + nodes[_item.parent].order;
+                    _item.sort = _item.sort + nodes[_item.parent].sort;
                     result.shortcutMenus.push(_item);
                 }
             });

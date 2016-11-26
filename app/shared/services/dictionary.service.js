@@ -6,12 +6,16 @@
         .factory('DictionaryService', DictionaryService);
 
     DictionaryService.$inject = [];
-
+    /**
+     * 对应后台字典表
+     * 
+     * @returns
+     */
     function DictionaryService() {
 
         var dictionaries = {
             //商品类型
-            'goods.type': {
+            'goods.types': {
                 1: '实物类',
                 2: '服务类',
                 3: '计次类',
@@ -22,14 +26,14 @@
                 1: '男士'
             },
             // 充值类型
-            'member_charge.type': {
+            'member_charge.types': {
                 1: '会员充值',
                 2: '会员充次',
                 3: '会员充时',
                 4: '办卡充值'
             },
             // 消费类型
-            'consumption.type': {
+            'consumption.types': {
                 1: '商品消费',
                 2: '快速消费',
                 3: '计次消费',
@@ -43,14 +47,14 @@
                 3: '编辑入库',
                 4: '编辑出库'
             },
-            'payment.type': {
+            'payment.types': {
                 1: '余额',
                 2: '现金',
                 3: '网银',
                 4: '支付宝',
                 5: '微信'
             },
-            'http_method': {
+            'http_methods': {
                 1: 'get',
                 2: 'post',
                 3: 'patch',
@@ -60,14 +64,15 @@
             'goods.units': {
                 1: '包',
                 2: '条',
-                3: '箱',
-                4: '个',
-                5: '次',
-                6: '件',
-                7: '台',
-                8: '套',
-                9: '组',
-                10: '块'
+                3: '瓶',
+                4: '箱',
+                5: '个',
+                6: '次',
+                7: '件',
+                8: '台',
+                9: '套',
+                10: '组',
+                11: '块'
             },
             'charge.units': {
                 1: '元',

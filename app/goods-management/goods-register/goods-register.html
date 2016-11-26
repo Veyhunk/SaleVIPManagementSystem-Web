@@ -1,29 +1,10 @@
-<section class="content-view pull-center">
-    <!--{
-    "operator": "操作 id @number",
-    "store": "店铺 id @number",
-    "class": "商品分类id @number",
-    "code": "商品编码 @string",
-    "name": "商品名称 @string",
-    "portrait": "商品图片链接@string",
-    "short_name": "商品简码@string",
-    "unit": "商品单位@string",
-    "type": "商品类型 1实物类、2服务类、3计次类、4计时类@number",
-    "exchange_points": "兑换所需要积分@number",
-    "discount_rate": "折扣率 默认为1不打折 @number",
-    "lowest_discount_rate": "最低折扣率 @number",
-    "inventory": "库存量 @number",
-    "reward_points": "奖励积分 @number",
-    "entry_price": "参考进价@number",
-    "sale_price": "建议售价 @number",
-    "remark": "@string"
-}-->
+<section class="content-view pull-center" ng-controller="GoodsRegisterCtrl as goodsRegister">
     <div class="content-view-head">
         <h2>新增商品</h2>
     </div>
     <hr>
     <div class="content-view-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="goodsRegisterForm">
             <!-- Image -->
             <div class="form-group ">
                 <label class="col-sm-3 control-label">商品图片</label>
@@ -38,9 +19,9 @@
                 <div class="col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="checkbox" aria-label="...">
+                            <input type="checkbox" aria-label="积分兑换" ng-model="goodsRegister.isExchangeable">
                         </span>
-                        <input type="text" class="form-control" placeholder="需要兑换的积分">
+                        <input type="number" class="form-control" placeholder="兑换此商品所需积分" ng-model="goodsRegister.currentGoods.exchange_points" ng-disabled="!goodsRegister.isExchangeable">
                     </div>
                 </div>
             </div>
@@ -48,7 +29,7 @@
             <div class="form-group ">
                 <label class="col-sm-3 control-label">商品编码</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.code" required>
                     <p class="text-success">types：text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
@@ -57,20 +38,22 @@
             <div class="form-group ">
                 <label class="col-sm-3 control-label">商品名称</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.name" ng-change="goodsRegister.resolveCapitalChinese(goodsRegister.currentGoods.name)" required>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
+            </div>
+            <div class="form-group ">
+                <label class="col-sm-3 control-label">商品简码</label>
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.short_name">
+                </div>
+                <!--<label class="col-sm-3 help-block">*</label>-->
             </div>
             <!-- Select -->
             <div class="form-group">
                 <label class="col-sm-3 control-label">商品分类</label>
                 <div class=" col-sm-6">
-                    <select class="form-control">
-                        <option value="Apple">Apple</option>
-                        <option value="Banana">Banana</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Pear">Pear</option>
-                        <option value="Peach">Peach</option>
+                    <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.classes" ng-model="goodsRegister.currentGoods.class">
                     </select>
                 </div>
             </div>
@@ -78,12 +61,8 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">商品类型</label>
                 <div class=" col-sm-6">
-                    <select class="form-control">
-                        <option value="Apple">Apple</option>
-                        <option value="Banana">Banana</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Pear">Pear</option>
-                        <option value="Peach">Peach</option>
+                    <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.types" ng-model="goodsRegister.currentGoods.type">
+                        
                     </select>
                 </div>
             </div>
@@ -91,23 +70,23 @@
             <div class="form-group ">
                 <label class="col-sm-3 control-label">商品单位</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input type="text" ng-model="goodsRegister.currentGoods.unit" placeholder="商品单位" uib-typeahead=" item for item in goodsRegister.units | filter:$viewValue" class="form-control" typeahead-show-hint="true" typeahead-min-length="0" required>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
             </div>
             <!-- input -->
-            <div class="form-group ">
+            <!--<div class="form-group ">
                 <label class="col-sm-3 control-label">库存量</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.inventory">
                 </div>
                 <label class="col-sm-3 help-block">*</label>
-            </div>
+            </div>-->
             <!-- input -->
             <div class="form-group ">
                 <label class="col-sm-3 control-label">奖励积分</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.reward_points" required>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
             </div>
@@ -115,7 +94,7 @@
             <div class="form-group ">
                 <label class="col-sm-3 control-label">参考进价</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.entry_price" required>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
             </div>
@@ -123,82 +102,41 @@
             <div class="form-group ">
                 <label class="col-sm-3 control-label">建议售价</label>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="">
+                    <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.sale_price" required>
                 </div>
                 <label class="col-sm-3 help-block">*</label>
             </div>
             <!-- Checkboxes and radios -->
             <div class="form-group">
-                <label class="col-sm-3 control-label">是否可以打折</label>
+                <label class="col-sm-3 control-label">是否可打折</label>
                 <div class="col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="checkbox" aria-label="...">
+                            <input type="checkbox" aria-label="是否可打折" ng-model="goodsRegister.isDiscountable">
                         </span>
-                        <input type="text" class="form-control" aria-label="...">
+                        <input type="number" class="form-control" aria-label="折扣率" placeholder="折扣率如：0.8,打八折" ng-model="goodsRegister.currentGoods.discount_rate" ng-disabled="!goodsRegister.isDiscountable">
                     </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="goodsRegister.isDiscountable">
+                <label class="col-sm-3 control-label">最低折扣率</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" aria-label="最低折扣率" placeholder="此商品最低能打几折" ng-model="goodsRegister.currentGoods.lowest_discount_rate">
                 </div>
             </div>
             <!-- textarea -->
             <div class="form-group">
                 <label class="col-sm-3 control-label">备注</label>
-                <div class="col-sm-6"><textarea class="form-control" rows="3"></textarea></div>
+                <div class="col-sm-6"><textarea class="form-control" rows="3" ng-model="goodsRegister.currentGoods.remark"></textarea></div>
                 <p class="col-sm-3 help-block">help-block</p>
             </div>
             <!-- button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
-                    <button type="button" class="btn btn-primary btn-block">保存</button>
+                    <button type="button" class="btn btn-primary btn-block" ng-disabled="!goodsRegisterForm.$valid" ng-click="goodsRegister.addGoods(goodsRegister.currentGoods)">保存</button>
                     <!--<button type="submit" class="btn btn-default">default</button>-->
                 </div>
             </div>
         </form>
     </div>
-    <table class="table" ng-show="false">
-        <tr>
-            <td>
-                是否可兑换
-            </td>
-            <td>选中输入需要兑换的积分{{exchange_points}}</td>
-        </tr>
-        <tr>
-            <td>商品编码：</td>
-            <td>必填{{code}}</td>
-            <td>商品名称：</td>
-            <td>必填{{name}}</td>
-        </tr>
-        <tr>
-            <td>商品分类：</td>
-            <td>{{class}}</td>
-            <td>商品单位：</td>
-            <td>{{unit}}</td>
-        </tr>
-        <tr>
-            <td>商品类型：</td>
-            <td>必填{{type}}</td>
-            <td>库存量：</td>
-            <td>默认为0{{inventory}}</td>
-        </tr>
-        <tr>
-            <td>奖励积分：</td>
-            <td>默认为0{{reward_points}}</td>
-            <td>商品图片：</td>
-            <td>默认需要在右边{{portrait}}</td>
-        </tr>
-        <tr>
-            <td>是否可打折</td>
-            <td>选中出现折扣率和最低折扣率{{discount_rate}}{{lowest_discount_rate}}</td>
-        </tr>
-        <tr>
-            <td>参考进价：</td>
-            <td>默认为0{{entry_price}}</td>
-            <td>建议售价：</td>
-            <td>默认为0{{sale_price}}</td>
-
-        </tr>
-
-        <tr>
-            <td>备注：{{remark}}</td>
-        </tr>
-    </table>
 </section>

@@ -18,4 +18,33 @@
             </div>
         </form>
     </div>
+    <div>
+        <h3>typehead测试</h3>
+        <form class="form-horizontal">
+            <div class="input-group ">
+                <input type="text" ng-model="layout.selectedUnit" placeholder="商品单位" uib-typeahead=" state for state in layout.goodsUnits | filter:$viewValue" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
+            </div>
+        </form>
+
+    </div>
+    <div>
+        <h3>ui-tree测试</h3>
+        <div ui-tree>
+            <ol ui-tree-nodes="" ng-model="layout.treeData">
+                <li ng-repeat="item in layout.treeData" ui-tree-node>
+                    <div ui-tree-handle>
+                        {{item.title}}
+                    </div>
+                    <ol ui-tree-nodes="" ng-model="item.nodes">
+                        <li ng-repeat="subItem in item.nodes" ui-tree-node>
+                            <div ui-tree-handle>
+                                {{subItem.title}}
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+    </div>
 </section>
