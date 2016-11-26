@@ -10,7 +10,8 @@
     function UtilityService() {
         var UtilityService = {
             getOrderCode: getOrderCode,
-            getDatetime: getDatetime
+            getDatetime: getDatetime,
+            initPagination: initPagination
         };
 
         return UtilityService;
@@ -23,6 +24,16 @@
         function getDatetime() {
             var result = moment().format('YYYYMMDDHHmmss');
             return result;
+        }
+        // 初始化分页参数
+        function initPagination() {
+            var pagination = {
+                // 每页10条
+                limit: 10,
+                // 从第0条开始
+                offset: 0
+            }
+            return pagination;
         }
     }
 })();

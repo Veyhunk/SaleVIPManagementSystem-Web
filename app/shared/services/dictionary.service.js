@@ -25,6 +25,11 @@
                 0: '女士',
                 1: '男士'
             },
+            'member.states': {
+                0: '锁定',
+                1: '正常',
+                2: '挂失'
+            },
             // 充值类型
             'member_charge.types': {
                 1: '会员充值',
@@ -116,7 +121,7 @@
          * @returns
          * 
          * usage:
-         * var sex = DictionaryService.get('sex',0);
+         * var sex = DictionaryService.resolve('sex',0);
          * console.info(sex) // 女士
          */
         function resolve(type, value) {

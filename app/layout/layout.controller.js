@@ -69,7 +69,7 @@
             layoutService = LayoutService;
 
 
-        vm.isShortcutMenusMini = true;
+        vm.isShortcutMenusMini = false;
 
         /*----------  监听区块  ----------*/
         /*----------  逻辑代码区块  ----------*/
