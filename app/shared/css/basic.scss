@@ -286,6 +286,10 @@ body {
     padding-bottom: $padding;
 }
 
+.padding-no {
+    padding: 0 !important;
+}
+
 .placeHold {
     background-color: $primary-color-light;
 }
@@ -431,3 +435,11 @@ img {
         }
     }
 }
+
+
+/*cover*/
+
+
+/*.container-fluid{
+    padding: 0;
+}*/
