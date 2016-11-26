@@ -27,4 +27,24 @@
         </form>
 
     </div>
+    <div>
+        <h3>ui-tree测试</h3>
+        <div ui-tree>
+            <ol ui-tree-nodes="" ng-model="layout.treeData">
+                <li ng-repeat="item in layout.treeData" ui-tree-node>
+                    <div ui-tree-handle>
+                        {{item.title}}
+                    </div>
+                    <ol ui-tree-nodes="" ng-model="item.nodes">
+                        <li ng-repeat="subItem in item.nodes" ui-tree-node>
+                            <div ui-tree-handle>
+                                {{subItem.title}}
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+    </div>
 </section>

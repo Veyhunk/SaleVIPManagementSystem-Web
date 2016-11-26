@@ -12,7 +12,8 @@
             "angular-local-storage",
             "bootstrap-datetimepicker",
             "ui-bootstrap-custom",
-            "ui-bootstrap-custom-template"
+            "ui-bootstrap-custom-template",
+            "angular-ui-tree"
         ],
         "vendor.ui": [],
         "vendor.datatables": [],
@@ -31,6 +32,7 @@
         "angular-moment-picker": "bower_components/angular-moment-picker/dist/angular-moment-picker.min.js",
         "bootstrap-datetimepicker": "bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js",
         "ui-bootstrap-custom": "assets/lib/ui-bootstrap-custom/ui-bootstrap-custom-2.2.0.min.js",
-        "ui-bootstrap-custom-template": "assets/lib/ui-bootstrap-custom/ui-bootstrap-custom-tpls-2.2.0.min.js"
+        "ui-bootstrap-custom-template": "assets/lib/ui-bootstrap-custom/ui-bootstrap-custom-tpls-2.2.0.min.js",
+        "angular-ui-tree": "bower_components/angular-ui-tree/dist/angular-ui-tree.min.js"
     }
 }

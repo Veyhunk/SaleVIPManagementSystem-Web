@@ -5,6 +5,7 @@
         // 第三方插件
         'restangular',
         'ui.bootstrap',
+        'ui.tree',
         // 布局模块
         'app.layout',
         // 系统配置模块

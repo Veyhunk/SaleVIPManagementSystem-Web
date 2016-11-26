@@ -13,7 +13,7 @@
     "id": 1,
     "operator": 1,
     "store": 1,
-    "name": "年卡",
+    "name": "普通会员",
     "discount_rate": 0,
     "point_rate": 0,
     "allow_upgrade": 0,
@@ -24,6 +24,17 @@
     "id": 2,
     "operator": 1,
     "store": 1,
+    "name": "年卡",
+    "discount_rate": 0,
+    "point_rate": 0,
+    "allow_upgrade": 0,
+    "upgrade_point": 0,
+    "next_level": null,
+    "remark": ""
+}, {
+    "id": 3,
+    "operator": 1,
+    "store": 1,
     "name": "银卡",
     "discount_rate": 0.9,
     "point_rate": 0.01,
@@ -32,7 +43,7 @@
     "next_level": 3,
     "remark": ""
 }, {
-    "id": 3,
+    "id": 4,
     "operator": 1,
     "store": 1,
     "name": "金卡",
