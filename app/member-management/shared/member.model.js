@@ -3,16 +3,16 @@
 
     angular
         .module('app.member_management')
-        .factory('MemberSharedService', MemberSharedService);
+        .factory('MemberModel', MemberModel);
 
-    MemberSharedService.$inject = ['Restangular'];
+    MemberModel.$inject = ['Restangular'];
 
-    function MemberSharedService(Restangular) {
-        var MemberSharedService = {
+    function MemberModel(Restangular) {
+        var MemberModel = {
             getLevels: getLevels
         };
 
-        return MemberSharedService;
+        return MemberModel;
 
         /**
          * 获取会员等级列表

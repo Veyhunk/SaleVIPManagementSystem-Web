@@ -5,9 +5,9 @@
         .module('app.member_management')
         .controller('MemberRegisterCtrl', MemberRegisterCtrl);
 
-    MemberRegisterCtrl.$inject = ['ProfileService', 'MemberSharedService'];
+    MemberRegisterCtrl.$inject = ['ProfileService', 'MemberModel'];
 
-    function MemberRegisterCtrl(ProfileService, MemberSharedService) {
+    function MemberRegisterCtrl(ProfileService, MemberModel) {
         var vm = this;
         /*----------  界面层资源  ----------*/
 
@@ -76,7 +76,7 @@
 
         // 初始化会员等级列表 
         function initLevels() {
-            MemberSharedService.getLevels().then(result => {
+            MemberModel.getLevels().then(result => {
                 //TODO: 过滤散客
                 result = result.plain();
                 vm.levelList = result;
