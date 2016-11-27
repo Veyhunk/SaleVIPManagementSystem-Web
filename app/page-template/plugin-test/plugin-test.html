@@ -1,0 +1,49 @@
+<section class="padding-lr">
+    <div>
+        <h3>中文首字母简码转换</h3>
+        <input ng-model="layout.test"> {{layout.test|capitalChinese}}
+    </div>
+    <div>
+        <h3>时间控件测试</h3>
+        <form class="form-inline">
+            <div class="input-group date">
+                <input type="text" class="form-control" value="2012-05-15 21:05" id="datetimepicker" datetime-picker data-date-format="yyyy-mm-dd">
+            </div>
+            <div class='input-group date' datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div>
+        <h3>typehead测试</h3>
+        <form class="form-horizontal">
+            <div class="input-group ">
+                <input type="text" ng-model="layout.selectedUnit" placeholder="商品单位" uib-typeahead=" state for state in layout.goodsUnits | filter:$viewValue" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
+            </div>
+        </form>
+
+    </div>
+    <div>
+        <h3>ui-tree测试</h3>
+        <div ui-tree>
+            <ol ui-tree-nodes="" ng-model="layout.treeData">
+                <li ng-repeat="item in layout.treeData" ui-tree-node>
+                    <div ui-tree-handle>
+                        {{item.title}}
+                    </div>
+                    <ol ui-tree-nodes="" ng-model="item.nodes">
+                        <li ng-repeat="subItem in item.nodes" ui-tree-node>
+                            <div ui-tree-handle>
+                                {{subItem.title}}
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+</section>

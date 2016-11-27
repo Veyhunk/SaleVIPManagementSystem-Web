@@ -331,5 +331,17 @@
         "sort": 6,
         "icon": "",
         "remark": ""
+    },
+    {
+        "id": 103,
+        "name": "插件测试",
+        "url": "app.page_template.plugin_test",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 100,
+        "sort": 7,
+        "icon": "",
+        "remark": ""
     }
 ]
