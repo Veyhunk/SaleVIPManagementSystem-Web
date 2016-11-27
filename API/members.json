@@ -13,8 +13,8 @@
             "address": "花果山水帘洞",
             "code": "1234567890",
             "payment_password": "123456",
-            "balance": 100,
-            "points": 200,
+            "balance": 0,
+            "points": 0,
             "enroll_date": "2016-07-24",
             "expire_date": "2999-07-24",
             "expenditure": 500,
@@ -40,7 +40,7 @@
             "enroll_date": "2016-07-24",
             "expire_date": "2999-07-24",
             "expenditure": 500,
-            "state": 1,
+            "state": 0,
             "remark": "备注就是备注"
         },
         {

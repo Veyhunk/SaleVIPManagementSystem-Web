@@ -8,17 +8,31 @@
     MemberModel.$inject = ['Restangular'];
 
     function MemberModel(Restangular) {
+
+        var members = Restangular.all('members.json'),
+            levels = Restangular.all('levels.json');
+
         var MemberModel = {
-            getLevels: getLevels
+            getLevels: getLevels,
+            getMembers: getMembers
         };
 
         return MemberModel;
 
         /**
+         * 获取会员列表
+         * 
+         * @param {any} configs
+         * @returns
+         */
+        function getMembers(configs) {
+            return members.getList(configs);
+        }
+        /**
          * 获取会员等级列表
          */
         function getLevels() {
-            return Restangular.all('levels.json').getList();
+            return levels.getList();
         }
     }
 })();

@@ -14,7 +14,7 @@
         vm.units;
         // 商品分类列表
         vm.classes;
-        // 商品烦死列表
+        // 商品类型列表
         vm.types;
 
         vm.currentGoods = initGoods();
@@ -23,7 +23,10 @@
         vm.addGoods = addGoods;
         vm.resolveCapitalChinese = resolveCapitalChinese;
 
-
+        /*----------  内部变量  ----------*/
+        var goodsModel = GoodsModel,
+            utilityService = UtilityService,
+            dictionaryService = DictionaryService;
         /*----------  内部逻辑函数  ----------*/
         function addGoods(goods) {
             //TODO: 添加新商品
@@ -36,12 +39,13 @@
         }
         // 初始化商品单位
         function initGoodsUnits() {
-            vm.units = _.toArray(DictionaryService.get('goods.units'));
+            vm.units = _.toArray(dictionaryService.get('goods.units'));
         }
 
         // 初始化商品类型
         function initGoodsTypes() {
-            var types = DictionaryService.get('goods.types');
+            var types = dictionaryService.get('goods.types');
+
             var key,
                 result = [];
 
@@ -58,7 +62,7 @@
 
         // 初始化商品分类
         function initGoodsClass() {
-            GoodsModel.getClasses().then(result => {
+            goodsModel.getClasses().then(result => {
                 result = result.plain();
                 vm.classes = result;
             });
@@ -95,7 +99,7 @@
             // 初始化商品分类列表
             initGoodsClass();
             // 初始化商品编码
-            vm.currentGoods.code = UtilityService.getDatetime();
+            vm.currentGoods.code = utilityService.getDatetime();
         }
 
         init();

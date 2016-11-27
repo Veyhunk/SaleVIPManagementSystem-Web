@@ -9,8 +9,8 @@
 
     function GoodsModel(Restangular) {
 
-        var goods = Restangular.all('goods.json');
-        var goodsClass = Restangular.all('goods_classes.json');
+        var goods = Restangular.all('goods.json'),
+            goodsClass = Restangular.all('goods_classes.json');
 
         var GoodsModel = {
             getGoods: getGoods,
