@@ -5,9 +5,9 @@
         .module('app.shared')
         .factory('UtilityService', UtilityService);
 
-    UtilityService.$inject = [];
+    UtilityService.$inject = ['$q'];
 
-    function UtilityService() {
+    function UtilityService($q) {
         var UtilityService = {
             getOrderCode: getOrderCode,
             getDatetime: getDatetime,
@@ -18,7 +18,9 @@
 
         // 获取项目中所需要用到的订单编号
         function getOrderCode(type) {
-
+            var deferred = $q.defer();
+            deferred.resolve(type + getDatetime());
+            return deferred.promise;
         }
         // 获取后台时间，年+月+日+时分秒，如20161118192403
         function getDatetime() {

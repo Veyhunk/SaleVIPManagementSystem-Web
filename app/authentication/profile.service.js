@@ -13,7 +13,7 @@
 
         var ProfileService = {
             exposedFn: exposedFn,
-            get user() {
+            get profile() {
                 if (typeof profile.user === 'undefined') {
                     Restangular.one('members.json').get().then(result => {
 
@@ -22,7 +22,7 @@
                     });
                 }
 
-                return profile.user;
+                return profile;
             },
         };
 

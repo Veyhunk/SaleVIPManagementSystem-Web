@@ -5,13 +5,17 @@
         .module('app.layout')
         .controller('LayoutCtrl', LayoutCtrl);
 
-    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService'];
+    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService'];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService) {
+    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
         vm.state = $state;
+
+        // 用户信息
+        vm.user;
+
         //商品测试单位
         vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
 
@@ -88,6 +92,9 @@
 
         function init() {
             initMainMenus();
+            // 初始化用户信息
+            vm.profile = ProfileService.profile;
+            debugger;
         }
 
 
