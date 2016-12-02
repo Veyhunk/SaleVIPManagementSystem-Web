@@ -1,3 +1,4 @@
+@import 'variables.scss';
 @mixin size($width, $height: $width) {
     width: $width;
     height: $height;
@@ -44,7 +45,7 @@
     @include size(100%);
     @include absPosition(0, 0, 0, 0);
     // loading 遮罩背景色
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $hover-dark;
 }
 
 .loading-container {
@@ -76,13 +77,13 @@
 
 .loader-quart {
     border-radius: 50px;
-    border: 6px solid #4d90fe;
+    border: 6px solid $primary-color;
     &:after {
         content: '';
         @include absPosition(-6px, -6px, -6px, -6px);
         border-radius: 50px;
         border: 6px solid transparent;
-        border-top-color: #04cfff;
+        border-top-color: $brand-info;
         @include animation(spin 1s linear infinite);
     }
 }
