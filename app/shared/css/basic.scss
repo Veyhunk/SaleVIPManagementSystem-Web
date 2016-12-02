@@ -1,4 +1,4 @@
-@import 'variable.scss';
+@import 'variables.scss';
 //frame
 body {
     font-size: $font-size;
@@ -63,13 +63,13 @@ body {
                 width: 100%;
                 //hold style in small screen
                 margin: 0;
-                ul {
+                >ul {
                     //hide ul border 
                     border: 0;
-                    li {
+                    >li {
                         padding: 0 (2 * $padding);
                         position: inherit;
-                        a {
+                        >a {
                             line-height: $nav-top-item-height - 3 * $border-width;
                             height: $nav-top-item-height - 1 * $border-width;
                             /*height: 100%;*/
@@ -101,34 +101,44 @@ body {
                                 border-bottom-color: $primary-color;
                                 background-color: transparent;
                             }
-                            .sub-nav {
-                                a:hover {
-                                    color: $primary-color;
-                                }
-                                li.active {
-                                    a,
-                                    a:hover,
-                                    a:focus {
-                                        color: $primary-color;
-                                        border-bottom-color: transparent;
-                                        /*background-color: transparent;*/
-                                    }
-                                }
-                            }
                         }
                     }
                 }
                 .sub-nav {
                     z-index: 1;
-                    height: $nav-top-item-height;
-                    line-height: $nav-top-item-height;
+                    // height: $nav-top-item-height;
+                    // line-height: $nav-top-item-height;
                     position: absolute;
-                    width: 100%;
+                    margin-left: -$padding * 2;
+                    width: auto;
                     background-color: $gray-lighter;
-                    left: 0;
+                    // left: 0;
                     display: none;
                     /*border-top: $border-width solid $border-color;*/
                     border-bottom: $border-width solid $border-color;
+                    ul {
+                        li {
+                            float: none;
+                            &.active {
+                                a,
+                                a:hover,
+                                a:focus {
+                                    color: $primary-color;
+                                    border-bottom-color: transparent;
+                                    /*background-color: transparent;*/
+                                }
+                            }
+                            a {
+                                padding: $padding $padding *2;
+                                color: $gray-light;
+                                margin-right: 0;
+                                &:hover {
+                                    background-color: $hover-dark;
+                                    color: $primary-color;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

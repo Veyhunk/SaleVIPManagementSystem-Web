@@ -1,12 +1,25 @@
 <section class="content-view pull-center padding">
     <div class="content-view-head">
-        <h2>title</h2>
+        <h2>ui-tree测试</h2>
     </div>
     <hr>
     <div class="content-view-body">
-        <form>
-            <div class="form-group"></div>
-        </form>
+        <div ui-tree>
+            <ol ui-tree-nodes="" ng-model="layout.treeData">
+                <li ng-repeat="item in layout.treeData" ui-tree-node>
+                    <div ui-tree-handle>
+                        {{item.title}}
+                    </div>
+                    <ol ui-tree-nodes="" ng-model="item.nodes">
+                        <li ng-repeat="subItem in item.nodes" ui-tree-node>
+                            <div ui-tree-handle>
+                                {{subItem.title}}
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
     </div>
     <hr>
     <div class="content-view-footer pull-center">

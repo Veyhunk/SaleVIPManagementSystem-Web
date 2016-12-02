@@ -7,7 +7,7 @@
             <li ng-repeat="item in layout.mainMenus |orderBy:'sort'" ng-class="{'active':layout.state.includes(item.url)}">
                 <a href="">{{item.name}}</a>
                 <div class="sub-nav">
-                    <ul class="nav nav-tabs nav-tabs-google  pull-center">
+                    <ul class="nav">
                         <li ng-repeat="subItem in item.children|orderBy:'sort'" ui-sref-active="active"><a ui-sref="{{subItem.url}}">{{subItem.name}}</a></li>
                     </ul>
                 </div>
