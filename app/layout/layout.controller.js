@@ -14,7 +14,7 @@
         vm.state = $state;
 
         // 用户信息
-        vm.user;
+        vm.profile;
 
         //商品测试单位
         vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
@@ -94,7 +94,6 @@
             initMainMenus();
             // 初始化用户信息
             vm.profile = ProfileService.profile;
-            debugger;
         }
 
 
