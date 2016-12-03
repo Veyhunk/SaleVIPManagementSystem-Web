@@ -81,7 +81,7 @@ body {
                         }
                         &:hover {
                             //hold main nav
-                            background-color: $gray-lighter;
+                            background-color: rgba($gray-lighter, .9);
                             .sub-nav {
                                 //show sub-nav
                                 display: block;
@@ -90,7 +90,6 @@ body {
                                 //hold main nav
                                 font-weight: bold;
                                 color: $text-color;
-                                opacity: 1;
                             }
                         }
                         &.active> {
@@ -106,17 +105,17 @@ body {
                 }
                 .sub-nav {
                     z-index: 1;
-                    // height: $nav-top-item-height;
-                    // line-height: $nav-top-item-height;
                     position: absolute;
-                    margin-left: -$padding * 2;
+                    //expand hover area
+                    margin-left: -$padding * 5;
+                    padding: 0 $padding *3 $padding *6 $padding *3;
                     width: auto;
-                    background-color: $gray-lighter;
+                    background-color: transparent;
                     // left: 0;
                     display: none;
-                    /*border-top: $border-width solid $border-color;*/
-                    border-bottom: $border-width solid $border-color;
                     ul {
+                        width: auto;
+                        background-color: rgba($gray-lighter, .9);
                         li {
                             float: none;
                             &.active {
@@ -125,16 +124,15 @@ body {
                                 a:focus {
                                     color: $primary-color;
                                     border-bottom-color: transparent;
-                                    /*background-color: transparent;*/
                                 }
                             }
                             a {
-                                padding: $padding $padding *2;
-                                color: $gray-light;
+                                padding: $padding * 1.2 $padding *5;
+                                color: $text-color-light;
                                 margin-right: 0;
                                 &:hover {
-                                    background-color: $hover-dark;
-                                    color: $primary-color;
+                                    background-color: $hover-darker;
+                                    color: $primary-text-color;
                                 }
                             }
                         }
@@ -160,11 +158,18 @@ body {
                     .nav-pills {
                         li {
                             margin-top: 0;
+                            &.active {
+                                a,
+                                a:hover,
+                                a:focus {
+                                    color: $primary-text-color;
+                                    background-color: $primary-color;
+                                }
+                            }
                             a {
                                 border-radius: 0;
                                 padding: 0;
-                                color: $gray;
-                                opacity: .5;
+                                color: $gray-light;
                                 line-height: $nav-left-item-height;
                                 .icon {
                                     i {
@@ -174,25 +179,13 @@ body {
                                 }
                             }
                             a:hover,
-                            a:focus {
-                                opacity: 1;
-                            }
-                            &.active {
-                                a,
-                                a:hover,
-                                a:focus {
-                                    color: $primary-text-color;
-                                    opacity: 1;
-                                    background-color: $primary-color;
-                                }
-                            }
+                            a:focus {}
                         }
                     }
                 }
                 .btn-menu-toggle {
-                    background-color: $primary-text-color;
-                    color: $gray;
-                    opacity: 0.5;
+                    // background-color: $component-bg-color;
+                    color: $text-color-light;
                     height: $nav-left-item-height;
                     padding: 0;
                     border: 0;
@@ -205,50 +198,32 @@ body {
                             text-align: center;
                         }
                     }
+                    .text {
+                        font-weight: 510;
+                    }
                     &:hover {
                         /*background-color: $primary-color-light;*/
-                        background-color: $primary-color;
-                        color: $primary-text-color;
+                        background-color: $hover-dark;
+                        color: $text-color-light;
                     }
                 }
-            }
-            .left-menu-full {
-                max-width: $item-width;
-                min-width: $item-width;
-                .btn-menu-toggle {
-                    background-color: $primary-color !important;
-                    opacity: .8 !important;
-                    color: $primary-text-color !important;
-                }
-            }
-            .left-menu-mini {
-                max-width: $nav-top-item-height;
-                min-width: $nav-top-item-height;
-                .nav-group-vertical {
-                    .nav-pills {
-                        li {
-                            a {
-                                .text {
-                                    display: none;
-                                }
-                            }
-                        }
-                    }
-                }
-                .btn-menu-toggle {
-                    .text {
-                        display: none;
-                    }
-                }
-                &:hover {
+                &.left-menu-full {
                     max-width: $item-width;
                     min-width: $item-width;
+                    .btn-menu-toggle {
+                        background-color: $gray-light !important;
+                        color: $primary-text-color !important;
+                    }
+                }
+                &.left-menu-mini {
+                    max-width: $nav-top-item-height;
+                    min-width: $nav-top-item-height;
                     .nav-group-vertical {
                         .nav-pills {
                             li {
                                 a {
                                     .text {
-                                        display: inline;
+                                        display: none;
                                     }
                                 }
                             }
@@ -256,7 +231,28 @@ body {
                     }
                     .btn-menu-toggle {
                         .text {
-                            display: inline;
+                            display: none;
+                        }
+                    }
+                    &:hover {
+                        max-width: $item-width;
+                        min-width: $item-width;
+                        .nav-group-vertical {
+                            .nav-pills {
+                                li {
+                                    a {
+                                        .text {
+                                            display: inline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .btn-menu-toggle {
+                            background-color: $gray-lighter;
+                            .text {
+                                display: inline;
+                            }
                         }
                     }
                 }
