@@ -12,19 +12,17 @@
         /*----------  界面层资源  ----------*/
         vm.pagination;
 
-        vm.memberList;
+        // 会员列表
+        vm.list;
 
         /*----------  内部变量  ----------*/
         var memberModel = MemberModel,
             utilityService = UtilityService;
         /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
         /**
-         * 根据初始分页参数，获取会员列表
+         * 根据参数，获取会员列表
          * 
-         * @param {object} pagination
+         * @param {object} configs
          */
         function getMembers(configs) {
             var _configs = angular.copy(configs);
@@ -32,9 +30,12 @@
             _configs['fields'] = 'operator,level';
 
             memberModel.getMembers(_configs).then(result => {
-                vm.memberList = result;
+                vm.list = result;
             });
         }
+
+        /*----------  内部辅助函数  ----------*/
+
 
         function init() {
             vm.pagination = utilityService.initPagination();
