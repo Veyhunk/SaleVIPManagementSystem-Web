@@ -45,7 +45,7 @@
     @include size(100%);
     @include absPosition(0, 0, 0, 0);
     // loading 遮罩背景色
-    background-color: $hover-dark;
+    background-color: $hover-darker;
 }
 
 .loading-container {

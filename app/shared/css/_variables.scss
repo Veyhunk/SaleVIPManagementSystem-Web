@@ -13,19 +13,19 @@ $gray-light: lighten(#000, 46.7%); // #777
 $gray-lighter: lighten(#000, 93.5%); // #eee
 $white: lighten(#000, 100%); // #fff
 //transparent
-$hover-dark:rgba(0, 0, 0, 0.2);
-$hover-darker:rgba(0, 0, 0, 0.4);
-$hover-darkest:rgba(0, 0, 0, 0.6);
-$hover-light:rgba(255, 255, 255, 0.2);
-$hover-lighter:rgba(255, 255, 255, 0.4);
-$hover-lightest:rgba(255, 255, 255, 0.6);
+$hover-dark:rgba(0, 0, 0, 0.1);
+$hover-darker:rgba(0, 0, 0, 0.2);
+$hover-darkest:rgba(0, 0, 0, 0.3);
+$hover-light:rgba(255, 255, 255, 0.1);
+$hover-lighter:rgba(255, 255, 255, 0.2);
+$hover-lightest:rgba(255, 255, 255, 0.3);
 //theme-color
 $primary-color-dark: #04345d;
 $primary-color:#0868b9;
 $primary-color-light: #83b3dc;
 $accent-color: #b43c4d;
 $primary-text-color: $white;
-$component-bg-color:$white;
+$component-bg-color: $white;
 $text-color: $gray-darker;
 $text-color-light: $gray-light;
 $background-color:#f1f1f1;
@@ -44,3 +44,11 @@ $padding:0.5 * $pix;
 $border-width: 0.1 * $pix;
 
 /*align*/
+
+@mixin Opacity($value) {
+    $IEValue: $value*100;
+    //  opacity: $value;
+    background-color: agba('', $value);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+    filter: alpha(opacity=$IEValue);
+}
