@@ -104,7 +104,7 @@ body {
                     }
                 }
                 .sub-nav {
-                    z-index: 1;
+                    z-index: 100;
                     position: absolute;
                     //expand hover area
                     margin-left: -$padding * 5;
@@ -178,13 +178,10 @@ body {
                                     }
                                 }
                             }
-                            a:hover,
-                            a:focus {}
                         }
                     }
                 }
                 .btn-menu-toggle {
-                    // background-color: $component-bg-color;
                     color: $text-color-light;
                     height: $nav-left-item-height;
                     padding: 0;
@@ -192,6 +189,7 @@ body {
                     border-radius: 0;
                     line-height: $nav-left-item-height;
                     text-align: left;
+                    text-decoration: none;
                     .icon {
                         i {
                             width: $nav-top-item-height;
@@ -211,8 +209,8 @@ body {
                     max-width: $item-width;
                     min-width: $item-width;
                     .btn-menu-toggle {
-                        background-color: $gray-light !important;
-                        color: $primary-text-color !important;
+                        background-color: $gray-light;
+                        color: $primary-text-color;
                     }
                 }
                 &.left-menu-mini {
@@ -249,7 +247,6 @@ body {
                             }
                         }
                         .btn-menu-toggle {
-                            background-color: $gray-lighter;
                             .text {
                                 display: inline;
                             }
@@ -459,6 +456,15 @@ img {
         i {
             line-height: $font-size * 12;
         }
+    }
+}
+
+.btn-clear {
+    background-color: transparent;
+    color: $text-color-light;
+    font-weight: 500;
+    &:hover {
+        background-color: $hover-dark;
     }
 }
 
