@@ -3,11 +3,11 @@
 
     angular
         .module('app.system_management')
-        .controller('PermissionManagementCtrl', PermissionManagementCtrl);
+        .controller('UserCtrl', UserCtrl);
 
-    PermissionManagementCtrl.$inject = ['UtilityService'];
+    UserCtrl.$inject = ['UtilityService'];
 
-    function PermissionManagementCtrl(UtilityService) {
+    function UserCtrl(UtilityService) {
         var vm = this;
         /*----------  界面层资源  ----------*/
 

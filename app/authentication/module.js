@@ -14,7 +14,14 @@
                     root: {
                         templateUrl: 'app/authentication/login.html',
                     }
-                }
+                },
+                resolve: {
+                    scripts: function(LazyScript) {
+                        return LazyScript.register([
+                            'assets/lib/md5/md5.js'
+                        ]);
+                    }
+                },
             });
 
     }

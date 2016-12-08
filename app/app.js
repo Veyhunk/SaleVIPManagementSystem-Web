@@ -6,6 +6,7 @@
         'restangular',
         'ui.bootstrap',
         'ui.tree',
+        'LocalStorageModule',
         // 布局模块
         'app.layout',
         // 系统配置模块

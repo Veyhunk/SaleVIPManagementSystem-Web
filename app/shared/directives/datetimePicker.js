@@ -6,12 +6,20 @@
         .directive('datetimePicker', datetimePicker);
 
     datetimePicker.$inject = [];
-
+    /**
+     *  时间选择控件
+     * 
+     *      <div class="input-group date" datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                <input type="text" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+     * 
+     * 
+     */
     function datetimePicker() {
-        // Usage:
-        //
-        // Creates:
-        //
+
         var datetimePicker = {
             link: link,
             restrict: 'A',
@@ -32,6 +40,7 @@
                 pickerPosition: 'bottom-right'
             }, options);
 
+            element.datetimepicker('remove');
             element.datetimepicker(options);
         }
     }

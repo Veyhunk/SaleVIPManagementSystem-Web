@@ -65,6 +65,7 @@
          */
         function resolveMenus(menus) {
             var _menus = menus;
+
             var result = {
                 mainMenus: [],
                 shortcutMenus: []

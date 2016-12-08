@@ -5,14 +5,14 @@
         .module('app.layout')
         .controller('LayoutCtrl', LayoutCtrl);
 
-    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService'];
+    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService', 'AuthService'];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService) {
+    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService, AuthService) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
         vm.state = $state;
-
+        vm.logOut = AuthService.logOut;
         // 用户信息
         vm.profile;
 

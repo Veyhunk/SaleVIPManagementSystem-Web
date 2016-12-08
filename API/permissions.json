@@ -228,7 +228,7 @@
     {
         "id": 20,
         "name": "用户管理",
-        "url": "app.system_management.user_management",
+        "url": "app.system_management.user",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
@@ -240,7 +240,7 @@
     {
         "id": 21,
         "name": "角色管理",
-        "url": "app.system_management.role_management",
+        "url": "app.system_management.role",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
