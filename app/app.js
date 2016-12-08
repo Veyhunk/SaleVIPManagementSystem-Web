@@ -15,6 +15,7 @@
         'app.authentication',
         // 共享模块
         'app.shared',
+        'app.constants',
         // 业务逻辑模块
         'app.member_management',
         'app.goods_management',
