@@ -19,9 +19,10 @@
         // 登录
         function signIn(user) {
 
-            user.password = CryptoJS.MD5(user.password);
+            var _user = angular.copy(user);
+            _user.password = CryptoJS.MD5(_user.password);
 
-            authService.login(user).then(result => {
+            authService.login(_user).then(result => {
                 $state.go('app.home');
             }, error => {
                 if (error.status == 'failure') {

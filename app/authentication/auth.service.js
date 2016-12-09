@@ -5,9 +5,9 @@
         .module('app.authentication')
         .service('AuthService', AuthService);
 
-    AuthService.$inject = ['AuthModel', '$state', '$q', 'ProfileService', 'localStorageService'];
+    AuthService.$inject = ['Restangular', '$state', '$q', 'ProfileService', 'localStorageService'];
 
-    function AuthService(AuthModel, $state, $q, ProfileService, localStorageService) {
+    function AuthService(Restangular, $state, $q, ProfileService, localStorageService) {
         this.logOut = logOut;
         this.login = login;
 
@@ -15,10 +15,14 @@
 
         var storageName = 'authorizationData';
 
+        /**
+         * @param {object} user
+         * @returns
+         */
         function login(user) {
             var deferred = $q.defer();
 
-            AuthModel.login(user).then(result => {
+            Restangular.all('login.json').customGET().then(result => {
                 result = result.plain();
 
                 // 抽取授权 token

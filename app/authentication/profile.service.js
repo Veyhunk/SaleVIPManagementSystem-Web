@@ -11,6 +11,8 @@
 
         var profile = {};
 
+        var storageName = 'profile';
+
         var ProfileService = {
             getProfile: getProfile,
             setProfile: setProfile,
@@ -25,7 +27,7 @@
 
         ////////////////
 
-        var storageName = 'profile';
+
 
         function getRole() {
             return profile.role;
@@ -41,6 +43,7 @@
 
         function setProfile(newProfile) {
             profile = newProfile;
+            debugger;
             localStorageService.set(storageName, profile);
         }
 

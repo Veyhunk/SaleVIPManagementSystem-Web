@@ -14,9 +14,13 @@
         /*----------  界面层资源  ----------*/
         var vm = this;
 
+        // 快捷菜单切换状态
+        vm.isShortcutMenusMini = false;
+
         vm.state = $state;
         vm.logOut = AuthService.logOut;
         vm.Version = Version;
+
         // 用户信息
         vm.profile;
 
@@ -74,30 +78,29 @@
         vm.shortcutMenus = [];
         /*----------  内部变量  ----------*/
         var layoutModel = LayoutModel,
-            layoutService = LayoutService;
-
-
-        vm.isShortcutMenusMini = false;
+            layoutService = LayoutService,
+            profileService = ProfileService;
 
         /*----------  监听区块  ----------*/
         /*----------  逻辑代码区块  ----------*/
 
 
-        function initMainMenus() {
+        function initMainMenus(permissions) {
 
-            layoutModel.getPermissions().then(result => {
-                result = result.plain()
-                var menus = layoutService.resolveMenus(result);
+            var menus = layoutService.resolveMenus(permissions);
 
-                vm.mainMenus = menus.mainMenus;
-                vm.shortcutMenus = menus.shortcutMenus;
-            });
+            vm.mainMenus = menus.mainMenus;
+            vm.shortcutMenus = menus.shortcutMenus;
+
         }
 
         function init() {
-            initMainMenus();
+            // 初始化菜单
+            var permissions = profileService.getPermissions();
+            initMainMenus(permissions);
+
             // 初始化用户信息
-            vm.profile = ProfileService.profile;
+            vm.user = profileService.getUser();
         }
 
 
