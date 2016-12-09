@@ -9,11 +9,12 @@
 
     function ProfileService(localStorageService) {
 
-        var _profile = {};
+        var profile = {};
 
         var ProfileService = {
             getProfile: getProfile,
             setProfile: setProfile,
+            removeProfile: removeProfile,
             getRole: getRole,
             getUser: getUser,
             getPermissions: getPermissions,
@@ -23,6 +24,8 @@
         return ProfileService;
 
         ////////////////
+
+        var storageName = 'profile';
 
         function getRole() {
             return profile.role;
@@ -36,19 +39,26 @@
             return profile.permissions;
         }
 
-        function setProfile(profile) {
-            _profile = profile;
+        function setProfile(newProfile) {
+            profile = newProfile;
+            localStorageService.set(storageName, profile);
         }
 
         function getProfile() {
             return profile;
         }
 
+        function removeProfile() {
+            profile = {};
+            localStorageService.remove(storageName);
+        }
+
         function initProfile() {
-            var profile = localStorageService.get('profile');
-            if (profile) {
-                _profile = profile;
+            var result = localStorageService.get(storageName);
+            if (result) {
+                profile = result;
             }
         }
+
     }
 })();

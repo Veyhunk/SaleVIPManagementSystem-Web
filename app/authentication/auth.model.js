@@ -8,13 +8,17 @@
     AuthModel.$inject = ['Restangular'];
 
     function AuthModel(Restangular) {
+
+        var login = Restangular.all('login');
         var AuthModel = {
-            exposedFn: exposedFn
+            login: login
         };
 
         return AuthModel;
 
-        ////////////////
-        function exposedFn() {}
+
+        function login(user) {
+            return login.post(user);
+        }
     }
 })();
