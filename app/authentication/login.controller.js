@@ -10,6 +10,11 @@
     function LoginCtrl(AuthService, $state) {
         var vm = this;
         /*----------  界面层资源  ----------*/
+        vm.loginData = {
+            username: '',
+            password: '',
+        };
+
         vm.signIn = signIn;
         /*----------  内部变量  ----------*/
 
