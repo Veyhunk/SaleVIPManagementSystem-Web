@@ -43,7 +43,7 @@
 
         function setProfile(newProfile) {
             profile = newProfile;
-            debugger;
+
             localStorageService.set(storageName, profile);
         }
 

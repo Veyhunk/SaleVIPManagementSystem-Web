@@ -10,10 +10,14 @@
     function AuthService(Restangular, $state, $q, ProfileService, localStorageService) {
         this.logOut = logOut;
         this.login = login;
+        this.getToken = getToken;
+        this.initAuthorizationData = initAuthorizationData;
 
         var profileService = ProfileService;
 
         var storageName = 'authorizationData';
+
+        var authorizationData = {};
 
         /**
          * @param {object} user
@@ -25,10 +29,12 @@
             Restangular.all('login.json').customGET().then(result => {
                 result = result.plain();
 
+                if (!result) return;
+
                 // 抽取授权 token
-                var authorizationData = {};
+
                 authorizationData.access_token = result.access_token;
-                authorizationData.expire_int = result.expire_in;
+                authorizationData.expires_in = result.expires_in;
 
                 // 保存 token
                 localStorageService.set(storageName, authorizationData);
@@ -48,6 +54,19 @@
             profileService.removeProfile();
             localStorageService.remove(storageName);
             $state.go('login');
+        }
+
+        function getToken() {
+            if (!authorizationData) return;
+
+            return authorizationData.access_token;
+        }
+
+        function initAuthorizationData() {
+            var result = localStorageService.get(storageName);
+            if (!result) return;
+
+            authorizationData = result;
         }
     }
 })();

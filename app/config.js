@@ -24,8 +24,9 @@
             });
 
         }])
-        .run(['ProfileService', function(ProfileService) {
+        .run(['ProfileService', 'AuthService', function(ProfileService, AuthService) {
             ProfileService.initProfile();
+            AuthService.initAuthorizationData();
         }]);
 
 

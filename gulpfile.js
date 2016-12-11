@@ -2,10 +2,12 @@ var gulp = require('gulp');
 var es = require('event-stream');
 var browserSync = require('browser-sync').create();
 var templateCache = require('gulp-angular-templatecache');
+var ngAnnotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 // 删除 debug 注释
 var stripDebug = require('gulp-strip-debug');
 var concat = require('gulp-concat');
+var babel = require('gulp-babel');
 var fs = require('fs');
 var _ = require('lodash');
 var scripts = require('./app.scripts.json');
@@ -68,10 +70,11 @@ gulp.task('build', function() {
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dest));
 
-    return es.merge(gulp.src(source.js.src), getTemplateStream())
+    return gulp.src(source.js.src)
         .pipe(babel({
             presets: ['es2015']
         }))
+        .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(uglify())
         .pipe(concat('app.js'))
