@@ -13,18 +13,18 @@
         this.getToken = getToken;
         this.initAuthorizationData = initAuthorizationData;
 
-        var profileService = ProfileService;
+        let profileService = ProfileService;
 
-        var storageName = 'authorizationData';
+        let storageName = 'authorizationData';
 
-        var authorizationData = {};
+        let authorizationData = {};
 
         /**
          * @param {object} user
          * @returns
          */
         function login(user) {
-            var deferred = $q.defer();
+            let deferred = $q.defer();
 
             Restangular.all('login.json').customGET().then(result => {
                 result = result.plain();
@@ -63,7 +63,7 @@
         }
 
         function initAuthorizationData() {
-            var result = localStorageService.get(storageName);
+            let result = localStorageService.get(storageName);
             if (!result) return;
 
             authorizationData = result;

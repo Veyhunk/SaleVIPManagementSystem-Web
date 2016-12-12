@@ -9,11 +9,11 @@
 
     function ProfileService(localStorageService) {
 
-        var profile = {};
+        let profile = {};
 
-        var storageName = 'profile';
+        let storageName = 'profile';
 
-        var ProfileService = {
+        let ProfileService = {
             getProfile: getProfile,
             setProfile: setProfile,
             removeProfile: removeProfile,
@@ -24,10 +24,6 @@
         };
 
         return ProfileService;
-
-        ////////////////
-
-
 
         function getRole() {
             return profile.role;
@@ -57,7 +53,7 @@
         }
 
         function initProfile() {
-            var result = localStorageService.get(storageName);
+            let result = localStorageService.get(storageName);
             if (result) {
                 profile = result;
             }

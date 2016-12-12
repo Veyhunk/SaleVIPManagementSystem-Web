@@ -90,9 +90,9 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// cacheTemplate
+// cacheHTML
 // 读取 html 文件缓存到 angular
-var cacheTemplate = function() {
+var cacheHTML = function() {
     return gulp.src(source.html.src)
         .pipe(templateCache({
             root: 'app/',
@@ -101,7 +101,7 @@ var cacheTemplate = function() {
         .pipe(gulp.dest(dest));
 };
 
-gulp.task('cacheTemplate', cacheTemplate);
+gulp.task('cacheHTML', cacheHTML);
 
 // 监听文件变化
 gulp.task('watch', function() {
@@ -118,7 +118,7 @@ gulp.task('watch', function() {
     });
     // html 改变立即刷新
     watch(source.html.src, function(e) {
-        cacheTemplate().on('end', function() {
+        cacheHTML().on('end', function() {
             var time = new Date().toTimeString().split(" ")[0];
             console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
             browserSync.reload();
@@ -182,10 +182,10 @@ gulp.task('vendor', function() {
 
 
 // 发布模式
-gulp.task('prod', ['vendor', 'build', 'cacheTemplate']);
+gulp.task('prod', ['vendor', 'build', 'cacheHTML']);
 
 // 开发模式
-gulp.task('dev', ['vendor', 'js', 'css', 'cacheTemplate', 'watch', 'browser-sync']);
+gulp.task('dev', ['vendor', 'js', 'css', 'cacheHTML', 'watch', 'browser-sync']);
 
 // 项目初始化的时候单独运行
 gulp.task('init', ['vendor', 'js', 'css']);
