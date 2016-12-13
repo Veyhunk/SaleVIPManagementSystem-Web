@@ -20,7 +20,9 @@
         function getOrderCode(type) {
             let deferred = $q.defer();
 
-            deferred.resolve(type + getDatetime());
+            getDatetime().then(result => {
+                deferred.resolve(type + result);
+            });
 
             return deferred.promise;
         }
@@ -36,10 +38,12 @@
         // 初始化分页参数
         function initPagination() {
             let pagination = {
-                // 每页10条
-                limit: 10,
-                // 当前页
-                page: 1,
+                configs: {
+                    // 每页10条
+                    per_page: 10,
+                    // 当前页
+                    page: 1,
+                },
                 // 总记录条数
                 records: 0
             }

@@ -29,7 +29,7 @@
         // 快捷菜单
         vm.shortcutMenus = null;
         // loading
-        vm.mainLoading = false;
+        vm.contentLoading = false;
 
         /*----------  内部变量  ----------*/
         var layoutModel = LayoutModel,
@@ -51,16 +51,17 @@
         }
 
         function hideLoading() {
-            vm.mainLoading = false;
+            vm.contentLoading = false;
         }
 
         function showLoading() {
-            vm.mainLoading = true;
+            vm.contentLoading = true;
         }
         /*----------  监听区块  ----------*/
 
         // MARK：这是一个好方法么？
         $scope.$on(LOADING_EVENT.show, e => {
+
             e.stopPropagation();
             e.preventDefault();
             showLoading();

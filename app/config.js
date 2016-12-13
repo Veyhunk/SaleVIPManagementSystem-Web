@@ -16,8 +16,8 @@
                     // .. and handle the data and record data
                     extractedData = result.data;
 
-                    if (angular.isDefined(result.record)) {
-                        extractedData.record = result.record;
+                    if (angular.isDefined(result.records)) {
+                        extractedData.records = result.records;
                     }
                 }
                 return extractedData;

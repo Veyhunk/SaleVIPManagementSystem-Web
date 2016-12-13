@@ -1,5 +1,5 @@
-<div class="section-group">
-    <section class="content-view pull-center section-group-firstchild" ng-controller="MemberRegisterCtrl as memberRegister">
+<div class="section-group" ng-controller="PayForGoodsCtrl as payForGoods">
+    <section class="content-view pull-center section-group-firstchild">
         <!--<div class="content-view-head">
             <h2>会员扫描</h2>
         </div>
@@ -40,7 +40,7 @@
         </div>
 
     </section>
-    <section class="content-view pull-center" ng-controller="GoodsRegisterCtrl as goodsRegister">
+    <section class="content-view pull-center">
         <div class="content-view-head">
             <h2>订单</h2>
         </div>
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">订单号</label>
                     <div class="col-sm-6">
-                        <p class="form-control-static">{{goodsRegister.currentGoods.code}}</p>
+                        <p class="form-control-static">{{payForGoods.order.code}}</p>
                     </div>
                 </div>
                 <!-- 导购员编号 -->

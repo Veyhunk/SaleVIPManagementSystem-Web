@@ -8,19 +8,27 @@
     PayForGoodsCtrl.$inject = ['UtilityService'];
 
     function PayForGoodsCtrl(UtilityService) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
-
+        vm.order = {
+            code: null
+        };
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService;
+        let utilityService = UtilityService;
         /*----------  内部逻辑函数  ----------*/
 
 
         /*----------  内部辅助函数  ----------*/
+        // 初始化订单编号
+        function getCode() {
+            utilityService.getOrderCode('GS').then(result => {
+                vm.order.code = result;
+            });
+        }
 
         function init() {
-
+            getCode();
         }
 
         init();

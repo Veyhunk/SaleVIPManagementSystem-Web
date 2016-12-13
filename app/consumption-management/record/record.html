@@ -1,3 +1,35 @@
-<section>
+<section ng-controller="ConsumptionRecordCtrl as record">
     消费记录
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>订单编号</th>
+                <th>会员姓名</th>
+                <th>会员卡号</th>
+                <th>消费类型</th>
+                <th>消费总额</th>
+                <th>折后总价</th>
+                <th>获得积分</th>
+                <th>卡内余额</th>
+                <th>消费时间</th>
+                <th>操作员</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in record.list">
+                <td>{{$index+1}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.member.name}}</td>
+                <td>{{item.member.code}}</td>
+                <td>{{item.type|dictionary:'consumption.types'}}</td>
+                <td>{{item.expenditure}}</td>
+                <td>{{item.discount_expenditure}}</td>
+                <td>{{item.total_reward_points}}</td>
+                <td>{{item.balance}}</td>
+                <td>{{item.datetime}}</td>
+                <td>{{item.operator}}</td>
+            </tr>
+        </tbody>
+    </table>
 </section>

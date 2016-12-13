@@ -41,7 +41,7 @@
 
             };
 
-            var loading = $('<div></div>');
+            var loading = angular.element('<div></div>');
 
             loading.append(loadingTemplates[options.template]);
 
@@ -51,7 +51,7 @@
             element.append(loading);
 
             scope.$watch('loading', function(newVal, oldVal) {
-                if (newVal != undefined) {
+                if (angular.isDefined(newVal)) {
                     if (newVal) {
                         loading.show();
                     } else {
@@ -68,4 +68,4 @@
 
     }
 
-})(window.angular);
+})(angular);
