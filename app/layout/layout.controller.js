@@ -7,10 +7,11 @@
 
     LayoutCtrl.$inject = [
         '$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService',
-        'AuthService', 'Version'
+        'AuthService', 'Version', 'LOADING_EVENT', '$timeout'
     ];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService, AuthService, Version) {
+    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
+        AuthService, Version, LOADING_EVENT, $timeout) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
@@ -27,14 +28,18 @@
         vm.mainMenus = null;
         // 快捷菜单
         vm.shortcutMenus = null;
+        // loading
+        vm.mainLoading = false;
+
         /*----------  内部变量  ----------*/
         var layoutModel = LayoutModel,
             layoutService = LayoutService,
             profileService = ProfileService;
 
-        /*----------  监听区块  ----------*/
+
         /*----------  逻辑代码区块  ----------*/
 
+        /*----------  辅助函数区块  ----------*/
 
         function initMainMenus(permissions) {
 
@@ -45,6 +50,28 @@
 
         }
 
+        function hideLoading() {
+            vm.mainLoading = false;
+        }
+
+        function showLoading() {
+            vm.mainLoading = true;
+        }
+        /*----------  监听区块  ----------*/
+
+        // MARK：这是一个好方法么？
+        $scope.$on(LOADING_EVENT.show, e => {
+            e.stopPropagation();
+            e.preventDefault();
+            showLoading();
+        });
+
+        $scope.$on(LOADING_EVENT.hide, e => {
+            e.stopPropagation();
+            e.preventDefault();
+            hideLoading();
+        });
+
         function init() {
             // 初始化菜单
             var permissions = profileService.getPermissions();
@@ -52,6 +79,11 @@
 
             // 初始化用户信息
             vm.user = profileService.getUser();
+            showLoading();
+
+            $timeout(() => {
+                hideLoading();
+            }, 2000);
         }
 
 
