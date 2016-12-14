@@ -1,5 +1,5 @@
 <section ng-controller="ConsumptionRecordCtrl as record">
-    消费记录
+    消费记录 如果item.items里面有内容的，点击订单编号可以展开查看详细消费记录
     <table>
         <thead>
             <tr>
@@ -16,10 +16,10 @@
                 <th>操作员</th>
             </tr>
         </thead>
-        <tbody>
-            <tr ng-repeat="item in record.list">
+        <tbody ng-repeat="item in record.list">
+            <tr>
                 <td>{{$index+1}}</td>
-                <td>{{item.code}}</td>
+                <td ng-click="item.showSubItem = !item.showSubItem">{{item.order_code}}</td>
                 <td>{{item.member.name}}</td>
                 <td>{{item.member.code}}</td>
                 <td>{{item.type|dictionary:'consumption.types'}}</td>
@@ -29,6 +29,26 @@
                 <td>{{item.balance}}</td>
                 <td>{{item.datetime}}</td>
                 <td>{{item.operator}}</td>
+            </tr>
+            <tr ng-if="item.items.length" ng-show="item.showSubItem">
+                <th>序号</th>
+                <th>商品编码</th>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>折后单价</th>
+                <th>数量</th>
+                <th>实际消费金额</th>
+                <th>获得积分</th>
+            </tr>
+            <tr ng-repeat="subItem in item.items" ng-show="item.showSubItem">
+                <td>{{$index+1}}</td>
+                <td>{{subItem.goods.code}}</td>
+                <td>{{subItem.goods.name}}</td>
+                <td>{{subItem.sale_price}}</td>
+                <td>{{subItem.discount_price}}</td>
+                <td>{{subItem.quantities}}</td>
+                <td>{{subItem.quantities*subItem.discount_price}}</td>
+                <td>{{subItem.reward_points}}</td>
             </tr>
         </tbody>
     </table>

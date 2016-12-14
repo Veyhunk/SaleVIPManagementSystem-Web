@@ -33,7 +33,7 @@
 
         function link(scope, element, attrs) {
 
-            var options = {
+            let options = {
                 /**
                  * @cfg 选择显示的模板
                  */
@@ -41,7 +41,7 @@
 
             };
 
-            var loading = angular.element('<div></div>');
+            let loading = angular.element('<div></div>');
 
             loading.append(loadingTemplates[options.template]);
 
