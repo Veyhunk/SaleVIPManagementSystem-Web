@@ -334,13 +334,25 @@
     },
     {
         "id": 103,
+        "name": "调色版",
+        "url": "app.page_template.palette",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 100,
+        "sort": 7,
+        "icon": "",
+        "remark": ""
+    },
+    {
+        "id": 104,
         "name": "插件测试",
         "url": "app.page_template.plugin_test",
         "is_API": 0,
         "is_shortcut": 0,
         "method": 1,
         "parent": 100,
-        "sort": 7,
+        "sort": 8,
         "icon": "",
         "remark": ""
     }

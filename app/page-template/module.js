@@ -66,6 +66,14 @@
                         templateUrl: 'app/page-template/two-view/two-view.html'
                     }
                 }
+            }).state('app.page_template.palette', {
+                name: '调色板',
+                url: '/palette',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/palette/palette.html'
+                    }
+                }
             }).state('app.page_template.plugin_test', {
                 name: ' 插件测试',
                 url: '/plugin_test',
