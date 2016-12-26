@@ -5,95 +5,86 @@
         .module('app.layout')
         .controller('LayoutCtrl', LayoutCtrl);
 
-    LayoutCtrl.$inject = ['$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService'];
+    LayoutCtrl.$inject = [
+        '$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService',
+        'AuthService', 'Version', 'LOADING_EVENT', '$timeout'
+    ];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService) {
+    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
+        AuthService, Version, LOADING_EVENT, $timeout) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
-        vm.state = $state;
-
-        // 用户信息
-        vm.profile;
-
-        //商品测试单位
-        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
-
-        vm.treeData = [{
-                "id": 1,
-                "title": "node1",
-                "nodes": [{
-                        "id": 11,
-                        "title": "node1.1",
-                        "nodes": [{
-                            "id": 111,
-                            "title": "node1.1.1",
-                            "nodes": []
-                        }]
-                    },
-                    {
-                        "id": 12,
-                        "title": "node1.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "title": "node2",
-                "nodrop": true,
-                "nodes": [{
-                        "id": 21,
-                        "title": "node2.1",
-                        "nodes": []
-                    },
-                    {
-                        "id": 22,
-                        "title": "node2.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 3,
-                "title": "node3",
-                "nodes": [{
-                    "id": 31,
-                    "title": "node3.1",
-                    "nodes": []
-                }]
-            }
-        ];
-        // 系统主菜单
-        vm.mainMenus = [];
-        // 快捷菜单
-        vm.shortcutMenus = [];
-        /*----------  内部变量  ----------*/
-        var layoutModel = LayoutModel,
-            layoutService = LayoutService;
-
-
+        // 快捷菜单切换状态
         vm.isShortcutMenusMini = false;
 
-        /*----------  监听区块  ----------*/
+        vm.state = $state;
+        vm.logOut = AuthService.logOut;
+        vm.Version = Version;
+
+        // 用户信息
+        vm.user = null;
+        // 系统主菜单
+        vm.mainMenus = null;
+        // 快捷菜单
+        vm.shortcutMenus = null;
+        // loading
+        vm.contentLoading = false;
+
+        /*----------  内部变量  ----------*/
+        var layoutModel = LayoutModel,
+            layoutService = LayoutService,
+            profileService = ProfileService;
+
+
         /*----------  逻辑代码区块  ----------*/
 
+        /*----------  辅助函数区块  ----------*/
 
-        function initMainMenus() {
+        function initMainMenus(permissions) {
 
-            layoutModel.getPermissions().then(result => {
-                result = result.plain()
-                var menus = layoutService.resolveMenus(result);
+            var menus = layoutService.resolveMenus(permissions);
 
-                vm.mainMenus = menus.mainMenus;
-                vm.shortcutMenus = menus.shortcutMenus;
-            });
+            vm.mainMenus = menus.mainMenus;
+            vm.shortcutMenus = menus.shortcutMenus;
+
         }
 
+        function hideLoading() {
+            vm.contentLoading = false;
+        }
+
+        function showLoading() {
+            vm.contentLoading = true;
+        }
+        /*----------  监听区块  ----------*/
+
+        // MARK：这是一个好方法么？
+        $scope.$on(LOADING_EVENT.show, e => {
+
+            e.stopPropagation();
+            e.preventDefault();
+            showLoading();
+        });
+
+        $scope.$on(LOADING_EVENT.hide, e => {
+            e.stopPropagation();
+            e.preventDefault();
+            hideLoading();
+        });
+
         function init() {
-            initMainMenus();
+            // 初始化菜单
+            var permissions = profileService.getPermissions();
+            initMainMenus(permissions);
+
             // 初始化用户信息
-            vm.profile = ProfileService.profile;
+            vm.user = profileService.getUser();
+            showLoading();
+
+            $timeout(() => {
+                hideLoading();
+            }, 2000);
         }
 
 

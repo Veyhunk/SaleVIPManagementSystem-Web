@@ -13,21 +13,21 @@
                 url: '/system_management',
                 abstract: true,
             })
-            .state('app.system_management.user_management', {
+            .state('app.system_management.user', {
                 name: '用户管理',
-                url: '/user_management',
+                url: '/user',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/system-management/user-management/user-management.html'
+                        templateUrl: 'app/system-management/user/user.html'
                     }
                 }
             })
-            .state('app.system_management.role_management', {
+            .state('app.system_management.role', {
                 name: '角色管理',
-                url: '/role_management',
+                url: '/role',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/system-management/role-management/role-management.html'
+                        templateUrl: 'app/system-management/role/role.html'
                     }
                 }
             });

@@ -1,13 +1,20 @@
 var gulp = require('gulp');
 var es = require('event-stream');
 var browserSync = require('browser-sync').create();
+var templateCache = require('gulp-angular-templatecache');
+var ngAnnotate = require('gulp-ng-annotate');
+var uglify = require('gulp-uglify');
+// 删除 debug 注释
+var stripDebug = require('gulp-strip-debug');
 var concat = require('gulp-concat');
+var babel = require('gulp-babel');
 var fs = require('fs');
 var _ = require('lodash');
 var scripts = require('./app.scripts.json');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 var watch = require('gulp-watch');
+
 var source = {
     js: {
         main: 'app/main.js',
@@ -63,7 +70,7 @@ gulp.task('build', function() {
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dest));
 
-    return es.merge(gulp.src(source.js.src), getTemplateStream())
+    return gulp.src(source.js.src)
         .pipe(babel({
             presets: ['es2015']
         }))
@@ -83,6 +90,18 @@ gulp.task('browser-sync', function() {
     });
 });
 
+// cacheHTML
+// 读取 html 文件缓存到 angular
+var cacheHTML = function() {
+    return gulp.src(source.html.src)
+        .pipe(templateCache({
+            root: 'app/',
+            module: 'app'
+        }))
+        .pipe(gulp.dest(dest));
+};
+
+gulp.task('cacheHTML', cacheHTML);
 
 // 监听文件变化
 gulp.task('watch', function() {
@@ -99,7 +118,7 @@ gulp.task('watch', function() {
     });
     // html 改变立即刷新
     watch(source.html.src, function(e) {
-        js().on('end', function() {
+        cacheHTML().on('end', function() {
             var time = new Date().toTimeString().split(" ")[0];
             console.info('[' + time + ']' + ' ' + e.relative + ' ' + e.event)
             browserSync.reload();
@@ -160,20 +179,13 @@ gulp.task('vendor', function() {
 
 });
 
-// 读取 html 文件缓存到 angular
-function getTemplateStream() {
-    return gulp.src(source.html.src)
-        .pipe(templateCache({
-            root: 'app/',
-            module: 'app'
-        }))
-};
+
 
 // 发布模式
-gulp.task('prod', ['vendor', 'build']);
+gulp.task('prod', ['vendor', 'build', 'cacheHTML']);
 
 // 开发模式
-gulp.task('dev', ['vendor', 'js', 'css', 'watch', 'browser-sync']);
+gulp.task('dev', ['vendor', 'js', 'css', 'cacheHTML', 'watch', 'browser-sync']);
 
 // 项目初始化的时候单独运行
 gulp.task('init', ['vendor', 'js', 'css']);

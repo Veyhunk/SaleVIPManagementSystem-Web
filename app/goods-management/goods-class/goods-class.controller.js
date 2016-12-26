@@ -8,7 +8,7 @@
     GoodsClassCtrl.$inject = ['UtilityService', 'GoodsModel'];
 
     function GoodsClassCtrl(UtilityService, GoodsModel) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
         // 当前选中商品分类
         vm.selectedGoodsClass;
@@ -18,7 +18,7 @@
         vm.list;
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService,
+        let utilityService = UtilityService,
             goodsModel = GoodsModel;
         /*----------  内部逻辑函数  ----------*/
 
@@ -26,7 +26,7 @@
         /*----------  内部辅助函数  ----------*/
 
         function initGoodsClass() {
-            var goodsClass = {
+            let goodsClass = {
                 "store": null,
                 "operator": null,
                 "name": "",

@@ -8,16 +8,16 @@
     QuickPayCtrl.$inject = ['UtilityService'];
 
     function QuickPayCtrl(UtilityService) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
-        vm.currentPay = {
+        vm.order = {
             // 订单编号
             code: ''
         };
 
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService;
+        let utilityService = UtilityService;
         /*----------  内部逻辑函数  ----------*/
 
 
@@ -25,7 +25,7 @@
         // 初始化订单编号
         function getCode() {
             utilityService.getOrderCode('KS').then(result => {
-                vm.currentPay.code = result;
+                vm.order.code = result;
             });
         }
 

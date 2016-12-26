@@ -8,7 +8,7 @@
     GoodsRegisterCtrl.$inject = ['GoodsModel', 'DictionaryService', '$filter', 'UtilityService'];
 
     function GoodsRegisterCtrl(GoodsModel, DictionaryService, $filter, UtilityService) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
         // 商品单位列表
         vm.units;
@@ -24,7 +24,7 @@
         vm.resolveCapitalChinese = resolveCapitalChinese;
 
         /*----------  内部变量  ----------*/
-        var goodsModel = GoodsModel,
+        let goodsModel = GoodsModel,
             utilityService = UtilityService,
             dictionaryService = DictionaryService;
         /*----------  内部逻辑函数  ----------*/
@@ -44,13 +44,13 @@
 
         // 初始化商品类型
         function initGoodsTypes() {
-            var types = dictionaryService.get('goods.types');
+            let types = dictionaryService.get('goods.types');
 
-            var key,
+            let key,
                 result = [];
 
             for (key in types) {
-                var tmp = {};
+                let tmp = {};
                 tmp.id = key;
                 tmp.name = types[key];
                 result.push(tmp);
@@ -69,7 +69,7 @@
         }
         // 初始化商品对象
         function initGoods() {
-            var goods = {
+            let goods = {
                 "operator": 1,
                 "store": 1,
                 "class": 1,
@@ -99,7 +99,9 @@
             // 初始化商品分类列表
             initGoodsClass();
             // 初始化商品编码
-            vm.currentGoods.code = utilityService.getDatetime();
+            utilityService.getDatetime().then(result => {
+                vm.currentGoods.code = result;
+            });
         }
 
         init();

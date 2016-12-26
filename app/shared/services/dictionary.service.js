@@ -108,7 +108,7 @@
          * console.info(sex[0]) // 女士
          */
         function get(type) {
-            if (typeof dictionaries[type] !== 'undefined') {
+            if (angular.isDefined(dictionaries[type])) {
                 return dictionaries[type];
             }
         }
@@ -125,9 +125,10 @@
          * console.info(sex) // 女士
          */
         function resolve(type, value) {
-            if (typeof dictionaries[type] !== 'undefined') {
-                return dictionaries[type][value];
+            if (angular.isUndefined(dictionaries[type])) {
+                return value;
             }
+            return dictionaries[type][value];
         }
     }
 })();

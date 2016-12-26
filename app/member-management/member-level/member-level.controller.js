@@ -44,7 +44,7 @@
         function initMemberLevelList() {
             memberModel.getLevels().then(result => {
                 vm.list = result;
-            }, err => {
+            }, error => {
                 //TODO: show error msg
             });
         }

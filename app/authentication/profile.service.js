@@ -5,30 +5,59 @@
         .module('app.authentication')
         .factory('ProfileService', ProfileService);
 
-    ProfileService.$inject = ['Restangular'];
+    ProfileService.$inject = ['localStorageService'];
 
-    function ProfileService(Restangular) {
+    function ProfileService(localStorageService) {
 
-        var profile = {};
+        let profile = {};
 
-        var ProfileService = {
-            exposedFn: exposedFn,
-            get profile() {
-                if (typeof profile.user === 'undefined') {
-                    Restangular.one('members.json').get().then(result => {
+        let storageName = 'profile';
 
-                        result = result.plain();
-                        profile.user = result.data[1];
-                    });
-                }
-
-                return profile;
-            },
+        let ProfileService = {
+            getProfile: getProfile,
+            setProfile: setProfile,
+            removeProfile: removeProfile,
+            getRole: getRole,
+            getUser: getUser,
+            getPermissions: getPermissions,
+            initProfile: initProfile,
         };
 
         return ProfileService;
 
-        ////////////////
-        function exposedFn() {}
+        function getRole() {
+            return profile.role;
+        }
+
+        function getUser() {
+            return profile.user;
+        }
+
+        function getPermissions() {
+            return profile.permissions;
+        }
+
+        function setProfile(newProfile) {
+            profile = newProfile;
+
+            localStorageService.set(storageName, profile);
+        }
+
+        function getProfile() {
+            return profile;
+        }
+
+        function removeProfile() {
+            profile = {};
+            localStorageService.remove(storageName);
+        }
+
+        function initProfile() {
+            let result = localStorageService.get(storageName);
+            if (result) {
+                profile = result;
+            }
+        }
+
     }
 })();

@@ -8,7 +8,7 @@
     GoodsListCtrl.$inject = ['GoodsModel', 'UtilityService'];
 
     function GoodsListCtrl(GoodsModel, UtilityService) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
 
         // 分页信息
@@ -19,7 +19,7 @@
 
         /*----------  内部变量  ----------*/
 
-        var goodsModel = GoodsModel,
+        let goodsModel = GoodsModel,
             utilityService = UtilityService;
 
         /*----------  内部逻辑函数  ----------*/
@@ -40,7 +40,7 @@
 
         function init() {
             vm.pagination = utilityService.initPagination();
-            getGoods(vm.pagination);
+            getGoods(vm.pagination.configs);
         }
 
         init();

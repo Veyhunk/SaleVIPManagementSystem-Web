@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app.consumption_management')
-        .controller('ConsumptionRecordCtrl', ConsumptionRecordCtrl);
+        .module('app.system_management')
+        .controller('UserCtrl', UserCtrl);
 
-    ConsumptionRecordCtrl.$inject = ['UtilityService'];
+    UserCtrl.$inject = ['UtilityService'];
 
-    function ConsumptionRecordCtrl(UtilityService) {
+    function UserCtrl(UtilityService) {
         var vm = this;
         /*----------  界面层资源  ----------*/
 

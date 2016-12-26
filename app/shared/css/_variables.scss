@@ -52,3 +52,8 @@ $border-width: 0.1 * $pix;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
     filter: alpha(opacity=$IEValue);
 }
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}

@@ -9,20 +9,25 @@
 
             RestangularProvider.setDefaultHeaders({ 'Content-Type': 'application/json' });
 
-            RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-                var extractedData;
+            RestangularProvider.addResponseInterceptor(function(result, operation, what, url, response, deferred) {
+                var extractedData = result;
                 // .. to look for getList operations
-                if (operation === "getList" && typeof data.data !== 'undefined') {
+                if (operation === "getList" && angular.isDefined(result.data)) {
                     // .. and handle the data and record data
-                    extractedData = data.data;
-                    extractedData.record = data.record;
-                } else {
-                    extractedData = data;
+                    extractedData = result.data;
+
+                    if (angular.isDefined(result.records)) {
+                        extractedData.records = result.records;
+                    }
                 }
                 return extractedData;
             });
 
+        }])
+        .run(['ProfileService', 'AuthService', function(ProfileService, AuthService) {
+            ProfileService.initProfile();
+            AuthService.initAuthorizationData();
         }]);
 
 
-})(window.angular);
+})(angular);
