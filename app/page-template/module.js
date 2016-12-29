@@ -58,12 +58,12 @@
                     }
                 }
             })
-            .state('app.page_template.two_view', {
+            .state('app.page_template.full_view', {
                 name: '双视图',
-                url: '/two_view',
+                url: '/full_view',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/page-template/two-view/two-view.html'
+                        templateUrl: 'app/page-template/full-view/full-view.html'
                     }
                 }
             }).state('app.page_template.palette', {
