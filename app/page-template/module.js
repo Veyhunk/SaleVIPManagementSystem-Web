@@ -59,7 +59,7 @@
                 }
             })
             .state('app.page_template.full_view', {
-                name: '双视图',
+                name: '配色',
                 url: '/full_view',
                 views: {
                     'content@app': {
