@@ -1,7 +1,7 @@
 @import 'variables.scss';
 //frame
 body {
-    dimens-font-size: $dimens-font-size;
+    font-size: $dimens-font-size;
     #layout {
         height: 100vh;
         width: 100vw;
@@ -24,7 +24,7 @@ body {
             -webkit-box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
             -moz-box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
             box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
-            color-background: white;
+            background-color: white;
             .head-logo {
                 img {
                     width: $dimens-nav-top-item-height;
@@ -36,7 +36,7 @@ body {
                     height: $dimens-nav-top-item-height;
                     line-height: $dimens-nav-top-item-height;
                     text-align: center;
-                    dimens-font-size: 2.5 * $dimens-dp;
+                    font-size: 2.5 * $dimens-dp;
                 }
             }
             .head-title {
@@ -50,7 +50,7 @@ body {
                 min-width: $dimens-nav-top-item-height;
                 height: $dimens-nav-top-item-height;
                 color: $color-basic-text-light;
-                color-background: rgba(0, 0, 0, 0);
+                background-color: rgba(0, 0, 0, 0);
                 border: 0;
                 i {
                     margin-right: $dimens-padding;
@@ -96,7 +96,7 @@ body {
                         &:hover,
                         &:hover.active {
                             //hold main nav
-                            color-background: rgba($color-gray-light, .9);
+                            background-color: rgba($color-gray-light, .9);
                             .sub-nav {
                                 //show sub-nav
                                 display: block;
@@ -111,7 +111,7 @@ body {
                             &>a:focus {
                                 color: $color-basic-text;
                                 border-bottom-color: $color-app-primary;
-                                color-background: transparent;
+                                background-color: transparent;
                             }
                             &>a:hover {
                                 color: $color-app-primary-text;
@@ -126,12 +126,12 @@ body {
                     margin-left: -$dimens-padding * 5;
                     padding: 0 $dimens-padding *3 $dimens-padding *6 $dimens-padding *3;
                     width: auto;
-                    color-background: transparent;
+                    background-color: transparent;
                     // left: 0;
                     display: none;
                     &>ul {
                         width: auto;
-                        color-background: rgba($color-gray-light, .9);
+                        background-color: rgba($color-gray-light, .9);
                         color: $color-app-primary-text;
                         &>li {
                             float: none;
@@ -139,7 +139,7 @@ body {
                                 &>a,
                                 &>a:hover,
                                 &>a:focus {
-                                    color-background: rgba($color-gray, .9);
+                                    background-color: rgba($color-gray, .9);
                                     border-bottom-color: transparent;
                                 }
                             }
@@ -148,7 +148,7 @@ body {
                                 color: $color-app-primary-text;
                                 margin-right: 0;
                                 &:hover {
-                                    color-background: $color-hover-darker;
+                                    background-color: $color-hover-darker;
                                     color: $color-app-primary-text;
                                 }
                             }
@@ -181,7 +181,7 @@ body {
                                 a:hover,
                                 a:focus {
                                     color: $color-app-primary-text;
-                                    color-background: $color-app-primary;
+                                    background-color: $color-app-primary;
                                 }
                             }
                             &>a {
@@ -218,8 +218,8 @@ body {
                         font-weight: 510;
                     }
                     &:hover {
-                        /*color-background: $color-app-primary-light;*/
-                        color-background: $color-hover-dark;
+                        /*background-color: $color-app-primary-light;*/
+                        background-color: $color-hover-dark;
                         color: $color-basic-text-light;
                     }
                 }
@@ -227,7 +227,7 @@ body {
                     max-width: $dimens-item-width;
                     min-width: $dimens-item-width;
                     .btn-menu-toggle {
-                        color-background: $color-gray-light;
+                        background-color: $color-gray-light;
                         color: $color-app-primary-text;
                     }
                 }
@@ -277,13 +277,13 @@ body {
                 overflow: hidden;
             }
             #content {
-                color-background: $color-basic-background;
+                background-color: $color-basic-background;
                 @include size(100%);
                 padding: $dimens-padding;
                 overflow: auto;
                 & section {
                     border: $dimens-border-width solid $color-basic-border;
-                    color-background: $color-basic-bg-component;
+                    background-color: $color-basic-bg-component;
                 }
                 & .section-group {
                     section {
@@ -311,7 +311,7 @@ body {
 }
 
 .color-app-primary-in-background {
-    color-background: $color-app-primary;
+    background-color: $color-app-primary;
 }
 
 // tools-layout
@@ -335,7 +335,7 @@ body {
 }
 
 .placeHold {
-    color-background: $color-app-primary-light;
+    background-color: $color-app-primary-light;
 }
 
 // tools-layout-pull
@@ -399,11 +399,11 @@ body {
 //component-btn
 //component-btn-clear
 .btn-clear {
-    color-background: transparent;
+    background-color: transparent;
     color: $color-basic-text-light;
     font-weight: 500;
     &:hover {
-        color-background: $color-hover-dark;
+        background-color: $color-hover-dark;
     }
 }
 
@@ -493,7 +493,7 @@ img {
     color: $color-basic-text;
     text-align: center;
     button {
-        color-background: $color-basic-background;
+        background-color: $color-basic-background;
         width: $dimens-font-size * 9;
         padding: 0;
         border: 0;
