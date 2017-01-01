@@ -340,8 +340,8 @@
             },
             {
                 "id": 102,
-                "name": "双视图",
-                "url": "app.page_template.two_view",
+                "name": "配色",
+                "url": "app.page_template.full_view",
                 "is_API": 0,
                 "is_shortcut": 0,
                 "method": 1,

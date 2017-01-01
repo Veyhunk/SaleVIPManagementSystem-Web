@@ -58,12 +58,20 @@
                     }
                 }
             })
-            .state('app.page_template.two_view', {
-                name: '双视图',
-                url: '/two_view',
+            .state('app.page_template.full_view', {
+                name: '配色',
+                url: '/full_view',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/page-template/two-view/two-view.html'
+                        templateUrl: 'app/page-template/full-view/full-view.html'
+                    }
+                }
+            }).state('app.page_template.palette', {
+                name: '调色板',
+                url: '/palette',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/palette/palette.html'
                     }
                 }
             }).state('app.page_template.plugin_test', {
