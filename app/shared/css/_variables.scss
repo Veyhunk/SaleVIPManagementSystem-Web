@@ -13,12 +13,13 @@ $color-gray-light: lighten(#000, 46.7%); // #777
 $color-gray-lighter: lighten(#000, 93.5%); // #eee
 $color-gray-white: lighten(#000, 100%); // #fff
 //color-transparent
-$color-hover-darkest:rgba(0, 0, 0, 0.3);
-$color-hover-darker:rgba(0, 0, 0, 0.2);
-$color-hover-dark:rgba(0, 0, 0, 0.1);
-$color-hover-light:rgba(255, 255, 255, 0.1);
-$color-hover-lighter:rgba(255, 255, 255, 0.2);
-$color-hover-lightest:rgba(255, 255, 255, 0.3);
+$color-transparent-darkest:rgba(0, 0, 0, 0.3);
+$color-transparent-darker:rgba(0, 0, 0, 0.2);
+$color-transparent-dark:rgba(0, 0, 0, 0.1);
+$color-transparent-0:rgba(0, 0, 0, 0);
+$color-transparent-light:rgba(255, 255, 255, 0.1);
+$color-transparent-lighter:rgba(255, 255, 255, 0.2);
+$color-transparent-lightest:rgba(255, 255, 255, 0.3);
 //color-basic
 $color-basic-bg-component: $color-gray-white;
 $color-basic-text: $color-gray-darker;
@@ -28,8 +29,8 @@ $color-basic-border:#e2e2e2;
 //color-app
 $color-app-primary-dark: #04345d;
 $color-app-primary:#0868b9;
-$color-app-primary-light: #83b3dc;
-$color-app-accent: #b43c4d;
+$color-app-primary-light: #0b90ff;
+$color-app-accent: #333339;
 $color-app-primary-text: $color-gray-white;
 //dimens
 $dimens-dp:1.2rem;

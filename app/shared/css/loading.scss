@@ -40,7 +40,7 @@
     @include size(100%);
     @include absPosition(0, 0, 0, 0);
     // loading 遮罩背景色
-    background-color: $color-hover-darker;
+    background-color: $color-transparent-darker;
     z-index: 999;
 }
 
