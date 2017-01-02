@@ -40,7 +40,7 @@
     @include size(100%);
     @include absPosition(0, 0, 0, 0);
     // loading 遮罩背景色
-    background-color: $hover-darker;
+    color-background: $color-hover-darker;
     z-index: 999;
 }
 
@@ -54,7 +54,7 @@
 
 .loader-container {
     @include size(80px);
-    background-color: #fff;
+    color-background: #fff;
     display: inline-block;
     padding-top: 15px;
     border-radius: 15px;
@@ -73,13 +73,13 @@
 
 .loader-quart {
     border-radius: 50px;
-    border: 6px solid $primary-color;
+    border: 6px solid $color-app-primary;
     &:after {
         content: '';
         @include absPosition(-6px, -6px, -6px, -6px);
         border-radius: 50px;
         border: 6px solid transparent;
-        border-top-color: $brand-info;
+        border-top-color: $color-emotion-info;
         @include animation(spin 1s linear infinite);
     }
 }
