@@ -25,14 +25,12 @@
         function signIn(user) {
 
             let _user = angular.copy(user);
-            _user.password = CryptoJS.MD5(_user.password);
-
+            _user.password = CryptoJS.MD5(_user.password).toString();
+            debugger;
             authService.login(_user).then(result => {
                 $state.go('app.home');
             }, error => {
-                if (error.status == 'failure') {
-                    return;
-                }
+
             });
         }
         /*----------  内部辅助函数  ----------*/
