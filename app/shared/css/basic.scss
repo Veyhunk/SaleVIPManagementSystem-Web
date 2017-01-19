@@ -1,4 +1,6 @@
 @import 'variables.scss';
+$color-hearder-background:$color-app-accent;
+$color-hearder-text:$color-gray-lighter;
 //frame
 body {
     font-size: $dimens-font-size;
@@ -10,28 +12,25 @@ body {
         #header {
             display: block;
             height: $dimens-nav-top-item-height;
-            // border-bottom: $dimens-border-width solid $color-basic-border;
             z-index: 1001;
             position: fixed;
-            _position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             /* height: 35px; */
             /* padding: 7px 0; */
-            background: #FFF;
             overflow: visible;
-            -webkit-box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
-            -moz-box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
-            box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
-            background-color: white;
+            -webkit-box-shadow: $color-transparent-dark 0 1px 5px;
+            -moz-box-shadow: $color-transparent-dark 0 1px 5px;
+            box-shadow: $color-transparent-dark 0 1px 5px;
+            background-color: $color-hearder-background;
             .head-logo {
                 img {
                     width: $dimens-nav-top-item-height;
                     height: $dimens-nav-top-item-height;
                 }
                 i {
-                    color: $color-app-primary;
+                    color: $color-hearder-text;
                     width: $dimens-nav-top-item-height;
                     height: $dimens-nav-top-item-height;
                     line-height: $dimens-nav-top-item-height;
@@ -43,23 +42,23 @@ body {
                 padding: 0 $dimens-padding;
                 height: $dimens-nav-top-item-height;
                 line-height: $dimens-nav-top-item-height;
-                color: $color-gray-dark;
+                color: $color-hearder-text;
             }
             .nav-button {
                 padding: 0 $dimens-padding;
                 min-width: $dimens-nav-top-item-height;
                 height: $dimens-nav-top-item-height;
-                color: $color-basic-text-light;
-                background-color: rgba(0, 0, 0, 0);
+                color: $color-hearder-text;
+                background-color: $color-transparent-0;
                 border: 0;
                 i {
                     margin-right: $dimens-padding;
-                    color: $color-basic-text-light;
+                    color: $color-hearder-text;
                 }
                 &:hover {
-                    color: $color-app-primary;
+                    color: $color-app-primary-light;
                     i {
-                        color: $color-app-primary;
+                        color: $color-app-primary-light;
                     }
                 }
             }
@@ -84,11 +83,11 @@ body {
                         padding: 0 (2 * $dimens-padding);
                         position: inherit;
                         &>a {
-                            line-height: $dimens-nav-top-item-height - 3 * $dimens-border-width;
-                            height: $dimens-nav-top-item-height - 1 * $dimens-border-width;
+                            line-height: $dimens-nav-top-item-height - 4 * $dimens-border-width;
+                            height: $dimens-nav-top-item-height;
                             /*height: 100%;*/
                             padding: 0;
-                            color: $color-gray-light;
+                            color: $color-hearder-text;
                             margin-right: 0;
                             border-top-width: 3 * $dimens-border-width;
                             border-bottom-width: 3 * $dimens-border-width;
@@ -109,8 +108,8 @@ body {
                         &.active {
                             &>a,
                             &>a:focus {
-                                color: $color-basic-text;
-                                border-bottom-color: $color-app-primary;
+                                color: $color-hearder-text;
+                                border-bottom-color: $color-app-primary-light;
                                 background-color: transparent;
                             }
                             &>a:hover {
@@ -148,7 +147,7 @@ body {
                                 color: $color-app-primary-text;
                                 margin-right: 0;
                                 &:hover {
-                                    background-color: $color-hover-darker;
+                                    background-color: $color-transparent-darker;
                                     color: $color-app-primary-text;
                                 }
                             }
@@ -201,6 +200,7 @@ body {
                 }
                 .btn-menu-toggle {
                     color: $color-basic-text-light;
+                    background-color: $color-transparent-light;
                     height: $dimens-nav-left-item-height;
                     padding: 0;
                     border: 0;
@@ -219,7 +219,7 @@ body {
                     }
                     &:hover {
                         /*background-color: $color-app-primary-light;*/
-                        background-color: $color-hover-dark;
+                        background-color: $color-transparent-dark;
                         color: $color-basic-text-light;
                     }
                 }
@@ -403,7 +403,7 @@ body {
     color: $color-basic-text-light;
     font-weight: 500;
     &:hover {
-        background-color: $color-hover-dark;
+        background-color: $color-transparent-dark;
     }
 }
 
