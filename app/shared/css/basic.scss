@@ -445,6 +445,23 @@ body {
 }
 
 // component
+// component-sub-table
+table .sub {
+    &>td {
+        border-top-width: 0 !important;
+        padding: $dimens-padding * 2 !important;
+    }
+    .table {
+        color: rgba($color-gray-lite, .9);
+        background-color: $color-gray-lightest;
+        box-shadow: 1px 1px 6px $color-transparent-darkest;
+        margin: 0;
+        th {
+            border-top-width: 0;
+        }
+    }
+}
+
 // component-contant-view
 .content-page {
     width: 60%;
