@@ -1,4 +1,4 @@
-<section ng-controller="MemberLevelCtrl as memberLevel">
+<!--<section ng-controller="MemberLevelCtrl as memberLevel">
     会员等级 添加 编辑 删除
     <div>
         <table>
@@ -27,6 +27,53 @@
                 </tr>
             </tbody>
         </table>
+
+    </div>
+</section>-->
+<section class="content-page pull-center" ng-controller="MemberLevelCtrl as memberLevel">
+    <div class="content-page-head">
+        <h2>会员等级</h2>
+    </div>
+    <hr>
+    <div class="content-page-body">
+        <div class="content-page-body">
+            <nav class="navbar navbar-toolbar navbar-default">
+                <div class="container-fluid padding-0">
+                    <div class="collapse navbar-collapse bs-example-toolbar-collapse-1  padding-0">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href=""><i class="fa fa-plus"></i> 添加</a></li>
+                            <li><a href=""><i class="fa fa-minus"></i> 删除</a></li>
+                            <li><a href=""><i class="fa fa-pencil"></i> 修改</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>等级名称</th>
+                        <th>积分率</th>
+                        <th>折扣率</th>
+                        <th>是否可升级</th>
+                        <th>升级所需积分</th>
+                        <th>升级后等级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in memberLevel.list">
+                        <td>{{$index}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.point_rate}}</td>
+                        <td>{{item.discount_rate}}</td>
+                        <td>{{item.allow_upgrade}}</td>
+                        <td>{{item.upgrade_point}}</td>
+                        <td>{{item.next_level}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </section>
