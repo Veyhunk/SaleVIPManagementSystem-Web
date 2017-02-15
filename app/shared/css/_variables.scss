@@ -31,7 +31,8 @@ $color-basic-border:$color-transparent-dark;
 //color-app
 $color-app-primary-dark: #04345d;
 $color-app-primary:#0868b9;
-$color-app-primary-light: #0b90ff;
+$color-app-primary-light: lighten($color-app-primary, 15%);
+$color-app-primary-lighter: lighten($color-app-primary, 30%);
 $color-app-accent: #333339;
 $color-app-primary-text: $color-gray-white;
 //dimens
