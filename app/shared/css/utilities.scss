@@ -1,0 +1,47 @@
+@import 'variables.scss';
+.padding {
+    padding: $dimens-padding;
+}
+
+.padding-left-right {
+    padding-left: $dimens-padding;
+    padding-right: $dimens-padding;
+}
+
+.padding-top-bottom {
+    padding-top: $dimens-padding;
+    padding-bottom: $dimens-padding;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.placeHold {
+    background-color: $color-app-primary-light;
+}
+
+// tools-layout-pull
+.pull-center {
+    display: table;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// tools-layout-marggin
+.marggin-0 {
+    margin-bottom: 0 !important;
+}
+
+.margin-top {
+    margin-top: $dimens-padding !important;
+}
+
+.margin-left {
+    margin-left: $dimens-padding !important;
+}
+
+.margin-0-auto {
+    margin: 0 auto;
+}

@@ -4,6 +4,8 @@ $color-hearder-text:$color-gray-lighter;
 $transition-time:.3s;
 //frame
 body {
+    @include size(100%);
+    overflow: hidden;
     * {
         // background-color
         transition: background-color $transition-time, width $transition-time, height $transition-time, opacity $transition-time;
@@ -241,6 +243,7 @@ body {
         #main {
             & {
                 height: 100%;
+                width: 100%;
                 padding-top: $dimens-nav-top-item-height;
                 display: -webkit-box;
                 display: -webkit-flex;
@@ -344,18 +347,15 @@ body {
                 background-color: $color-basic-background;
                 @include size(100%);
                 padding: $dimens-padding;
-                overflow: auto;
+                overflow-x: hidden;
+                >div {
+                    @include size(100%);
+                    display: flex;
+                    flex-direction: column;
+                }
                 & section {
                     border: $dimens-border-width solid $color-basic-border;
                     background-color: $color-basic-bg-component;
-                }
-                & .section-group {
-                    section {
-                        margin-top: $dimens-padding;
-                    }
-                    .section-group-firstchild {
-                        margin-top: 0;
-                    }
                 }
             }
         }
@@ -378,46 +378,9 @@ body {
     background-color: $color-app-primary;
 }
 
-// tools-layout
-// tools-layout-padding
-.padding {
-    padding: $dimens-padding;
-}
-
-.padding-left-right {
-    padding-left: $dimens-padding;
-    padding-right: $dimens-padding;
-}
-
-.padding-top-bottom {
-    padding-top: $dimens-padding;
-    padding-bottom: $dimens-padding;
-}
-
-.padding-0 {
-    padding: 0 !important;
-}
-
-.placeHold {
-    background-color: $color-app-primary-light;
-}
-
-// tools-layout-pull
-.pull-center {
-    display: table;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-// tools-layout-marggin
-.marggin-0 {
-    margin-bottom: 0 !important;
-}
-
 // component
 // component-sub-table
-table .sub {
+table .list-detail {
     &>td {
         border-top-width: 0 !important;
         padding: $dimens-padding * 2 !important;
@@ -429,6 +392,10 @@ table .sub {
         margin: 0;
         th {
             border-top-width: 0;
+        }
+        >tbody>tr:first-child {
+            background-color: $color-emotion-info;
+            color: $color-gray-lighter;
         }
     }
 }
@@ -456,6 +423,7 @@ table .sub {
     background-color: transparent;
     color: $color-basic-text-light;
     font-weight: 500;
+    line-height: inherit;
     &:hover {
         background-color: $color-transparent-dark;
     }
@@ -564,3 +532,17 @@ img {
 /*.container-fluid{
     padding: 0;
 }*/
+
+// layout
+.flexbox {
+    display: flex;
+    @include size(100%);
+}
+
+.box {
+    flex-grow: 1;
+}
+
+.box-2 {
+    flex-grow: 2;
+}
