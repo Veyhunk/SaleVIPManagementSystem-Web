@@ -1,7 +1,7 @@
 @import 'variables.scss';
 $color-hearder-background:$color-app-accent;
 $color-hearder-text:$color-gray-lighter;
-$transition-time:.3s;
+$transition-time:.2s;
 //frame
 body {
     @include size(100%);
@@ -176,7 +176,7 @@ body {
                             border-bottom-width: 3 * $dimens-border-width;
                         }
                         &:hover,
-                        &:hover.active {
+                        &.active:hover {
                             //hold main nav
                             background-color: rgba($color-gray-light, .9);
                             .sub-nav {
@@ -218,14 +218,6 @@ body {
                         color: $color-app-primary-text;
                         &>li {
                             float: none;
-                            &.active {
-                                &>a,
-                                &>a:hover,
-                                &>a:focus {
-                                    background-color: rgba($color-gray, .9);
-                                    border-bottom-color: transparent;
-                                }
-                            }
                             &>a {
                                 padding: $dimens-padding * 1.2 $dimens-padding *5;
                                 color: $color-app-primary-text;
@@ -233,6 +225,14 @@ body {
                                 &:hover {
                                     background-color: $color-transparent-darker;
                                     color: $color-app-primary-text;
+                                }
+                            }
+                            &.active {
+                                &>a,
+                                &>a:hover,
+                                &>a:focus {
+                                    background-color: rgba($color-app-primary-light, 1);
+                                    border-bottom-color: transparent;
                                 }
                             }
                         }
@@ -386,7 +386,7 @@ table .list-detail {
         padding: $dimens-padding * 2 !important;
     }
     .table {
-        color: rgba($color-gray-lite, .9);
+        // color: rgba($color-gray-lite, .9);
         background-color: $color-gray-lightest;
         box-shadow: 1px 1px 6px $color-transparent-darkest;
         margin: 0;
@@ -402,6 +402,17 @@ table .list-detail {
 
 // component-contant-view
 .content-page {
+    .content-page-head {
+        padding: $dimens-padding ($dimens-padding *2.5) 0 ($dimens-padding *2.5);
+        margin: -$dimens-padding *2.5;
+        h4 {
+            line-height: $dimens-item-height;
+            margin: 0;
+        }
+        hr {
+            margin-top: 0;
+        }
+    }
     width: 100%;
     // float: left;
     padding: $dimens-padding * 2.5;
