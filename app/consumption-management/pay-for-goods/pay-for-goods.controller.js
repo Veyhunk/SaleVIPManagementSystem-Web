@@ -5,29 +5,56 @@
         .module('app.consumption_management')
         .controller('PayForGoodsCtrl', PayForGoodsCtrl);
 
-    PayForGoodsCtrl.$inject = ['UtilityService'];
+    PayForGoodsCtrl.$inject = ['UtilityService', 'GoodsModel', '$uibModal'];
 
-    function PayForGoodsCtrl(UtilityService) {
+    function PayForGoodsCtrl(UtilityService, GoodsModel, $uibModal) {
         let vm = this;
+        vm.pay = pay;
         /*----------  界面层资源  ----------*/
-        vm.order = {
-            code: null
+        vm.current = {
+            // 当前订单编号
+            code: null,
+            // 当前会员检索条件
+            memberQueryString: '',
         };
         /*----------  内部变量  ----------*/
 
-        let utilityService = UtilityService;
+        let utilityService = UtilityService,
+            goodsModel = GoodsModel;
         /*----------  内部逻辑函数  ----------*/
 
+        function pay() {
 
+
+            $uibModal.open({
+                templateUrl: 'app/shared/views/system-notice.tpl.html',
+                size: 'sm',
+                controller: function($scope) {
+                    $scope.title = '系统提示';
+                    $scope.content = 'bottom';
+                }
+            });
+
+
+        }
         /*----------  内部辅助函数  ----------*/
         // 初始化订单编号
         function getCode() {
             utilityService.getOrderCode('GS').then(result => {
-                vm.order.code = result;
+                vm.current.code = result;
+            });
+        }
+
+        function getGoods(configs) {
+            goodsModel.getGoods(configs).then(result => {
+                vm.list = result;
             });
         }
 
         function init() {
+
+            vm.pagination = utilityService.initPagination();
+            getGoods(vm.pagination.configs);
             getCode();
         }
 

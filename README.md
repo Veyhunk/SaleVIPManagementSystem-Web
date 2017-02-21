@@ -104,5 +104,7 @@ ng-controller="MainCtrl as main"
 更多使用方法，参考官方文档。
 ### ui-bootstrap typehead
 加入 typehead 插件，支持输入和下拉选择两种操作，参看[here](https://angular-ui.github.io/bootstrap/#/typeahead)
+### ui-bootstrap modal
+加入 modal 插件，参看[here](https://angular-ui.github.io/bootstrap/#/modal)
 ### ui-tree
 ui-tree树形组件,参看[here](https://github.com/angular-ui-tree/angular-ui-tree)
