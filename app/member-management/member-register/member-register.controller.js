@@ -5,41 +5,49 @@
         .module('app.member_management')
         .controller('MemberRegisterCtrl', MemberRegisterCtrl);
 
-    MemberRegisterCtrl.$inject = ['ProfileService', 'MemberModel'];
+    MemberRegisterCtrl.$inject = ['ProfileService', 'MemberModel', 'MemberService', 'UtilityService'];
 
-    function MemberRegisterCtrl(ProfileService, MemberModel) {
+    function MemberRegisterCtrl(ProfileService, MemberModel, MemberService, UtilityService) {
         var vm = this;
         /*----------  界面层资源  ----------*/
 
-        vm.confirmedPaymentPassword = true;
+        vm.hidePaymentPasswordNotice = true;
 
-        vm.currentMember = initMember();
-        vm.addMember = addMember;
+        vm.current = {
+            member: initMember()
+        };
+
+        vm.create = create;
         vm.checkPaymentPassword = checkPaymentPassword;
+        vm.resetForm = resetForm;
 
+        /*----------  内部变量  ----------*/
+        var memberModel = MemberModel,
+            utilityService = UtilityService,
+            memberService = MemberService;
         /*----------  内部函数逻辑  ----------*/
         /**
          * 添加新会员
          * 
          * @param {Object} member
          */
-        function addMember(member) {
+        function create(member) {
             // TODO: 添加新会员
         }
 
         // 重置表单
-        function resetForm() {
-            // TODO：重置表单状态、会员对象重新初始化
+        function resetForm(form) {
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
+            initForm();
         }
 
         // 验证支付密码是否确认
-        function checkPaymentPassword() {
+        function checkPaymentPassword(password, confirmPassword) {
 
-            if (vm.confirmPaymentPassword != vm.currentMember.payment_password &&
-                vm.currentMember.payment_password !== '') {
-
-                vm.confirmedPaymentPassword = false;
-            }
+            vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
         }
         /*----------  内部辅助函数  ----------*/
         // 初始化会员对象
@@ -76,12 +84,23 @@
 
         // 初始化会员等级列表 
         function initLevels() {
-            MemberModel.getLevels().then(result => {
+            memberModel.getLevels().then(result => {
                 //TODO: 过滤散客
                 result = result.plain();
+                vm.current.member.level = result[1].id;
                 vm.levelList = result;
             });
 
+        }
+
+        /**
+         * 初始化表单
+         */
+        function initForm() {
+            vm.hidePaymentPasswordNotice = true;
+            vm.confirmPaymentPassword = '';
+            vm.current.member = initMember();
+            vm.current.member.level = vm.levelList[1].id;
         }
 
         function init() {

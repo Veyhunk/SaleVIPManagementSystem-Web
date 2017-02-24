@@ -65,3 +65,13 @@
         cursor: pointer;
     }
 }
+
+.table {
+    &.vertical-middle>tbody>tr>td {
+        vertical-align: middle;
+    }
+}
+
+.required-input {
+    color: red;
+}
