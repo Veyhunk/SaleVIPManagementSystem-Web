@@ -1,61 +1,24 @@
-<div class="section-group" ng-controller="MemberChargeCtrl as memberCharge">
-    <section class="padding">
-        <!--<div class="content-page-head">
-            <h4>会员扫描</h4>
-        <hr>
-        </div>
+<div class="section-group" ng-controller="MemberChargeCtrl as vm">
+    <div ng-include="'app/member-management/shared/member-search.tpl.html'">
 
-        <hr>-->
-        <form class="form-horizontal" name="quickPayForm">
-            <!-- input -->
-            <div class="form-group ">
-                <label class="col-sm-3 control-label">会员检索</label>
-                <div class="col-sm-5">
-                    <input class="form-control" placeholder="模糊查询：会员姓名、电话号码、卡号" required>
-
-                </div>
-                <!--<label class="col-sm-3 help-block">*</label>-->
-                <div class=" col-sm-4 ">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-qrcode"></i> 扫码</button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-user"></i> 散客</button>
-                    <!--<button type="button" class="btn btn-default"><i class="fa fa-refresh"></i> 重置</button>-->
-                </div>
-            </div>
-
-            <!-- input -->
-            <div class="form-group marggin-0">
-                <label class="col-sm-3 control-label">会员信息</label>
-                <div class="col-sm-9">
-                    <div class="content-page-body form-control-static">
-                        <ul class="list-inline marggin-0">
-                            <li>姓名<span class="text-info-hightlight">{{memberRegister.currentMember.nam}}</span></li>
-                            <li>等级<span class="text-info-hightlight">{{memberRegister.currentMember.level}}</span></li>
-                            <li>余额<span class="text-info-hightlight">{{memberRegister.currentMember.balance}}</span></li>
-                            <li>积分<span class="text-info-hightlight">{{memberRegister.currentMember.points}}</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-    </section>
+    </div>
     <div class="flexbox">
         <section class="box padding margin-top">
             <div>
 
                 <h4>会员充值
-                    <button type="button" class="btn btn-clear pull-right"><i class="fa fa-refresh"></i> 重置</button>
+                    <!--<button type="button" class="btn btn-clear pull-right"><i class="fa fa-refresh"></i> 重置</button>-->
                 </h4>
             </div>
+
             <hr>
             <div class="content-page-body">
-                <form class="form-horizontal" name="goodsRegisterForm">
+                <form class="form-horizontal" name="memberChargeForm">
                     <!-- 订单编号 -->
                     <div class="form-group">
                         <label class="col-sm-3 control-label">订单编号</label>
                         <div class="col-sm-6">
-                            <p class="form-control-static">{{memberCharge.currentCharge.order_code}}</p>
+                            <p class="form-control-static">{{vm.current.charge.order_code}}</p>
                         </div>
 
                     </div>
@@ -63,14 +26,14 @@
                     <!--<div class="form-group">
                     <label class="col-sm-3 control-label">导购员编号</label>
                     <div class="col-sm-6">
-                        <input class="form-control" placeholder="" ng-model="memberCharge.currentCharge.code" required>
+                        <input class="form-control" placeholder="" ng-model="memberCharge.current.charge.code" required>
                     </div>
                 </div>-->
                     <!-- 优惠活动 -->
                     <!--<div class="form-group">
                     <label class="col-sm-3 control-label">优惠活动</label>
                     <div class=" col-sm-6">
-                        <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.classes" ng-model="memberCharge.currentCharge.class">
+                        <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.classes" ng-model="memberCharge.current.charge.class">
                     </select>
                     </div>
                 </div>-->
@@ -78,31 +41,28 @@
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">充值金额</label>
                         <div class="col-sm-6">
-                            <input class="form-control" placeholder="" ng-model="memberCharge.currentCharge.amount" required>
+                            <input class="form-control" type="number" ng-model="vm.current.charge.amount" ng-change="vm.total(vm.current)">
                         </div>
-                        <!--<label class="col-sm-3 help-block">实际消费金额</label>-->
                     </div>
                     <!-- 赠送金额 -->
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">赠送金额</label>
                         <div class="col-sm-6">
-                            <input class="form-control" placeholder="实际结算金额" ng-model="memberCharge.currentCharge.reward_amount" required>
+                            <input class="form-control" type="number" ng-model="vm.current.charge.reward_amount" ng-change="vm.total(vm.current)">
                         </div>
-                        <!--<label class="col-sm-3 help-block">折后总金额</label>-->
                     </div>
                     <!-- 充值合计 -->
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">充值合计</label>
                         <div class="col-sm-6">
-                            <input class="form-control" placeholder="根据会员等级计算" ng-model="memberCharge.currentCharge.reward_amount + memberCharge.currentCharge.amount" required>
+                            <input class="form-control" type="number" ng-model="vm.current.total" readonly>
                         </div>
-                        <!--<label class="col-sm-3 help-block">按照折后总金额计算</label>-->
                     </div>
                     <!-- 获得积分 -->
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">获得积分</label>
                         <div class="col-sm-6">
-                            <input class="form-control" placeholder="" ng-model="memberCharge.currentCharge.reward_points" required>
+                            <input class="form-control" ng-model="vm.current.charge.reward_points">
                         </div>
                     </div>
                     <!-- button -->
@@ -115,12 +75,12 @@
                     <!-- 备注 -->
                     <div class="form-group">
                         <label class="col-sm-3 control-label">备注</label>
-                        <div class="col-sm-6"><textarea class="form-control" rows="3" ng-model="memberCharge.currentCharge.remark"></textarea></div>
+                        <div class="col-sm-6"><textarea class="form-control" rows="3" ng-model="vm.current.charge.remark"></textarea></div>
                     </div>
                     <!-- button -->
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
-                            <button type="button" class="btn btn-primary " ng-disabled="!goodsRegisterForm.$valid" ng-click="goodsRegister.addGoods(goodsRegister.currentGoods)">结算</button>
+                            <button type="button" class="btn btn-primary " ng-disabled="!vm.current.member" ng-click="vm.charge(vm.current)">结算</button>
 
                         </div>
                     </div>
@@ -131,16 +91,3 @@
     </div>
 
 </div>
-
-
-
-<!--<section ng-controller="MemberChargeCtrl as memberCharge">
-        会员充值
-        <p>会员查询</p>
-        <p>memberCharge.currentCharge.order_code 订单编号 input readonly</p>
-        <p> memberCharge.currentCharge.amount 充值金额 input </p>
-        <p>memberCharge.currentCharge.reward_amount 赠送金额 input</p>
-        <p>memberCharge.currentCharge.reward_amount + memberCharge.currentCharge.amount 充值合计 readonly input</p>
-        <p>memberCharge.currentCharge.reward_points 获得积分 input </p>
-        <p>memberCharge.currentCharge.remark 备注 textarea</span>
-    </section>-->

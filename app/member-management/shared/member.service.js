@@ -18,7 +18,6 @@
         function checkPassword(password, confirmPassword) {
             if (password != confirmPassword &&
                 password !== '') {
-
                 return false;
             } else {
                 return true;

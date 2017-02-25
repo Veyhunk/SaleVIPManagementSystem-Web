@@ -5,16 +5,50 @@
         .module('app.shared')
         .factory('UtilityService', UtilityService);
 
-    UtilityService.$inject = ['$q'];
+    UtilityService.$inject = ['$q', '$rootScope'];
 
-    function UtilityService($q) {
+    function UtilityService($q, $rootScope) {
         let UtilityService = {
             getOrderCode: getOrderCode,
             getDatetime: getDatetime,
-            initPagination: initPagination
+            initPagination: initPagination,
+            showLoading: showLoading,
+            hideLoading: hideLoading,
+            getSelected: getSelected,
+            toggleItems: toggleItems
         };
 
         return UtilityService;
+
+        function showLoading() {
+            $rootScope.showLoading();
+        }
+
+        function hideLoading() {
+            $rootScope.hideLoading();
+        }
+
+        function toggleItems(items, state) {
+            items.forEach((item) => {
+                item.isChecked = state;
+            });
+        }
+        /**
+         * 
+         * 从列表中获取选中的项
+         * @param {Array[Object]} items
+         * @returns
+         */
+        function getSelected(items) {
+            let result = [];
+            items.forEach((item) => {
+                if (item.isChecked) {
+                    result.push(item);
+                }
+            });
+            return result;
+        }
+
 
         // 获取项目中所需要用到的订单编号
         function getOrderCode(type) {

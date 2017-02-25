@@ -5,9 +5,9 @@
         .module('app.page_template')
         .controller('PluginTestCtrl', PluginTestCtrl);
 
-    PluginTestCtrl.$inject = ['$scope', 'DictionaryService', 'LOADING_EVENT'];
+    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
 
-    function PluginTestCtrl($scope, DictionaryService, LOADING_EVENT) {
+    function PluginTestCtrl($scope, DictionaryService) {
         var vm = this;
 
         //商品测试单位
@@ -60,7 +60,7 @@
         ];
 
         vm.showLoading = function() {
-            $scope.$emit(LOADING_EVENT.show);
+            // $scope.$emit(LOADING_EVENT.show);
         }
 
     }

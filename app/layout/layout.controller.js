@@ -6,12 +6,12 @@
         .controller('LayoutCtrl', LayoutCtrl);
 
     LayoutCtrl.$inject = [
-        '$scope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService',
-        'AuthService', 'Version', 'LOADING_EVENT', '$timeout'
+        '$rootScope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService',
+        'AuthService', 'Version', '$timeout'
     ];
 
-    function LayoutCtrl($scope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
-        AuthService, Version, LOADING_EVENT, $timeout) {
+    function LayoutCtrl($rootScope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
+        AuthService, Version, $timeout) {
         /*----------  界面层资源  ----------*/
         var vm = this;
 
@@ -57,21 +57,19 @@
         function showLoading() {
             vm.contentLoading = true;
         }
+
+        // 挂载全局函数
+        $rootScope.showLoading = function() {
+            showLoading();
+        };
+
+        $rootScope.hideLoading = function() {
+            hideLoading();
+        };
         /*----------  监听区块  ----------*/
 
         // MARK：这是一个好方法么？
-        $scope.$on(LOADING_EVENT.show, e => {
 
-            e.stopPropagation();
-            e.preventDefault();
-            showLoading();
-        });
-
-        $scope.$on(LOADING_EVENT.hide, e => {
-            e.stopPropagation();
-            e.preventDefault();
-            hideLoading();
-        });
 
         function init() {
             // 初始化菜单

@@ -5,9 +5,9 @@
         .module('app.member_management')
         .controller('MemberListCtrl', MemberListCtrl);
 
-    MemberListCtrl.$inject = ['MemberModel', 'UtilityService', '$uibModal', 'LOADING_EVENT', 'Restangular', 'MemberService'];
+    MemberListCtrl.$inject = ['MemberModel', 'UtilityService', '$uibModal', 'Restangular', 'MemberService'];
 
-    function MemberListCtrl(MemberModel, UtilityService, $uibModal, LOADING_EVENT, Restangular, MemberService) {
+    function MemberListCtrl(MemberModel, UtilityService, $uibModal, Restangular, MemberService) {
         var vm = this;
         /*----------  界面层资源  ----------*/
         vm.pagination;
@@ -29,9 +29,7 @@
         /*----------  内部逻辑函数  ----------*/
 
         function toggleItems(items) {
-            items.forEach((item) => {
-                item.isChecked = vm.current.selectedAll;
-            });
+            utilityService.toggleItems(items, vm.current.selectedAll);
         }
         /**
          * 
@@ -40,7 +38,7 @@
          * @returns
          */
         function openEditModal(items) {
-            let selected = getSelected(items);
+            let selected = utilityService.getSelected(items);
             if (selected.length > 1) {
                 $uibModal.open({
                     templateUrl: 'app/shared/views/system-notice.tpl.html',
@@ -78,9 +76,9 @@
          * @param {any} item
          */
         function edit(item) {
-            showLoading();
+            utilityService.showLoading();
             memberModel.edit(item).then(result => {
-                hideLoading();
+                utilityService.hideLoading();
             });
         }
 
@@ -101,29 +99,8 @@
 
         /*----------  内部辅助函数  ----------*/
 
-        /**
-         * 
-         * 从列表中获取选中的会员
-         * @param {Array[Object]} items
-         * @returns
-         */
-        function getSelected(items) {
-            let result = [];
-            items.forEach((item) => {
-                if (item.isChecked) {
-                    result.push(item);
-                }
-            });
-            return result;
-        }
 
-        function showLoading() {
-            $scope.$emit(LOADING_EVENT.show);
-        }
 
-        function hideLoading() {
-            $scope.$emit(LOADING_EVENT.hide);
-        }
 
         function init() {
             vm.pagination = utilityService.initPagination();
