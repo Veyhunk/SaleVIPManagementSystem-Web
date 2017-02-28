@@ -5,7 +5,7 @@
         .module('app.configs', [])
         .config(['RestangularProvider', function(RestangularProvider) {
 
-            RestangularProvider.setBaseUrl('http://localhost:3000/API');
+            RestangularProvider.setBaseUrl('http://www.yuyanping.com/SaleVIPManagementSystem-Web/API');
 
             RestangularProvider.setDefaultHeaders({ 'Content-Type': 'application/json' });
 
