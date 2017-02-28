@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{vm.status.name}}会员等级</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <table class="table vertical-middle margin-0-auto">
+            <tbody>
+                <tr>
+                    <td>等级名称</td>
+                    <td><input class="form-control" placeholder="" ng-model="vm.level.name"></td>
+                    <td>积分率</td>
+                    <td><input class="form-control" placeholder="" ng-model="vm.level.point_rate"></td>
+                </tr>
+                <tr>
+                    <td>折扣率</td>
+                    <td><input class="form-control" placeholder="" ng-model="vm.level.discount_rate"></td>
+                    <td>是否可升级</td>
+                    <td><input class="form-control" type="checkbox" ng-model="vm.level.allow_upgrade" ng-true-value="1" ng-false-value="0"></td>
+                </tr>
+                <tr ng-show="vm.level.allow_upgrade">
+                    <td>所需积分</td>
+                    <td><input class="form-control" placeholder="升级到此等级所需要的积分" ng-model="vm.level.upgrade_point"></td>
+                    <td>下一等级</td>
+                    <td>
+                        <select class="form-control" ng-model="vm.level.next_level" ng-options="item.id as item.name for item in vm.list | filter:{name:'!散客'} ">
+                            <option value="">=====请选择=====</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        备注
+                    </td>
+                    <td colspan="3">
+
+                        <textarea class="form-control" rows="3" ng-model="vm.level.remark"></textarea>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary " ng-click="vm.status.save(vm.member)">保存</button>
+    <button type="button" class="btn btn-default " ng-click="$close()">取消</button>
+</div>
