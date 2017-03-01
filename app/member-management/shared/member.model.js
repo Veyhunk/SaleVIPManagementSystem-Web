@@ -15,7 +15,7 @@
         var MemberModel = {
             getLevels: getLevels,
             getMembers: getMembers,
-            createMember: createMember
+            createMember: createMember,
         };
 
         return MemberModel;

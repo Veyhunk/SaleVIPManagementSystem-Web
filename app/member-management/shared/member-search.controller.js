@@ -5,12 +5,14 @@
         .module('app.member_management')
         .controller('MemberSearchCtrl', MemberSearchCtrl);
 
-    MemberSearchCtrl.$inject = ['UtilityService', 'MemberModel', '$uibModal'];
+    MemberSearchCtrl.$inject = ['$scope', 'UtilityService', 'MemberModel', '$uibModal'];
 
-    function MemberSearchCtrl(UtilityService, MemberModel, $uibModal) {
+    function MemberSearchCtrl($scope, UtilityService, MemberModel, $uibModal) {
         var vm = this;
         /*----------  界面层资源  ----------*/
         vm.showMemberDetail = false;
+        vm.showCustomer = false;
+        vm.selectedCustomer = false;
 
         vm.current = {
             member: null,
@@ -18,11 +20,23 @@
         };
 
         vm.search = search;
+        vm.selectCustomer = selectCustomer;
         /*----------  内部变量  ----------*/
 
         var utilityService = UtilityService,
             memberModel = MemberModel;
         /*----------  内部逻辑函数  ----------*/
+
+        function selectCustomer(isSelectCustomer) {
+            debugger;
+            if (isSelectCustomer) {
+                selectMember(vm.customer);
+            } else {
+                selectMember({});
+                vm.showMemberDetail = false;
+            }
+        }
+
         function search(queryString) {
             utilityService.showLoading();
             memberModel.search(queryString).then(result => {
@@ -51,11 +65,19 @@
         /*----------  内部辅助函数  ----------*/
 
         function selectMember(member) {
+            debugger;
+            vm.current.member = member;
             $scope.$emit('MEMBER_SEARCH_EVENT', member);
         }
 
         function init() {
-
+            memberModel.getMembers().then(result => {
+                result = result.plain();
+                vm.customer = result[0];
+            });
+            if ($scope.$parent.showCustomer) {
+                vm.showCustomer = true;
+            }
         }
 
         init();

@@ -1,44 +1,5 @@
 <div ng-controller="PayForGoodsCtrl as vm">
-    <section class="padding">
-        <form class="form-horizontal" name="vmForm">
-            <!-- input -->
-            <div class="form-group ">
-                <label class="col-sm-3 control-label">会员检索</label>
-                <div class="col-sm-3">
-                    <input class="form-control" placeholder="请输入会员卡号、姓名、电话" ng-model="vm.current.memberQueryString" required>
-                </div>
-
-                <div class=" col-sm-6 ">
-
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
-                    <!--<button type="button" class="btn btn-default"><i class="fa fa-qrcode"></i> 扫码</button>-->
-                    <div class="checkbox pull-left padding" ng-if="vm.showCustomer">
-                        <label>
-                            <input type="checkbox"> 散客
-                        </label>
-                    </div>
-                    <!--<button type="button" class="btn btn-default"><i class="fa fa-user"></i> 散客</button>-->
-                    <!--<button type="button" class="btn btn-default"><i class="fa fa-refresh"></i> 重置</button>-->
-                </div>
-            </div>
-            <!-- input -->
-            <div class="form-group marggin-0">
-
-                <label class="col-sm-3 control-label">会员信息</label>
-                <div class="col-sm-9">
-                    <div class="content-page-body form-control-static">
-                        <ul class="list-inline marggin-0">
-                            <li>姓名<span class="text-info-hightlight">{{vm.current.nam}}</span></li>
-                            <li>等级<span class="text-info-hightlight">{{vm.current.level}}</span></li>
-                            <li>余额<span class="text-info-hightlight">{{vm.current.balance}}</span></li>
-                            <li>积分<span class="text-info-hightlight">{{vm.current.points}}</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-    </section>
+    <div ng-include="'app/member-management/shared/member-search.tpl.html'"></div>
     <div class="flexbox">
         <section class="box margin-top padding position-relative">
             <form class="form-horizontal" name="goodsRegisterForm">
@@ -65,15 +26,15 @@
                             <th>商品名称</th>
                             <th>销售价格</th>
                             <th>库存数量</th>
-                            <th>折后金额</th>
+                            <th>单位</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in vm.list">
+                        <tr ng-repeat="item in vm.list" ng-click="vm.addItem(item)">
                             <td>{{item.name}}</td>
                             <td>{{item.sale_price}}</td>
                             <td>{{item.inventories}}</td>
-                            <td>{{item.sale_price * item.discount_rate}}</td>
+                            <td>{{item.unit}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -92,7 +53,7 @@
                     <div class="form-group margin-left">
                         <label>消费日期</label>
                         <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
-                            <input type='text' class="form-control" ng-model="memberRegister.currentMember.birthday" />
+                            <input type='text' class="form-control" ng-model="vm.current.date" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -102,34 +63,34 @@
             </div>
             <hr>
             <div>
-                <table class="table">
+                <table class="table table-vertical-middle">
                     <thead>
                         <tr>
                             <th>商品名称</th>
                             <th>销售单价</th>
                             <th>商品数量</th>
                             <th>折后金额</th>
-                            <th>商品积分</th>
+                            <th>获得积分</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in vm.list">
+                        <tr ng-repeat="item in vm.current.order">
                             <td>{{item.name}}</td>
-                            <td>{{item.sale_price}}</td>
-                            <td>{{item.inventory}}</td>
-                            <td></td>
-                            <td></td>
+                            <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
+                            <td><input type="number" class="form-control" ng-model="item.quantities" ng-change="vm.changeQuantities(item)"></td>
+                            <td>{{item.sale_price * item.quantities * vm.current.member.level.discount_rate}}</td>
+                            <td>{{item.quantities*item.reward_points}}</td>
                             <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="text-center text-info">
+            <div class="text-center text-info" ng-show="vm.showAddItemNotice">
                 <b>请点击左侧商品列表，选择需要消费的商品！</b>
             </div>
             <div>
-                <table class="table">
+                <table class="table table-vertical-middle">
                     <colgroup>
                         <col width="100">
                         <col>
@@ -139,24 +100,40 @@
                     <tbody>
                         <tr>
                             <td>消费总数量</td>
-                            <td></td>
+                            <td>
+                                <span class="large-red-label">
+                                    {{vm.current.billing.quantities}}
+                                </span>
+                            </td>
                             <td>消费总金额</td>
-                            <td></td>
+                            <td>
+                                <span class="large-red-label">
+                                    {{vm.current.billing.price|number:2}}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>折后总金额</td>
-                            <td></td>
-                            <td>消费总积分</td>
-                            <td></td>
+                            <td>
+                                <span class="large-red-label">
+                                    {{vm.current.billing.discount_price|number:2}}
+                                </span>
+                            </td>
+                            <td>获得总积分</td>
+                            <td>
+                                <span class="large-red-label">
+                                    {{vm.current.billing.reward_points|number:2}}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>消费备注</td>
                             <td colspan="3">
-                                <textarea class="form-control" rows="3" ng-model="memberRegister.currentMember.remark"></textarea>
+                                <textarea class="form-control" rows="3" ng-model="vm.current.remark"></textarea>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4">
+                            <td colspan="4" class="text-right">
                                 <button class="btn btn-primary" ng-click="vm.pay()">结算</button>
                             </td>
                         </tr>

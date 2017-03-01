@@ -4,19 +4,20 @@
 </div>
 <div class="modal-body">
     <form novalidate>
-        <table class="table vertical-middle margin-0-auto">
+        <table class="table table-vertical-middle margin-0-auto">
             <tbody>
                 <tr>
                     <td>等级名称</td>
                     <td><input class="form-control" placeholder="" ng-model="vm.level.name"></td>
-                    <td>积分率</td>
-                    <td><input class="form-control" placeholder="" ng-model="vm.level.point_rate"></td>
-                </tr>
-                <tr>
                     <td>折扣率</td>
                     <td><input class="form-control" placeholder="" ng-model="vm.level.discount_rate"></td>
+                </tr>
+                <tr>
+
                     <td>是否可升级</td>
                     <td><input class="form-control" type="checkbox" ng-model="vm.level.allow_upgrade" ng-true-value="1" ng-false-value="0"></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr ng-show="vm.level.allow_upgrade">
                     <td>所需积分</td>

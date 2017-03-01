@@ -22,7 +22,6 @@
                         <th>序号</th>
                         <th> <input type="checkbox" class="margin-0" ng-model="vm.current.selectedAll" ng-click="vm.toggleItems(vm.list)"></th>
                         <th>等级名称</th>
-                        <th>积分率</th>
                         <th>折扣率</th>
                         <th>是否可升级</th>
                         <th>此等级所需积分</th>
@@ -34,7 +33,6 @@
                         <td>{{$index}}</td>
                         <th> <input type="checkbox" class="margin-0" ng-model="item.isChecked" ng-click="item.isChecked = !item.isChecked"></th>
                         <td>{{item.name}}</td>
-                        <td>{{item.point_rate}}</td>
                         <td>{{item.discount_rate}}</td>
                         <td>{{item.allow_upgrade?'是':'否'}}</td>
                         <td>{{item.upgrade_point}}</td>

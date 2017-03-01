@@ -59,3 +59,8 @@ $dimens-border-width: 0.1 * $dimens-dp;
     width: $width;
     height: $height;
 }
+
+@mixin overflow($x, $y) {
+    overflow-x: $x;
+    overflow-y: $y;
+}

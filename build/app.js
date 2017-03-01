@@ -1,51 +1,2921 @@
-"use strict";$(function(){moment.locale("zh-cn"),angular.bootstrap(document,["app"])}),function(t){t.fn.datetimepicker.dates["zh-CN"]={days:["星期日","星期一","星期二","星期三","星期四","星期五","星期六","星期日"],daysShort:["周日","周一","周二","周三","周四","周五","周六","周日"],daysMin:["日","一","二","三","四","五","六","日"],months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],monthsShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],today:"今天",suffix:[],meridiem:["上午","下午"]}}(jQuery);
-"use strict";!function(){angular.module("app",["restangular","ui.bootstrap","ui.tree","LocalStorageModule","app.layout","app.configs","app.authentication","app.shared","app.constants","app.member_management","app.goods_management","app.consumption_management","app.system_management","app.statistics_report","app.page_template"])}();
-"use strict";!function(){function t(t,i){t.state("login",{url:"/login",views:{root:{templateUrl:"app/authentication/login.html"}},resolve:{scripts:["LazyScript",function(t){return t.register(["assets/lib/md5/md5.js"])}]}})}angular.module("app.authentication",["ui.router"]).config(t),t.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function a(a,n){a.state("app.consumption_management",{name:"消费管理",url:"/consumption_management","abstract":!0}).state("app.consumption_management.pay_for_goods",{name:"商品消费",url:"/pay_for_goods",views:{"content@app":{templateUrl:"app/consumption-management/pay-for-goods/pay-for-goods.html"}}}).state("app.consumption_management.quick_pay",{name:"快速消费",url:"/quick_pay",views:{"content@app":{templateUrl:"app/consumption-management/quick-pay/quick-pay.html"}}}).state("app.consumption_management.record",{name:"消费记录",url:"/record",views:{"content@app":{templateUrl:"app/consumption-management/record/record.html"}}})}angular.module("app.consumption_management",["ui.router"]).config(a),a.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function e(e,t){e.state("app.goods_management",{name:"商品管理",url:"/goods_management","abstract":!0}).state("app.goods_management.register",{name:"商品登记",url:"/register",views:{"content@app":{templateUrl:"app/goods-management/goods-register/goods-register.html"}}}).state("app.goods_management.class",{name:"商品分类",url:"/class",views:{"content@app":{templateUrl:"app/goods-management/goods-class/goods-class.html"}}}).state("app.goods_management.list",{name:"商品列表",url:"/list",views:{"content@app":{templateUrl:"app/goods-management/goods-list/goods-list.html"}}}).state("app.goods_management.inventory",{name:"商品入库",url:"/inventory",views:{"content@app":{templateUrl:"app/goods-management/goods-inventory/goods-inventory.html"}}}).state("app.goods_management.inventory_list",{name:"库存列表",url:"/inventory_list",views:{"content@app":{templateUrl:"app/goods-management/inventory-list/inventory-list.html"}}})}angular.module("app.goods_management",["ui.router"]).config(e),e.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function t(t,e){t.state("app",{"abstract":!0,views:{root:{templateUrl:"app/layout/layout.html"}}}).state("app.home",{url:"/home",views:{"content@app":{templateUrl:"app/home/home.html"}}}),e.otherwise(function(t,e){e.path("/login")})}angular.module("app.layout",["ui.router"]).config(t),t.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function e(e,m){e.state("app.member_management",{name:"会员管理",url:"/member_management","abstract":!0}).state("app.member_management.register",{name:"会员登记",url:"/register",views:{"content@app":{templateUrl:"app/member-management/member-register/member-register.html"}}}).state("app.member_management.list",{name:"会员列表",url:"/list",views:{"content@app":{templateUrl:"app/member-management/member-list/member-list.html"}}}).state("app.member_management.charge",{name:"会员充值",url:"/charge",views:{"content@app":{templateUrl:"app/member-management/member-charge/member-charge.html"}}}).state("app.member_management.level",{name:"会员等级",url:"/level",views:{"content@app":{templateUrl:"app/member-management/member-level/member-level.html"}}})}angular.module("app.member_management",["ui.router"]).config(e),e.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function e(e,t){e.state("app.page_template",{name:"系统管理",url:"/page_template","abstract":!0}).state("app.page_template.form",{name:"表单",url:"/form",views:{"content@app":{templateUrl:"app/page-template/form/form.html"}}}).state("app.page_template.modal",{name:"模态框",url:"/modal",views:{"content@app":{templateUrl:"app/page-template/modal/modal.html"}}}).state("app.page_template.table",{name:"表格",url:"/table",views:{"content@app":{templateUrl:"app/page-template/table/table.html"}}}).state("app.page_template.text",{name:"文本",url:"/text",views:{"content@app":{templateUrl:"app/page-template/text/text.html"}}}).state("app.page_template.tree",{name:"树",url:"/tree",views:{"content@app":{templateUrl:"app/page-template/tree/tree.html"}}}).state("app.page_template.full_view",{name:"配色",url:"/full_view",views:{"content@app":{templateUrl:"app/page-template/full-view/full-view.html"}}}).state("app.page_template.palette",{name:"调色板",url:"/palette",views:{"content@app":{templateUrl:"app/page-template/palette/palette.html"}}}).state("app.page_template.plugin_test",{name:" 插件测试",url:"/plugin_test",views:{"content@app":{templateUrl:"app/page-template/plugin-test/plugin-test.html"}}})}angular.module("app.page_template",["ui.router"]).config(e),e.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){angular.module("app.shared",[])}();
-"use strict";!function(){function t(t,e){t.state("app.statistics_report",{name:"系统管理",url:"/statistics_report","abstract":!0}).state("app.statistics_report.member_consumption",{name:"会员消费报表",url:"/member_consumption",views:{"content@app":{templateUrl:"app/statistics-report/member-consumption/statistics-member-consumption.html"}}}).state("app.statistics_report.member_charge",{name:"会员充值报表 ",url:"/member_charge",views:{"content@app":{templateUrl:"app/statistics-report/member-charge/statistics-member-charge.html"}}})}angular.module("app.statistics_report",["ui.router"]).config(t),t.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(){function e(e,t){e.state("app.system_management",{name:"系统管理",url:"/system_management","abstract":!0}).state("app.system_management.user",{name:"用户管理",url:"/user",views:{"content@app":{templateUrl:"app/system-management/user/user.html"}}}).state("app.system_management.role",{name:"角色管理",url:"/role",views:{"content@app":{templateUrl:"app/system-management/role/role.html"}}})}angular.module("app.system_management",["ui.router"]).config(e),e.$inject=["$stateProvider","$urlRouterProvider"]}();
-"use strict";!function(e){e.module("app.configs",[]).config(["RestangularProvider",function(t){t.setBaseUrl("http://www.yuyanping.com/SaleVIPManagementSystem-Web/API"),t.setDefaultHeaders({"Content-Type":"application/json"}),t.addResponseInterceptor(function(t,n,i,r,a,o){var s=t;return"getList"===n&&e.isDefined(t.data)&&(s=t.data,e.isDefined(t.records)&&(s.records=t.records)),s})}]).run(["ProfileService","AuthService",function(e,t){e.initProfile(),t.initAuthorizationData()}])}(angular);
-"use strict";!function(){angular.module("app.constants",[]).constant("Version","1.0.1")}();
-"use strict";!function(){function e(e,t,i,n,o){function r(t){var n=i.defer();return e.all("login.json").customGET().then(function(e){e=e.plain(),e&&(f.access_token=e.access_token,f.expires_in=e.expires_in,o.set(l,f),u.setProfile(e.profile),n.resolve())},function(e){n.reject(e)}),n.promise}function a(){u.removeProfile(),o.remove(l),t.go("login")}function c(){if(f)return f.access_token}function s(){var e=o.get(l);e&&(f=e)}this.logOut=a,this.login=r,this.getToken=c,this.initAuthorizationData=s;var u=n,l="authorizationData",f={}}angular.module("app.authentication").service("AuthService",e),e.$inject=["Restangular","$state","$q","ProfileService","localStorageService"]}();
-"use strict";!function(){function n(n,t){function o(n){var o=angular.copy(n);o.password=CryptoJS.MD5(o.password).toString(),i.login(o).then(function(n){t.go("app.home")},function(n){})}var a=this;a.loginData={username:"",password:""},a.signIn=o;var i=n}angular.module("app.authentication").controller("LoginCtrl",n),n.$inject=["AuthService","$state"]}();
-"use strict";!function(){function e(e){function r(){return f.role}function n(){return f.user}function t(){return f.permissions}function i(r){f=r,e.set(l,f)}function o(){return f}function u(){f={},e.remove(l)}function c(){var r=e.get(l);r&&(f=r)}var f={},l="profile",s={getProfile:o,setProfile:i,removeProfile:u,getRole:r,getUser:n,getPermissions:t,initProfile:c};return s}angular.module("app.authentication").factory("ProfileService",e),e.$inject=["localStorageService"]}();
-"use strict";!function(){function n(n,t,o,e,u,i,r,s,c){function a(n){var t=v.resolveMenus(n);M.mainMenus=t.mainMenus,M.shortcutMenus=t.shortcutMenus}function l(){M.contentLoading=!1}function f(){M.contentLoading=!0}function g(){var n=d.getPermissions();a(n),M.user=d.getUser(),f(),c(function(){l()},2e3)}var M=this;M.isShortcutMenusMini=!1,M.state=t,M.logOut=r.logOut,M.Version=s,M.user=null,M.mainMenus=null,M.shortcutMenus=null,M.contentLoading=!1;var v=e,d=i;n.showLoading=function(){f()},n.hideLoading=function(){l()},g()}angular.module("app.layout").controller("LayoutCtrl",n),n.$inject=["$rootScope","$state","LayoutModel","LayoutService","DictionaryService","ProfileService","AuthService","Version","$timeout"]}();
-"use strict";!function(){function t(t){function n(){return t.all("permissions.json").getList()}var e={getPermissions:n};return e}angular.module("app.layout").factory("LayoutModel",t),t.$inject=["Restangular"]}();
-"use strict";!function(){function n(){function n(n){var r=n,t={mainMenus:[],shortcutMenus:[]},e={},u={};return r.forEach(function(n){return n.parent?(e[n.parent]&&("undefined"==typeof e[n.parent].children&&(e[n.parent].children=[]),e[n.parent].children.push(n)),void(e[n.id]=n)):(u[n.id]=n,void(e[n.id]=n))}),_.forIn(e,function(n,r){if(n.is_shortcut){var u=angular.copy(n);u.sort=u.sort+e[u.parent].sort,t.shortcutMenus.push(u)}}),_.forIn(u,function(n,r){t.mainMenus.push(n)}),t}this.resolveMenus=n}angular.module("app.layout").service("LayoutService",n),n.$inject=[]}();
-"use strict";!function(){function n(n,t,o){function e(){o.open({templateUrl:"app/shared/views/system-notice.tpl.html",size:"sm",controller:["$scope",function(n){n.title="系统提示",n.content="bottom"}]})}function i(){l.getOrderCode("GS").then(function(n){a.current.code=n})}function c(n){u.getGoods(n).then(function(n){a.list=n})}function r(){a.pagination=l.initPagination(),c(a.pagination.configs),i()}var a=this;a.pay=e,a.current={code:null,memberQueryString:""};var l=n,u=t;r()}angular.module("app.consumption_management").controller("PayForGoodsCtrl",n),n.$inject=["UtilityService","GoodsModel","$uibModal"]}();
-"use strict";!function(){function n(n){function t(){r.getOrderCode("KS").then(function(n){o.order.code=n})}function e(){t()}var o=this;o.order={code:""};var r=n;e()}angular.module("app.consumption_management").controller("QuickPayCtrl",n),n.$inject=["UtilityService"]}();
-"use strict";!function(){function n(n,i){function t(n){c.getExpenses(n).then(function(n){a.list=n.plain(),a.pagination.records=n.records},function(n){})}function o(){a.pagination=e.initPagination(),t(a.pagination.configs)}var a=this;a.pagination,a.list;var e=n,c=i;o()}angular.module("app.consumption_management").controller("ConsumptionRecordCtrl",n),n.$inject=["UtilityService","ConsumptionModel"]}();
-"use strict";!function(){function n(n){function e(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return t.getList(n)}var t=n.all("expenses.json"),o={getExpenses:e};return o}angular.module("app.consumption_management").factory("ConsumptionModel",n),n.$inject=["Restangular"]}();
-"use strict";!function(){function n(n,t){function o(){var n={store:null,operator:null,name:"",parent:null,remark:""};return n}function s(){r.getClasses().then(function(n){l.list=n})}function e(){l.currentGoodsClass=o(),s()}var l=this;l.selectedGoodsClass,l.currentGoodsClass,l.list;var r=t;e()}angular.module("app.goods_management").controller("GoodsClassCtrl",n),n.$inject=["UtilityService","GoodsModel"]}();
-"use strict";!function(){function n(n){function t(){}t()}angular.module("app.goods_management").controller("GoodsInventoryCtrl",n),n.$inject=["UtilityService"]}();
-"use strict";!function(){function n(n,i){function t(n){e.getGoods(n).then(function(n){a.list=n})}function o(){a.pagination=s.initPagination(),t(a.pagination.configs)}var a=this;a.pagination,a.list;var e=n,s=i;o()}angular.module("app.goods_management").controller("GoodsListCtrl",n),n.$inject=["GoodsModel","UtilityService"]}();
-"use strict";!function(){function t(t,e,n,o){function r(t){}function i(t){l.currentGoods.short_name=n("capitalChinese")(t)}function s(){l.units=_.toArray(g.get("goods.units"))}function a(){var t=g.get("goods.types"),e=void 0,n=[];for(e in t){var o={};o.id=e,o.name=t[e],n.push(o)}l.types=n,l.currentGoods.type=n[0].id}function c(){p.getClasses().then(function(t){t=t.plain(),l.classes=t})}function u(){var t={operator:1,store:1,"class":1,code:"",name:"",portrait:"",short_name:"",unit:"",type:1,exchange_points:"",discount_rate:"",lowest_discount_rate:"",inventory:0,reward_points:0,entry_price:0,sale_price:0,remark:""};return t}function d(){s(),a(),c(),f.getDatetime().then(function(t){l.currentGoods.code=t})}var l=this;l.units,l.classes,l.types,l.currentGoods=u(),l.addGoods=r,l.resolveCapitalChinese=i;var p=t,f=o,g=e;d()}angular.module("app.goods_management").controller("GoodsRegisterCtrl",t),t.$inject=["GoodsModel","DictionaryService","$filter","UtilityService"]}();
-"use strict";!function(){function n(n){function t(){}t()}angular.module("app.goods_management").controller("InventoryListCtrl",n),n.$inject=["UtilityService"]}();
-"use strict";!function(){function o(o){function t(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return s.getList(o)}function n(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return e.getList(o)}var e=o.all("goods.json"),s=o.all("goods_classes.json"),a={getGoods:n,getClasses:t};return a}angular.module("app.goods_management").factory("GoodsModel",o),o.$inject=["Restangular"]}();
-"use strict";!function(){function e(e,r,t,n,o){function a(e){}function u(e){e.total=e.charge.reward_amount+e.charge.amount}function c(){var e={member:null,order_code:"",payment_record:null,store:null,operator:null,type:1,amount:0,unit:1,reward_points:0,reward_amount:0,items:null,remark:""};return e}function l(e){d.getOrderCode("CZ").then(function(r){e.order_code=r})}function i(){m.current.charge=c(),l(m.current.charge)}var m=this;m.currentCharge,m.showMemberDetail=!1,m.current={member:null,total:0},m.total=u,m.charge=a;var d=r;t.profile;e.$on("MEMBER_SEARCH_EVENT",function(e,r){e.preventDefault(),e.stopPropagation(),m.current.member=r}),i()}angular.module("app.member_management").controller("MemberChargeCtrl",e),e.$inject=["$scope","UtilityService","ProfileService","MemberModel","$uibModal"]}();
-"use strict";!function(){function e(e,t,n,l){function o(e){}function r(e){}function a(e){}function m(e){n.open({templateUrl:"app/member-management/member-level/remove.modal.html",controller:["$scope",function(t){var n=f.getSelected(e),l={};l.list=n,l.remove=a,t.vm=l}]})}function i(e){f.toggleItems(e,d.current.selectedAll)}function c(e){var t=f.getSelected(e);if(t.length>1)return void n.open({templateUrl:"app/shared/views/system-notice.tpl.html",size:"sm",controller:["$scope",function(e){e.title="系统提示",e.content="同时只能选中一个会员等级进行编辑！"}]});var l=d;n.open({templateUrl:"app/member-management/member-level/create-edit.modal.html",controller:["$scope",function(e){var n=b.copy(t[0]),o={};o.level=n,o.status=h.edit,o.list=l.list,e.vm=o}]})}function u(){var e=d;n.open({templateUrl:"app/member-management/member-level/create-edit.modal.html",controller:["$scope",function(t){var n={};n.level=s(),n.list=e.list,n.status=h.create,t.vm=n}]})}function s(){var e={store:null,operator:null,name:"",discount_rate:0,point_rate:0,allow_upgrade:0,upgrade_point:null,next_level:null,remark:"备注@string"};return e}function p(){g.getLevels().then(function(e){d.list=e},function(e){})}function v(){p()}var d=this;d.list,d.current={selectedAll:!1},d.toggleItems=i,d.openCreateModal=u,d.openEditModal=c,d.openRemoveModal=m;var f=e,g=t,b=l,h={edit:{name:"编辑",save:o},create:{name:"添加",save:r}};v()}angular.module("app.member_management").controller("MemberLevelCtrl",e),e.$inject=["UtilityService","MemberModel","$uibModal","Restangular"]}();
-"use strict";!function(){function e(e,t,n,i,o){function l(e){v.toggleItems(e,c.current.selectedAll)}function a(e){var t=v.getSelected(e);return t.length>1?void n.open({templateUrl:"app/shared/views/system-notice.tpl.html",size:"sm",controller:["$scope",function(e){e.title="系统提示",e.content="同时只能选中一个会员进行编辑！"}]}):void n.open({templateUrl:"app/member-management/member-list/edit.modal.html",size:"lg",controller:["$scope",function(e){var n=p.copy(t[0]);e.vm={},e.vm.member=n,e.vm.confirmPaymentPassword=n.payment_password,e.vm.hidePaymentPasswordNotice=!0,e.vm.edit=r,e.vm.levelList=c.levelList,e.vm.checkPaymentPassword=function(t,n){e.vm.hidePaymentPasswordNotice=u.checkPassword(t,n)}}]})}function r(e){v.showLoading(),d.edit(e).then(function(e){v.hideLoading()})}function m(e){var t=angular.copy(e);t.fields="operator,level",d.getMembers(t).then(function(e){c.list=e})}function s(){c.pagination=v.initPagination(),m(c.pagination),d.getLevels().then(function(e){c.levelList=e})}var c=this;c.pagination,c.list,c.current={selectedAll:!1},c.toggleItems=l,c.openEditModal=a;var d=e,v=t,p=i,u=o;s()}angular.module("app.member_management").controller("MemberListCtrl",e),e.$inject=["MemberModel","UtilityService","$uibModal","Restangular","MemberService"]}();
-"use strict";!function(){function e(e,t,r,n){function i(e){}function o(e){e&&(e.$setPristine(),e.$setUntouched()),m()}function a(e,t){l.hidePaymentPasswordNotice=f.checkPassword(e,t)}function c(){var e={store:"",operator:0,level:1,code:"",portrait:"",payment_password:"",balance:0,points:0,enroll_date:moment().format("YYYY-MM-DD"),expire_date:"2999-12-12",expenditure:0,state:1,name:"",identity:"",contact:"",birthday:"1991-06-26",sex:1,address:"",remark:""};return e}function s(){u.getLevels().then(function(e){e=e.plain(),l.current.member.level=e[1].id,l.levelList=e})}function m(){l.hidePaymentPasswordNotice=!0,l.confirmPaymentPassword="",l.current.member=c(),l.current.member.level=l.levelList[1].id}function d(){s()}var l=this;l.hidePaymentPasswordNotice=!0,l.current={member:c()},l.create=i,l.checkPaymentPassword=a,l.resetForm=o;var u=t,f=r;d()}angular.module("app.member_management").controller("MemberRegisterCtrl",e),e.$inject=["ProfileService","MemberModel","MemberService","UtilityService"]}();
-"use strict";!function(){function e(e,n,t){function r(e){a.showLoading(),c.search(e).then(function(e){return e=e.plain(),a.hideLoading(),e.length<=1?i(e):void t.open({templateUrl:"app/member-management/shared/member-search-list.modal.html",size:"lg",controller:["$scope",function(n){n.list=e,n.select=function(e){i(e)}}]})})}function i(e){$scope.$emit("MEMBER_SEARCH_EVENT",e)}function l(){}var o=this;o.showMemberDetail=!1,o.current={member:null,charge:null},o.search=r;var a=e,c=n;l()}angular.module("app.member_management").controller("MemberSearchCtrl",e),e.$inject=["UtilityService","MemberModel","$uibModal"]}();
-"use strict";!function(){function e(e,t){function n(e){return a.post(e)}function r(e){return a.getList(e)}function u(){arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";return l.getList()}var a=e.all("members.json"),l=e.all("levels.json"),o={getLevels:u,getMembers:r,createMember:n};return o}angular.module("app.member_management").factory("MemberModel",e),e.$inject=["Restangular","$q"]}();
-"use strict";!function(){function e(){function e(e,n){return e==n||""===e}var n={checkPassword:e};return n}angular.module("app.member_management").factory("MemberService",e),e.inject=[]}();
-"use strict";!function(){function e(e,t){var o=this;o.goodsUnits=_.toArray(t.get("goods.units")),o.treeData=[{id:1,title:"node1",nodes:[{id:11,title:"node1.1",nodes:[{id:111,title:"node1.1.1",nodes:[]}]},{id:12,title:"node1.2",nodes:[]}]},{id:2,title:"node2",nodrop:!0,nodes:[{id:21,title:"node2.1",nodes:[]},{id:22,title:"node2.2",nodes:[]}]},{id:3,title:"node3",nodes:[{id:31,title:"node3.1",nodes:[]}]}],o.showLoading=function(){}}angular.module("app.page_template").controller("PluginTestCtrl",e),e.$inject=["$scope","DictionaryService"]}();
-"use strict";!function(){function e(e,d){e.students=[{Name:"小李",Id:"201401201",Grade:"计算机技术"},{Name:"李磊",Id:"201401202",Grade:"计算机技术"},{Name:"夏津",Id:"201401203",Grade:"计算机技术"},{Name:"杭州",Id:"201401204",Grade:"计算机技术"}],e.addStudent=function(){e.students.push({Name:e.newName,Id:e.newId,Grade:e.newGrade}),e.newName="",e.newId="",e.newGrade=""},e.deleteStudent=function(d){e.students.splice(e.students.indexOf(d),1)}}angular.module("app.page_template").controller("FormController",e),e.$inject=["$scope","$sce"]}();
-"use strict";!function(){function e(){function e(e,t,i){var r={};e.datetimePickerOptions&&(r=e.datetimePickerOptions),r=angular.extend({autoclose:!0,language:"zh-CN",pickerPosition:"bottom-right"},r),t.datetimepicker("remove"),t.datetimepicker(r)}var t={link:e,restrict:"A",scope:{datetimePickerOptions:"="}};return t}angular.module("app.shared").directive("datetimePicker",e),e.$inject=[]}();
-"use strict";!function(a){function i(){function i(i,n,d){var t={template:1},s=a.element("<div></div>");s.append(e[t.template]),s.addClass("loading"),n.css("position","relative"),n.append(s),i.$watch("loading",function(i,e){a.isDefined(i)&&(i?s.show():s.hide())})}var n={link:i,restrict:"A",scope:{loading:"="}};return n}a.module("app.shared").directive("loading",i),i.$inject=[];var e={1:'<div class="loading-container"><div class="loader-container"><span class="loader loader-quart"></span><p>加载中...</p></div></div>'}}(angular);
-"use strict";function _defineProperty(Y,Z,L){return Z in Y?Object.defineProperty(Y,Z,{value:L,enumerable:!0,configurable:!0,writable:!0}):Y[Z]=L,Y}!function(){function Y(){function Y(Y){if("string"!=typeof Y)throw new Error((-1),"函数makePy需要字符串类型参数!");for(var X=new Array,J=0,S=Y.length;J<S;J++){var C=Y.charAt(J);X.push(Z(C))}return L(X)}function Z(Y){var Z=Y.charCodeAt(0);return Z>40869||Z<19968?Y:C[Z]?C[Z]:S.charAt(Z-19968)}function L(Y){for(var Z=[""],L=0,X=Y.length;L<X;L++){var J=Y[L],S=J.length;if(1==S)for(var C=0;C<Z.length;C++)Z[C]+=J;else{var Q=Z.slice(0);for(Z=[],C=0;C<S;C++){for(var P=Q.slice(0),e=0;e<P.length;e++)P[e]+=J.charAt(C);Z=Z.concat(P)}}}return Z}function X(Z){if(Z)return Y(Z)[0]||""}var J,S="YDYQSXMWZSSXJBYMGCCZQPSSQBYCDSCDQLDYLYBSSJGYZZJJFKCCLZDHWDWZJLJPFYYNWJJTMYHZWZHFLZPPQHGSCYYYNJQYXXGJHHSDSJNKKTMOMLCRXYPSNQSECCQZGGLLYJLMYZZSECYKYYHQWJSSGGYXYZYJWWKDJHYCHMYXJTLXJYQBYXZLDWRDJRWYSRLDZJPCBZJJBRCFTLECZSTZFXXZHTRQHYBDLYCZSSYMMRFMYQZPWWJJYFCRWFDFZQPYDDWYXKYJAWJFFXYPSFTZYHHYZYSWCJYXSCLCXXWZZXNBGNNXBXLZSZSBSGPYSYZDHMDZBQBZCWDZZYYTZHBTSYYBZGNTNXQYWQSKBPHHLXGYBFMJEBJHHGQTJCYSXSTKZHLYCKGLYSMZXYALMELDCCXGZYRJXSDLTYZCQKCNNJWHJTZZCQLJSTSTBNXBTYXCEQXGKWJYFLZQLYHYXSPSFXLMPBYSXXXYDJCZYLLLSJXFHJXPJBTFFYABYXBHZZBJYZLWLCZGGBTSSMDTJZXPTHYQTGLJSCQFZKJZJQNLZWLSLHDZBWJNCJZYZSQQYCQYRZCJJWYBRTWPYFTWEXCSKDZCTBZHYZZYYJXZCFFZZMJYXXSDZZOTTBZLQWFCKSZSXFYRLNYJMBDTHJXSQQCCSBXYYTSYFBXDZTGBCNSLCYZZPSAZYZZSCJCSHZQYDXLBPJLLMQXTYDZXSQJTZPXLCGLQTZWJBHCTSYJSFXYEJJTLBGXSXJMYJQQPFZASYJNTYDJXKJCDJSZCBARTDCLYJQMWNQNCLLLKBYBZZSYHQQLTWLCCXTXLLZNTYLNEWYZYXCZXXGRKRMTCNDNJTSYYSSDQDGHSDBJGHRWRQLYBGLXHLGTGXBQJDZPYJSJYJCTMRNYMGRZJCZGJMZMGXMPRYXKJNYMSGMZJYMKMFXMLDTGFBHCJHKYLPFMDXLQJJSMTQGZSJLQDLDGJYCALCMZCSDJLLNXDJFFFFJCZFMZFFPFKHKGDPSXKTACJDHHZDDCRRCFQYJKQCCWJDXHWJLYLLZGCFCQDSMLZPBJJPLSBCJGGDCKKDEZSQCCKJGCGKDJTJDLZYCXKLQSCGJCLTFPCQCZGWPJDQYZJJBYJHSJDZWGFSJGZKQCCZLLPSPKJGQJHZZLJPLGJGJJTHJJYJZCZMLZLYQBGJWMLJKXZDZNJQSYZMLJLLJKYWXMKJLHSKJGBMCLYYMKXJQLBMLLKMDXXKWYXYSLMLPSJQQJQXYXFJTJDXMXXLLCXQBSYJBGWYMBGGBCYXPJYGPEPFGDJGBHBNSQJYZJKJKHXQFGQZKFHYGKHDKLLSDJQXPQYKYBNQSXQNSZSWHBSXWHXWBZZXDMNSJBSBKBBZKLYLXGWXDRWYQZMYWSJQLCJXXJXKJEQXSCYETLZHLYYYSDZPAQYZCMTLSHTZCFYZYXYLJSDCJQAGYSLCQLYYYSHMRQQKLDXZSCSSSYDYCJYSFSJBFRSSZQSBXXPXJYSDRCKGJLGDKZJZBDKTCSYQPYHSTCLDJDHMXMCGXYZHJDDTMHLTXZXYLYMOHYJCLTYFBQQXPFBDFHHTKSQHZYYWCNXXCRWHOWGYJLEGWDQCWGFJYCSNTMYTOLBYGWQWESJPWNMLRYDZSZTXYQPZGCWXHNGPYXSHMYQJXZTDPPBFYHZHTJYFDZWKGKZBLDNTSXHQEEGZZYLZMMZYJZGXZXKHKSTXNXXWYLYAPSTHXDWHZYMPXAGKYDXBHNHXKDPJNMYHYLPMGOCSLNZHKXXLPZZLBMLSFBHHGYGYYGGBHSCYAQTYWLXTZQCEZYDQDQMMHTKLLSZHLSJZWFYHQSWSCWLQAZYNYTLSXTHAZNKZZSZZLAXXZWWCTGQQTDDYZTCCHYQZFLXPSLZYGPZSZNGLNDQTBDLXGTCTAJDKYWNSYZLJHHZZCWNYYZYWMHYCHHYXHJKZWSXHZYXLYSKQYSPSLYZWMYPPKBYGLKZHTYXAXQSYSHXASMCHKDSCRSWJPWXSGZJLWWSCHSJHSQNHCSEGNDAQTBAALZZMSSTDQJCJKTSCJAXPLGGXHHGXXZCXPDMMHLDGTYBYSJMXHMRCPXXJZCKZXSHMLQXXTTHXWZFKHCCZDYTCJYXQHLXDHYPJQXYLSYYDZOZJNYXQEZYSQYAYXWYPDGXDDXSPPYZNDLTWRHXYDXZZJHTCXMCZLHPYYYYMHZLLHNXMYLLLMDCPPXHMXDKYCYRDLTXJCHHZZXZLCCLYLNZSHZJZZLNNRLWHYQSNJHXYNTTTKYJPYCHHYEGKCTTWLGQRLGGTGTYGYHPYHYLQYQGCWYQKPYYYTTTTLHYHLLTYTTSPLKYZXGZWGPYDSSZZDQXSKCQNMJJZZBXYQMJRTFFBTKHZKBXLJJKDXJTLBWFZPPTKQTZTGPDGNTPJYFALQMKGXBDCLZFHZCLLLLADPMXDJHLCCLGYHDZFGYDDGCYYFGYDXKSSEBDHYKDKDKHNAXXYBPBYYHXZQGAFFQYJXDMLJCSQZLLPCHBSXGJYNDYBYQSPZWJLZKSDDTACTBXZDYZYPJZQSJNKKTKNJDJGYYPGTLFYQKASDNTCYHBLWDZHBBYDWJRYGKZYHEYYFJMSDTYFZJJHGCXPLXHLDWXXJKYTCYKSSSMTWCTTQZLPBSZDZWZXGZAGYKTYWXLHLSPBCLLOQMMZSSLCMBJCSZZKYDCZJGQQDSMCYTZQQLWZQZXSSFPTTFQMDDZDSHDTDWFHTDYZJYQJQKYPBDJYYXTLJHDRQXXXHAYDHRJLKLYTWHLLRLLRCXYLBWSRSZZSYMKZZHHKYHXKSMDSYDYCJPBZBSQLFCXXXNXKXWYWSDZYQOGGQMMYHCDZTTFJYYBGSTTTYBYKJDHKYXBELHTYPJQNFXFDYKZHQKZBYJTZBXHFDXKDASWTAWAJLDYJSFHBLDNNTNQJTJNCHXFJSRFWHZFMDRYJYJWZPDJKZYJYMPCYZNYNXFBYTFYFWYGDBNZZZDNYTXZEMMQBSQEHXFZMBMFLZZSRXYMJGSXWZJSPRYDJSJGXHJJGLJJYNZZJXHGXKYMLPYYYCXYTWQZSWHWLYRJLPXSLSXMFSWWKLCTNXNYNPSJSZHDZEPTXMYYWXYYSYWLXJQZQXZDCLEEELMCPJPCLWBXSQHFWWTFFJTNQJHJQDXHWLBYZNFJLALKYYJLDXHHYCSTYYWNRJYXYWTRMDRQHWQCMFJDYZMHMYYXJWMYZQZXTLMRSPWWCHAQBXYGZYPXYYRRCLMPYMGKSJSZYSRMYJSNXTPLNBAPPYPYLXYYZKYNLDZYJZCZNNLMZHHARQMPGWQTZMXXMLLHGDZXYHXKYXYCJMFFYYHJFSBSSQLXXNDYCANNMTCJCYPRRNYTYQNYYMBMSXNDLYLYSLJRLXYSXQMLLYZLZJJJKYZZCSFBZXXMSTBJGNXYZHLXNMCWSCYZYFZLXBRNNNYLBNRTGZQYSATSWRYHYJZMZDHZGZDWYBSSCSKXSYHYTXXGCQGXZZSHYXJSCRHMKKBXCZJYJYMKQHZJFNBHMQHYSNJNZYBKNQMCLGQHWLZNZSWXKHLJHYYBQLBFCDSXDLDSPFZPSKJYZWZXZDDXJSMMEGJSCSSMGCLXXKYYYLNYPWWWGYDKZJGGGZGGSYCKNJWNJPCXBJJTQTJWDSSPJXZXNZXUMELPXFSXTLLXCLJXJJLJZXCTPSWXLYDHLYQRWHSYCSQYYBYAYWJJJQFWQCQQCJQGXALDBZZYJGKGXPLTZYFXJLTPADKYQHPMATLCPDCKBMTXYBHKLENXDLEEGQDYMSAWHZMLJTWYGXLYQZLJEEYYBQQFFNLYXRDSCTGJGXYYNKLLYQKCCTLHJLQMKKZGCYYGLLLJDZGYDHZWXPYSJBZKDZGYZZHYWYFQYTYZSZYEZZLYMHJJHTSMQWYZLKYYWZCSRKQYTLTDXWCTYJKLWSQZWBDCQYNCJSRSZJLKCDCDTLZZZACQQZZDDXYPLXZBQJYLZLLLQDDZQJYJYJZYXNYYYNYJXKXDAZWYRDLJYYYRJLXLLDYXJCYWYWNQCCLDDNYYYNYCKCZHXXCCLGZQJGKWPPCQQJYSBZZXYJSQPXJPZBSBDSFNSFPZXHDWZTDWPPTFLZZBZDMYYPQJRSDZSQZSQXBDGCPZSWDWCSQZGMDHZXMWWFYBPDGPHTMJTHZSMMBGZMBZJCFZWFZBBZMQCFMBDMCJXLGPNJBBXGYHYYJGPTZGZMQBQTCGYXJXLWZKYDPDYMGCFTPFXYZTZXDZXTGKMTYBBCLBJASKYTSSQYYMSZXFJEWLXLLSZBQJJJAKLYLXLYCCTSXMCWFKKKBSXLLLLJYXTYLTJYYTDPJHNHNNKBYQNFQYYZBYYESSESSGDYHFHWTCJBSDZZTFDMXHCNJZYMQWSRYJDZJQPDQBBSTJGGFBKJBXTGQHNGWJXJGDLLTHZHHYYYYYYSXWTYYYCCBDBPYPZYCCZYJPZYWCBDLFWZCWJDXXHYHLHWZZXJTCZLCDPXUJCZZZLYXJJTXPHFXWPYWXZPTDZZBDZCYHJHMLXBQXSBYLRDTGJRRCTTTHYTCZWMXFYTWWZCWJWXJYWCSKYBZSCCTZQNHXNWXXKHKFHTSWOCCJYBCMPZZYKBNNZPBZHHZDLSYDDYTYFJPXYNGFXBYQXCBHXCPSXTYZDMKYSNXSXLHKMZXLYHDHKWHXXSSKQYHHCJYXGLHZXCSNHEKDTGZXQYPKDHEXTYKCNYMYYYPKQYYYKXZLTHJQTBYQHXBMYHSQCKWWYLLHCYYLNNEQXQWMCFBDCCMLJGGXDQKTLXKGNQCDGZJWYJJLYHHQTTTNWCHMXCXWHWSZJYDJCCDBQCDGDNYXZTHCQRXCBHZTQCBXWGQWYYBXHMBYMYQTYEXMQKYAQYRGYZSLFYKKQHYSSQYSHJGJCNXKZYCXSBXYXHYYLSTYCXQTHYSMGSCPMMGCCCCCMTZTASMGQZJHKLOSQYLSWTMXSYQKDZLJQQYPLSYCZTCQQPBBQJZCLPKHQZYYXXDTDDTSJCXFFLLCHQXMJLWCJCXTSPYCXNDTJSHJWXDQQJSKXYAMYLSJHMLALYKXCYYDMNMDQMXMCZNNCYBZKKYFLMCHCMLHXRCJJHSYLNMTJZGZGYWJXSRXCWJGJQHQZDQJDCJJZKJKGDZQGJJYJYLXZXXCDQHHHEYTMHLFSBDJSYYSHFYSTCZQLPBDRFRZTZYKYWHSZYQKWDQZRKMSYNBCRXQBJYFAZPZZEDZCJYWBCJWHYJBQSZYWRYSZPTDKZPFPBNZTKLQYHBBZPNPPTYZZYBQNYDCPJMMCYCQMCYFZZDCMNLFPBPLNGQJTBTTNJZPZBBZNJKLJQYLNBZQHKSJZNGGQSZZKYXSHPZSNBCGZKDDZQANZHJKDRTLZLSWJLJZLYWTJNDJZJHXYAYNCBGTZCSSQMNJPJYTYSWXZFKWJQTKHTZPLBHSNJZSYZBWZZZZLSYLSBJHDWWQPSLMMFBJDWAQYZTCJTBNNWZXQXCDSLQGDSDPDZHJTQQPSWLYYJZLGYXYZLCTCBJTKTYCZJTQKBSJLGMGZDMCSGPYNJZYQYYKNXRPWSZXMTNCSZZYXYBYHYZAXYWQCJTLLCKJJTJHGDXDXYQYZZBYWDLWQCGLZGJGQRQZCZSSBCRPCSKYDZNXJSQGXSSJMYDNSTZTPBDLTKZWXQWQTZEXNQCZGWEZKSSBYBRTSSSLCCGBPSZQSZLCCGLLLZXHZQTHCZMQGYZQZNMCOCSZJMMZSQPJYGQLJYJPPLDXRGZYXCCSXHSHGTZNLZWZKJCXTCFCJXLBMQBCZZWPQDNHXLJCTHYZLGYLNLSZZPCXDSCQQHJQKSXZPBAJYEMSMJTZDXLCJYRYYNWJBNGZZTMJXLTBSLYRZPYLSSCNXPHLLHYLLQQZQLXYMRSYCXZLMMCZLTZSDWTJJLLNZGGQXPFSKYGYGHBFZPDKMWGHCXMSGDXJMCJZDYCABXJDLNBCDQYGSKYDQTXDJJYXMSZQAZDZFSLQXYJSJZYLBTXXWXQQZBJZUFBBLYLWDSLJHXJYZJWTDJCZFQZQZZDZSXZZQLZCDZFJHYSPYMPQZMLPPLFFXJJNZZYLSJEYQZFPFZKSYWJJJHRDJZZXTXXGLGHYDXCSKYSWMMZCWYBAZBJKSHFHJCXMHFQHYXXYZFTSJYZFXYXPZLCHMZMBXHZZSXYFYMNCWDABAZLXKTCSHHXKXJJZJSTHYGXSXYYHHHJWXKZXSSBZZWHHHCWTZZZPJXSNXQQJGZYZYWLLCWXZFXXYXYHXMKYYSWSQMNLNAYCYSPMJKHWCQHYLAJJMZXHMMCNZHBHXCLXTJPLTXYJHDYYLTTXFSZHYXXSJBJYAYRSMXYPLCKDUYHLXRLNLLSTYZYYQYGYHHSCCSMZCTZQXKYQFPYYRPFFLKQUNTSZLLZMWWTCQQYZWTLLMLMPWMBZSSTZRBPDDTLQJJBXZCSRZQQYGWCSXFWZLXCCRSZDZMCYGGDZQSGTJSWLJMYMMZYHFBJDGYXCCPSHXNZCSBSJYJGJMPPWAFFYFNXHYZXZYLREMZGZCYZSSZDLLJCSQFNXZKPTXZGXJJGFMYYYSNBTYLBNLHPFZDCYFBMGQRRSSSZXYSGTZRNYDZZCDGPJAFJFZKNZBLCZSZPSGCYCJSZLMLRSZBZZLDLSLLYSXSQZQLYXZLSKKBRXBRBZCYCXZZZEEYFGKLZLYYHGZSGZLFJHGTGWKRAAJYZKZQTSSHJJXDCYZUYJLZYRZDQQHGJZXSSZBYKJPBFRTJXLLFQWJHYLQTYMBLPZDXTZYGBDHZZRBGXHWNJTJXLKSCFSMWLSDQYSJTXKZSCFWJLBXFTZLLJZLLQBLSQMQQCGCZFPBPHZCZJLPYYGGDTGWDCFCZQYYYQYSSCLXZSKLZZZGFFCQNWGLHQYZJJCZLQZZYJPJZZBPDCCMHJGXDQDGDLZQMFGPSYTSDYFWWDJZJYSXYYCZCYHZWPBYKXRYLYBHKJKSFXTZJMMCKHLLTNYYMSYXYZPYJQYCSYCWMTJJKQYRHLLQXPSGTLYYCLJSCPXJYZFNMLRGJJTYZBXYZMSJYJHHFZQMSYXRSZCWTLRTQZSSTKXGQKGSPTGCZNJSJCQCXHMXGGZTQYDJKZDLBZSXJLHYQGGGTHQSZPYHJHHGYYGKGGCWJZZYLCZLXQSFTGZSLLLMLJSKCTBLLZZSZMMNYTPZSXQHJCJYQXYZXZQZCPSHKZZYSXCDFGMWQRLLQXRFZTLYSTCTMJCXJJXHJNXTNRZTZFQYHQGLLGCXSZSJDJLJCYDSJTLNYXHSZXCGJZYQPYLFHDJSBPCCZHJJJQZJQDYBSSLLCMYTTMQTBHJQNNYGKYRQYQMZGCJKPDCGMYZHQLLSLLCLMHOLZGDYYFZSLJCQZLYLZQJESHNYLLJXGJXLYSYYYXNBZLJSSZCQQCJYLLZLTJYLLZLLBNYLGQCHXYYXOXCXQKYJXXXYKLXSXXYQXCYKQXQCSGYXXYQXYGYTQOHXHXPYXXXULCYEYCHZZCBWQBBWJQZSCSZSSLZYLKDESJZWMYMCYTSDSXXSCJPQQSQYLYYZYCMDJDZYWCBTJSYDJKCYDDJLBDJJSODZYSYXQQYXDHHGQQYQHDYXWGMMMAJDYBBBPPBCMUUPLJZSMTXERXJMHQNUTPJDCBSSMSSSTKJTSSMMTRCPLZSZMLQDSDMJMQPNQDXCFYNBFSDQXYXHYAYKQYDDLQYYYSSZBYDSLNTFQTZQPZMCHDHCZCWFDXTMYQSPHQYYXSRGJCWTJTZZQMGWJJTJHTQJBBHWZPXXHYQFXXQYWYYHYSCDYDHHQMNMTMWCPBSZPPZZGLMZFOLLCFWHMMSJZTTDHZZYFFYTZZGZYSKYJXQYJZQBHMBZZLYGHGFMSHPZFZSNCLPBQSNJXZSLXXFPMTYJYGBXLLDLXPZJYZJYHHZCYWHJYLSJEXFSZZYWXKZJLUYDTMLYMQJPWXYHXSKTQJEZRPXXZHHMHWQPWQLYJJQJJZSZCPHJLCHHNXJLQWZJHBMZYXBDHHYPZLHLHLGFWLCHYYTLHJXCJMSCPXSTKPNHQXSRTYXXTESYJCTLSSLSTDLLLWWYHDHRJZSFGXTSYCZYNYHTDHWJSLHTZDQDJZXXQHGYLTZPHCSQFCLNJTCLZPFSTPDYNYLGMJLLYCQHYSSHCHYLHQYQTMZYPBYWRFQYKQSYSLZDQJMPXYYSSRHZJNYWTQDFZBWWTWWRXCWHGYHXMKMYYYQMSMZHNGCEPMLQQMTCWCTMMPXJPJJHFXYYZSXZHTYBMSTSYJTTQQQYYLHYNPYQZLCYZHZWSMYLKFJXLWGXYPJYTYSYXYMZCKTTWLKSMZSYLMPWLZWXWQZSSAQSYXYRHSSNTSRAPXCPWCMGDXHXZDZYFJHGZTTSBJHGYZSZYSMYCLLLXBTYXHBBZJKSSDMALXHYCFYGMQYPJYCQXJLLLJGSLZGQLYCJCCZOTYXMTMTTLLWTGPXYMZMKLPSZZZXHKQYSXCTYJZYHXSHYXZKXLZWPSQPYHJWPJPWXQQYLXSDHMRSLZZYZWTTCYXYSZZSHBSCCSTPLWSSCJCHNLCGCHSSPHYLHFHHXJSXYLLNYLSZDHZXYLSXLWZYKCLDYAXZCMDDYSPJTQJZLNWQPSSSWCTSTSZLBLNXSMNYYMJQBQHRZWTYYDCHQLXKPZWBGQYBKFCMZWPZLLYYLSZYDWHXPSBCMLJBSCGBHXLQHYRLJXYSWXWXZSLDFHLSLYNJLZYFLYJYCDRJLFSYZFSLLCQYQFGJYHYXZLYLMSTDJCYHBZLLNWLXXYGYYHSMGDHXXHHLZZJZXCZZZCYQZFNGWPYLCPKPYYPMCLQKDGXZGGWQBDXZZKZFBXXLZXJTPJPTTBYTSZZDWSLCHZHSLTYXHQLHYXXXYYZYSWTXZKHLXZXZPYHGCHKCFSYHUTJRLXFJXPTZTWHPLYXFCRHXSHXKYXXYHZQDXQWULHYHMJTBFLKHTXCWHJFWJCFPQRYQXCYYYQYGRPYWSGSUNGWCHKZDXYFLXXHJJBYZWTSXXNCYJJYMSWZJQRMHXZWFQSYLZJZGBHYNSLBGTTCSYBYXXWXYHXYYXNSQYXMQYWRGYQLXBBZLJSYLPSYTJZYHYZAWLRORJMKSCZJXXXYXCHDYXRYXXJDTSQFXLYLTSFFYXLMTYJMJUYYYXLTZCSXQZQHZXLYYXZHDNBRXXXJCTYHLBRLMBRLLAXKYLLLJLYXXLYCRYLCJTGJCMTLZLLCYZZPZPCYAWHJJFYBDYYZSMPCKZDQYQPBPCJPDCYZMDPBCYYDYCNNPLMTMLRMFMMGWYZBSJGYGSMZQQQZTXMKQWGXLLPJGZBQCDJJJFPKJKCXBLJMSWMDTQJXLDLPPBXCWRCQFBFQJCZAHZGMYKPHYYHZYKNDKZMBPJYXPXYHLFPNYYGXJDBKXNXHJMZJXSTRSTLDXSKZYSYBZXJLXYSLBZYSLHXJPFXPQNBYLLJQKYGZMCYZZYMCCSLCLHZFWFWYXZMWSXTYNXJHPYYMCYSPMHYSMYDYSHQYZCHMJJMZCAAGCFJBBHPLYZYLXXSDJGXDHKXXTXXNBHRMLYJSLTXMRHNLXQJXYZLLYSWQGDLBJHDCGJYQYCMHWFMJYBMBYJYJWYMDPWHXQLDYGPDFXXBCGJSPCKRSSYZJMSLBZZJFLJJJLGXZGYXYXLSZQYXBEXYXHGCXBPLDYHWETTWWCJMBTXCHXYQXLLXFLYXLLJLSSFWDPZSMYJCLMWYTCZPCHQEKCQBWLCQYDPLQPPQZQFJQDJHYMMCXTXDRMJWRHXCJZYLQXDYYNHYYHRSLSRSYWWZJYMTLTLLGTQCJZYABTCKZCJYCCQLJZQXALMZYHYWLWDXZXQDLLQSHGPJFJLJHJABCQZDJGTKHSSTCYJLPSWZLXZXRWGLDLZRLZXTGSLLLLZLYXXWGDZYGBDPHZPBRLWSXQBPFDWOFMWHLYPCBJCCLDMBZPBZZLCYQXLDOMZBLZWPDWYYGDSTTHCSQSCCRSSSYSLFYBFNTYJSZDFNDPDHDZZMBBLSLCMYFFGTJJQWFTMTPJWFNLBZCMMJTGBDZLQLPYFHYYMJYLSDCHDZJWJCCTLJCLDTLJJCPDDSQDSSZYBNDBJLGGJZXSXNLYCYBJXQYCBYLZCFZPPGKCXZDZFZTJJFJSJXZBNZYJQTTYJYHTYCZHYMDJXTTMPXSPLZCDWSLSHXYPZGTFMLCJTYCBPMGDKWYCYZCDSZZYHFLYCTYGWHKJYYLSJCXGYWJCBLLCSNDDBTZBSCLYZCZZSSQDLLMQYYHFSLQLLXFTYHABXGWNYWYYPLLSDLDLLBJCYXJZMLHLJDXYYQYTDLLLBUGBFDFBBQJZZMDPJHGCLGMJJPGAEHHBWCQXAXHHHZCHXYPHJAXHLPHJPGPZJQCQZGJJZZUZDMQYYBZZPHYHYBWHAZYJHYKFGDPFQSDLZMLJXKXGALXZDAGLMDGXMWZQYXXDXXPFDMMSSYMPFMDMMKXKSYZYSHDZKXSYSMMZZZMSYDNZZCZXFPLSTMZDNMXCKJMZTYYMZMZZMSXHHDCZJEMXXKLJSTLWLSQLYJZLLZJSSDPPMHNLZJCZYHMXXHGZCJMDHXTKGRMXFWMCGMWKDTKSXQMMMFZZYDKMSCLCMPCGMHSPXQPZDSSLCXKYXTWLWJYAHZJGZQMCSNXYYMMPMLKJXMHLMLQMXCTKZMJQYSZJSYSZHSYJZJCDAJZYBSDQJZGWZQQXFKDMSDJLFWEHKZQKJPEYPZYSZCDWYJFFMZZYLTTDZZEFMZLBNPPLPLPEPSZALLTYLKCKQZKGENQLWAGYXYDPXLHSXQQWQCQXQCLHYXXMLYCCWLYMQYSKGCHLCJNSZKPYZKCQZQLJPDMDZHLASXLBYDWQLWDNBQCRYDDZTJYBKBWSZDXDTNPJDTCTQDFXQQMGNXECLTTBKPWSLCTYQLPWYZZKLPYGZCQQPLLKCCYLPQMZCZQCLJSLQZDJXLDDHPZQDLJJXZQDXYZQKZLJCYQDYJPPYPQYKJYRMPCBYMCXKLLZLLFQPYLLLMBSGLCYSSLRSYSQTMXYXZQZFDZUYSYZTFFMZZSMZQHZSSCCMLYXWTPZGXZJGZGSJSGKDDHTQGGZLLBJDZLCBCHYXYZHZFYWXYZYMSDBZZYJGTSMTFXQYXQSTDGSLNXDLRYZZLRYYLXQHTXSRTZNGZXBNQQZFMYKMZJBZYMKBPNLYZPBLMCNQYZZZSJZHJCTZKHYZZJRDYZHNPXGLFZTLKGJTCTSSYLLGZRZBBQZZKLPKLCZYSSUYXBJFPNJZZXCDWXZYJXZZDJJKGGRSRJKMSMZJLSJYWQSKYHQJSXPJZZZLSNSHRNYPZTWCHKLPSRZLZXYJQXQKYSJYCZTLQZYBBYBWZPQDWWYZCYTJCJXCKCWDKKZXSGKDZXWWYYJQYYTCYTDLLXWKCZKKLCCLZCQQDZLQLCSFQCHQHSFSMQZZLNBJJZBSJHTSZDYSJQJPDLZCDCWJKJZZLPYCGMZWDJJBSJQZSYZYHHXJPBJYDSSXDZNCGLQMBTSFSBPDZDLZNFGFJGFSMPXJQLMBLGQCYYXBQKDJJQYRFKZTJDHCZKLBSDZCFJTPLLJGXHYXZCSSZZXSTJYGKGCKGYOQXJPLZPBPGTGYJZGHZQZZLBJLSQFZGKQQJZGYCZBZQTLDXRJXBSXXPZXHYZYCLWDXJJHXMFDZPFZHQHQMQGKSLYHTYCGFRZGNQXCLPDLBZCSCZQLLJBLHBZCYPZZPPDYMZZSGYHCKCPZJGSLJLNSCDSLDLXBMSTLDDFJMKDJDHZLZXLSZQPQPGJLLYBDSZGQLBZLSLKYYHZTTNTJYQTZZPSZQZTLLJTYYLLQLLQYZQLBDZLSLYYZYMDFSZSNHLXZNCZQZPBWSKRFBSYZMTHBLGJPMCZZLSTLXSHTCSYZLZBLFEQHLXFLCJLYLJQCBZLZJHHSSTBRMHXZHJZCLXFNBGXGTQJCZTMSFZKJMSSNXLJKBHSJXNTNLZDNTLMSJXGZJYJCZXYJYJWRWWQNZTNFJSZPZSHZJFYRDJSFSZJZBJFZQZZHZLXFYSBZQLZSGYFTZDCSZXZJBQMSZKJRHYJZCKMJKHCHGTXKXQGLXPXFXTRTYLXJXHDTSJXHJZJXZWZLCQSBTXWXGXTXXHXFTSDKFJHZYJFJXRZSDLLLTQSQQZQWZXSYQTWGWBZCGZLLYZBCLMQQTZHZXZXLJFRMYZFLXYSQXXJKXRMQDZDMMYYBSQBHGZMWFWXGMXLZPYYTGZYCCDXYZXYWGSYJYZNBHPZJSQSYXSXRTFYZGRHZTXSZZTHCBFCLSYXZLZQMZLMPLMXZJXSFLBYZMYQHXJSXRXSQZZZSSLYFRCZJRCRXHHZXQYDYHXSJJHZCXZBTYNSYSXJBQLPXZQPYMLXZKYXLXCJLCYSXXZZLXDLLLJJYHZXGYJWKJRWYHCPSGNRZLFZWFZZNSXGXFLZSXZZZBFCSYJDBRJKRDHHGXJLJJTGXJXXSTJTJXLYXQFCSGSWMSBCTLQZZWLZZKXJMLTMJYHSDDBXGZHDLBMYJFRZFSGCLYJBPMLYSMSXLSZJQQHJZFXGFQFQBPXZGYYQXGZTCQWYLTLGWSGWHRLFSFGZJMGMGBGTJFSYZZGZYZAFLSSPMLPFLCWBJZCLJJMZLPJJLYMQDMYYYFBGYGYZMLYZDXQYXRQQQHSYYYQXYLJTYXFSFSLLGNQCYHYCWFHCCCFXPYLYPLLZYXXXXXKQHHXSHJZCFZSCZJXCPZWHHHHHAPYLQALPQAFYHXDYLUKMZQGGGDDESRNNZLTZGCHYPPYSQJJHCLLJTOLNJPZLJLHYMHEYDYDSQYCDDHGZUNDZCLZYZLLZNTNYZGSLHSLPJJBDGWXPCDUTJCKLKCLWKLLCASSTKZZDNQNTTLYYZSSYSSZZRYLJQKCQDHHCRXRZYDGRGCWCGZQFFFPPJFZYNAKRGYWYQPQXXFKJTSZZXSWZDDFBBXTBGTZKZNPZZPZXZPJSZBMQHKCYXYLDKLJNYPKYGHGDZJXXEAHPNZKZTZCMXCXMMJXNKSZQNMNLWBWWXJKYHCPSTMCSQTZJYXTPCTPDTNNPGLLLZSJLSPBLPLQHDTNJNLYYRSZFFJFQWDPHZDWMRZCCLODAXNSSNYZRESTYJWJYJDBCFXNMWTTBYLWSTSZGYBLJPXGLBOCLHPCBJLTMXZLJYLZXCLTPNCLCKXTPZJSWCYXSFYSZDKNTLBYJCYJLLSTGQCBXRYZXBXKLYLHZLQZLNZCXWJZLJZJNCJHXMNZZGJZZXTZJXYCYYCXXJYYXJJXSSSJSTSSTTPPGQTCSXWZDCSYFPTFBFHFBBLZJCLZZDBXGCXLQPXKFZFLSYLTUWBMQJHSZBMDDBCYSCCLDXYCDDQLYJJWMQLLCSGLJJSYFPYYCCYLTJANTJJPWYCMMGQYYSXDXQMZHSZXPFTWWZQSWQRFKJLZJQQYFBRXJHHFWJJZYQAZMYFRHCYYBYQWLPEXCCZSTYRLTTDMQLYKMBBGMYYJPRKZNPBSXYXBHYZDJDNGHPMFSGMWFZMFQMMBCMZZCJJLCNUXYQLMLRYGQZCYXZLWJGCJCGGMCJNFYZZJHYCPRRCMTZQZXHFQGTJXCCJEAQCRJYHPLQLSZDJRBCQHQDYRHYLYXJSYMHZYDWLDFRYHBPYDTSSCNWBXGLPZMLZZTQSSCPJMXXYCSJYTYCGHYCJWYRXXLFEMWJNMKLLSWTXHYYYNCMMCWJDQDJZGLLJWJRKHPZGGFLCCSCZMCBLTBHBQJXQDSPDJZZGKGLFQYWBZYZJLTSTDHQHCTCBCHFLQMPWDSHYYTQWCNZZJTLBYMBPDYYYXSQKXWYYFLXXNCWCXYPMAELYKKJMZZZBRXYYQJFLJPFHHHYTZZXSGQQMHSPGDZQWBWPJHZJDYSCQWZKTXXSQLZYYMYSDZGRXCKKUJLWPYSYSCSYZLRMLQSYLJXBCXTLWDQZPCYCYKPPPNSXFYZJJRCEMHSZMSXLXGLRWGCSTLRSXBZGBZGZTCPLUJLSLYLYMTXMTZPALZXPXJTJWTCYYZLBLXBZLQMYLXPGHDSLSSDMXMBDZZSXWHAMLCZCPJMCNHJYSNSYGCHSKQMZZQDLLKABLWJXSFMOCDXJRRLYQZKJMYBYQLYHETFJZFRFKSRYXFJTWDSXXSYSQJYSLYXWJHSNLXYYXHBHAWHHJZXWMYLJCSSLKYDZTXBZSYFDXGXZJKHSXXYBSSXDPYNZWRPTQZCZENYGCXQFJYKJBZMLJCMQQXUOXSLYXXLYLLJDZBTYMHPFSTTQQWLHOKYBLZZALZXQLHZWRRQHLSTMYPYXJJXMQSJFNBXYXYJXXYQYLTHYLQYFMLKLJTMLLHSZWKZHLJMLHLJKLJSTLQXYLMBHHLNLZXQJHXCFXXLHYHJJGBYZZKBXSCQDJQDSUJZYYHZHHMGSXCSYMXFEBCQWWRBPYYJQTYZCYQYQQZYHMWFFHGZFRJFCDPXNTQYZPDYKHJLFRZXPPXZDBBGZQSTLGDGYLCQMLCHHMFYWLZYXKJLYPQHSYWMQQGQZMLZJNSQXJQSYJYCBEHSXFSZPXZWFLLBCYYJDYTDTHWZSFJMQQYJLMQXXLLDTTKHHYBFPWTYYSQQWNQWLGWDEBZWCMYGCULKJXTMXMYJSXHYBRWFYMWFRXYQMXYSZTZZTFYKMLDHQDXWYYNLCRYJBLPSXCXYWLSPRRJWXHQYPHTYDNXHHMMYWYTZCSQMTSSCCDALWZTCPQPYJLLQZYJSWXMZZMMYLMXCLMXCZMXMZSQTZPPQQBLPGXQZHFLJJHYTJSRXWZXSCCDLXTYJDCQJXSLQYCLZXLZZXMXQRJMHRHZJBHMFLJLMLCLQNLDXZLLLPYPSYJYSXCQQDCMQJZZXHNPNXZMEKMXHYKYQLXSXTXJYYHWDCWDZHQYYBGYBCYSCFGPSJNZDYZZJZXRZRQJJYMCANYRJTLDPPYZBSTJKXXZYPFDWFGZZRPYMTNGXZQBYXNBUFNQKRJQZMJEGRZGYCLKXZDSKKNSXKCLJSPJYYZLQQJYBZSSQLLLKJXTBKTYLCCDDBLSPPFYLGYDTZJYQGGKQTTFZXBDKTYYHYBBFYTYYBCLPDYTGDHRYRNJSPTCSNYJQHKLLLZSLYDXXWBCJQSPXBPJZJCJDZFFXXBRMLAZHCSNDLBJDSZBLPRZTSWSBXBCLLXXLZDJZSJPYLYXXYFTFFFBHJJXGBYXJPMMMPSSJZJMTLYZJXSWXTYLEDQPJMYGQZJGDJLQJWJQLLSJGJGYGMSCLJJXDTYGJQJQJCJZCJGDZZSXQGSJGGCXHQXSNQLZZBXHSGZXCXYLJXYXYYDFQQJHJFXDHCTXJYRXYSQTJXYEFYYSSYYJXNCYZXFXMSYSZXYYSCHSHXZZZGZZZGFJDLTYLNPZGYJYZYYQZPBXQBDZTZCZYXXYHHSQXSHDHGQHJHGYWSZTMZMLHYXGEBTYLZKQWYTJZRCLEKYSTDBCYKQQSAYXCJXWWGSBHJYZYDHCSJKQCXSWXFLTYNYZPZCCZJQTZWJQDZZZQZLJJXLSBHPYXXPSXSHHEZTXFPTLQYZZXHYTXNCFZYYHXGNXMYWXTZSJPTHHGYMXMXQZXTSBCZYJYXXTYYZYPCQLMMSZMJZZLLZXGXZAAJZYXJMZXWDXZSXZDZXLEYJJZQBHZWZZZQTZPSXZTDSXJJJZNYAZPHXYYSRNQDTHZHYYKYJHDZXZLSWCLYBZYECWCYCRYLCXNHZYDZYDYJDFRJJHTRSQTXYXJRJHOJYNXELXSFSFJZGHPZSXZSZDZCQZBYYKLSGSJHCZSHDGQGXYZGXCHXZJWYQWGYHKSSEQZZNDZFKWYSSTCLZSTSYMCDHJXXYWEYXCZAYDMPXMDSXYBSQMJMZJMTZQLPJYQZCGQHXJHHLXXHLHDLDJQCLDWBSXFZZYYSCHTYTYYBHECXHYKGJPXHHYZJFXHWHBDZFYZBCAPNPGNYDMSXHMMMMAMYNBYJTMPXYYMCTHJBZYFCGTYHWPHFTWZZEZSBZEGPFMTSKFTYCMHFLLHGPZJXZJGZJYXZSBBQSCZZLZCCSTPGXMJSFTCCZJZDJXCYBZLFCJSYZFGSZLYBCWZZBYZDZYPSWYJZXZBDSYUXLZZBZFYGCZXBZHZFTPBGZGEJBSTGKDMFHYZZJHZLLZZGJQZLSFDJSSCBZGPDLFZFZSZYZYZSYGCXSNXXCHCZXTZZLJFZGQSQYXZJQDCCZTQCDXZJYQJQCHXZTDLGSCXZSYQJQTZWLQDQZTQCHQQJZYEZZZPBWKDJFCJPZTYPQYQTTYNLMBDKTJZPQZQZZFPZSBNJLGYJDXJDZZKZGQKXDLPZJTCJDQBXDJQJSTCKNXBXZMSLYJCQMTJQWWCJQNJNLLLHJCWQTBZQYDZCZPZZDZYDDCYZZZCCJTTJFZDPRRTZTJDCQTQZDTJNPLZBCLLCTZSXKJZQZPZLBZRBTJDCXFCZDBCCJJLTQQPLDCGZDBBZJCQDCJWYNLLZYZCCDWLLXWZLXRXNTQQCZXKQLSGDFQTDDGLRLAJJTKUYMKQLLTZYTDYYCZGJWYXDXFRSKSTQTENQMRKQZHHQKDLDAZFKYPBGGPZREBZZYKZZSPEGJXGYKQZZZSLYSYYYZWFQZYLZZLZHWCHKYPQGNPGBLPLRRJYXCCSYYHSFZFYBZYYTGZXYLXCZWXXZJZBLFFLGSKHYJZEYJHLPLLLLCZGXDRZELRHGKLZZYHZLYQSZZJZQLJZFLNBHGWLCZCFJYSPYXZLZLXGCCPZBLLCYBBBBUBBCBPCRNNZCZYRBFSRLDCGQYYQXYGMQZWTZYTYJXYFWTEHZZJYWLCCNTZYJJZDEDPZDZTSYQJHDYMBJNYJZLXTSSTPHNDJXXBYXQTZQDDTJTDYYTGWSCSZQFLSHLGLBCZPHDLYZJYCKWTYTYLBNYTSDSYCCTYSZYYEBHEXHQDTWNYGYCLXTSZYSTQMYGZAZCCSZZDSLZCLZRQXYYELJSBYMXSXZTEMBBLLYYLLYTDQYSHYMRQWKFKBFXNXSBYCHXBWJYHTQBPBSBWDZYLKGZSKYHXQZJXHXJXGNLJKZLYYCDXLFYFGHLJGJYBXQLYBXQPQGZTZPLNCYPXDJYQYDYMRBESJYYHKXXSTMXRCZZYWXYQYBMCLLYZHQYZWQXDBXBZWZMSLPDMYSKFMZKLZCYQYCZLQXFZZYDQZPZYGYJYZMZXDZFYFYTTQTZHGSPCZMLCCYTZXJCYTJMKSLPZHYSNZLLYTPZCTZZCKTXDHXXTQCYFKSMQCCYYAZHTJPCYLZLYJBJXTPNYLJYYNRXSYLMMNXJSMYBCSYSYLZYLXJJQYLDZLPQBFZZBLFNDXQKCZFYWHGQMRDSXYCYTXNQQJZYYPFZXDYZFPRXEJDGYQBXRCNFYYQPGHYJDYZXGRHTKYLNWDZNTSMPKLBTHBPYSZBZTJZSZZJTYYXZPHSSZZBZCZPTQFZMYFLYPYBBJQXZMXXDJMTSYSKKBJZXHJCKLPSMKYJZCXTMLJYXRZZQSLXXQPYZXMKYXXXJCLJPRMYYGADYSKQLSNDHYZKQXZYZTCGHZTLMLWZYBWSYCTBHJHJFCWZTXWYTKZLXQSHLYJZJXTMPLPYCGLTBZZTLZJCYJGDTCLKLPLLQPJMZPAPXYZLKKTKDZCZZBNZDYDYQZJYJGMCTXLTGXSZLMLHBGLKFWNWZHDXUHLFMKYSLGXDTWWFRJEJZTZHYDXYKSHWFZCQSHKTMQQHTZHYMJDJSKHXZJZBZZXYMPAGQMSTPXLSKLZYNWRTSQLSZBPSPSGZWYHTLKSSSWHZZLYYTNXJGMJSZSUFWNLSOZTXGXLSAMMLBWLDSZYLAKQCQCTMYCFJBSLXCLZZCLXXKSBZQCLHJPSQPLSXXCKSLNHPSFQQYTXYJZLQLDXZQJZDYYDJNZPTUZDSKJFSLJHYLZSQZLBTXYDGTQFDBYAZXDZHZJNHHQBYKNXJJQCZMLLJZKSPLDYCLBBLXKLELXJLBQYCXJXGCNLCQPLZLZYJTZLJGYZDZPLTQCSXFDMNYCXGBTJDCZNBGBQYQJWGKFHTNPYQZQGBKPBBYZMTJDYTBLSQMPSXTBNPDXKLEMYYCJYNZCTLDYKZZXDDXHQSHDGMZSJYCCTAYRZLPYLTLKXSLZCGGEXCLFXLKJRTLQJAQZNCMBYDKKCXGLCZJZXJHPTDJJMZQYKQSECQZDSHHADMLZFMMZBGNTJNNLGBYJBRBTMLBYJDZXLCJLPLDLPCQDHLXZLYCBLCXZZJADJLNZMMSSSMYBHBSQKBHRSXXJMXSDZNZPXLGBRHWGGFCXGMSKLLTSJYYCQLTSKYWYYHYWXBXQYWPYWYKQLSQPTNTKHQCWDQKTWPXXHCPTHTWUMSSYHBWCRWXHJMKMZNGWTMLKFGHKJYLSYYCXWHYECLQHKQHTTQKHFZLDXQWYZYYDESBPKYRZPJFYYZJCEQDZZDLATZBBFJLLCXDLMJSSXEGYGSJQXCWBXSSZPDYZCXDNYXPPZYDLYJCZPLTXLSXYZYRXCYYYDYLWWNZSAHJSYQYHGYWWAXTJZDAXYSRLTDPSSYYFNEJDXYZHLXLLLZQZSJNYQYQQXYJGHZGZCYJCHZLYCDSHWSHJZYJXCLLNXZJJYYXNFXMWFPYLCYLLABWDDHWDXJMCXZTZPMLQZHSFHZYNZTLLDYWLSLXHYMMYLMBWWKYXYADTXYLLDJPYBPWUXJMWMLLSAFDLLYFLBHHHBQQLTZJCQJLDJTFFKMMMBYTHYGDCQRDDWRQJXNBYSNWZDBYYTBJHPYBYTTJXAAHGQDQTMYSTQXKBTZPKJLZRBEQQSSMJJBDJOTGTBXPGBKTLHQXJJJCTHXQDWJLWRFWQGWSHCKRYSWGFTGYGBXSDWDWRFHWYTJJXXXJYZYSLPYYYPAYXHYDQKXSHXYXGSKQHYWFDDDPPLCJLQQEEWXKSYYKDYPLTJTHKJLTCYYHHJTTPLTZZCDLTHQKZXQYSTEEYWYYZYXXYYSTTJKLLPZMCYHQGXYHSRMBXPLLNQYDQHXSXXWGDQBSHYLLPJJJTHYJKYPPTHYYKTYEZYENMDSHLCRPQFDGFXZPSFTLJXXJBSWYYSKSFLXLPPLBBBLBSFXFYZBSJSSYLPBBFFFFSSCJDSTZSXZRYYSYFFSYZYZBJTBCTSBSDHRTJJBYTCXYJEYLXCBNEBJDSYXYKGSJZBXBYTFZWGENYHHTHZHHXFWGCSTBGXKLSXYWMTMBYXJSTZSCDYQRCYTWXZFHMYMCXLZNSDJTTTXRYCFYJSBSDYERXJLJXBBDEYNJGHXGCKGSCYMBLXJMSZNSKGXFBNBPTHFJAAFXYXFPXMYPQDTZCXZZPXRSYWZDLYBBKTYQPQJPZYPZJZNJPZJLZZFYSBTTSLMPTZRTDXQSJEHBZYLZDHLJSQMLHTXTJECXSLZZSPKTLZKQQYFSYGYWPCPQFHQHYTQXZKRSGTTSQCZLPTXCDYYZXSQZSLXLZMYCPCQBZYXHBSXLZDLTCDXTYLZJYYZPZYZLTXJSJXHLPMYTXCQRBLZSSFJZZTNJYTXMYJHLHPPLCYXQJQQKZZSCPZKSWALQSBLCCZJSXGWWWYGYKTJBBZTDKHXHKGTGPBKQYSLPXPJCKBMLLXDZSTBKLGGQKQLSBKKTFXRMDKBFTPZFRTBBRFERQGXYJPZSSTLBZTPSZQZSJDHLJQLZBPMSMMSXLQQNHKNBLRDDNXXDHDDJCYYGYLXGZLXSYGMQQGKHBPMXYXLYTQWLWGCPBMQXCYZYDRJBHTDJYHQSHTMJSBYPLWHLZFFNYPMHXXHPLTBQPFBJWQDBYGPNZTPFZJGSDDTQSHZEAWZZYLLTYYBWJKXXGHLFKXDJTMSZSQYNZGGSWQSPHTLSSKMCLZXYSZQZXNCJDQGZDLFNYKLJCJLLZLMZZNHYDSSHTHZZLZZBBHQZWWYCRZHLYQQJBEYFXXXWHSRXWQHWPSLMSSKZTTYGYQQWRSLALHMJTQJSMXQBJJZJXZYZKXBYQXBJXSHZTSFJLXMXZXFGHKZSZGGYLCLSARJYHSLLLMZXELGLXYDJYTLFBHBPNLYZFBBHPTGJKWETZHKJJXZXXGLLJLSTGSHJJYQLQZFKCGNNDJSSZFDBCTWWSEQFHQJBSAQTGYPQLBXBMMYWXGSLZHGLZGQYFLZBYFZJFRYSFMBYZHQGFWZSYFYJJPHZBYYZFFWODGRLMFTWLBZGYCQXCDJYGZYYYYTYTYDWEGAZYHXJLZYYHLRMGRXXZCLHNELJJTJTPWJYBJJBXJJTJTEEKHWSLJPLPSFYZPQQBDLQJJTYYQLYZKDKSQJYYQZLDQTGJQYZJSUCMRYQTHTEJMFCTYHYPKMHYZWJDQFHYYXWSHCTXRLJHQXHCCYYYJLTKTTYTMXGTCJTZAYYOCZLYLBSZYWJYTSJYHBYSHFJLYGJXXTMZYYLTXXYPZLXYJZYZYYPNHMYMDYYLBLHLSYYQQLLNJJYMSOYQBZGDLYXYLCQYXTSZEGXHZGLHWBLJHEYXTWQMAKBPQCGYSHHEGQCMWYYWLJYJHYYZLLJJYLHZYHMGSLJLJXCJJYCLYCJPCPZJZJMMYLCQLNQLJQJSXYJMLSZLJQLYCMMHCFMMFPQQMFYLQMCFFQMMMMHMZNFHHJGTTHHKHSLNCHHYQDXTMMQDCYZYXYQMYQYLTDCYYYZAZZCYMZYDLZFFFMMYCQZWZZMABTBYZTDMNZZGGDFTYPCGQYTTSSFFWFDTZQSSYSTWXJHXYTSXXYLBYQHWWKXHZXWZNNZZJZJJQJCCCHYYXBZXZCYZTLLCQXYNJYCYYCYNZZQYYYEWYCZDCJYCCHYJLBTZYYCQWMPWPYMLGKDLDLGKQQBGYCHJXY",C=(J={19969:"DZ",19975:"WM",19988:"QJ",20048:"YL",20056:"SC",20060:"NM",20094:"QG",20127:"QJ",20167:"QC",20193:"YG",20250:"KH",20256:"ZC",20282:"SC",20285:"QJG",20291:"TD",20314:"YD",20340:"NE",20375:"TD",20389:"YJ",20391:"CZ",20415:"PB",20446:"YS",20447:"SQ",20504:"TC",20608:"KG",20854:"QJ",20857:"ZC",20911:"PF"},_defineProperty(J,"20504","TC"),_defineProperty(J,"20608","KG"),_defineProperty(J,"20854","QJ"),_defineProperty(J,"20857","ZC"),_defineProperty(J,"20911","PF"),_defineProperty(J,"20985","AW"),_defineProperty(J,"21032","PB"),_defineProperty(J,"21048","XQ"),_defineProperty(J,"21049","SC"),_defineProperty(J,"21089","YS"),_defineProperty(J,"21119","JC"),_defineProperty(J,"21242","SB"),_defineProperty(J,"21273","SC"),_defineProperty(J,"21305","YP"),_defineProperty(J,"21306","QO"),_defineProperty(J,"21330","ZC"),_defineProperty(J,"21333","SDC"),_defineProperty(J,"21345","QK"),_defineProperty(J,"21378","CA"),_defineProperty(J,"21397","SC"),_defineProperty(J,"21414","XS"),_defineProperty(J,"21442","SC"),_defineProperty(J,"21477","JG"),_defineProperty(J,"21480","TD"),_defineProperty(J,"21484","ZS"),_defineProperty(J,"21494","YX"),_defineProperty(J,"21505","YX"),_defineProperty(J,"21512","HG"),_defineProperty(J,"21523","XH"),_defineProperty(J,"21537","PB"),_defineProperty(J,"21542","PF"),_defineProperty(J,"21549","KH"),_defineProperty(J,"21571","E"),_defineProperty(J,"21574","DA"),_defineProperty(J,"21588","TD"),_defineProperty(J,"21589","O"),_defineProperty(J,"21618","ZC"),_defineProperty(J,"21621","KHA"),_defineProperty(J,"21632","ZJ"),_defineProperty(J,"21654","KG"),_defineProperty(J,"21679","LKG"),_defineProperty(J,"21683","KH"),_defineProperty(J,"21710","A"),_defineProperty(J,"21719","YH"),_defineProperty(J,"21734","WOE"),_defineProperty(J,"21769","A"),_defineProperty(J,"21780","WN"),_defineProperty(J,"21804","XH"),_defineProperty(J,"21834","A"),_defineProperty(J,"21899","ZD"),_defineProperty(J,"21903","RN"),_defineProperty(J,"21908","WO"),_defineProperty(J,"21939","ZC"),_defineProperty(J,"21956","SA"),_defineProperty(J,"21964","YA"),_defineProperty(J,"21970","TD"),_defineProperty(J,"22003","A"),_defineProperty(J,"22031","JG"),_defineProperty(J,"22040","XS"),_defineProperty(J,"22060","ZC"),_defineProperty(J,"22066","ZC"),_defineProperty(J,"22079","MH"),_defineProperty(J,"22129","XJ"),_defineProperty(J,"22179","XA"),_defineProperty(J,"22237","NJ"),_defineProperty(J,"22244","TD"),_defineProperty(J,"22280","JQ"),_defineProperty(J,"22300","YH"),_defineProperty(J,"22313","XW"),_defineProperty(J,"22331","YQ"),_defineProperty(J,"22343","YJ"),_defineProperty(J,"22351","PH"),_defineProperty(J,"22395","DC"),_defineProperty(J,"22412","TD"),_defineProperty(J,"22484","PB"),_defineProperty(J,"22500","PB"),_defineProperty(J,"22534","ZD"),_defineProperty(J,"22549","DH"),_defineProperty(J,"22561","PB"),_defineProperty(J,"22612","TD"),_defineProperty(J,"22771","KQ"),_defineProperty(J,"22831","HB"),_defineProperty(J,"22841","JG"),_defineProperty(J,"22855","QJ"),_defineProperty(J,"22865","XQ"),_defineProperty(J,"23013","ML"),_defineProperty(J,"23081","WM"),_defineProperty(J,"23487","SX"),_defineProperty(J,"23558","QJ"),_defineProperty(J,"23561","YW"),_defineProperty(J,"23586","YW"),_defineProperty(J,"23614","YW"),_defineProperty(J,"23615","SN"),_defineProperty(J,"23631","PB"),_defineProperty(J,"23646","ZS"),_defineProperty(J,"23663","ZT"),_defineProperty(J,"23673","YG"),_defineProperty(J,"23762","TD"),_defineProperty(J,"23769","ZS"),_defineProperty(J,"23780","QJ"),_defineProperty(J,"23884","QK"),_defineProperty(J,"24055","XH"),_defineProperty(J,"24113","DC"),_defineProperty(J,"24162","ZC"),_defineProperty(J,"24191","GA"),_defineProperty(J,"24273","QJ"),_defineProperty(J,"24324","NL"),_defineProperty(J,"24377","TD"),_defineProperty(J,"24378","QJ"),_defineProperty(J,"24439","PF"),_defineProperty(J,"24554","ZS"),_defineProperty(J,"24683","TD"),_defineProperty(J,"24694","WE"),_defineProperty(J,"24733","LK"),_defineProperty(J,"24925","TN"),_defineProperty(J,"25094","ZG"),_defineProperty(J,"25100","XQ"),_defineProperty(J,"25103","XH"),_defineProperty(J,"25153","PB"),_defineProperty(J,"25170","PB"),_defineProperty(J,"25179","KG"),_defineProperty(J,"25203","PB"),_defineProperty(J,"25240","ZS"),_defineProperty(J,"25282","FB"),_defineProperty(J,"25303","NA"),_defineProperty(J,"25324","KG"),_defineProperty(J,"25341","ZY"),_defineProperty(J,"25373","WZ"),_defineProperty(J,"25375","XJ"),_defineProperty(J,"25384","A"),_defineProperty(J,"25457","A"),_defineProperty(J,"25528","SD"),_defineProperty(J,"25530","SC"),_defineProperty(J,"25552","TD"),_defineProperty(J,"25774","ZC"),_defineProperty(J,"25874","ZC"),_defineProperty(J,"26044","YW"),_defineProperty(J,"26080","WM"),_defineProperty(J,"26292","PB"),_defineProperty(J,"26333","PB"),_defineProperty(J,"26355","ZY"),_defineProperty(J,"26366","CZ"),_defineProperty(J,"26397","ZC"),_defineProperty(J,"26399","QJ"),_defineProperty(J,"26415","ZS"),_defineProperty(J,"26451","SB"),_defineProperty(J,"26526","ZC"),_defineProperty(J,"26552","JG"),_defineProperty(J,"26561","TD"),_defineProperty(J,"26588","JG"),_defineProperty(J,"26597","CZ"),_defineProperty(J,"26629","ZS"),_defineProperty(J,"26638","YL"),_defineProperty(J,"26646","XQ"),_defineProperty(J,"26653","KG"),_defineProperty(J,"26657","XJ"),_defineProperty(J,"26727","HG"),_defineProperty(J,"26894","ZC"),_defineProperty(J,"26937","ZS"),_defineProperty(J,"26946","ZC"),_defineProperty(J,"26999","KJ"),_defineProperty(J,"27099","KJ"),_defineProperty(J,"27449","YQ"),_defineProperty(J,"27481","XS"),_defineProperty(J,"27542","ZS"),_defineProperty(J,"27663","ZS"),_defineProperty(J,"27748","TS"),_defineProperty(J,"27784","SC"),_defineProperty(J,"27788","ZD"),_defineProperty(J,"27795","TD"),_defineProperty(J,"27812","O"),_defineProperty(J,"27850","PB"),_defineProperty(J,"27852","MB"),_defineProperty(J,"27895","SL"),_defineProperty(J,"27898","PL"),_defineProperty(J,"27973","QJ"),_defineProperty(J,"27981","KH"),_defineProperty(J,"27986","HX"),_defineProperty(J,"27994","XJ"),_defineProperty(J,"28044","YC"),_defineProperty(J,"28065","WG"),_defineProperty(J,"28177","SM"),_defineProperty(J,"28267","QJ"),_defineProperty(J,"28291","KH"),_defineProperty(J,"28337","ZQ"),_defineProperty(J,"28463","TL"),_defineProperty(J,"28548","DC"),_defineProperty(J,"28601","TD"),_defineProperty(J,"28689","PB"),_defineProperty(J,"28805","JG"),_defineProperty(J,"28820","QG"),_defineProperty(J,"28846","PB"),_defineProperty(J,"28952","TD"),_defineProperty(J,"28975","ZC"),_defineProperty(J,"29100","A"),_defineProperty(J,"29325","QJ"),_defineProperty(J,"29575","SL"),_defineProperty(J,"29602","FB"),_defineProperty(J,"30010","TD"),_defineProperty(J,"30044","CX"),_defineProperty(J,"30058","PF"),_defineProperty(J,"30091","YSP"),_defineProperty(J,"30111","YN"),_defineProperty(J,"30229","XJ"),_defineProperty(J,"30427","SC"),_defineProperty(J,"30465","SX"),_defineProperty(J,"30631","YQ"),_defineProperty(J,"30655","QJ"),_defineProperty(J,"30684","QJG"),_defineProperty(J,"30707","SD"),_defineProperty(J,"30729","XH"),_defineProperty(J,"30796","LG"),_defineProperty(J,"30917","PB"),_defineProperty(J,"31074","NM"),_defineProperty(J,"31085","JZ"),_defineProperty(J,"31109","SC"),_defineProperty(J,"31181","ZC"),_defineProperty(J,"31192","MLB"),_defineProperty(J,"31293","JQ"),_defineProperty(J,"31400","YX"),_defineProperty(J,"31584","YJ"),_defineProperty(J,"31896","ZN"),_defineProperty(J,"31909","ZY"),_defineProperty(J,"31995","XJ"),_defineProperty(J,"32321","PF"),_defineProperty(J,"32327","ZY"),_defineProperty(J,"32418","HG"),_defineProperty(J,"32420","XQ"),_defineProperty(J,"32421","HG"),_defineProperty(J,"32438","LG"),_defineProperty(J,"32473","GJ"),_defineProperty(J,"32488","TD"),_defineProperty(J,"32521","QJ"),_defineProperty(J,"32527","PB"),_defineProperty(J,"32562","ZSQ"),_defineProperty(J,"32564","JZ"),_defineProperty(J,"32735","ZD"),_defineProperty(J,"32793","PB"),_defineProperty(J,"33071","PF"),_defineProperty(J,"33098","XL"),_defineProperty(J,"33100","YA"),_defineProperty(J,"33152","PB"),_defineProperty(J,"33261","CX"),_defineProperty(J,"33324","BP"),_defineProperty(J,"33333","TD"),_defineProperty(J,"33406","YA"),_defineProperty(J,"33426","WM"),_defineProperty(J,"33432","PB"),_defineProperty(J,"33445","JG"),_defineProperty(J,"33486","ZN"),_defineProperty(J,"33493","TS"),_defineProperty(J,"33507","QJ"),_defineProperty(J,"33540","QJ"),_defineProperty(J,"33544","ZC"),_defineProperty(J,"33564","XQ"),_defineProperty(J,"33617","YT"),_defineProperty(J,"33632","QJ"),_defineProperty(J,"33636","XH"),_defineProperty(J,"33637","YX"),_defineProperty(J,"33694","WG"),_defineProperty(J,"33705","PF"),_defineProperty(J,"33728","YW"),_defineProperty(J,"33882","SR"),_defineProperty(J,"34067","WM"),_defineProperty(J,"34074","YW"),_defineProperty(J,"34121","QJ"),_defineProperty(J,"34255","ZC"),_defineProperty(J,"34259","XL"),_defineProperty(J,"34425","JH"),_defineProperty(J,"34430","XH"),_defineProperty(J,"34485","KH"),_defineProperty(J,"34503","YS"),_defineProperty(J,"34532","HG"),_defineProperty(J,"34552","XS"),_defineProperty(J,"34558","YE"),_defineProperty(J,"34593","ZL"),_defineProperty(J,"34660","YQ"),_defineProperty(J,"34892","XH"),_defineProperty(J,"34928","SC"),_defineProperty(J,"34999","QJ"),_defineProperty(J,"35048","PB"),_defineProperty(J,"35059","SC"),_defineProperty(J,"35098","ZC"),_defineProperty(J,"35203","TQ"),_defineProperty(J,"35265","JX"),_defineProperty(J,"35299","JX"),_defineProperty(J,"35782","SZ"),_defineProperty(J,"35828","YS"),_defineProperty(J,"35830","E"),_defineProperty(J,"35843","TD"),_defineProperty(J,"35895","YG"),_defineProperty(J,"35977","MH"),_defineProperty(J,"36158","JG"),_defineProperty(J,"36228","QJ"),_defineProperty(J,"36426","XQ"),_defineProperty(J,"36466","DC"),_defineProperty(J,"36710","JC"),_defineProperty(J,"36711","ZYG"),_defineProperty(J,"36767","PB"),_defineProperty(J,"36866","SK"),_defineProperty(J,"36951","YW"),_defineProperty(J,"37034","YX"),_defineProperty(J,"37063","XH"),_defineProperty(J,"37218","ZC"),_defineProperty(J,"37325","ZC"),_defineProperty(J,"38063","PB"),_defineProperty(J,"38079","TD"),_defineProperty(J,"38085","QY"),_defineProperty(J,"38107","DC"),_defineProperty(J,"38116","TD"),_defineProperty(J,"38123","YD"),_defineProperty(J,"38224","HG"),_defineProperty(J,"38241","XTC"),_defineProperty(J,"38271","ZC"),_defineProperty(J,"38415","YE"),
-_defineProperty(J,"38426","KH"),_defineProperty(J,"38461","YD"),_defineProperty(J,"38463","AE"),_defineProperty(J,"38466","PB"),_defineProperty(J,"38477","XJ"),_defineProperty(J,"38518","YT"),_defineProperty(J,"38551","WK"),_defineProperty(J,"38585","ZC"),_defineProperty(J,"38704","XS"),_defineProperty(J,"38739","LJ"),_defineProperty(J,"38761","GJ"),_defineProperty(J,"38808","SQ"),_defineProperty(J,"39048","JG"),_defineProperty(J,"39049","XJ"),_defineProperty(J,"39052","HG"),_defineProperty(J,"39076","CZ"),_defineProperty(J,"39271","XT"),_defineProperty(J,"39534","TD"),_defineProperty(J,"39552","TD"),_defineProperty(J,"39584","PB"),_defineProperty(J,"39647","SB"),_defineProperty(J,"39730","LG"),_defineProperty(J,"39748","TPB"),_defineProperty(J,"40109","ZQ"),_defineProperty(J,"40479","ND"),_defineProperty(J,"40516","HG"),_defineProperty(J,"40536","HG"),_defineProperty(J,"40583","QJ"),_defineProperty(J,"40765","YQ"),_defineProperty(J,"40784","QJ"),_defineProperty(J,"40840","YK"),_defineProperty(J,"40863","QJG"),J);return X}angular.module("app.shared").filter("capitalChinese",Y)}();
-"use strict";!function(){function r(r){function n(r,n){return e.resolve(n,r)}var e=r;return n}r.$inject=["DictionaryService"],angular.module("app.shared").filter("dictionary",r)}();
-"use strict";!function(){function e(){function e(e){if(angular.isDefined(n[e]))return n[e]}function t(e,t){return angular.isUndefined(n[e])?t:n[e][t]}var n={"goods.types":{1:"实物类",2:"服务类",3:"计次类",4:"计时类"},sex:{0:"女士",1:"男士"},"member.states":{0:"锁定",1:"正常",2:"挂失"},"member_charge.types":{1:"会员充值",2:"会员充次",3:"会员充时",4:"办卡充值"},"consumption.types":{1:"商品消费",2:"快速消费",3:"计次消费",4:"计时消费",5:"积分兑换"},inventory:{1:"商品入库",2:"销售出库",3:"编辑入库",4:"编辑出库"},"payment.types":{1:"余额",2:"现金",3:"网银",4:"支付宝",5:"微信"},http_methods:{1:"get",2:"post",3:"patch",4:"put",5:"delete"},"goods.units":{1:"包",2:"条",3:"瓶",4:"箱",5:"个",6:"次",7:"件",8:"台",9:"套",10:"组",11:"块"},"charge.units":{1:"元",2:"次",3:"分钟",4:"小时",5:"天"}},r={get:e,resolve:t};return r}angular.module("app.shared").factory("DictionaryService",e),e.$inject=[]}();
-"use strict";!function(){function r(r){function e(r){return i.hasOwnProperty(r)&&i[r].promise&&i[r].promise.$$state.pending}function n(r){return i.hasOwnProperty(r)}function t(e){if(!i[e]){i[e]=r.defer();var n=document.createElement("script");n.onload=function(r){i[e].resolve(e)},n.src=e;var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t)}return i[e].promise}function o(o){if(e(o))return i[o].promise;if(n(o))return r.resolve(o);var u=r.defer();return t(o).then(function(){u.resolve(o)}),u.promise}var i={};return{register:function(e){var n=r.defer(),t=[];return angular.isString(e)&&(e=[e]),angular.forEach(e,function(r){t.push(o(r))}),r.all(t).then(function(r){n.resolve(r)}),n.promise}}}angular.module("app.shared").factory("LazyScript",r),r.$inject=["$q"]}();
-"use strict";!function(){function e(e,n){function t(){n.showLoading()}function o(){n.hideLoading()}function r(e,n){e.forEach(function(e){e.isChecked=n})}function i(e){var n=[];return e.forEach(function(e){e.isChecked&&n.push(e)}),n}function c(n){var t=e.defer();return a().then(function(e){t.resolve(n+e)}),t.promise}function a(){var n=e.defer(),t=moment().format("YYYYMMDDHHmmss");return n.resolve(t),n.promise}function u(){var e={configs:{per_page:10,page:1},records:0};return e}var f={getOrderCode:c,getDatetime:a,initPagination:u,showLoading:t,hideLoading:o,getSelected:i,toggleItems:r};return f}angular.module("app.shared").factory("UtilityService",e),e.$inject=["$q","$rootScope"]}();
-"use strict";!function(){function t(t){function i(){}i()}angular.module("app.statistics_report").controller("StatisticsMemberChargeCtrl",t),t.$inject=["UtilityService"]}();
-"use strict";!function(){function t(t){function i(){}i()}angular.module("app.statistics_report").controller("StatisticsMemberConsumptionCtrl",t),t.$inject=["UtilityService"]}();
-"use strict";!function(){function n(n){function t(){}t()}angular.module("app.system_management").controller("PermissionCtrl",n),n.$inject=["UtilityService"]}();
-"use strict";!function(){function t(t){function n(){}n()}angular.module("app.system_management").controller("RoleCtrl",t),t.$inject=["UtilityService"]}();
-"use strict";!function(){function e(e,n){function t(){var e=n.open({templateUrl:"app/system-management/user/add-user.modal.html",controller:["$scope",function(n){n.user={username:"",password:"",name:"",role:"",contact:"",sex:1,remark:""},n.addUser=a,n.modalInstance=e}]})}function a(){}function r(){}var o=this;o.openAddUserModal=t;r()}angular.module("app.system_management").controller("UserCtrl",e),e.$inject=["UtilityService","$uibModal"]}();
+// angular bootstrap
+$(function() {
+
+    // moment.js default language
+    moment.locale('zh-cn')
+
+    angular.bootstrap(document, ['app']);
+
+
+});
+
+
+(function($) {
+    $.fn.datetimepicker.dates['zh-CN'] = {
+        days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+        daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+        daysMin: ["日", "一", "二", "三", "四", "五", "六", "日"],
+        months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+        monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+        today: "今天",
+        suffix: [],
+        meridiem: ["上午", "下午"],
+
+    };
+}(jQuery));
+(function() {
+    'use strict';
+
+    angular.module('app', [
+        // 第三方插件
+        'restangular',
+        'ui.bootstrap',
+        'ui.tree',
+        'LocalStorageModule',
+        // 布局模块
+        'app.layout',
+        // 系统配置模块
+        'app.configs',
+        // 授权登录验证模块
+        'app.authentication',
+        // 共享模块
+        'app.shared',
+        'app.constants',
+        // 业务逻辑模块
+        'app.member_management',
+        'app.goods_management',
+        'app.consumption_management',
+        'app.system_management',
+        'app.statistics_report',
+        'app.page_template'
+    ]);
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.authentication', ['ui.router'])
+        .config(authenticationConfig);
+
+    authenticationConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function authenticationConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                views: {
+                    root: {
+                        templateUrl: 'app/authentication/login.html',
+                    }
+                },
+                resolve: {
+                    scripts: function(LazyScript) {
+                        return LazyScript.register([
+                            'assets/lib/md5/md5.js'
+                        ]);
+                    }
+                },
+            });
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.consumption_management', ['ui.router'])
+        .config(ConsumptionManagementConfig);
+
+    ConsumptionManagementConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function ConsumptionManagementConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.consumption_management', {
+                name: '消费管理',
+                url: '/consumption_management',
+                abstract: true,
+            })
+            .state('app.consumption_management.pay_for_goods', {
+                name: '商品消费',
+                url: '/pay_for_goods',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/consumption-management/pay-for-goods/pay-for-goods.html'
+                    }
+                }
+            })
+            .state('app.consumption_management.quick_pay', {
+                name: '快速消费',
+                url: '/quick_pay',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/consumption-management/quick-pay/quick-pay.html'
+                    }
+                }
+            })
+            .state('app.consumption_management.record', {
+                name: '消费记录',
+                url: '/record',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/consumption-management/record/record.html'
+                    }
+                }
+            });
+    };
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.goods_management', ['ui.router'])
+        .config(GoodsManagementConfig);
+
+    GoodsManagementConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function GoodsManagementConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.goods_management', {
+                name: '商品管理',
+                url: '/goods_management',
+                abstract: true,
+            })
+            .state('app.goods_management.register', {
+                name: '商品登记',
+                url: '/register',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/goods-management/goods-register/goods-register.html'
+                    }
+                }
+            })
+            .state('app.goods_management.class', {
+                name: '商品分类',
+                url: '/class',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/goods-management/goods-class/goods-class.html'
+                    }
+                }
+            })
+            .state('app.goods_management.list', {
+                name: '商品列表',
+                url: '/list',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/goods-management/goods-list/goods-list.html'
+                    }
+                }
+            })
+            .state('app.goods_management.inventory', {
+                name: '商品入库',
+                url: '/inventory',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/goods-management/goods-inventory/goods-inventory.html'
+                    }
+                }
+            })
+            .state('app.goods_management.inventory_list', {
+                name: '库存列表',
+                url: '/inventory_list',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/goods-management/inventory-list/inventory-list.html'
+                    }
+                }
+            });
+    };
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.layout', ['ui.router'])
+        .config(LayoutConfig);
+
+    LayoutConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function LayoutConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app', {
+                abstract: true,
+                views: {
+                    root: {
+                        templateUrl: 'app/layout/layout.html',
+                    }
+                }
+            }).state('app.home', {
+                url: '/home',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/home/home.html',
+                    }
+                }
+            });
+
+
+        $urlRouterProvider.otherwise(function($injector, $location) {
+
+            $location.path('/login');
+        });
+
+
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.member_management', ['ui.router'])
+        .config(MemberManagementConfig);
+
+    MemberManagementConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function MemberManagementConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.member_management', {
+                name: '会员管理',
+                url: '/member_management',
+                abstract: true,
+            })
+            .state('app.member_management.register', {
+                name: '会员登记',
+                url: '/register',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/member-management/member-register/member-register.html'
+                    }
+                }
+            })
+            .state('app.member_management.list', {
+                name: '会员列表',
+                url: '/list',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/member-management/member-list/member-list.html'
+                    }
+                }
+            })
+            .state('app.member_management.charge', {
+                name: '会员充值',
+                url: '/charge',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/member-management/member-charge/member-charge.html'
+                    }
+                }
+            })
+            .state('app.member_management.level', {
+                name: '会员等级',
+                url: '/level',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/member-management/member-level/member-level.html'
+                    }
+                }
+            });
+    };
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.page_template', ['ui.router'])
+        .config(pageTemplateConfig);
+
+    pageTemplateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function pageTemplateConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.page_template', {
+                name: '系统管理',
+                url: '/page_template',
+                abstract: true,
+            })
+            .state('app.page_template.form', {
+                name: '表单',
+                url: '/form',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/form/form.html'
+                    }
+                }
+            })
+            .state('app.page_template.modal', {
+                name: '模态框',
+                url: '/modal',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/modal/modal.html'
+                    }
+                }
+            })
+            .state('app.page_template.table', {
+                name: '表格',
+                url: '/table',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/table/table.html'
+                    }
+                }
+            })
+            .state('app.page_template.text', {
+                name: '文本',
+                url: '/text',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/text/text.html'
+                    }
+                }
+            })
+            .state('app.page_template.tree', {
+                name: '树',
+                url: '/tree',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/tree/tree.html'
+                    }
+                }
+            })
+            .state('app.page_template.full_view', {
+                name: '配色',
+                url: '/full_view',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/full-view/full-view.html'
+                    }
+                }
+            }).state('app.page_template.palette', {
+                name: '调色板',
+                url: '/palette',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/palette/palette.html'
+                    }
+                }
+            }).state('app.page_template.plugin_test', {
+                name: ' 插件测试',
+                url: '/plugin_test',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/page-template/plugin-test/plugin-test.html'
+                    }
+                }
+            });
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.shared', [
+
+    ]);
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.statistics_report', ['ui.router'])
+        .config(StatisticsReportConfig);
+
+    StatisticsReportConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function StatisticsReportConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.statistics_report', {
+                name: '系统管理',
+                url: '/statistics_report',
+                abstract: true,
+            })
+            .state('app.statistics_report.member_consumption', {
+                name: '会员消费报表',
+                url: '/member_consumption',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/statistics-report/member-consumption/statistics-member-consumption.html'
+                    }
+                }
+            })
+            .state('app.statistics_report.member_charge', {
+                name: '会员充值报表 ',
+                url: '/member_charge',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/statistics-report/member-charge/statistics-member-charge.html'
+                    }
+                }
+            });
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular.module('app.system_management', ['ui.router'])
+        .config(SystemManagementConfig);
+
+    SystemManagementConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function SystemManagementConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app.system_management', {
+                name: '系统管理',
+                url: '/system_management',
+                abstract: true,
+            })
+            .state('app.system_management.user', {
+                name: '用户管理',
+                url: '/user',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/system-management/user/user.html'
+                    }
+                }
+            })
+            .state('app.system_management.role', {
+                name: '角色管理',
+                url: '/role',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/system-management/role/role.html'
+                    }
+                }
+            });
+
+    }
+
+})();
+(function(angular) {
+    'use strict';
+
+    angular
+        .module('app.configs', [])
+        .config(['RestangularProvider', function(RestangularProvider) {
+
+            RestangularProvider.setBaseUrl('http://localhost:3000/API');
+
+            RestangularProvider.setDefaultHeaders({ 'Content-Type': 'application/json' });
+
+            RestangularProvider.addResponseInterceptor(function(result, operation, what, url, response, deferred) {
+                var extractedData = result;
+                // .. to look for getList operations
+                if (operation === "getList" && angular.isDefined(result.data)) {
+                    // .. and handle the data and record data
+                    extractedData = result.data;
+
+                    if (angular.isDefined(result.records)) {
+                        extractedData.records = result.records;
+                    }
+                }
+                return extractedData;
+            });
+
+        }])
+        .run(['ProfileService', 'AuthService', function(ProfileService, AuthService) {
+            ProfileService.initProfile();
+            AuthService.initAuthorizationData();
+        }]);
+
+
+})(angular);
+(function() {
+    'use strict';
+
+    angular
+        .module('app.constants', [])
+        .constant('Version', '1.0.1');
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.authentication')
+        .service('AuthService', AuthService);
+
+    AuthService.$inject = ['Restangular', '$state', '$q', 'ProfileService', 'localStorageService'];
+
+    function AuthService(Restangular, $state, $q, ProfileService, localStorageService) {
+        this.logOut = logOut;
+        this.login = login;
+        this.getToken = getToken;
+        this.initAuthorizationData = initAuthorizationData;
+
+        let profileService = ProfileService;
+
+        let storageName = 'authorizationData';
+
+        let authorizationData = {};
+
+        /**
+         * @param {object} user
+         * @returns
+         */
+        function login(user) {
+            let deferred = $q.defer();
+
+            Restangular.all('login.json').customGET().then(result => {
+                result = result.plain();
+
+                if (!result) return;
+
+                // 抽取授权 token
+
+                authorizationData.access_token = result.access_token;
+                authorizationData.expires_in = result.expires_in;
+
+                // 保存 token
+                localStorageService.set(storageName, authorizationData);
+
+                // 设置 profile
+                profileService.setProfile(result.profile);
+
+                deferred.resolve();
+            }, error => {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        function logOut() {
+            profileService.removeProfile();
+            localStorageService.remove(storageName);
+            $state.go('login');
+        }
+
+        function getToken() {
+            if (!authorizationData) return;
+
+            return authorizationData.access_token;
+        }
+
+        function initAuthorizationData() {
+            let result = localStorageService.get(storageName);
+            if (!result) return;
+
+            authorizationData = result;
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.authentication')
+        .controller('LoginCtrl', LoginCtrl);
+
+    LoginCtrl.$inject = ['AuthService', '$state'];
+
+    function LoginCtrl(AuthService, $state) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.loginData = {
+            username: '',
+            password: '',
+        };
+
+        vm.signIn = signIn;
+        /*----------  内部变量  ----------*/
+
+        let authService = AuthService;
+        /*----------  内部逻辑函数  ----------*/
+
+        // 登录
+        function signIn(user) {
+
+            let _user = angular.copy(user);
+            _user.password = CryptoJS.MD5(_user.password).toString();
+            debugger;
+            authService.login(_user).then(result => {
+                $state.go('app.home');
+            }, error => {
+
+            });
+        }
+        /*----------  内部辅助函数  ----------*/
+
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.authentication')
+        .factory('ProfileService', ProfileService);
+
+    ProfileService.$inject = ['localStorageService'];
+
+    function ProfileService(localStorageService) {
+
+        let profile = {};
+
+        let storageName = 'profile';
+
+        let ProfileService = {
+            getProfile: getProfile,
+            setProfile: setProfile,
+            removeProfile: removeProfile,
+            getRole: getRole,
+            getUser: getUser,
+            getPermissions: getPermissions,
+            initProfile: initProfile,
+        };
+
+        return ProfileService;
+
+        function getRole() {
+            return profile.role;
+        }
+
+        function getUser() {
+            return profile.user;
+        }
+
+        function getPermissions() {
+            return profile.permissions;
+        }
+
+        function setProfile(newProfile) {
+            profile = newProfile;
+
+            localStorageService.set(storageName, profile);
+        }
+
+        function getProfile() {
+            return profile;
+        }
+
+        function removeProfile() {
+            profile = {};
+            localStorageService.remove(storageName);
+        }
+
+        function initProfile() {
+            let result = localStorageService.get(storageName);
+            if (result) {
+                profile = result;
+            }
+        }
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.layout')
+        .controller('LayoutCtrl', LayoutCtrl);
+
+    LayoutCtrl.$inject = [
+        '$rootScope', '$state', 'LayoutModel', 'LayoutService', 'DictionaryService', 'ProfileService',
+        'AuthService', 'Version', '$timeout'
+    ];
+
+    function LayoutCtrl($rootScope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
+        AuthService, Version, $timeout) {
+        /*----------  界面层资源  ----------*/
+        var vm = this;
+
+        // 快捷菜单切换状态
+        vm.isShortcutMenusMini = false;
+
+        vm.state = $state;
+        vm.logOut = AuthService.logOut;
+        vm.Version = Version;
+
+        // 用户信息
+        vm.user = null;
+        // 系统主菜单
+        vm.mainMenus = null;
+        // 快捷菜单
+        vm.shortcutMenus = null;
+        // loading
+        vm.contentLoading = false;
+
+        /*----------  内部变量  ----------*/
+        var layoutModel = LayoutModel,
+            layoutService = LayoutService,
+            profileService = ProfileService;
+
+
+        /*----------  逻辑代码区块  ----------*/
+
+        /*----------  辅助函数区块  ----------*/
+
+        function initMainMenus(permissions) {
+
+            var menus = layoutService.resolveMenus(permissions);
+
+            vm.mainMenus = menus.mainMenus;
+            vm.shortcutMenus = menus.shortcutMenus;
+
+        }
+
+        function hideLoading() {
+            vm.contentLoading = false;
+        }
+
+        function showLoading() {
+            vm.contentLoading = true;
+        }
+
+        // 挂载全局函数
+        $rootScope.showLoading = function() {
+            showLoading();
+        };
+
+        $rootScope.hideLoading = function() {
+            hideLoading();
+        };
+        /*----------  监听区块  ----------*/
+
+        // MARK：这是一个好方法么？
+
+
+        function init() {
+            // 初始化菜单
+            var permissions = profileService.getPermissions();
+            initMainMenus(permissions);
+
+            // 初始化用户信息
+            vm.user = profileService.getUser();
+            showLoading();
+
+            $timeout(() => {
+                hideLoading();
+            }, 2000);
+        }
+
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.layout')
+        .factory('LayoutModel', LayoutModel);
+
+    LayoutModel.$inject = ['Restangular'];
+
+    function LayoutModel(Restangular) {
+        var LayoutModel = {
+            getPermissions: getPermissions
+        };
+
+        return LayoutModel;
+
+        ////////////////
+
+
+        // 获取用户菜单
+        function getPermissions() {
+            return Restangular.all('permissions.json').getList();
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.layout')
+        .service('LayoutService', LayoutService);
+
+    LayoutService.$inject = [];
+
+    function LayoutService() {
+
+        this.resolveMenus = resolveMenus;
+
+        ////////////////
+
+        /**
+         * @typedef {Object} Menus
+         * @property {Array.<Object>} Menus.mainMenus - 主菜单
+         * ```
+         *   [{
+         *       id: 1,
+         *       name: '会员管理',
+         *       url: '#/member_management',
+         *       parent: null,
+         *       sort: 1,
+         *       children: 
+         *       [{
+         *           id: 2,
+         *           name: '会员登记',
+         *           url: '#/member_management/register',
+         *           parent: 1,
+         *           sort: 1,
+         *          }, {
+         *           id: 3,
+         *           name: '会员列表',
+         *           url: '#/member_management/list',
+         *           parent: 1,
+         *           sort: 2,
+         *       }]
+         *   }]
+         * ```
+         * @property {Array.<Object>} Menus.shortMenus - 快捷菜单.
+         * ``` 
+         * [{
+         *           id: 2,
+         *           name: '会员登记',
+         *           url: '#/member_management/register',
+         *           parent: 1,
+         *           sort: 2,  // parent sort + child sort
+         *          }, {
+         *           id: 3,
+         *           name: '会员列表',
+         *           url: '#/member_management/list',
+         *           parent: 1,
+         *           sort: 3,
+         *       }]
+         * ```
+         */
+
+        /**
+         * 将从后台获取的菜单数据解析成主菜单和快捷菜单
+         * @method resolveMenus
+         * @param {Array.<Object>} menus
+         * @returns {Menus} result 
+         */
+        function resolveMenus(menus) {
+            var _menus = menus;
+
+            var result = {
+                mainMenus: [],
+                shortcutMenus: []
+            };
+
+            var nodes = {},
+                rootNodes = {};
+
+            _menus.forEach(item => {
+
+                // 缓存父节点
+                if (!item.parent) {
+                    rootNodes[item.id] = item;
+                    nodes[item.id] = item;
+                    return;
+                }
+
+                // 添加子节点
+                if (nodes[item.parent]) {
+                    if (typeof nodes[item.parent].children === 'undefined') {
+                        nodes[item.parent].children = [];
+                    }
+
+                    nodes[item.parent].children.push(item);
+                }
+
+                nodes[item.id] = item;
+
+            });
+
+            // 如果是快捷菜单，要加上父 sort
+            // TODO(延平 2016-11-14): 根据需求再作修改
+            _.forIn(nodes, (item, key) => {
+                if (item.is_shortcut) {
+                    var _item = angular.copy(item);
+                    _item.sort = _item.sort + nodes[_item.parent].sort;
+                    result.shortcutMenus.push(_item);
+                }
+            });
+
+            _.forIn(rootNodes, (item, value) => {
+                result.mainMenus.push(item);
+            });
+
+
+            return result;
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
+        .controller('QuickPayCtrl', QuickPayCtrl);
+
+    QuickPayCtrl.$inject = ['UtilityService'];
+
+    function QuickPayCtrl(UtilityService) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.order = {
+            // 订单编号
+            code: ''
+        };
+
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+        // 初始化订单编号
+        function getCode() {
+            utilityService.getOrderCode('KS').then(result => {
+                vm.order.code = result;
+            });
+        }
+
+        function init() {
+            // 获取订单编号
+            getCode();
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
+        .controller('ConsumptionRecordCtrl', ConsumptionRecordCtrl);
+
+    ConsumptionRecordCtrl.$inject = ['UtilityService', 'ConsumptionModel'];
+
+    function ConsumptionRecordCtrl(UtilityService, ConsumptionModel) {
+        /*----------  界面层资源  ----------*/
+        let vm = this;
+        // 分页信息
+        vm.pagination;
+        // 消费记录
+        vm.list;
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService,
+            consumptionModel = ConsumptionModel;
+        /*----------  内部逻辑函数  ----------*/
+        function getRecords(configs) {
+            consumptionModel.getExpenses(configs).then(result => {
+
+                vm.list = result.plain();;
+                vm.pagination.records = result.records;
+
+            }, error => {
+
+            });
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+            vm.pagination = utilityService.initPagination();
+            getRecords(vm.pagination.configs);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
+        .factory('ConsumptionModel', ConsumptionModel);
+
+    ConsumptionModel.$inject = ['Restangular'];
+
+    function ConsumptionModel(Restangular) {
+
+        let expenses = Restangular.all('expenses.json');
+
+        let ConsumptionModel = {
+            getExpenses: getExpenses,
+        };
+
+        return ConsumptionModel;
+
+        // 获取商品列表
+        function getExpenses(configs = {}) {
+            return expenses.getList(configs);
+        }
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .controller('GoodsClassCtrl', GoodsClassCtrl);
+
+    GoodsClassCtrl.$inject = ['UtilityService', 'GoodsModel'];
+
+    function GoodsClassCtrl(UtilityService, GoodsModel) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        // 当前选中商品分类
+        vm.selectedGoodsClass;
+        // 当前新增商品分类
+        vm.currentGoodsClass;
+        // 商品分类列表
+        vm.list;
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService,
+            goodsModel = GoodsModel;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function initGoodsClass() {
+            let goodsClass = {
+                "store": null,
+                "operator": null,
+                "name": "",
+                "parent": null,
+                "remark": ""
+            }
+            return goodsClass;
+        }
+
+        function initGoodsClassList() {
+            goodsModel.getClasses().then(result => {
+                vm.list = result;
+            });
+        }
+
+        function init() {
+            // 初始化分类对象
+            vm.currentGoodsClass = initGoodsClass();
+            // 初始化分类列表
+            initGoodsClassList();
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .controller('GoodsInventoryCtrl', GoodsInventoryCtrl);
+
+    GoodsInventoryCtrl.$inject = ['UtilityService'];
+
+    function GoodsInventoryCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .controller('GoodsListCtrl', GoodsListCtrl);
+
+    GoodsListCtrl.$inject = ['GoodsModel', 'UtilityService'];
+
+    function GoodsListCtrl(GoodsModel, UtilityService) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+
+        // 分页信息
+        vm.pagination;
+
+        // 商品列表
+        vm.list;
+
+        /*----------  内部变量  ----------*/
+
+        let goodsModel = GoodsModel,
+            utilityService = UtilityService;
+
+        /*----------  内部逻辑函数  ----------*/
+
+        /**
+         * 根据参数，获取商品列表
+         * 
+         * @param {object} configs
+         */
+        function getGoods(configs) {
+            goodsModel.getGoods(configs).then(result => {
+                vm.list = result;
+            });
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+
+        function init() {
+            vm.pagination = utilityService.initPagination();
+            getGoods(vm.pagination.configs);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .controller('GoodsRegisterCtrl', GoodsRegisterCtrl);
+
+    GoodsRegisterCtrl.$inject = ['GoodsModel', 'DictionaryService', '$filter', 'UtilityService'];
+
+    function GoodsRegisterCtrl(GoodsModel, DictionaryService, $filter, UtilityService) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        // 商品单位列表
+        vm.units;
+        // 商品分类列表
+        vm.classes;
+        // 商品类型列表
+        vm.types;
+
+        vm.currentGoods = initGoods();
+
+
+        vm.addGoods = addGoods;
+        vm.resolveCapitalChinese = resolveCapitalChinese;
+
+        /*----------  内部变量  ----------*/
+        let goodsModel = GoodsModel,
+            utilityService = UtilityService,
+            dictionaryService = DictionaryService;
+        /*----------  内部逻辑函数  ----------*/
+        function addGoods(goods) {
+            //TODO: 添加新商品
+        }
+
+        /*----------  内部辅助函数  ----------*/
+        // 中文首字母
+        function resolveCapitalChinese(chinese) {
+            vm.currentGoods.short_name = $filter('capitalChinese')(chinese);
+        }
+        // 初始化商品单位
+        function initGoodsUnits() {
+            vm.units = _.toArray(dictionaryService.get('goods.units'));
+        }
+
+        // 初始化商品类型
+        function initGoodsTypes() {
+            let types = dictionaryService.get('goods.types');
+
+            let key,
+                result = [];
+
+            for (key in types) {
+                let tmp = {};
+                tmp.id = key;
+                tmp.name = types[key];
+                result.push(tmp);
+            }
+
+            vm.types = result;
+            vm.currentGoods.type = result[0].id;
+        }
+
+        // 初始化商品分类
+        function initGoodsClass() {
+            goodsModel.getClasses().then(result => {
+                result = result.plain();
+                vm.classes = result;
+            });
+        }
+        // 初始化商品对象
+        function initGoods() {
+            let goods = {
+                "operator": 1,
+                "store": 1,
+                "class": 1,
+                "code": "",
+                "name": "",
+                "portrait": "",
+                "short_name": "",
+                "unit": "",
+                "type": 1,
+                "exchange_points": "",
+                "discount_rate": "",
+                "lowest_discount_rate": "",
+                "inventory": 0,
+                "reward_points": 0,
+                "entry_price": 0,
+                "sale_price": 0,
+                "remark": ""
+            }
+            return goods;
+        }
+
+        function init() {
+            // 初始化商品单位
+            initGoodsUnits();
+            // 初始化商品类型列表
+            initGoodsTypes();
+            // 初始化商品分类列表
+            initGoodsClass();
+            // 初始化商品编码
+            utilityService.getDatetime().then(result => {
+                vm.currentGoods.code = result;
+            });
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .controller('InventoryListCtrl', InventoryListCtrl);
+
+    InventoryListCtrl.$inject = ['UtilityService'];
+
+    function InventoryListCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
+        .controller('PayForGoodsCtrl', PayForGoodsCtrl);
+
+    PayForGoodsCtrl.$inject = ['$scope', 'UtilityService', 'GoodsModel', '$uibModal'];
+
+    function PayForGoodsCtrl($scope, UtilityService, GoodsModel, $uibModal) {
+        let vm = this;
+        $scope.showCustomer = true;
+        vm.showAddItemNotice = true;
+        /*----------  界面层资源  ----------*/
+        vm.current = {
+            // 当前订单编号
+            code: null,
+            /**
+             * 订单列表，数据结构如下
+             * 
+             * id:{
+             *  id:
+             *  name:
+             *  // 总量
+             *  quantites:
+             *  // 单价
+             *  sale_price:
+             *  // 奖励积分
+             *  reward_points
+             * }
+             */
+            order: {
+
+            },
+            /**
+             * 最后总账单
+             * {
+             * // 总数量
+             * quantities:
+             * // 总价格
+             * price
+             * // 折后总价
+             * discount_price
+             * // 获得总积分
+             * reward_points
+             */
+            billing: initBilling(),
+            remark: ''
+        };
+
+        vm.addItem = addItem;
+        vm.pay = pay;
+        vm.removeItem = removeItem;
+        vm.changeQuantities = changeQuantities;
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService,
+            goodsModel = GoodsModel;
+        /*----------  内部逻辑函数  ----------*/
+
+        function pay() {
+
+
+            $uibModal.open({
+                templateUrl: 'app/shared/views/system-notice.tpl.html',
+                size: 'sm',
+                controller: function($scope) {
+                    $scope.title = '系统提示';
+                    $scope.content = 'bottom';
+                }
+            });
+
+
+        }
+
+        function changeQuantities(item) {
+            if (isSaleOut(item)) return;
+            calculateBilling(vm.current.order);
+        }
+
+        function calculateBilling(order) {
+            let billing = initBilling();
+            for (let key in order) {
+                billing.quantities = billing.quantities + order[key].quantities;
+
+                billing.reward_points = billing.reward_points + order[key].quantities * order[key].reward_points;
+
+                billing.price = billing.price + order[key].quantities * order[key].sale_price
+
+                billing.discount_price = billing.discount_price + order[key].quantities * order[key].sale_price * vm.current.member.level.discount_rate;
+            }
+
+            vm.current.billing = billing;
+        }
+
+        function removeItem(item) {
+            delete vm.current.order[item.id];
+            calculateBilling(vm.current.order);
+        }
+
+        function addItem(item) {
+
+            if (_.isEmpty(vm.current.member)) {
+                $uibModal.open({
+                    templateUrl: 'app/shared/views/system-notice.tpl.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = '系统提示';
+                        $scope.content = '请先选择会员！';
+                    }
+                });
+                return;
+            }
+
+            if (isSaleOut(item)) return;
+
+            vm.showAddItemNotice = false;
+
+            if (!vm.current.order[item.id]) {
+                vm.current.order[item.id] = {
+                    id: item.id,
+                    name: item.name,
+                    quantities: 0,
+                    sale_price: item.sale_price,
+                    reward_points: item.reward_points
+                }
+            }
+
+            vm.current.order[item.id].quantities = vm.current.order[item.id].quantities + 1;
+            calculateBilling(vm.current.order);
+
+        }
+        /*----------  内部辅助函数  ----------*/
+
+        function isSaleOut(item) {
+
+            let isSaleOut;
+            if (vm.current.order[item.id]) {
+                isSaleOut = vm.current.order[item.id].quantities + 1 > item.inventories;
+            } else {
+                isSaleOut = !item.inventories;
+            }
+
+            if (isSaleOut) {
+                $uibModal.open({
+                    templateUrl: 'app/shared/views/system-notice.tpl.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = '系统提示';
+                        $scope.content = '无法继续添加商品，己超过最大库存！';
+                    }
+                });
+                return true;
+            }
+            return false;
+
+        }
+        // 初始化订单编号
+        function getCode() {
+            utilityService.getOrderCode('GS').then(result => {
+                vm.current.code = result;
+            });
+        }
+
+        function getGoods(configs) {
+            goodsModel.getGoods(configs).then(result => {
+                vm.list = result;
+            });
+        }
+
+        // 初始化参数 
+        function initVariables() {
+            vm.current.order = {};
+            vm.showAddItemNotice = true;
+            vm.current.billing = initBilling();
+        }
+
+        function initBilling() {
+            let result = {
+                quantities: 0,
+                price: 0,
+                discount_price: 0,
+                reward_points: 0,
+            }
+            return result;
+        }
+        /*----------  监听区块  ----------*/
+
+        $scope.$on('MEMBER_SEARCH_EVENT', (e, item) => {
+            e.preventDefault();
+            e.stopPropagation();
+            vm.current.member = item;
+            initVariables();
+        });
+
+        function init() {
+            vm.current.date = moment().format('YYYY-MM-DD');
+            vm.pagination = utilityService.initPagination();
+            getGoods(vm.pagination.configs);
+            getCode();
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
+        .factory('GoodsModel', GoodsModel);
+
+    GoodsModel.$inject = ['Restangular'];
+
+    function GoodsModel(Restangular) {
+
+        let goods = Restangular.all('goods.json'),
+            goodsClass = Restangular.all('goods_classes.json');
+
+        let GoodsModel = {
+            getGoods: getGoods,
+            getClasses: getClasses
+        };
+
+        return GoodsModel;
+
+        // 获取商品分类列表
+        function getClasses(configs = {}) {
+            return goodsClass.getList(configs);
+        }
+
+        // 获取商品列表
+        function getGoods(configs = {}) {
+            return goods.getList(configs);
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .controller('MemberChargeCtrl', MemberChargeCtrl);
+
+    MemberChargeCtrl.$inject = ['$scope', 'UtilityService', 'ProfileService', 'MemberModel', '$uibModal'];
+
+    function MemberChargeCtrl($scope, UtilityService, ProfileService, MemberModel, $uibModal) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.currentCharge;
+        // 详细会员信息查看
+        vm.showMemberDetail = false;
+        vm.current = {
+            member: null,
+            total: 0
+        };
+
+        vm.total = total;
+        vm.charge = charge;
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService,
+            profile = ProfileService.profile,
+            memberModel = MemberModel;
+        /*----------  内部逻辑函数  ----------*/
+
+        function charge(current) {
+
+        }
+
+        // 计算总充值
+        function total(current) {
+            current.total = current.charge.reward_amount + current.charge.amount;
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+        // 初始化充值订单对象
+        function initChargeOrder() {
+            var chargeOrder = {
+                "member": null,
+                "order_code": "",
+                "payment_record": null,
+                "store": null,
+                "operator": null,
+                "type": 1,
+                "amount": 0,
+                "unit": 1,
+                "reward_points": 0,
+                "reward_amount": 0,
+                "items": null,
+                "remark": ""
+            };
+
+            return chargeOrder;
+        }
+
+
+
+        function initChargeOrderCode(chargeOrder) {
+            // 初始化订单编号
+            utilityService.getOrderCode('CZ').then(result => {
+                chargeOrder.order_code = result;
+            });
+        }
+
+        /*----------  监听区块  ----------*/
+
+        $scope.$on('MEMBER_SEARCH_EVENT', (e, value) => {
+            e.preventDefault();
+            e.stopPropagation();
+            vm.current.member = value;
+        });
+
+        function init() {
+            vm.current.charge = initChargeOrder();
+            initChargeOrderCode(vm.current.charge);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .controller('MemberLevelCtrl', MemberLevelCtrl);
+
+    MemberLevelCtrl.$inject = ['UtilityService', 'MemberModel', '$uibModal', 'Restangular'];
+
+    function MemberLevelCtrl(UtilityService, MemberModel, $uibModal, Restangular) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+
+        //会员等级列表
+        vm.list;
+
+        vm.current = {
+            selectedAll: false
+        };
+
+        vm.toggleItems = toggleItems;
+        vm.openCreateModal = openCreateModal;
+        vm.openEditModal = openEditModal;
+        vm.openRemoveModal = openRemoveModal;
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService,
+            memberModel = MemberModel,
+            restangular = Restangular;
+
+        let status = {
+            edit: {
+                name: '编辑',
+                save: saveEdit
+            },
+            create: {
+                name: '添加',
+                save: saveCreate
+            }
+        };
+
+        /*----------  内部逻辑函数  ----------*/
+
+        function saveEdit(member) {
+
+        }
+
+        function saveCreate(member) {
+
+        }
+
+        function remove(items) {
+
+        }
+
+        function openRemoveModal(items) {
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-level/remove.modal.html',
+                controller: function($scope) {
+                    let selected = utilityService.getSelected(items);
+                    let vm = {};
+
+                    vm.list = selected;
+                    vm.remove = remove;
+
+                    $scope.vm = vm;
+                }
+            });
+        }
+
+        function toggleItems(items) {
+            utilityService.toggleItems(items, vm.current.selectedAll);
+        }
+        /**
+         * 
+         * 打开会员等级修改窗口
+         * @param {Array[Object]} items
+         * @returns
+         */
+        function openEditModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (selected.length > 1) {
+                $uibModal.open({
+                    templateUrl: 'app/shared/views/system-notice.tpl.html',
+                    size: 'sm',
+                    controller: function($scope) {
+
+                        $scope.title = '系统提示';
+                        $scope.content = '同时只能选中一个会员等级进行编辑！';
+                    }
+                });
+                return;
+            }
+
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-level/create-edit.modal.html',
+                controller: function($scope) {
+                    let level = restangular.copy(selected[0]);
+                    let vm = {};
+                    debugger;
+                    vm.level = level;
+                    vm.status = status.edit;
+                    vm.list = that.list;
+                    $scope.vm = vm;
+                }
+            });
+        }
+
+        /**
+         * 打开会员等级新增窗口
+         */
+        function openCreateModal() {
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-level/create-edit.modal.html',
+                controller: function($scope) {
+                    let vm = {};
+                    vm.level = initMemberLevel();
+
+                    vm.list = that.list;
+                    vm.status = status.create;
+                    $scope.vm = vm;
+                }
+            });
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+        function initMemberLevel() {
+            let memberLevel = {
+                "store": null,
+                "operator": null,
+                "name": "",
+                "discount_rate": 0,
+                "point_rate": 0,
+                "allow_upgrade": 0,
+                "upgrade_point": null,
+                "next_level": null,
+                "remark": "备注@string"
+            }
+
+            return memberLevel;
+        }
+
+        function initMemberLevelList() {
+            memberModel.getLevels().then(result => {
+                vm.list = result;
+            }, error => {
+                //TODO: show error msg
+            });
+        }
+
+        function init() {
+
+            initMemberLevelList();
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .controller('MemberListCtrl', MemberListCtrl);
+
+    MemberListCtrl.$inject = ['MemberModel', 'UtilityService', '$uibModal', 'Restangular', 'MemberService'];
+
+    function MemberListCtrl(MemberModel, UtilityService, $uibModal, Restangular, MemberService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.pagination;
+
+        // 会员列表
+        vm.list;
+
+        vm.current = {
+            selectedAll: false
+        };
+        vm.toggleItems = toggleItems;
+        vm.openEditModal = openEditModal;
+
+        /*----------  内部变量  ----------*/
+        var memberModel = MemberModel,
+            utilityService = UtilityService,
+            restangular = Restangular,
+            memberService = MemberService;
+        /*----------  内部逻辑函数  ----------*/
+
+        function toggleItems(items) {
+            utilityService.toggleItems(items, vm.current.selectedAll);
+        }
+        /**
+         * 
+         * 打开会员修改窗口
+         * @param {any} items
+         * @returns
+         */
+        function openEditModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (selected.length > 1) {
+                $uibModal.open({
+                    templateUrl: 'app/shared/views/system-notice.tpl.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = '系统提示';
+                        $scope.content = '同时只能选中一个会员进行编辑！';
+                    }
+                });
+                return;
+            }
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-list/edit.modal.html',
+                size: 'lg',
+                controller: function($scope) {
+                    let member = restangular.copy(selected[0]);
+                    $scope.vm = {};
+
+                    $scope.vm.member = member;
+                    $scope.vm.confirmPaymentPassword = member.payment_password;
+                    $scope.vm.hidePaymentPasswordNotice = true;
+                    $scope.vm.edit = edit;
+                    $scope.vm.levelList = vm.levelList;
+                    $scope.vm.checkPaymentPassword = (password, confirmPassword) => {
+
+                        $scope.vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 修改会员信息
+         * 
+         * @param {any} item
+         */
+        function edit(item) {
+            utilityService.showLoading();
+            memberModel.edit(item).then(result => {
+                utilityService.hideLoading();
+            });
+        }
+
+        /**
+         * 根据参数，获取会员列表
+         * 
+         * @param {object} configs
+         */
+        function getMembers(configs) {
+            var _configs = angular.copy(configs);
+            // 关联 operator、level 对象
+            _configs['fields'] = 'operator,level';
+
+            memberModel.getMembers(_configs).then(result => {
+                vm.list = result;
+            });
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+
+
+
+        function init() {
+            vm.pagination = utilityService.initPagination();
+
+            getMembers(vm.pagination);
+
+            memberModel.getLevels().then(result => {
+
+                vm.levelList = result;
+            });
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .controller('MemberRegisterCtrl', MemberRegisterCtrl);
+
+    MemberRegisterCtrl.$inject = ['ProfileService', 'MemberModel', 'MemberService', 'UtilityService'];
+
+    function MemberRegisterCtrl(ProfileService, MemberModel, MemberService, UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        vm.hidePaymentPasswordNotice = true;
+
+        vm.current = {
+            member: initMember()
+        };
+
+        vm.create = create;
+        vm.checkPaymentPassword = checkPaymentPassword;
+        vm.resetForm = resetForm;
+
+        /*----------  内部变量  ----------*/
+        var memberModel = MemberModel,
+            utilityService = UtilityService,
+            memberService = MemberService;
+        /*----------  内部函数逻辑  ----------*/
+        /**
+         * 添加新会员
+         * 
+         * @param {Object} member
+         */
+        function create(member) {
+            // TODO: 添加新会员
+        }
+
+        // 重置表单
+        function resetForm(form) {
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
+            initForm();
+        }
+
+        // 验证支付密码是否确认
+        function checkPaymentPassword(password, confirmPassword) {
+
+            vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
+        }
+        /*----------  内部辅助函数  ----------*/
+        // 初始化会员对象
+        function initMember() {
+
+            /**
+             * 会员对象
+             */
+            var member = {
+                "store": "",
+                // 新增时修改
+                "operator": 0,
+                "level": 1,
+                "code": "",
+                "portrait": "",
+                "payment_password": "",
+                "balance": 0,
+                "points": 0,
+                "enroll_date": moment().format('YYYY-MM-DD'),
+                "expire_date": "2999-12-12",
+                "expenditure": 0,
+                "state": 1,
+                "name": "",
+                "identity": "",
+                "contact": "",
+                "birthday": "1991-06-26",
+                "sex": 1,
+                "address": "",
+                "remark": "",
+            }
+
+            return member;
+        }
+
+        // 初始化会员等级列表 
+        function initLevels() {
+            memberModel.getLevels().then(result => {
+                //TODO: 过滤散客
+                result = result.plain();
+                vm.current.member.level = result[1].id;
+                vm.levelList = result;
+            });
+
+        }
+
+        /**
+         * 初始化表单
+         */
+        function initForm() {
+            vm.hidePaymentPasswordNotice = true;
+            vm.confirmPaymentPassword = '';
+            vm.current.member = initMember();
+            vm.current.member.level = vm.levelList[1].id;
+        }
+
+        function init() {
+            initLevels();
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .controller('MemberSearchCtrl', MemberSearchCtrl);
+
+    MemberSearchCtrl.$inject = ['$scope', 'UtilityService', 'MemberModel', '$uibModal'];
+
+    function MemberSearchCtrl($scope, UtilityService, MemberModel, $uibModal) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.showMemberDetail = false;
+        vm.showCustomer = false;
+        vm.selectedCustomer = false;
+
+        vm.current = {
+            member: null,
+            charge: null,
+        };
+
+        vm.search = search;
+        vm.selectCustomer = selectCustomer;
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService,
+            memberModel = MemberModel;
+        /*----------  内部逻辑函数  ----------*/
+
+        function selectCustomer(isSelectCustomer) {
+            debugger;
+            if (isSelectCustomer) {
+                selectMember(vm.customer);
+            } else {
+                selectMember({});
+                vm.showMemberDetail = false;
+            }
+        }
+
+        function search(queryString) {
+            utilityService.showLoading();
+            memberModel.search(queryString).then(result => {
+                result = result.plain();
+                utilityService.hideLoading();
+
+                if (result.length <= 1) {
+                    return selectMember(result);
+                }
+
+                $uibModal.open({
+                    templateUrl: 'app/member-management/shared/member-search-list.modal.html',
+                    size: 'lg',
+                    controller: function($scope) {
+                        $scope.list = result;
+                        $scope.select = function(member) {
+                            selectMember(member);
+                        }
+                    }
+                });
+
+            });
+        }
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function selectMember(member) {
+            debugger;
+            vm.current.member = member;
+            $scope.$emit('MEMBER_SEARCH_EVENT', member);
+        }
+
+        function init() {
+            memberModel.getMembers().then(result => {
+                result = result.plain();
+                vm.customer = result[0];
+            });
+            if ($scope.$parent.showCustomer) {
+                vm.showCustomer = true;
+            }
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .factory('MemberModel', MemberModel);
+
+    MemberModel.$inject = ['Restangular', '$q'];
+
+    function MemberModel(Restangular, $q) {
+
+        var members = Restangular.all('members.json'),
+            levels = Restangular.all('levels.json');
+
+        var MemberModel = {
+            getLevels: getLevels,
+            getMembers: getMembers,
+            createMember: createMember,
+        };
+
+        return MemberModel;
+
+        /**
+         * 
+         * 创建会员
+         * @param {Object} member
+         */
+        function createMember(member) {
+            return members.post(member);
+        }
+        /**
+         * 获取会员列表
+         * 
+         * @param {any} configs
+         * @returns
+         */
+        function getMembers(configs) {
+            return members.getList(configs);
+        }
+        /**
+         * 获取会员等级列表
+         */
+        function getLevels(config = '') {
+
+            return levels.getList();
+
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.member_management')
+        .factory('MemberService', MemberService);
+
+    MemberService.inject = [];
+
+    function MemberService() {
+        var MemberService = {
+            checkPassword: checkPassword
+        };
+
+        return MemberService;
+
+        ////////////////
+        function checkPassword(password, confirmPassword) {
+            if (password != confirmPassword &&
+                password !== '') {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('PluginTestCtrl', PluginTestCtrl);
+
+    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
+
+    function PluginTestCtrl($scope, DictionaryService) {
+        var vm = this;
+
+        //商品测试单位
+        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+
+        vm.treeData = [{
+                "id": 1,
+                "title": "node1",
+                "nodes": [{
+                        "id": 11,
+                        "title": "node1.1",
+                        "nodes": [{
+                            "id": 111,
+                            "title": "node1.1.1",
+                            "nodes": []
+                        }]
+                    },
+                    {
+                        "id": 12,
+                        "title": "node1.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "node2",
+                "nodrop": true,
+                "nodes": [{
+                        "id": 21,
+                        "title": "node2.1",
+                        "nodes": []
+                    },
+                    {
+                        "id": 22,
+                        "title": "node2.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "node3",
+                "nodes": [{
+                    "id": 31,
+                    "title": "node3.1",
+                    "nodes": []
+                }]
+            }
+        ];
+
+        vm.showLoading = function() {
+            // $scope.$emit(LOADING_EVENT.show);
+        }
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('FormController', FormController);
+
+    FormController.$inject = ['$scope', '$sce'];
+
+    function FormController($scope, $sce) {
+        $scope.students = [
+            { Name: '小李', Id: '201401201', Grade: '计算机技术' },
+            { Name: '李磊', Id: '201401202', Grade: '计算机技术' },
+            { Name: '夏津', Id: '201401203', Grade: '计算机技术' },
+            { Name: '杭州', Id: '201401204', Grade: '计算机技术' }
+        ];
+        $scope.addStudent = function() { //添加学生函数
+            $scope.students.push({ Name: $scope.newName, Id: $scope.newId, Grade: $scope.newGrade });
+            $scope.newName = '';
+            $scope.newId = '';
+            $scope.newGrade = '';
+        };
+        $scope.deleteStudent = function(student) { //删除一行的内容
+            $scope.students.splice($scope.students.indexOf(student), 1);
+        };
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .directive('datetimePicker', datetimePicker);
+
+    datetimePicker.$inject = [];
+    /**
+     *  时间选择控件
+     * 
+     *      <div class="input-group date" datetime-picker data-date-format="dd-mm-yyyy" datetime-picker-options="{ pickerPosition: 'bottom-left'}">
+                <input type="text" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+     * 
+     * 
+     */
+    function datetimePicker() {
+
+        var datetimePicker = {
+            link: link,
+            restrict: 'A',
+            scope: {
+                datetimePickerOptions: '='
+            }
+        };
+        return datetimePicker;
+
+        function link(scope, element, attrs) {
+            var options = {};
+            if (scope.datetimePickerOptions) {
+                options = scope.datetimePickerOptions;
+            }
+            options = angular.extend({
+                autoclose: true,
+                language: 'zh-CN',
+                pickerPosition: 'bottom-right'
+            }, options);
+
+            element.datetimepicker('remove');
+            element.datetimepicker(options);
+        }
+    }
+})();
+(function(angular) {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .directive('loading', loading);
+
+    /**
+     * @class loading
+     * ## 使用说明
+     *      <div loading="vm.loading" ><div>被包裹的内容</div></div>
+     * 
+     * 注：外层元素必须要有高度和宽度，这样 Loading 才能自适应
+     */
+    loading.$inject = [];
+
+    /* @ngInject */
+    function loading() {
+
+        var loading = {
+
+            link: link,
+            restrict: 'A',
+            scope: {
+                /**
+                 * 设置Loading状态，true显示，false隐藏
+                 * @property {Boolean}   
+                 */
+                loading: '=',
+            }
+        };
+        return loading;
+
+        function link(scope, element, attrs) {
+
+            let options = {
+                /**
+                 * @cfg 选择显示的模板
+                 */
+                template: 1,
+
+            };
+
+            let loading = angular.element('<div></div>');
+
+            loading.append(loadingTemplates[options.template]);
+
+            loading.addClass('loading');
+
+            element.css('position', 'relative');
+            element.append(loading);
+
+            scope.$watch('loading', function(newVal, oldVal) {
+                if (angular.isDefined(newVal)) {
+                    if (newVal) {
+                        loading.show();
+                    } else {
+                        loading.hide();
+                    }
+                }
+            });
+
+        }
+    }
+
+    var loadingTemplates = {
+        1: '<div class="loading-container"><div class="loader-container"><span class="loader loader-quart"></span><p>加载中...</p></div></div>',
+
+    }
+
+})(angular);
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .filter('capitalChinese', capitalChinese);
+
+    function capitalChinese() {
+        var strChineseFirstPY = "YDYQSXMWZSSXJBYMGCCZQPSSQBYCDSCDQLDYLYBSSJGYZZJJFKCCLZDHWDWZJLJPFYYNWJJTMYHZWZHFLZPPQHGSCYYYNJQYXXGJHHSDSJNKKTMOMLCRXYPSNQSECCQZGGLLYJLMYZZSECYKYYHQWJSSGGYXYZYJWWKDJHYCHMYXJTLXJYQBYXZLDWRDJRWYSRLDZJPCBZJJBRCFTLECZSTZFXXZHTRQHYBDLYCZSSYMMRFMYQZPWWJJYFCRWFDFZQPYDDWYXKYJAWJFFXYPSFTZYHHYZYSWCJYXSCLCXXWZZXNBGNNXBXLZSZSBSGPYSYZDHMDZBQBZCWDZZYYTZHBTSYYBZGNTNXQYWQSKBPHHLXGYBFMJEBJHHGQTJCYSXSTKZHLYCKGLYSMZXYALMELDCCXGZYRJXSDLTYZCQKCNNJWHJTZZCQLJSTSTBNXBTYXCEQXGKWJYFLZQLYHYXSPSFXLMPBYSXXXYDJCZYLLLSJXFHJXPJBTFFYABYXBHZZBJYZLWLCZGGBTSSMDTJZXPTHYQTGLJSCQFZKJZJQNLZWLSLHDZBWJNCJZYZSQQYCQYRZCJJWYBRTWPYFTWEXCSKDZCTBZHYZZYYJXZCFFZZMJYXXSDZZOTTBZLQWFCKSZSXFYRLNYJMBDTHJXSQQCCSBXYYTSYFBXDZTGBCNSLCYZZPSAZYZZSCJCSHZQYDXLBPJLLMQXTYDZXSQJTZPXLCGLQTZWJBHCTSYJSFXYEJJTLBGXSXJMYJQQPFZASYJNTYDJXKJCDJSZCBARTDCLYJQMWNQNCLLLKBYBZZSYHQQLTWLCCXTXLLZNTYLNEWYZYXCZXXGRKRMTCNDNJTSYYSSDQDGHSDBJGHRWRQLYBGLXHLGTGXBQJDZPYJSJYJCTMRNYMGRZJCZGJMZMGXMPRYXKJNYMSGMZJYMKMFXMLDTGFBHCJHKYLPFMDXLQJJSMTQGZSJLQDLDGJYCALCMZCSDJLLNXDJFFFFJCZFMZFFPFKHKGDPSXKTACJDHHZDDCRRCFQYJKQCCWJDXHWJLYLLZGCFCQDSMLZPBJJPLSBCJGGDCKKDEZSQCCKJGCGKDJTJDLZYCXKLQSCGJCLTFPCQCZGWPJDQYZJJBYJHSJDZWGFSJGZKQCCZLLPSPKJGQJHZZLJPLGJGJJTHJJYJZCZMLZLYQBGJWMLJKXZDZNJQSYZMLJLLJKYWXMKJLHSKJGBMCLYYMKXJQLBMLLKMDXXKWYXYSLMLPSJQQJQXYXFJTJDXMXXLLCXQBSYJBGWYMBGGBCYXPJYGPEPFGDJGBHBNSQJYZJKJKHXQFGQZKFHYGKHDKLLSDJQXPQYKYBNQSXQNSZSWHBSXWHXWBZZXDMNSJBSBKBBZKLYLXGWXDRWYQZMYWSJQLCJXXJXKJEQXSCYETLZHLYYYSDZPAQYZCMTLSHTZCFYZYXYLJSDCJQAGYSLCQLYYYSHMRQQKLDXZSCSSSYDYCJYSFSJBFRSSZQSBXXPXJYSDRCKGJLGDKZJZBDKTCSYQPYHSTCLDJDHMXMCGXYZHJDDTMHLTXZXYLYMOHYJCLTYFBQQXPFBDFHHTKSQHZYYWCNXXCRWHOWGYJLEGWDQCWGFJYCSNTMYTOLBYGWQWESJPWNMLRYDZSZTXYQPZGCWXHNGPYXSHMYQJXZTDPPBFYHZHTJYFDZWKGKZBLDNTSXHQEEGZZYLZMMZYJZGXZXKHKSTXNXXWYLYAPSTHXDWHZYMPXAGKYDXBHNHXKDPJNMYHYLPMGOCSLNZHKXXLPZZLBMLSFBHHGYGYYGGBHSCYAQTYWLXTZQCEZYDQDQMMHTKLLSZHLSJZWFYHQSWSCWLQAZYNYTLSXTHAZNKZZSZZLAXXZWWCTGQQTDDYZTCCHYQZFLXPSLZYGPZSZNGLNDQTBDLXGTCTAJDKYWNSYZLJHHZZCWNYYZYWMHYCHHYXHJKZWSXHZYXLYSKQYSPSLYZWMYPPKBYGLKZHTYXAXQSYSHXASMCHKDSCRSWJPWXSGZJLWWSCHSJHSQNHCSEGNDAQTBAALZZMSSTDQJCJKTSCJAXPLGGXHHGXXZCXPDMMHLDGTYBYSJMXHMRCPXXJZCKZXSHMLQXXTTHXWZFKHCCZDYTCJYXQHLXDHYPJQXYLSYYDZOZJNYXQEZYSQYAYXWYPDGXDDXSPPYZNDLTWRHXYDXZZJHTCXMCZLHPYYYYMHZLLHNXMYLLLMDCPPXHMXDKYCYRDLTXJCHHZZXZLCCLYLNZSHZJZZLNNRLWHYQSNJHXYNTTTKYJPYCHHYEGKCTTWLGQRLGGTGTYGYHPYHYLQYQGCWYQKPYYYTTTTLHYHLLTYTTSPLKYZXGZWGPYDSSZZDQXSKCQNMJJZZBXYQMJRTFFBTKHZKBXLJJKDXJTLBWFZPPTKQTZTGPDGNTPJYFALQMKGXBDCLZFHZCLLLLADPMXDJHLCCLGYHDZFGYDDGCYYFGYDXKSSEBDHYKDKDKHNAXXYBPBYYHXZQGAFFQYJXDMLJCSQZLLPCHBSXGJYNDYBYQSPZWJLZKSDDTACTBXZDYZYPJZQSJNKKTKNJDJGYYPGTLFYQKASDNTCYHBLWDZHBBYDWJRYGKZYHEYYFJMSDTYFZJJHGCXPLXHLDWXXJKYTCYKSSSMTWCTTQZLPBSZDZWZXGZAGYKTYWXLHLSPBCLLOQMMZSSLCMBJCSZZKYDCZJGQQDSMCYTZQQLWZQZXSSFPTTFQMDDZDSHDTDWFHTDYZJYQJQKYPBDJYYXTLJHDRQXXXHAYDHRJLKLYTWHLLRLLRCXYLBWSRSZZSYMKZZHHKYHXKSMDSYDYCJPBZBSQLFCXXXNXKXWYWSDZYQOGGQMMYHCDZTTFJYYBGSTTTYBYKJDHKYXBELHTYPJQNFXFDYKZHQKZBYJTZBXHFDXKDASWTAWAJLDYJSFHBLDNNTNQJTJNCHXFJSRFWHZFMDRYJYJWZPDJKZYJYMPCYZNYNXFBYTFYFWYGDBNZZZDNYTXZEMMQBSQEHXFZMBMFLZZSRXYMJGSXWZJSPRYDJSJGXHJJGLJJYNZZJXHGXKYMLPYYYCXYTWQZSWHWLYRJLPXSLSXMFSWWKLCTNXNYNPSJSZHDZEPTXMYYWXYYSYWLXJQZQXZDCLEEELMCPJPCLWBXSQHFWWTFFJTNQJHJQDXHWLBYZNFJLALKYYJLDXHHYCSTYYWNRJYXYWTRMDRQHWQCMFJDYZMHMYYXJWMYZQZXTLMRSPWWCHAQBXYGZYPXYYRRCLMPYMGKSJSZYSRMYJSNXTPLNBAPPYPYLXYYZKYNLDZYJZCZNNLMZHHARQMPGWQTZMXXMLLHGDZXYHXKYXYCJMFFYYHJFSBSSQLXXNDYCANNMTCJCYPRRNYTYQNYYMBMSXNDLYLYSLJRLXYSXQMLLYZLZJJJKYZZCSFBZXXMSTBJGNXYZHLXNMCWSCYZYFZLXBRNNNYLBNRTGZQYSATSWRYHYJZMZDHZGZDWYBSSCSKXSYHYTXXGCQGXZZSHYXJSCRHMKKBXCZJYJYMKQHZJFNBHMQHYSNJNZYBKNQMCLGQHWLZNZSWXKHLJHYYBQLBFCDSXDLDSPFZPSKJYZWZXZDDXJSMMEGJSCSSMGCLXXKYYYLNYPWWWGYDKZJGGGZGGSYCKNJWNJPCXBJJTQTJWDSSPJXZXNZXUMELPXFSXTLLXCLJXJJLJZXCTPSWXLYDHLYQRWHSYCSQYYBYAYWJJJQFWQCQQCJQGXALDBZZYJGKGXPLTZYFXJLTPADKYQHPMATLCPDCKBMTXYBHKLENXDLEEGQDYMSAWHZMLJTWYGXLYQZLJEEYYBQQFFNLYXRDSCTGJGXYYNKLLYQKCCTLHJLQMKKZGCYYGLLLJDZGYDHZWXPYSJBZKDZGYZZHYWYFQYTYZSZYEZZLYMHJJHTSMQWYZLKYYWZCSRKQYTLTDXWCTYJKLWSQZWBDCQYNCJSRSZJLKCDCDTLZZZACQQZZDDXYPLXZBQJYLZLLLQDDZQJYJYJZYXNYYYNYJXKXDAZWYRDLJYYYRJLXLLDYXJCYWYWNQCCLDDNYYYNYCKCZHXXCCLGZQJGKWPPCQQJYSBZZXYJSQPXJPZBSBDSFNSFPZXHDWZTDWPPTFLZZBZDMYYPQJRSDZSQZSQXBDGCPZSWDWCSQZGMDHZXMWWFYBPDGPHTMJTHZSMMBGZMBZJCFZWFZBBZMQCFMBDMCJXLGPNJBBXGYHYYJGPTZGZMQBQTCGYXJXLWZKYDPDYMGCFTPFXYZTZXDZXTGKMTYBBCLBJASKYTSSQYYMSZXFJEWLXLLSZBQJJJAKLYLXLYCCTSXMCWFKKKBSXLLLLJYXTYLTJYYTDPJHNHNNKBYQNFQYYZBYYESSESSGDYHFHWTCJBSDZZTFDMXHCNJZYMQWSRYJDZJQPDQBBSTJGGFBKJBXTGQHNGWJXJGDLLTHZHHYYYYYYSXWTYYYCCBDBPYPZYCCZYJPZYWCBDLFWZCWJDXXHYHLHWZZXJTCZLCDPXUJCZZZLYXJJTXPHFXWPYWXZPTDZZBDZCYHJHMLXBQXSBYLRDTGJRRCTTTHYTCZWMXFYTWWZCWJWXJYWCSKYBZSCCTZQNHXNWXXKHKFHTSWOCCJYBCMPZZYKBNNZPBZHHZDLSYDDYTYFJPXYNGFXBYQXCBHXCPSXTYZDMKYSNXSXLHKMZXLYHDHKWHXXSSKQYHHCJYXGLHZXCSNHEKDTGZXQYPKDHEXTYKCNYMYYYPKQYYYKXZLTHJQTBYQHXBMYHSQCKWWYLLHCYYLNNEQXQWMCFBDCCMLJGGXDQKTLXKGNQCDGZJWYJJLYHHQTTTNWCHMXCXWHWSZJYDJCCDBQCDGDNYXZTHCQRXCBHZTQCBXWGQWYYBXHMBYMYQTYEXMQKYAQYRGYZSLFYKKQHYSSQYSHJGJCNXKZYCXSBXYXHYYLSTYCXQTHYSMGSCPMMGCCCCCMTZTASMGQZJHKLOSQYLSWTMXSYQKDZLJQQYPLSYCZTCQQPBBQJZCLPKHQZYYXXDTDDTSJCXFFLLCHQXMJLWCJCXTSPYCXNDTJSHJWXDQQJSKXYAMYLSJHMLALYKXCYYDMNMDQMXMCZNNCYBZKKYFLMCHCMLHXRCJJHSYLNMTJZGZGYWJXSRXCWJGJQHQZDQJDCJJZKJKGDZQGJJYJYLXZXXCDQHHHEYTMHLFSBDJSYYSHFYSTCZQLPBDRFRZTZYKYWHSZYQKWDQZRKMSYNBCRXQBJYFAZPZZEDZCJYWBCJWHYJBQSZYWRYSZPTDKZPFPBNZTKLQYHBBZPNPPTYZZYBQNYDCPJMMCYCQMCYFZZDCMNLFPBPLNGQJTBTTNJZPZBBZNJKLJQYLNBZQHKSJZNGGQSZZKYXSHPZSNBCGZKDDZQANZHJKDRTLZLSWJLJZLYWTJNDJZJHXYAYNCBGTZCSSQMNJPJYTYSWXZFKWJQTKHTZPLBHSNJZSYZBWZZZZLSYLSBJHDWWQPSLMMFBJDWAQYZTCJTBNNWZXQXCDSLQGDSDPDZHJTQQPSWLYYJZLGYXYZLCTCBJTKTYCZJTQKBSJLGMGZDMCSGPYNJZYQYYKNXRPWSZXMTNCSZZYXYBYHYZAXYWQCJTLLCKJJTJHGDXDXYQYZZBYWDLWQCGLZGJGQRQZCZSSBCRPCSKYDZNXJSQGXSSJMYDNSTZTPBDLTKZWXQWQTZEXNQCZGWEZKSSBYBRTSSSLCCGBPSZQSZLCCGLLLZXHZQTHCZMQGYZQZNMCOCSZJMMZSQPJYGQLJYJPPLDXRGZYXCCSXHSHGTZNLZWZKJCXTCFCJXLBMQBCZZWPQDNHXLJCTHYZLGYLNLSZZPCXDSCQQHJQKSXZPBAJYEMSMJTZDXLCJYRYYNWJBNGZZTMJXLTBSLYRZPYLSSCNXPHLLHYLLQQZQLXYMRSYCXZLMMCZLTZSDWTJJLLNZGGQXPFSKYGYGHBFZPDKMWGHCXMSGDXJMCJZDYCABXJDLNBCDQYGSKYDQTXDJJYXMSZQAZDZFSLQXYJSJZYLBTXXWXQQZBJZUFBBLYLWDSLJHXJYZJWTDJCZFQZQZZDZSXZZQLZCDZFJHYSPYMPQZMLPPLFFXJJNZZYLSJEYQZFPFZKSYWJJJHRDJZZXTXXGLGHYDXCSKYSWMMZCWYBAZBJKSHFHJCXMHFQHYXXYZFTSJYZFXYXPZLCHMZMBXHZZSXYFYMNCWDABAZLXKTCSHHXKXJJZJSTHYGXSXYYHHHJWXKZXSSBZZWHHHCWTZZZPJXSNXQQJGZYZYWLLCWXZFXXYXYHXMKYYSWSQMNLNAYCYSPMJKHWCQHYLAJJMZXHMMCNZHBHXCLXTJPLTXYJHDYYLTTXFSZHYXXSJBJYAYRSMXYPLCKDUYHLXRLNLLSTYZYYQYGYHHSCCSMZCTZQXKYQFPYYRPFFLKQUNTSZLLZMWWTCQQYZWTLLMLMPWMBZSSTZRBPDDTLQJJBXZCSRZQQYGWCSXFWZLXCCRSZDZMCYGGDZQSGTJSWLJMYMMZYHFBJDGYXCCPSHXNZCSBSJYJGJMPPWAFFYFNXHYZXZYLREMZGZCYZSSZDLLJCSQFNXZKPTXZGXJJGFMYYYSNBTYLBNLHPFZDCYFBMGQRRSSSZXYSGTZRNYDZZCDGPJAFJFZKNZBLCZSZPSGCYCJSZLMLRSZBZZLDLSLLYSXSQZQLYXZLSKKBRXBRBZCYCXZZZEEYFGKLZLYYHGZSGZLFJHGTGWKRAAJYZKZQTSSHJJXDCYZUYJLZYRZDQQHGJZXSSZBYKJPBFRTJXLLFQWJHYLQTYMBLPZDXTZYGBDHZZRBGXHWNJTJXLKSCFSMWLSDQYSJTXKZSCFWJLBXFTZLLJZLLQBLSQMQQCGCZFPBPHZCZJLPYYGGDTGWDCFCZQYYYQYSSCLXZSKLZZZGFFCQNWGLHQYZJJCZLQZZYJPJZZBPDCCMHJGXDQDGDLZQMFGPSYTSDYFWWDJZJYSXYYCZCYHZWPBYKXRYLYBHKJKSFXTZJMMCKHLLTNYYMSYXYZPYJQYCSYCWMTJJKQYRHLLQXPSGTLYYCLJSCPXJYZFNMLRGJJTYZBXYZMSJYJHHFZQMSYXRSZCWTLRTQZSSTKXGQKGSPTGCZNJSJCQCXHMXGGZTQYDJKZDLBZSXJLHYQGGGTHQSZPYHJHHGYYGKGGCWJZZYLCZLXQSFTGZSLLLMLJSKCTBLLZZSZMMNYTPZSXQHJCJYQXYZXZQZCPSHKZZYSXCDFGMWQRLLQXRFZTLYSTCTMJCXJJXHJNXTNRZTZFQYHQGLLGCXSZSJDJLJCYDSJTLNYXHSZXCGJZYQPYLFHDJSBPCCZHJJJQZJQDYBSSLLCMYTTMQTBHJQNNYGKYRQYQMZGCJKPDCGMYZHQLLSLLCLMHOLZGDYYFZSLJCQZLYLZQJESHNYLLJXGJXLYSYYYXNBZLJSSZCQQCJYLLZLTJYLLZLLBNYLGQCHXYYXOXCXQKYJXXXYKLXSXXYQXCYKQXQCSGYXXYQXYGYTQOHXHXPYXXXULCYEYCHZZCBWQBBWJQZSCSZSSLZYLKDESJZWMYMCYTSDSXXSCJPQQSQYLYYZYCMDJDZYWCBTJSYDJKCYDDJLBDJJSODZYSYXQQYXDHHGQQYQHDYXWGMMMAJDYBBBPPBCMUUPLJZSMTXERXJMHQNUTPJDCBSSMSSSTKJTSSMMTRCPLZSZMLQDSDMJMQPNQDXCFYNBFSDQXYXHYAYKQYDDLQYYYSSZBYDSLNTFQTZQPZMCHDHCZCWFDXTMYQSPHQYYXSRGJCWTJTZZQMGWJJTJHTQJBBHWZPXXHYQFXXQYWYYHYSCDYDHHQMNMTMWCPBSZPPZZGLMZFOLLCFWHMMSJZTTDHZZYFFYTZZGZYSKYJXQYJZQBHMBZZLYGHGFMSHPZFZSNCLPBQSNJXZSLXXFPMTYJYGBXLLDLXPZJYZJYHHZCYWHJYLSJEXFSZZYWXKZJLUYDTMLYMQJPWXYHXSKTQJEZRPXXZHHMHWQPWQLYJJQJJZSZCPHJLCHHNXJLQWZJHBMZYXBDHHYPZLHLHLGFWLCHYYTLHJXCJMSCPXSTKPNHQXSRTYXXTESYJCTLSSLSTDLLLWWYHDHRJZSFGXTSYCZYNYHTDHWJSLHTZDQDJZXXQHGYLTZPHCSQFCLNJTCLZPFSTPDYNYLGMJLLYCQHYSSHCHYLHQYQTMZYPBYWRFQYKQSYSLZDQJMPXYYSSRHZJNYWTQDFZBWWTWWRXCWHGYHXMKMYYYQMSMZHNGCEPMLQQMTCWCTMMPXJPJJHFXYYZSXZHTYBMSTSYJTTQQQYYLHYNPYQZLCYZHZWSMYLKFJXLWGXYPJYTYSYXYMZCKTTWLKSMZSYLMPWLZWXWQZSSAQSYXYRHSSNTSRAPXCPWCMGDXHXZDZYFJHGZTTSBJHGYZSZYSMYCLLLXBTYXHBBZJKSSDMALXHYCFYGMQYPJYCQXJLLLJGSLZGQLYCJCCZOTYXMTMTTLLWTGPXYMZMKLPSZZZXHKQYSXCTYJZYHXSHYXZKXLZWPSQPYHJWPJPWXQQYLXSDHMRSLZZYZWTTCYXYSZZSHBSCCSTPLWSSCJCHNLCGCHSSPHYLHFHHXJSXYLLNYLSZDHZXYLSXLWZYKCLDYAXZCMDDYSPJTQJZLNWQPSSSWCTSTSZLBLNXSMNYYMJQBQHRZWTYYDCHQLXKPZWBGQYBKFCMZWPZLLYYLSZYDWHXPSBCMLJBSCGBHXLQHYRLJXYSWXWXZSLDFHLSLYNJLZYFLYJYCDRJLFSYZFSLLCQYQFGJYHYXZLYLMSTDJCYHBZLLNWLXXYGYYHSMGDHXXHHLZZJZXCZZZCYQZFNGWPYLCPKPYYPMCLQKDGXZGGWQBDXZZKZFBXXLZXJTPJPTTBYTSZZDWSLCHZHSLTYXHQLHYXXXYYZYSWTXZKHLXZXZPYHGCHKCFSYHUTJRLXFJXPTZTWHPLYXFCRHXSHXKYXXYHZQDXQWULHYHMJTBFLKHTXCWHJFWJCFPQRYQXCYYYQYGRPYWSGSUNGWCHKZDXYFLXXHJJBYZWTSXXNCYJJYMSWZJQRMHXZWFQSYLZJZGBHYNSLBGTTCSYBYXXWXYHXYYXNSQYXMQYWRGYQLXBBZLJSYLPSYTJZYHYZAWLRORJMKSCZJXXXYXCHDYXRYXXJDTSQFXLYLTSFFYXLMTYJMJUYYYXLTZCSXQZQHZXLYYXZHDNBRXXXJCTYHLBRLMBRLLAXKYLLLJLYXXLYCRYLCJTGJCMTLZLLCYZZPZPCYAWHJJFYBDYYZSMPCKZDQYQPBPCJPDCYZMDPBCYYDYCNNPLMTMLRMFMMGWYZBSJGYGSMZQQQZTXMKQWGXLLPJGZBQCDJJJFPKJKCXBLJMSWMDTQJXLDLPPBXCWRCQFBFQJCZAHZGMYKPHYYHZYKNDKZMBPJYXPXYHLFPNYYGXJDBKXNXHJMZJXSTRSTLDXSKZYSYBZXJLXYSLBZYSLHXJPFXPQNBYLLJQKYGZMCYZZYMCCSLCLHZFWFWYXZMWSXTYNXJHPYYMCYSPMHYSMYDYSHQYZCHMJJMZCAAGCFJBBHPLYZYLXXSDJGXDHKXXTXXNBHRMLYJSLTXMRHNLXQJXYZLLYSWQGDLBJHDCGJYQYCMHWFMJYBMBYJYJWYMDPWHXQLDYGPDFXXBCGJSPCKRSSYZJMSLBZZJFLJJJLGXZGYXYXLSZQYXBEXYXHGCXBPLDYHWETTWWCJMBTXCHXYQXLLXFLYXLLJLSSFWDPZSMYJCLMWYTCZPCHQEKCQBWLCQYDPLQPPQZQFJQDJHYMMCXTXDRMJWRHXCJZYLQXDYYNHYYHRSLSRSYWWZJYMTLTLLGTQCJZYABTCKZCJYCCQLJZQXALMZYHYWLWDXZXQDLLQSHGPJFJLJHJABCQZDJGTKHSSTCYJLPSWZLXZXRWGLDLZRLZXTGSLLLLZLYXXWGDZYGBDPHZPBRLWSXQBPFDWOFMWHLYPCBJCCLDMBZPBZZLCYQXLDOMZBLZWPDWYYGDSTTHCSQSCCRSSSYSLFYBFNTYJSZDFNDPDHDZZMBBLSLCMYFFGTJJQWFTMTPJWFNLBZCMMJTGBDZLQLPYFHYYMJYLSDCHDZJWJCCTLJCLDTLJJCPDDSQDSSZYBNDBJLGGJZXSXNLYCYBJXQYCBYLZCFZPPGKCXZDZFZTJJFJSJXZBNZYJQTTYJYHTYCZHYMDJXTTMPXSPLZCDWSLSHXYPZGTFMLCJTYCBPMGDKWYCYZCDSZZYHFLYCTYGWHKJYYLSJCXGYWJCBLLCSNDDBTZBSCLYZCZZSSQDLLMQYYHFSLQLLXFTYHABXGWNYWYYPLLSDLDLLBJCYXJZMLHLJDXYYQYTDLLLBUGBFDFBBQJZZMDPJHGCLGMJJPGAEHHBWCQXAXHHHZCHXYPHJAXHLPHJPGPZJQCQZGJJZZUZDMQYYBZZPHYHYBWHAZYJHYKFGDPFQSDLZMLJXKXGALXZDAGLMDGXMWZQYXXDXXPFDMMSSYMPFMDMMKXKSYZYSHDZKXSYSMMZZZMSYDNZZCZXFPLSTMZDNMXCKJMZTYYMZMZZMSXHHDCZJEMXXKLJSTLWLSQLYJZLLZJSSDPPMHNLZJCZYHMXXHGZCJMDHXTKGRMXFWMCGMWKDTKSXQMMMFZZYDKMSCLCMPCGMHSPXQPZDSSLCXKYXTWLWJYAHZJGZQMCSNXYYMMPMLKJXMHLMLQMXCTKZMJQYSZJSYSZHSYJZJCDAJZYBSDQJZGWZQQXFKDMSDJLFWEHKZQKJPEYPZYSZCDWYJFFMZZYLTTDZZEFMZLBNPPLPLPEPSZALLTYLKCKQZKGENQLWAGYXYDPXLHSXQQWQCQXQCLHYXXMLYCCWLYMQYSKGCHLCJNSZKPYZKCQZQLJPDMDZHLASXLBYDWQLWDNBQCRYDDZTJYBKBWSZDXDTNPJDTCTQDFXQQMGNXECLTTBKPWSLCTYQLPWYZZKLPYGZCQQPLLKCCYLPQMZCZQCLJSLQZDJXLDDHPZQDLJJXZQDXYZQKZLJCYQDYJPPYPQYKJYRMPCBYMCXKLLZLLFQPYLLLMBSGLCYSSLRSYSQTMXYXZQZFDZUYSYZTFFMZZSMZQHZSSCCMLYXWTPZGXZJGZGSJSGKDDHTQGGZLLBJDZLCBCHYXYZHZFYWXYZYMSDBZZYJGTSMTFXQYXQSTDGSLNXDLRYZZLRYYLXQHTXSRTZNGZXBNQQZFMYKMZJBZYMKBPNLYZPBLMCNQYZZZSJZHJCTZKHYZZJRDYZHNPXGLFZTLKGJTCTSSYLLGZRZBBQZZKLPKLCZYSSUYXBJFPNJZZXCDWXZYJXZZDJJKGGRSRJKMSMZJLSJYWQSKYHQJSXPJZZZLSNSHRNYPZTWCHKLPSRZLZXYJQXQKYSJYCZTLQZYBBYBWZPQDWWYZCYTJCJXCKCWDKKZXSGKDZXWWYYJQYYTCYTDLLXWKCZKKLCCLZCQQDZLQLCSFQCHQHSFSMQZZLNBJJZBSJHTSZDYSJQJPDLZCDCWJKJZZLPYCGMZWDJJBSJQZSYZYHHXJPBJYDSSXDZNCGLQMBTSFSBPDZDLZNFGFJGFSMPXJQLMBLGQCYYXBQKDJJQYRFKZTJDHCZKLBSDZCFJTPLLJGXHYXZCSSZZXSTJYGKGCKGYOQXJPLZPBPGTGYJZGHZQZZLBJLSQFZGKQQJZGYCZBZQTLDXRJXBSXXPZXHYZYCLWDXJJHXMFDZPFZHQHQMQGKSLYHTYCGFRZGNQXCLPDLBZCSCZQLLJBLHBZCYPZZPPDYMZZSGYHCKCPZJGSLJLNSCDSLDLXBMSTLDDFJMKDJDHZLZXLSZQPQPGJLLYBDSZGQLBZLSLKYYHZTTNTJYQTZZPSZQZTLLJTYYLLQLLQYZQLBDZLSLYYZYMDFSZSNHLXZNCZQZPBWSKRFBSYZMTHBLGJPMCZZLSTLXSHTCSYZLZBLFEQHLXFLCJLYLJQCBZLZJHHSSTBRMHXZHJZCLXFNBGXGTQJCZTMSFZKJMSSNXLJKBHSJXNTNLZDNTLMSJXGZJYJCZXYJYJWRWWQNZTNFJSZPZSHZJFYRDJSFSZJZBJFZQZZHZLXFYSBZQLZSGYFTZDCSZXZJBQMSZKJRHYJZCKMJKHCHGTXKXQGLXPXFXTRTYLXJXHDTSJXHJZJXZWZLCQSBTXWXGXTXXHXFTSDKFJHZYJFJXRZSDLLLTQSQQZQWZXSYQTWGWBZCGZLLYZBCLMQQTZHZXZXLJFRMYZFLXYSQXXJKXRMQDZDMMYYBSQBHGZMWFWXGMXLZPYYTGZYCCDXYZXYWGSYJYZNBHPZJSQSYXSXRTFYZGRHZTXSZZTHCBFCLSYXZLZQMZLMPLMXZJXSFLBYZMYQHXJSXRXSQZZZSSLYFRCZJRCRXHHZXQYDYHXSJJHZCXZBTYNSYSXJBQLPXZQPYMLXZKYXLXCJLCYSXXZZLXDLLLJJYHZXGYJWKJRWYHCPSGNRZLFZWFZZNSXGXFLZSXZZZBFCSYJDBRJKRDHHGXJLJJTGXJXXSTJTJXLYXQFCSGSWMSBCTLQZZWLZZKXJMLTMJYHSDDBXGZHDLBMYJFRZFSGCLYJBPMLYSMSXLSZJQQHJZFXGFQFQBPXZGYYQXGZTCQWYLTLGWSGWHRLFSFGZJMGMGBGTJFSYZZGZYZAFLSSPMLPFLCWBJZCLJJMZLPJJLYMQDMYYYFBGYGYZMLYZDXQYXRQQQHSYYYQXYLJTYXFSFSLLGNQCYHYCWFHCCCFXPYLYPLLZYXXXXXKQHHXSHJZCFZSCZJXCPZWHHHHHAPYLQALPQAFYHXDYLUKMZQGGGDDESRNNZLTZGCHYPPYSQJJHCLLJTOLNJPZLJLHYMHEYDYDSQYCDDHGZUNDZCLZYZLLZNTNYZGSLHSLPJJBDGWXPCDUTJCKLKCLWKLLCASSTKZZDNQNTTLYYZSSYSSZZRYLJQKCQDHHCRXRZYDGRGCWCGZQFFFPPJFZYNAKRGYWYQPQXXFKJTSZZXSWZDDFBBXTBGTZKZNPZZPZXZPJSZBMQHKCYXYLDKLJNYPKYGHGDZJXXEAHPNZKZTZCMXCXMMJXNKSZQNMNLWBWWXJKYHCPSTMCSQTZJYXTPCTPDTNNPGLLLZSJLSPBLPLQHDTNJNLYYRSZFFJFQWDPHZDWMRZCCLODAXNSSNYZRESTYJWJYJDBCFXNMWTTBYLWSTSZGYBLJPXGLBOCLHPCBJLTMXZLJYLZXCLTPNCLCKXTPZJSWCYXSFYSZDKNTLBYJCYJLLSTGQCBXRYZXBXKLYLHZLQZLNZCXWJZLJZJNCJHXMNZZGJZZXTZJXYCYYCXXJYYXJJXSSSJSTSSTTPPGQTCSXWZDCSYFPTFBFHFBBLZJCLZZDBXGCXLQPXKFZFLSYLTUWBMQJHSZBMDDBCYSCCLDXYCDDQLYJJWMQLLCSGLJJSYFPYYCCYLTJANTJJPWYCMMGQYYSXDXQMZHSZXPFTWWZQSWQRFKJLZJQQYFBRXJHHFWJJZYQAZMYFRHCYYBYQWLPEXCCZSTYRLTTDMQLYKMBBGMYYJPRKZNPBSXYXBHYZDJDNGHPMFSGMWFZMFQMMBCMZZCJJLCNUXYQLMLRYGQZCYXZLWJGCJCGGMCJNFYZZJHYCPRRCMTZQZXHFQGTJXCCJEAQCRJYHPLQLSZDJRBCQHQDYRHYLYXJSYMHZYDWLDFRYHBPYDTSSCNWBXGLPZMLZZTQSSCPJMXXYCSJYTYCGHYCJWYRXXLFEMWJNMKLLSWTXHYYYNCMMCWJDQDJZGLLJWJRKHPZGGFLCCSCZMCBLTBHBQJXQDSPDJZZGKGLFQYWBZYZJLTSTDHQHCTCBCHFLQMPWDSHYYTQWCNZZJTLBYMBPDYYYXSQKXWYYFLXXNCWCXYPMAELYKKJMZZZBRXYYQJFLJPFHHHYTZZXSGQQMHSPGDZQWBWPJHZJDYSCQWZKTXXSQLZYYMYSDZGRXCKKUJLWPYSYSCSYZLRMLQSYLJXBCXTLWDQZPCYCYKPPPNSXFYZJJRCEMHSZMSXLXGLRWGCSTLRSXBZGBZGZTCPLUJLSLYLYMTXMTZPALZXPXJTJWTCYYZLBLXBZLQMYLXPGHDSLSSDMXMBDZZSXWHAMLCZCPJMCNHJYSNSYGCHSKQMZZQDLLKABLWJXSFMOCDXJRRLYQZKJMYBYQLYHETFJZFRFKSRYXFJTWDSXXSYSQJYSLYXWJHSNLXYYXHBHAWHHJZXWMYLJCSSLKYDZTXBZSYFDXGXZJKHSXXYBSSXDPYNZWRPTQZCZENYGCXQFJYKJBZMLJCMQQXUOXSLYXXLYLLJDZBTYMHPFSTTQQWLHOKYBLZZALZXQLHZWRRQHLSTMYPYXJJXMQSJFNBXYXYJXXYQYLTHYLQYFMLKLJTMLLHSZWKZHLJMLHLJKLJSTLQXYLMBHHLNLZXQJHXCFXXLHYHJJGBYZZKBXSCQDJQDSUJZYYHZHHMGSXCSYMXFEBCQWWRBPYYJQTYZCYQYQQZYHMWFFHGZFRJFCDPXNTQYZPDYKHJLFRZXPPXZDBBGZQSTLGDGYLCQMLCHHMFYWLZYXKJLYPQHSYWMQQGQZMLZJNSQXJQSYJYCBEHSXFSZPXZWFLLBCYYJDYTDTHWZSFJMQQYJLMQXXLLDTTKHHYBFPWTYYSQQWNQWLGWDEBZWCMYGCULKJXTMXMYJSXHYBRWFYMWFRXYQMXYSZTZZTFYKMLDHQDXWYYNLCRYJBLPSXCXYWLSPRRJWXHQYPHTYDNXHHMMYWYTZCSQMTSSCCDALWZTCPQPYJLLQZYJSWXMZZMMYLMXCLMXCZMXMZSQTZPPQQBLPGXQZHFLJJHYTJSRXWZXSCCDLXTYJDCQJXSLQYCLZXLZZXMXQRJMHRHZJBHMFLJLMLCLQNLDXZLLLPYPSYJYSXCQQDCMQJZZXHNPNXZMEKMXHYKYQLXSXTXJYYHWDCWDZHQYYBGYBCYSCFGPSJNZDYZZJZXRZRQJJYMCANYRJTLDPPYZBSTJKXXZYPFDWFGZZRPYMTNGXZQBYXNBUFNQKRJQZMJEGRZGYCLKXZDSKKNSXKCLJSPJYYZLQQJYBZSSQLLLKJXTBKTYLCCDDBLSPPFYLGYDTZJYQGGKQTTFZXBDKTYYHYBBFYTYYBCLPDYTGDHRYRNJSPTCSNYJQHKLLLZSLYDXXWBCJQSPXBPJZJCJDZFFXXBRMLAZHCSNDLBJDSZBLPRZTSWSBXBCLLXXLZDJZSJPYLYXXYFTFFFBHJJXGBYXJPMMMPSSJZJMTLYZJXSWXTYLEDQPJMYGQZJGDJLQJWJQLLSJGJGYGMSCLJJXDTYGJQJQJCJZCJGDZZSXQGSJGGCXHQXSNQLZZBXHSGZXCXYLJXYXYYDFQQJHJFXDHCTXJYRXYSQTJXYEFYYSSYYJXNCYZXFXMSYSZXYYSCHSHXZZZGZZZGFJDLTYLNPZGYJYZYYQZPBXQBDZTZCZYXXYHHSQXSHDHGQHJHGYWSZTMZMLHYXGEBTYLZKQWYTJZRCLEKYSTDBCYKQQSAYXCJXWWGSBHJYZYDHCSJKQCXSWXFLTYNYZPZCCZJQTZWJQDZZZQZLJJXLSBHPYXXPSXSHHEZTXFPTLQYZZXHYTXNCFZYYHXGNXMYWXTZSJPTHHGYMXMXQZXTSBCZYJYXXTYYZYPCQLMMSZMJZZLLZXGXZAAJZYXJMZXWDXZSXZDZXLEYJJZQBHZWZZZQTZPSXZTDSXJJJZNYAZPHXYYSRNQDTHZHYYKYJHDZXZLSWCLYBZYECWCYCRYLCXNHZYDZYDYJDFRJJHTRSQTXYXJRJHOJYNXELXSFSFJZGHPZSXZSZDZCQZBYYKLSGSJHCZSHDGQGXYZGXCHXZJWYQWGYHKSSEQZZNDZFKWYSSTCLZSTSYMCDHJXXYWEYXCZAYDMPXMDSXYBSQMJMZJMTZQLPJYQZCGQHXJHHLXXHLHDLDJQCLDWBSXFZZYYSCHTYTYYBHECXHYKGJPXHHYZJFXHWHBDZFYZBCAPNPGNYDMSXHMMMMAMYNBYJTMPXYYMCTHJBZYFCGTYHWPHFTWZZEZSBZEGPFMTSKFTYCMHFLLHGPZJXZJGZJYXZSBBQSCZZLZCCSTPGXMJSFTCCZJZDJXCYBZLFCJSYZFGSZLYBCWZZBYZDZYPSWYJZXZBDSYUXLZZBZFYGCZXBZHZFTPBGZGEJBSTGKDMFHYZZJHZLLZZGJQZLSFDJSSCBZGPDLFZFZSZYZYZSYGCXSNXXCHCZXTZZLJFZGQSQYXZJQDCCZTQCDXZJYQJQCHXZTDLGSCXZSYQJQTZWLQDQZTQCHQQJZYEZZZPBWKDJFCJPZTYPQYQTTYNLMBDKTJZPQZQZZFPZSBNJLGYJDXJDZZKZGQKXDLPZJTCJDQBXDJQJSTCKNXBXZMSLYJCQMTJQWWCJQNJNLLLHJCWQTBZQYDZCZPZZDZYDDCYZZZCCJTTJFZDPRRTZTJDCQTQZDTJNPLZBCLLCTZSXKJZQZPZLBZRBTJDCXFCZDBCCJJLTQQPLDCGZDBBZJCQDCJWYNLLZYZCCDWLLXWZLXRXNTQQCZXKQLSGDFQTDDGLRLAJJTKUYMKQLLTZYTDYYCZGJWYXDXFRSKSTQTENQMRKQZHHQKDLDAZFKYPBGGPZREBZZYKZZSPEGJXGYKQZZZSLYSYYYZWFQZYLZZLZHWCHKYPQGNPGBLPLRRJYXCCSYYHSFZFYBZYYTGZXYLXCZWXXZJZBLFFLGSKHYJZEYJHLPLLLLCZGXDRZELRHGKLZZYHZLYQSZZJZQLJZFLNBHGWLCZCFJYSPYXZLZLXGCCPZBLLCYBBBBUBBCBPCRNNZCZYRBFSRLDCGQYYQXYGMQZWTZYTYJXYFWTEHZZJYWLCCNTZYJJZDEDPZDZTSYQJHDYMBJNYJZLXTSSTPHNDJXXBYXQTZQDDTJTDYYTGWSCSZQFLSHLGLBCZPHDLYZJYCKWTYTYLBNYTSDSYCCTYSZYYEBHEXHQDTWNYGYCLXTSZYSTQMYGZAZCCSZZDSLZCLZRQXYYELJSBYMXSXZTEMBBLLYYLLYTDQYSHYMRQWKFKBFXNXSBYCHXBWJYHTQBPBSBWDZYLKGZSKYHXQZJXHXJXGNLJKZLYYCDXLFYFGHLJGJYBXQLYBXQPQGZTZPLNCYPXDJYQYDYMRBESJYYHKXXSTMXRCZZYWXYQYBMCLLYZHQYZWQXDBXBZWZMSLPDMYSKFMZKLZCYQYCZLQXFZZYDQZPZYGYJYZMZXDZFYFYTTQTZHGSPCZMLCCYTZXJCYTJMKSLPZHYSNZLLYTPZCTZZCKTXDHXXTQCYFKSMQCCYYAZHTJPCYLZLYJBJXTPNYLJYYNRXSYLMMNXJSMYBCSYSYLZYLXJJQYLDZLPQBFZZBLFNDXQKCZFYWHGQMRDSXYCYTXNQQJZYYPFZXDYZFPRXEJDGYQBXRCNFYYQPGHYJDYZXGRHTKYLNWDZNTSMPKLBTHBPYSZBZTJZSZZJTYYXZPHSSZZBZCZPTQFZMYFLYPYBBJQXZMXXDJMTSYSKKBJZXHJCKLPSMKYJZCXTMLJYXRZZQSLXXQPYZXMKYXXXJCLJPRMYYGADYSKQLSNDHYZKQXZYZTCGHZTLMLWZYBWSYCTBHJHJFCWZTXWYTKZLXQSHLYJZJXTMPLPYCGLTBZZTLZJCYJGDTCLKLPLLQPJMZPAPXYZLKKTKDZCZZBNZDYDYQZJYJGMCTXLTGXSZLMLHBGLKFWNWZHDXUHLFMKYSLGXDTWWFRJEJZTZHYDXYKSHWFZCQSHKTMQQHTZHYMJDJSKHXZJZBZZXYMPAGQMSTPXLSKLZYNWRTSQLSZBPSPSGZWYHTLKSSSWHZZLYYTNXJGMJSZSUFWNLSOZTXGXLSAMMLBWLDSZYLAKQCQCTMYCFJBSLXCLZZCLXXKSBZQCLHJPSQPLSXXCKSLNHPSFQQYTXYJZLQLDXZQJZDYYDJNZPTUZDSKJFSLJHYLZSQZLBTXYDGTQFDBYAZXDZHZJNHHQBYKNXJJQCZMLLJZKSPLDYCLBBLXKLELXJLBQYCXJXGCNLCQPLZLZYJTZLJGYZDZPLTQCSXFDMNYCXGBTJDCZNBGBQYQJWGKFHTNPYQZQGBKPBBYZMTJDYTBLSQMPSXTBNPDXKLEMYYCJYNZCTLDYKZZXDDXHQSHDGMZSJYCCTAYRZLPYLTLKXSLZCGGEXCLFXLKJRTLQJAQZNCMBYDKKCXGLCZJZXJHPTDJJMZQYKQSECQZDSHHADMLZFMMZBGNTJNNLGBYJBRBTMLBYJDZXLCJLPLDLPCQDHLXZLYCBLCXZZJADJLNZMMSSSMYBHBSQKBHRSXXJMXSDZNZPXLGBRHWGGFCXGMSKLLTSJYYCQLTSKYWYYHYWXBXQYWPYWYKQLSQPTNTKHQCWDQKTWPXXHCPTHTWUMSSYHBWCRWXHJMKMZNGWTMLKFGHKJYLSYYCXWHYECLQHKQHTTQKHFZLDXQWYZYYDESBPKYRZPJFYYZJCEQDZZDLATZBBFJLLCXDLMJSSXEGYGSJQXCWBXSSZPDYZCXDNYXPPZYDLYJCZPLTXLSXYZYRXCYYYDYLWWNZSAHJSYQYHGYWWAXTJZDAXYSRLTDPSSYYFNEJDXYZHLXLLLZQZSJNYQYQQXYJGHZGZCYJCHZLYCDSHWSHJZYJXCLLNXZJJYYXNFXMWFPYLCYLLABWDDHWDXJMCXZTZPMLQZHSFHZYNZTLLDYWLSLXHYMMYLMBWWKYXYADTXYLLDJPYBPWUXJMWMLLSAFDLLYFLBHHHBQQLTZJCQJLDJTFFKMMMBYTHYGDCQRDDWRQJXNBYSNWZDBYYTBJHPYBYTTJXAAHGQDQTMYSTQXKBTZPKJLZRBEQQSSMJJBDJOTGTBXPGBKTLHQXJJJCTHXQDWJLWRFWQGWSHCKRYSWGFTGYGBXSDWDWRFHWYTJJXXXJYZYSLPYYYPAYXHYDQKXSHXYXGSKQHYWFDDDPPLCJLQQEEWXKSYYKDYPLTJTHKJLTCYYHHJTTPLTZZCDLTHQKZXQYSTEEYWYYZYXXYYSTTJKLLPZMCYHQGXYHSRMBXPLLNQYDQHXSXXWGDQBSHYLLPJJJTHYJKYPPTHYYKTYEZYENMDSHLCRPQFDGFXZPSFTLJXXJBSWYYSKSFLXLPPLBBBLBSFXFYZBSJSSYLPBBFFFFSSCJDSTZSXZRYYSYFFSYZYZBJTBCTSBSDHRTJJBYTCXYJEYLXCBNEBJDSYXYKGSJZBXBYTFZWGENYHHTHZHHXFWGCSTBGXKLSXYWMTMBYXJSTZSCDYQRCYTWXZFHMYMCXLZNSDJTTTXRYCFYJSBSDYERXJLJXBBDEYNJGHXGCKGSCYMBLXJMSZNSKGXFBNBPTHFJAAFXYXFPXMYPQDTZCXZZPXRSYWZDLYBBKTYQPQJPZYPZJZNJPZJLZZFYSBTTSLMPTZRTDXQSJEHBZYLZDHLJSQMLHTXTJECXSLZZSPKTLZKQQYFSYGYWPCPQFHQHYTQXZKRSGTTSQCZLPTXCDYYZXSQZSLXLZMYCPCQBZYXHBSXLZDLTCDXTYLZJYYZPZYZLTXJSJXHLPMYTXCQRBLZSSFJZZTNJYTXMYJHLHPPLCYXQJQQKZZSCPZKSWALQSBLCCZJSXGWWWYGYKTJBBZTDKHXHKGTGPBKQYSLPXPJCKBMLLXDZSTBKLGGQKQLSBKKTFXRMDKBFTPZFRTBBRFERQGXYJPZSSTLBZTPSZQZSJDHLJQLZBPMSMMSXLQQNHKNBLRDDNXXDHDDJCYYGYLXGZLXSYGMQQGKHBPMXYXLYTQWLWGCPBMQXCYZYDRJBHTDJYHQSHTMJSBYPLWHLZFFNYPMHXXHPLTBQPFBJWQDBYGPNZTPFZJGSDDTQSHZEAWZZYLLTYYBWJKXXGHLFKXDJTMSZSQYNZGGSWQSPHTLSSKMCLZXYSZQZXNCJDQGZDLFNYKLJCJLLZLMZZNHYDSSHTHZZLZZBBHQZWWYCRZHLYQQJBEYFXXXWHSRXWQHWPSLMSSKZTTYGYQQWRSLALHMJTQJSMXQBJJZJXZYZKXBYQXBJXSHZTSFJLXMXZXFGHKZSZGGYLCLSARJYHSLLLMZXELGLXYDJYTLFBHBPNLYZFBBHPTGJKWETZHKJJXZXXGLLJLSTGSHJJYQLQZFKCGNNDJSSZFDBCTWWSEQFHQJBSAQTGYPQLBXBMMYWXGSLZHGLZGQYFLZBYFZJFRYSFMBYZHQGFWZSYFYJJPHZBYYZFFWODGRLMFTWLBZGYCQXCDJYGZYYYYTYTYDWEGAZYHXJLZYYHLRMGRXXZCLHNELJJTJTPWJYBJJBXJJTJTEEKHWSLJPLPSFYZPQQBDLQJJTYYQLYZKDKSQJYYQZLDQTGJQYZJSUCMRYQTHTEJMFCTYHYPKMHYZWJDQFHYYXWSHCTXRLJHQXHCCYYYJLTKTTYTMXGTCJTZAYYOCZLYLBSZYWJYTSJYHBYSHFJLYGJXXTMZYYLTXXYPZLXYJZYZYYPNHMYMDYYLBLHLSYYQQLLNJJYMSOYQBZGDLYXYLCQYXTSZEGXHZGLHWBLJHEYXTWQMAKBPQCGYSHHEGQCMWYYWLJYJHYYZLLJJYLHZYHMGSLJLJXCJJYCLYCJPCPZJZJMMYLCQLNQLJQJSXYJMLSZLJQLYCMMHCFMMFPQQMFYLQMCFFQMMMMHMZNFHHJGTTHHKHSLNCHHYQDXTMMQDCYZYXYQMYQYLTDCYYYZAZZCYMZYDLZFFFMMYCQZWZZMABTBYZTDMNZZGGDFTYPCGQYTTSSFFWFDTZQSSYSTWXJHXYTSXXYLBYQHWWKXHZXWZNNZZJZJJQJCCCHYYXBZXZCYZTLLCQXYNJYCYYCYNZZQYYYEWYCZDCJYCCHYJLBTZYYCQWMPWPYMLGKDLDLGKQQBGYCHJXY";
+
+        //此处收录了375个多音字,数据来自于http://www.51window.net/page/pinyin
+        var oMultiDiff = { "19969": "DZ", "19975": "WM", "19988": "QJ", "20048": "YL", "20056": "SC", "20060": "NM", "20094": "QG", "20127": "QJ", "20167": "QC", "20193": "YG", "20250": "KH", "20256": "ZC", "20282": "SC", "20285": "QJG", "20291": "TD", "20314": "YD", "20340": "NE", "20375": "TD", "20389": "YJ", "20391": "CZ", "20415": "PB", "20446": "YS", "20447": "SQ", "20504": "TC", "20608": "KG", "20854": "QJ", "20857": "ZC", "20911": "PF", "20504": "TC", "20608": "KG", "20854": "QJ", "20857": "ZC", "20911": "PF", "20985": "AW", "21032": "PB", "21048": "XQ", "21049": "SC", "21089": "YS", "21119": "JC", "21242": "SB", "21273": "SC", "21305": "YP", "21306": "QO", "21330": "ZC", "21333": "SDC", "21345": "QK", "21378": "CA", "21397": "SC", "21414": "XS", "21442": "SC", "21477": "JG", "21480": "TD", "21484": "ZS", "21494": "YX", "21505": "YX", "21512": "HG", "21523": "XH", "21537": "PB", "21542": "PF", "21549": "KH", "21571": "E", "21574": "DA", "21588": "TD", "21589": "O", "21618": "ZC", "21621": "KHA", "21632": "ZJ", "21654": "KG", "21679": "LKG", "21683": "KH", "21710": "A", "21719": "YH", "21734": "WOE", "21769": "A", "21780": "WN", "21804": "XH", "21834": "A", "21899": "ZD", "21903": "RN", "21908": "WO", "21939": "ZC", "21956": "SA", "21964": "YA", "21970": "TD", "22003": "A", "22031": "JG", "22040": "XS", "22060": "ZC", "22066": "ZC", "22079": "MH", "22129": "XJ", "22179": "XA", "22237": "NJ", "22244": "TD", "22280": "JQ", "22300": "YH", "22313": "XW", "22331": "YQ", "22343": "YJ", "22351": "PH", "22395": "DC", "22412": "TD", "22484": "PB", "22500": "PB", "22534": "ZD", "22549": "DH", "22561": "PB", "22612": "TD", "22771": "KQ", "22831": "HB", "22841": "JG", "22855": "QJ", "22865": "XQ", "23013": "ML", "23081": "WM", "23487": "SX", "23558": "QJ", "23561": "YW", "23586": "YW", "23614": "YW", "23615": "SN", "23631": "PB", "23646": "ZS", "23663": "ZT", "23673": "YG", "23762": "TD", "23769": "ZS", "23780": "QJ", "23884": "QK", "24055": "XH", "24113": "DC", "24162": "ZC", "24191": "GA", "24273": "QJ", "24324": "NL", "24377": "TD", "24378": "QJ", "24439": "PF", "24554": "ZS", "24683": "TD", "24694": "WE", "24733": "LK", "24925": "TN", "25094": "ZG", "25100": "XQ", "25103": "XH", "25153": "PB", "25170": "PB", "25179": "KG", "25203": "PB", "25240": "ZS", "25282": "FB", "25303": "NA", "25324": "KG", "25341": "ZY", "25373": "WZ", "25375": "XJ", "25384": "A", "25457": "A", "25528": "SD", "25530": "SC", "25552": "TD", "25774": "ZC", "25874": "ZC", "26044": "YW", "26080": "WM", "26292": "PB", "26333": "PB", "26355": "ZY", "26366": "CZ", "26397": "ZC", "26399": "QJ", "26415": "ZS", "26451": "SB", "26526": "ZC", "26552": "JG", "26561": "TD", "26588": "JG", "26597": "CZ", "26629": "ZS", "26638": "YL", "26646": "XQ", "26653": "KG", "26657": "XJ", "26727": "HG", "26894": "ZC", "26937": "ZS", "26946": "ZC", "26999": "KJ", "27099": "KJ", "27449": "YQ", "27481": "XS", "27542": "ZS", "27663": "ZS", "27748": "TS", "27784": "SC", "27788": "ZD", "27795": "TD", "27812": "O", "27850": "PB", "27852": "MB", "27895": "SL", "27898": "PL", "27973": "QJ", "27981": "KH", "27986": "HX", "27994": "XJ", "28044": "YC", "28065": "WG", "28177": "SM", "28267": "QJ", "28291": "KH", "28337": "ZQ", "28463": "TL", "28548": "DC", "28601": "TD", "28689": "PB", "28805": "JG", "28820": "QG", "28846": "PB", "28952": "TD", "28975": "ZC", "29100": "A", "29325": "QJ", "29575": "SL", "29602": "FB", "30010": "TD", "30044": "CX", "30058": "PF", "30091": "YSP", "30111": "YN", "30229": "XJ", "30427": "SC", "30465": "SX", "30631": "YQ", "30655": "QJ", "30684": "QJG", "30707": "SD", "30729": "XH", "30796": "LG", "30917": "PB", "31074": "NM", "31085": "JZ", "31109": "SC", "31181": "ZC", "31192": "MLB", "31293": "JQ", "31400": "YX", "31584": "YJ", "31896": "ZN", "31909": "ZY", "31995": "XJ", "32321": "PF", "32327": "ZY", "32418": "HG", "32420": "XQ", "32421": "HG", "32438": "LG", "32473": "GJ", "32488": "TD", "32521": "QJ", "32527": "PB", "32562": "ZSQ", "32564": "JZ", "32735": "ZD", "32793": "PB", "33071": "PF", "33098": "XL", "33100": "YA", "33152": "PB", "33261": "CX", "33324": "BP", "33333": "TD", "33406": "YA", "33426": "WM", "33432": "PB", "33445": "JG", "33486": "ZN", "33493": "TS", "33507": "QJ", "33540": "QJ", "33544": "ZC", "33564": "XQ", "33617": "YT", "33632": "QJ", "33636": "XH", "33637": "YX", "33694": "WG", "33705": "PF", "33728": "YW", "33882": "SR", "34067": "WM", "34074": "YW", "34121": "QJ", "34255": "ZC", "34259": "XL", "34425": "JH", "34430": "XH", "34485": "KH", "34503": "YS", "34532": "HG", "34552": "XS", "34558": "YE", "34593": "ZL", "34660": "YQ", "34892": "XH", "34928": "SC", "34999": "QJ", "35048": "PB", "35059": "SC", "35098": "ZC", "35203": "TQ", "35265": "JX", "35299": "JX", "35782": "SZ", "35828": "YS", "35830": "E", "35843": "TD", "35895": "YG", "35977": "MH", "36158": "JG", "36228": "QJ", "36426": "XQ", "36466": "DC", "36710": "JC", "36711": "ZYG", "36767": "PB", "36866": "SK", "36951": "YW", "37034": "YX", "37063": "XH", "37218": "ZC", "37325": "ZC", "38063": "PB", "38079": "TD", "38085": "QY", "38107": "DC", "38116": "TD", "38123": "YD", "38224": "HG", "38241": "XTC", "38271": "ZC", "38415": "YE", "38426": "KH", "38461": "YD", "38463": "AE", "38466": "PB", "38477": "XJ", "38518": "YT", "38551": "WK", "38585": "ZC", "38704": "XS", "38739": "LJ", "38761": "GJ", "38808": "SQ", "39048": "JG", "39049": "XJ", "39052": "HG", "39076": "CZ", "39271": "XT", "39534": "TD", "39552": "TD", "39584": "PB", "39647": "SB", "39730": "LG", "39748": "TPB", "40109": "ZQ", "40479": "ND", "40516": "HG", "40536": "HG", "40583": "QJ", "40765": "YQ", "40784": "QJ", "40840": "YK", "40863": "QJG" };
+        //参数,中文字符串
+        //返回值:拼音首字母串数组
+        function makePy(str) {
+            if (typeof(str) != "string")
+                throw new Error(-1, "函数makePy需要字符串类型参数!");
+            var arrResult = new Array(); //保存中间结果的数组
+            for (var i = 0, len = str.length; i < len; i++) {
+                //获得unicode码
+                var ch = str.charAt(i);
+                //检查该unicode码是否在处理范围之内,在则返回该码对映汉字的拼音首字母,不在则调用其它函数处理
+                arrResult.push(checkCh(ch));
+            }
+            //处理arrResult,返回所有可能的拼音首字母串数组
+            return mkRslt(arrResult);
+        }
+
+        function checkCh(ch) {
+            var uni = ch.charCodeAt(0);
+            //如果不在汉字处理范围之内,返回原字符,也可以调用自己的处理函数
+            if (uni > 40869 || uni < 19968)
+                return ch; //dealWithOthers(ch);
+            //检查是否是多音字,是按多音字处理,不是就直接在strChineseFirstPY字符串中找对应的首字母
+            return (oMultiDiff[uni] ? oMultiDiff[uni] : (strChineseFirstPY.charAt(uni - 19968)));
+        }
+
+        function mkRslt(arr) {
+            var arrRslt = [""];
+            for (var i = 0, len = arr.length; i < len; i++) {
+                var str = arr[i];
+                var strlen = str.length;
+                if (strlen == 1) {
+                    for (var k = 0; k < arrRslt.length; k++) {
+                        arrRslt[k] += str;
+                    }
+                } else {
+                    var tmpArr = arrRslt.slice(0);
+                    arrRslt = [];
+                    for (k = 0; k < strlen; k++) {
+                        //复制一个相同的arrRslt
+                        var tmp = tmpArr.slice(0);
+                        //把当前字符str[k]添加到每个元素末尾
+                        for (var j = 0; j < tmp.length; j++) {
+                            tmp[j] += str.charAt(k);
+                        }
+                        //把复制并修改后的数组连接到arrRslt上
+                        arrRslt = arrRslt.concat(tmp);
+                    }
+                }
+            }
+            return arrRslt;
+        }
+
+
+
+        ////////////////
+
+        /**
+         * 对中文进行取首字母处理
+         * @param {String} Params
+         * @returns {String} 
+         * 返回中文首字母大写
+         */
+        function capitalChineseFilter(Params) {
+            if (!Params) return;
+            return makePy(Params)[0] || '';
+        }
+
+        return capitalChineseFilter;
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .filter('dictionary', dictionary);
+
+    function dictionary(DictionaryService) {
+        var dictionaryService = DictionaryService;
+        return dictionaryFilter;
+
+        function dictionaryFilter(value, type) {
+            return dictionaryService.resolve(type, value);
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .factory('DictionaryService', DictionaryService);
+
+    DictionaryService.$inject = [];
+    /**
+     * 对应后台字典表
+     * 
+     * @returns
+     */
+    function DictionaryService() {
+
+        var dictionaries = {
+            //商品类型
+            'goods.types': {
+                1: '实物类',
+                2: '服务类',
+                3: '计次类',
+                4: '计时类'
+            },
+            'sex': {
+                0: '女士',
+                1: '男士'
+            },
+            'member.states': {
+                0: '锁定',
+                1: '正常',
+                2: '挂失'
+            },
+            // 充值类型
+            'member_charge.types': {
+                1: '会员充值',
+                2: '会员充次',
+                3: '会员充时',
+                4: '办卡充值'
+            },
+            // 消费类型
+            'consumption.types': {
+                1: '商品消费',
+                2: '快速消费',
+                3: '计次消费',
+                4: '计时消费',
+                5: '积分兑换'
+            },
+            // 出入库类型
+            'inventory': {
+                1: '商品入库',
+                2: '销售出库',
+                3: '编辑入库',
+                4: '编辑出库'
+            },
+            'payment.types': {
+                1: '余额',
+                2: '现金',
+                3: '网银',
+                4: '支付宝',
+                5: '微信'
+            },
+            'http_methods': {
+                1: 'get',
+                2: 'post',
+                3: 'patch',
+                4: 'put',
+                5: 'delete'
+            },
+            'goods.units': {
+                1: '包',
+                2: '条',
+                3: '瓶',
+                4: '箱',
+                5: '个',
+                6: '次',
+                7: '件',
+                8: '台',
+                9: '套',
+                10: '组',
+                11: '块'
+            },
+            'charge.units': {
+                1: '元',
+                2: '次',
+                3: '分钟',
+                4: '小时',
+                5: '天'
+            }
+        };
+
+        var DictionaryService = {
+            get: get,
+            resolve: resolve
+        };
+
+        return DictionaryService;
+
+        ////////////////
+
+        /**
+         * 获取相应类型的字典表
+         * 
+         * @param {string} type
+         * @returns
+         * 
+         * usage:
+         * var sex = DictionaryService.get('sex');
+         * console.info(sex[0]) // 女士
+         */
+        function get(type) {
+            if (angular.isDefined(dictionaries[type])) {
+                return dictionaries[type];
+            }
+        }
+
+        /**
+         * 根据所传类型和数值解析
+         * 
+         * @param {string} type
+         * @param {number} value
+         * @returns
+         * 
+         * usage:
+         * var sex = DictionaryService.resolve('sex',0);
+         * console.info(sex) // 女士
+         */
+        function resolve(type, value) {
+            if (angular.isUndefined(dictionaries[type])) {
+                return value;
+            }
+            return dictionaries[type][value];
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .factory('LazyScript', LazyScript);
+
+    LazyScript.$inject = ['$q'];
+
+    function LazyScript($q) {
+        var cache = {};
+
+        function isPending(scriptName) {
+            return (cache.hasOwnProperty(scriptName) && cache[scriptName].promise && cache[scriptName].promise.$$state.pending)
+        }
+
+        function isRegistered(scriptName) {
+            return cache.hasOwnProperty(scriptName)
+        }
+
+        function loadScript(scriptName) {
+            if (!cache[scriptName]) {
+                cache[scriptName] = $q.defer();
+                var el = document.createElement('script');
+                el.onload = function(script) {
+                    console.log('script is lazy loaded:', scriptName)
+                    cache[scriptName].resolve(scriptName);
+                };
+                el.src = scriptName;
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(el, x);
+
+            }
+            return cache[scriptName].promise;
+
+        }
+
+        function register(scriptName) {
+            if (isPending(scriptName)) {
+                return cache[scriptName].promise;
+            }
+            if (isRegistered(scriptName)) {
+                return $q.resolve(scriptName);
+            } else {
+                var dfd = $q.defer();
+
+                loadScript(scriptName).then(function() {
+                    dfd.resolve(scriptName);
+                });
+
+                return dfd.promise;
+
+            }
+        }
+        return {
+            register: function(scripts) {
+
+                var dfd = $q.defer();
+                var promises = [];
+                if (angular.isString(scripts))
+                    scripts = [scripts];
+
+                angular.forEach(scripts, function(script) {
+                    promises.push(register(script));
+                })
+
+                $q.all(promises).then(function(resolves) {
+                    dfd.resolve(resolves);
+                })
+                return dfd.promise;
+            }
+        };
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.shared')
+        .factory('UtilityService', UtilityService);
+
+    UtilityService.$inject = ['$q', '$rootScope'];
+
+    function UtilityService($q, $rootScope) {
+        let UtilityService = {
+            getOrderCode: getOrderCode,
+            getDatetime: getDatetime,
+            initPagination: initPagination,
+            showLoading: showLoading,
+            hideLoading: hideLoading,
+            getSelected: getSelected,
+            toggleItems: toggleItems
+        };
+
+        return UtilityService;
+
+        function showLoading() {
+            $rootScope.showLoading();
+        }
+
+        function hideLoading() {
+            $rootScope.hideLoading();
+        }
+
+        function toggleItems(items, state) {
+            items.forEach((item) => {
+                item.isChecked = state;
+            });
+        }
+        /**
+         * 
+         * 从列表中获取选中的项
+         * @param {Array[Object]} items
+         * @returns
+         */
+        function getSelected(items) {
+            let result = [];
+            items.forEach((item) => {
+                if (item.isChecked) {
+                    result.push(item);
+                }
+            });
+            return result;
+        }
+
+
+        // 获取项目中所需要用到的订单编号
+        function getOrderCode(type) {
+            let deferred = $q.defer();
+
+            getDatetime().then(result => {
+                deferred.resolve(type + result);
+            });
+
+            return deferred.promise;
+        }
+        // 获取后台时间，年+月+日+时分秒，如20161118192403
+        function getDatetime() {
+            let deferred = $q.defer();
+
+            let result = moment().format('YYYYMMDDHHmmss');
+            deferred.resolve(result);
+
+            return deferred.promise;
+        }
+        // 初始化分页参数
+        function initPagination() {
+            let pagination = {
+                configs: {
+                    // 每页10条
+                    per_page: 10,
+                    // 当前页
+                    page: 1,
+                },
+                // 总记录条数
+                records: 0
+            }
+            return pagination;
+        }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
+
+    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberChargeCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
+
+    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberConsumptionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.system_management')
+        .controller('PermissionCtrl', PermissionCtrl);
+
+    PermissionCtrl.$inject = ['UtilityService'];
+
+    function PermissionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.system_management')
+        .controller('RoleCtrl', RoleCtrl);
+
+    RoleCtrl.$inject = ['UtilityService'];
+
+    function RoleCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.system_management')
+        .controller('UserCtrl', UserCtrl);
+
+    UserCtrl.$inject = ['UtilityService', '$uibModal'];
+
+    function UserCtrl(UtilityService, $uibModal) {
+        var vm = this;
+        vm.openAddUserModal = openAddUserModal;
+
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+        function openAddUserModal() {
+
+            let modalInstance = $uibModal.open({
+
+                templateUrl: 'app/system-management/user/add-user.modal.html',
+                controller: ($scope) => {
+                    $scope.user = {
+                        username: '',
+                        password: '',
+                        name: '',
+                        role: '',
+                        contact: '',
+                        sex: 1,
+                        remark: ''
+                    };
+
+                    $scope.addUser = addUser;
+                    $scope.modalInstance = modalInstance;
+                }
+            });
+        }
+
+        function addUser() {
+            debugger;
+        }
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();

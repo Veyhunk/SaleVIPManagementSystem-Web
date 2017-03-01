@@ -3,7 +3,7 @@
             "id": 0,
             "operator": 1,
             "store": 1,
-            "level": 0,
+            "level": { "name": "散客", "discount_rate": 1 },
             "portrait": "",
             "name": "散客",
             "identity": "",

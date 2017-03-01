@@ -552,10 +552,12 @@ img {
 
 .box {
     flex-grow: 1;
+    @include overflow(hidden, auto);
 }
 
 .box-2 {
     flex-grow: 2;
+    @include overflow(hidden, auto);
 }
 
 .search-input {
