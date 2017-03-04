@@ -54,11 +54,25 @@
         }
 
         function openRemoveModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (!selected.length) {
+                $uibModal.open({
+                    templateUrl: 'app/shared/views/system-notice.tpl.html',
+                    size: 'sm',
+                    controller: function($scope) {
+
+                        $scope.title = '系统提示';
+                        $scope.content = '请先选择需要删除的会员等级！';
+                    }
+                });
+                return;
+            }
+
             let that = vm;
             $uibModal.open({
                 templateUrl: 'app/member-management/member-level/remove.modal.html',
                 controller: function($scope) {
-                    let selected = utilityService.getSelected(items);
+
                     let vm = {};
 
                     vm.list = selected;
@@ -80,26 +94,23 @@
          */
         function openEditModal(items) {
             let selected = utilityService.getSelected(items);
-            if (selected.length > 1) {
-                $uibModal.open({
-                    templateUrl: 'app/shared/views/system-notice.tpl.html',
-                    size: 'sm',
-                    controller: function($scope) {
 
-                        $scope.title = '系统提示';
-                        $scope.content = '同时只能选中一个会员等级进行编辑！';
-                    }
-                });
+            if (selected.length > 1) {
+                utilityService.openNoticeModal({ content: '一次只能编辑一个会员等级！' })
                 return;
             }
 
+            if (selected.length == 0) {
+                utilityService.openNoticeModal({ content: '请先选择一个会员等级！' })
+                return;
+            }
             let that = vm;
             $uibModal.open({
                 templateUrl: 'app/member-management/member-level/create-edit.modal.html',
                 controller: function($scope) {
                     let level = restangular.copy(selected[0]);
                     let vm = {};
-                    debugger;
+
                     vm.level = level;
                     vm.status = status.edit;
                     vm.list = that.list;

@@ -5,9 +5,9 @@
         .module('app.shared')
         .factory('UtilityService', UtilityService);
 
-    UtilityService.$inject = ['$q', '$rootScope'];
+    UtilityService.$inject = ['$q', '$rootScope', '$uibModal'];
 
-    function UtilityService($q, $rootScope) {
+    function UtilityService($q, $rootScope, $uibModal) {
         let UtilityService = {
             getOrderCode: getOrderCode,
             getDatetime: getDatetime,
@@ -15,7 +15,8 @@
             showLoading: showLoading,
             hideLoading: hideLoading,
             getSelected: getSelected,
-            toggleItems: toggleItems
+            toggleItems: toggleItems,
+            openNoticeModal: openNoticeModal
         };
 
         return UtilityService;
@@ -49,6 +50,18 @@
             return result;
         }
 
+        function openNoticeModal(configs) {
+            $uibModal.open({
+                templateUrl: 'app/shared/views/system-notice.tpl.html',
+                size: 'sm',
+                controller: function($scope) {
+
+                    $scope.title = configs.title || '系统提示';
+                    $scope.content = configs.content;;
+                }
+            });
+            return;
+        }
 
         // 获取项目中所需要用到的订单编号
         function getOrderCode(type) {
