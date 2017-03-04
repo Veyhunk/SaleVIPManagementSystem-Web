@@ -49,7 +49,12 @@
             });
             return result;
         }
-
+        /**
+         * 
+         * 打开系统提示窗口
+         * @param {object} configs
+         * @returns
+         */
         function openNoticeModal(configs) {
             $uibModal.open({
                 templateUrl: 'app/shared/views/system-notice.tpl.html',

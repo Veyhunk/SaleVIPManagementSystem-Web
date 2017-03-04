@@ -52,19 +52,16 @@
         function remove(items) {
 
         }
-
+        /**
+         * 打开删除会员等级窗口
+         * @param {Array<Object>} items
+         * @returns
+         */
         function openRemoveModal(items) {
             let selected = utilityService.getSelected(items);
             if (!selected.length) {
-                $uibModal.open({
-                    templateUrl: 'app/shared/views/system-notice.tpl.html',
-                    size: 'sm',
-                    controller: function($scope) {
+                utilityService.openNoticeModal({ content: '请先选择需要删除的会员等级！' });
 
-                        $scope.title = '系统提示';
-                        $scope.content = '请先选择需要删除的会员等级！';
-                    }
-                });
                 return;
             }
 

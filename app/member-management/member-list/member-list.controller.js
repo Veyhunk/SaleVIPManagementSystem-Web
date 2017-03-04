@@ -40,14 +40,12 @@
         function openEditModal(items) {
             let selected = utilityService.getSelected(items);
             if (selected.length > 1) {
-                $uibModal.open({
-                    templateUrl: 'app/shared/views/system-notice.tpl.html',
-                    size: 'sm',
-                    controller: function($scope) {
-                        $scope.title = '系统提示';
-                        $scope.content = '同时只能选中一个会员进行编辑！';
-                    }
-                });
+                utilityService.openNoticeModal({ content: '同时只能选中一个会员进行编辑！' });
+                return;
+            }
+
+            if (selected.length == 0) {
+                utilityService.openNoticeModal({ content: '同时只能选中一个会员进行编辑！' });
                 return;
             }
             $uibModal.open({

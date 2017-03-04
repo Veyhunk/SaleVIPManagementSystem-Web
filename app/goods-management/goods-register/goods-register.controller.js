@@ -51,7 +51,7 @@
 
             for (key in types) {
                 let tmp = {};
-                tmp.id = key;
+                tmp.id = parseInt(key);
                 tmp.name = types[key];
                 result.push(tmp);
             }

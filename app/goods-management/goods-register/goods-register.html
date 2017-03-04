@@ -5,7 +5,8 @@
         </div>
         <hr>
         <div>
-            <table class="table table-vertical-middle margin-0-auto" >
+            <table class="table table-vertical-middle margin-0-auto">
+
                 <tr>
                     <td>是否可兑换</td>
                     <td>
@@ -71,7 +72,7 @@
                         <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.sale_price" required> </td>
 
                 </tr>
-                <tr ng-show="goodsRegister.isDiscountable">
+                <!--<tr ng-show="goodsRegister.isDiscountable">
                     <td>是否可打折</td>
                     <td>
                         <div class="input-group">
@@ -89,7 +90,7 @@
                     </td>
                     <td></td>
 
-                </tr>
+                </tr>-->
                 <tr>
                     <td>
                         备注
@@ -102,7 +103,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td> <button type="button" class="btn btn-primary " ng-click="memberRegister.addMember(memberRegister.currentMember)" ng-disabled="!memberRegisterForm.$valid">保存</button></td>
+                    <td> <button type="button" class="btn btn-primary " ng-click="memberRegister.addMember(memberRegister.currentMember)">保存</button></td>
                     <td></td>
                     <td></td>
                     <td></td>

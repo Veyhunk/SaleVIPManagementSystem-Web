@@ -1,117 +1,117 @@
-<div ng-controller="GoodsRegisterCtrl as goodsRegister" class="flexbox">
+<div ng-controller="MemberRegisterCtrl as vm" class="flexbox">
     <section class="box padding">
         <div class="content-page-head">
-            <h4>新增商品</h4>
+            <button type="button" class="btn btn-clear pull-right" ng-click="vm.resetForm(memberRegisterForm)"><i class="fa fa-refresh"></i> 重置</button>
+            <h4>会员登记</h4>
         </div>
         <hr>
         <div>
-            <table class="table table-vertical-middle margin-0-auto">
-                <tr>
-                    <td>是否可兑换</td>
-                    <td>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="积分兑换" ng-model="goodsRegister.isExchangeable">
-                            </span>
-                            <input type="number" class="form-control" placeholder="兑换此商品所需积分" ng-model="goodsRegister.currentGoods.exchange_points" ng-disabled="!goodsRegister.isExchangeable">
-                        </div>
-                    </td>
-                    <td>商品编码</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.code" required>
-                    </td>
-                    <td rowspan="5">
-                        <img src="app/shared/images/img.png" alt="..." class="img-rounded " width="100%" height="200">
-                    </td>
-                </tr>
-                <tr>
-                    <td>商品名称</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.name" ng-change="goodsRegister.resolveCapitalChinese(goodsRegister.currentGoods.name)" required>
-                    </td>
-                    <td>商品简码</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.short_name"> </td>
-                </tr>
-                <tr>
-                    <td>商品分类</td>
-                    <td>
-                        <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.classes" ng-model="goodsRegister.currentGoods.class">
+            <form novalidate name="memberRegisterForm">
+                <table class="table vertical-middle margin-0-auto">
+                    <tr>
+                        <td>会员卡号
+                            <span class="required-input">*</span>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="会员卡面号码" ng-model="vm.current.member.code" required>
+                        </td>
+                        <td>姓名
+                            <span class="required-input">*</span>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="" ng-model="vm.current.member.name" required>
+                        </td>
+                        <td rowspan="5">
+                            <img src="app/shared/images/img.png" alt="..." class="img-rounded " width="100%" height="200">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>支付密码
+                            <span class="required-input">*</span>
+                        </td>
+                        <td>
+                            <input type="password" class="form-control" placeholder="余额支付密码" ng-model="vm.current.member.payment_password" required>
 
-                    </select>
-                    </td>
+                        </td>
+                        <td>确认密码</td>
+                        <td>
+                            <input type="password" class="form-control" ng-blur="vm.checkPaymentPassword(vm.current.member.payment_password,vm.confirmPaymentPassword)" placeholder="确认支付密码" ng-model="vm.confirmPaymentPassword">
+                            <p ng-hide="vm.hidePaymentPasswordNotice">与支付密码不匹配，请重新核对后再输入！</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>手机
+                            <span class="required-input">*</span>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="" ng-model="vm.current.member.contact" required>
+                        </td>
 
-                    <td>商品类型</td>
-                    <td>
-                        <select class="form-control" ng-options="item.id as item.name for item in goodsRegister.types" ng-model="goodsRegister.currentGoods.type">
-                        
+                        <td>身份证</td>
+                        <td>
+                            <input class="form-control" placeholder="" ng-model="vm.current.member.identity">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>会员等级</td>
+                        <td>
+                            <select class="form-control" ng-options="item.id as item.name for item in vm.levelList | filter:{name:'!散客'}" ng-model="vm.current.member.level">
                         </select>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td>商品单位</td>
-                    <td>
-                        <input type="text" ng-model="goodsRegister.currentGoods.unit" placeholder="商品单位" uib-typeahead=" item for item in goodsRegister.units | filter:$viewValue" class="form-control" typeahead-show-hint="true" typeahead-min-length="0" required>
+                        </td>
+                        <td>会员生日</td>
+                        <td>
+                            <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
+                                <input type='text' class="form-control" ng-model="vm.current.member.birthday" />
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>性别</td>
+                        <td>
+                            <label class="radio-inline">
+                            <input type="radio" ng-model="vm.current.member.sex"  value="1"> 男
+                        </label>
+                            <label class="radio-inline">
+                            <input type="radio" ng-model="vm.current.member.sex"  value="0"> 女
+                        </label>
+                        </td>
+                        <td>余额</td>
+                        <td>
+                            <input class="form-control" placeholder="" ng-model="vm.current.member.balance">
+                        </td>
 
-                    </td>
-                    <td>奖励积分</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.reward_points" required>
+                    </tr>
+                    <tr>
+                        <td>积分</td>
+                        <td>
+                            <input class="form-control" placeholder="" ng-model="vm.current.member.points">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            备注
+                        </td>
+                        <td colspan="4">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>参考进价</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.entry_price" required>
-                    </td>
-                    <td>建议售价</td>
-                    <td>
-                        <input class="form-control" placeholder="" ng-model="goodsRegister.currentGoods.sale_price" required> </td>
+                            <textarea class="form-control" rows="3" ng-model="vm.current.member.remark"></textarea>
 
-                </tr>
-                <tr ng-show="goodsRegister.isDiscountable">
-                    <td>是否可打折</td>
-                    <td>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                            <input type="checkbox" aria-label="是否可打折" ng-model="goodsRegister.isDiscountable">
-                        </span>
-                            <input type="number" class="form-control" aria-label="折扣率" placeholder="折扣率如：0.8,打八折" ng-model="goodsRegister.currentGoods.discount_rate" ng-disabled="!goodsRegister.isDiscountable">
-                        </div>
-                    </td>
-                    <td>
-                        最低折扣率
-                    </td>
-                    <td>
-                        <input type="number" class="form-control" aria-label="最低折扣率" placeholder="此商品最低能打几折" ng-model="goodsRegister.currentGoods.lowest_discount_rate">
-                    </td>
-                    <td></td>
-
-                </tr>
-                <tr>
-                    <td>
-                        备注
-                    </td>
-                    <td colspan="4">
-
-                        <textarea class="form-control" rows="3" ng-model="memberRegister.currentMember.remark"></textarea>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td> <button type="button" class="btn btn-primary " ng-click="memberRegister.addMember(memberRegister.currentMember)" ng-disabled="!memberRegisterForm.$valid">保存</button></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-    </section>
-</div>              </tr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> <button type="button" class="btn btn-primary " ng-click="vm.addMember(vm.current.member)" ng-disabled="!memberRegisterForm.$valid">保存</button></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </table>
             </form>
 

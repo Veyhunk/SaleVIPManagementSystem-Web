@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$close(result)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">确认删除会员等级？</h4>
+</div>
+<div class="modal-body">
+    <h4>
+        <span ng-repeat="item in vm.list" class="text-danger">{{item.name}} <span ng-if="!$last">，</span></span>
+    </h4>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger " ng-click="vm.delete()">删除</button>
+    <button type="button" class="btn btn-default " ng-click="$close()">取消</button>
+</div>
