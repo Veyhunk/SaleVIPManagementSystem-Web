@@ -1,8 +1,8 @@
-<div ui-tree-handle class="pointer" ng-click="vm.select(node)">
-    <a class="pointer" ng-if="node.children && node.children.length > 0" ng-click="toggle(this)"><span class="glyphicon " ng-class="{
+<div ui-tree-handle>
+    <a ng-if="node.children && node.children.length > 0" ng-click="toggle(this)"><span class="glyphicon " ng-class="{
           'glyphicon-chevron-right': collapsed,
           'glyphicon-chevron-down': !collapsed
-        }"></span></a> <span><input type="checkbox" > {{node.name}}</span>
+        }"></span></a><input type="checkbox" class="pointer" ng-model="node.isChecked"><span ng-click="vm.select(node)" class="pointer"> {{node.name}}</span>
 </div>
 <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
     <li ng-repeat="node in node.children" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'">

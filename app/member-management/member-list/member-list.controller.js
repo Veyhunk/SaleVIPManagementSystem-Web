@@ -20,7 +20,7 @@
         };
         vm.toggleItems = toggleItems;
         vm.openEditModal = openEditModal;
-
+        vm.openRemoveModal = openRemoveModal;
         /*----------  内部变量  ----------*/
         var memberModel = MemberModel,
             utilityService = UtilityService,

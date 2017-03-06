@@ -2,24 +2,52 @@
     <div class="flexbox">
         <section style="width:30%;" class="padding">
             <h4>商品分类列表
-                <button class="btn btn-danger btn-xs pull-right">
+                <button class="btn btn-danger btn-xs pull-right margin-left" ng-click="vm.openRemoveModal(vm.listBackup)">
                     删除分类
                 </button>
-                <button class="btn btn-success btn-xs pull-right">
+                <button class="btn btn-success btn-xs pull-right" ng-click="vm.onCreate()">
                     新增分类
                 </button>
 
             </h4>
             <hr>
             <div ui-tree data-drag-enabled="false">
-                <ol ui-tree-nodes="" ng-model="vm.list" id="tree-root">
-                    <li ng-repeat="node in vm.list" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'"></li>
+                <ol ui-tree-nodes="" ng-model="vm.treeList" id="tree-root">
+                    <li ng-repeat="node in vm.treeList" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'"></li>
                 </ol>
             </div>
         </section>
         <section style="width:70%;" class=" padding margin-left">
             <h4>商品分类信息</h4>
             <hr>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="goodsClassName" class="col-sm-2 control-label">分类名称</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="goodsClassName" placeholder="分类名称" ng-model="vm.current.class.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goodsClassParent" class="col-sm-2 control-label">父类</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" ng-model="vm.current.class.parent" ng-options="item.id as item.name for item in vm.list">     
+                            <option value="" >根类型</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goodsClassParent" class="col-sm-2 control-label">备注</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" ng-class="{'margin-left':$last}" ng-repeat="item in vm.current.operation.buttons" class="btn {{item.class}}" ng-click="item.click(vm.current)">{{item.title}}</button>
+
+                    </div>
+                </div>
+            </form>
         </section>
     </div>
 
