@@ -1,17 +1,26 @@
-<section ng-controller="GoodsClassCtrl as goodsGlass">
-    商品分类 新增商品 树型层级展示
-    <table>
-        <thead>
-            <th>序号</th>
-            <th>分类名称</th>
-            <th>操作</th>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in goodsGlass.list">
-                <td>{{$index}}</td>
-                <td>{{item.name}}</td>
-                <td> 编辑，删除</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<div ng-controller="GoodsClassCtrl as vm">
+    <div class="flexbox">
+        <section style="width:30%;" class="padding">
+            <h4>商品分类列表
+                <button class="btn btn-danger btn-xs pull-right">
+                    删除分类
+                </button>
+                <button class="btn btn-success btn-xs pull-right">
+                    新增分类
+                </button>
+
+            </h4>
+            <hr>
+            <div ui-tree data-drag-enabled="false">
+                <ol ui-tree-nodes="" ng-model="vm.list" id="tree-root">
+                    <li ng-repeat="node in vm.list" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'"></li>
+                </ol>
+            </div>
+        </section>
+        <section style="width:70%;" class=" padding margin-left">
+            <h4>商品分类信息</h4>
+            <hr>
+        </section>
+    </div>
+
+</div>

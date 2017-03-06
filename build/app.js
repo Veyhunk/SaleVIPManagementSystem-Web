@@ -1220,19 +1220,19 @@ $(function() {
     function GoodsClassCtrl(UtilityService, GoodsModel) {
         let vm = this;
         /*----------  界面层资源  ----------*/
-        // 当前选中商品分类
-        vm.selectedGoodsClass;
-        // 当前新增商品分类
-        vm.currentGoodsClass;
+
         // 商品分类列表
         vm.list;
+        vm.select = select;
         /*----------  内部变量  ----------*/
 
         let utilityService = UtilityService,
             goodsModel = GoodsModel;
         /*----------  内部逻辑函数  ----------*/
 
-
+        function select(item) {
+            debugger;
+        }
         /*----------  内部辅助函数  ----------*/
 
         function initGoodsClass() {
@@ -1248,7 +1248,8 @@ $(function() {
 
         function initGoodsClassList() {
             goodsModel.getClasses().then(result => {
-                vm.list = result;
+
+                vm.list = utilityService.getTreeData(result);
             });
         }
 
@@ -1959,21 +1960,55 @@ $(function() {
                 size: 'lg',
                 controller: function($scope) {
                     let member = restangular.copy(selected[0]);
-                    $scope.vm = {};
+                    let vm = {};
 
-                    $scope.vm.member = member;
-                    $scope.vm.confirmPaymentPassword = member.payment_password;
-                    $scope.vm.hidePaymentPasswordNotice = true;
-                    $scope.vm.edit = edit;
-                    $scope.vm.levelList = vm.levelList;
-                    $scope.vm.checkPaymentPassword = (password, confirmPassword) => {
-
-                        $scope.vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
+                    vm.member = member;
+                    vm.confirmPaymentPassword = member.payment_password;
+                    vm.hidePaymentPasswordNotice = true;
+                    vm.edit = edit;
+                    vm.levelList = vm.levelList;
+                    vm.checkPaymentPassword = (password, confirmPassword) => {
+                        vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
                     }
+
+                    $scope.vm = vm;
                 }
             });
         }
+        /**
+         * 打开删除会员窗口
+         * 
+         * @param {Array<Object>} items
+         */
+        function openRemoveModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (!selected.length) {
+                utilityService.openNoticeModal({ content: '请先选择需要删除的会员！' });
 
+                return;
+            }
+
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-list/remove.modal.html',
+                controller: function($scope) {
+                    let vm = {};
+
+                    vm.list = selected;
+                    vm.remove = remove;
+
+                    $scope.vm = vm;
+                }
+            });
+        }
+        /**
+         * 删除会员
+         * 
+         * @param {Array<Object>} items
+         */
+        function remove(items) {
+
+        }
         /**
          * 修改会员信息
          * 
@@ -2293,6 +2328,102 @@ $(function() {
             }
         }
     }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('PluginTestCtrl', PluginTestCtrl);
+
+    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
+
+    function PluginTestCtrl($scope, DictionaryService) {
+        var vm = this;
+
+        //商品测试单位
+        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+
+        vm.treeData = [{
+                "id": 1,
+                "title": "node1",
+                "nodes": [{
+                        "id": 11,
+                        "title": "node1.1",
+                        "nodes": [{
+                            "id": 111,
+                            "title": "node1.1.1",
+                            "nodes": []
+                        }]
+                    },
+                    {
+                        "id": 12,
+                        "title": "node1.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "node2",
+                "nodrop": true,
+                "nodes": [{
+                        "id": 21,
+                        "title": "node2.1",
+                        "nodes": []
+                    },
+                    {
+                        "id": 22,
+                        "title": "node2.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "node3",
+                "nodes": [{
+                    "id": 31,
+                    "title": "node3.1",
+                    "nodes": []
+                }]
+            }
+        ];
+
+        vm.showLoading = function() {
+            // $scope.$emit(LOADING_EVENT.show);
+        }
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('FormController', FormController);
+
+    FormController.$inject = ['$scope', '$sce'];
+
+    function FormController($scope, $sce) {
+        $scope.students = [
+            { Name: '小李', Id: '201401201', Grade: '计算机技术' },
+            { Name: '李磊', Id: '201401202', Grade: '计算机技术' },
+            { Name: '夏津', Id: '201401203', Grade: '计算机技术' },
+            { Name: '杭州', Id: '201401204', Grade: '计算机技术' }
+        ];
+        $scope.addStudent = function() { //添加学生函数
+            $scope.students.push({ Name: $scope.newName, Id: $scope.newId, Grade: $scope.newGrade });
+            $scope.newName = '';
+            $scope.newId = '';
+            $scope.newGrade = '';
+        };
+        $scope.deleteStudent = function(student) { //删除一行的内容
+            $scope.students.splice($scope.students.indexOf(student), 1);
+        };
+
+    }
+
 })();
 (function() {
     'use strict';
@@ -2736,7 +2867,8 @@ $(function() {
             hideLoading: hideLoading,
             getSelected: getSelected,
             toggleItems: toggleItems,
-            openNoticeModal: openNoticeModal
+            openNoticeModal: openNoticeModal,
+            getTreeData: getTreeData
         };
 
         return UtilityService;
@@ -2754,6 +2886,61 @@ $(function() {
                 item.isChecked = state;
             });
         }
+
+        function getTreeData(items) {
+            let result = [],
+                // 保证数据无序正确组成树
+                repeter = [];
+            let root = {},
+                nodes = {};
+
+            let i,
+                len = items.length;
+
+            for (i = 0; i < len; i++) {
+                let node = items[i];
+
+                if (!node.parent) {
+                    root[node.id] = node;
+                    nodes[node.id] = node;
+                    continue;
+                }
+
+                if (nodes[node.parent]) {
+                    if (!nodes[node.parent].children) {
+                        nodes[node.parent].children = [];
+                    }
+                    nodes[node.parent].children.push(node);
+                } else {
+                    repeter.push(node);
+                }
+
+                nodes[node.id] = node;
+
+            }
+
+            len = repeter.length;
+
+            for (i = 0; i < len; i++) {
+                let node = repeter[i];
+                if (nodes[node.parent]) {
+                    if (!nodes[node.parent].children) {
+                        nodes[node.parent].children = [];
+                    }
+                    nodes[node.parent].children.push(node);
+                } else {
+                    // 还是没有父节点，直接插入根结点 
+                    root[node.id] = node;
+                }
+            }
+
+            let key;
+            for (key in root) {
+                result.push(root[key]);
+            }
+            return result;
+        }
+
         /**
          * 
          * 从列表中获取选中的项
@@ -2827,97 +3014,57 @@ $(function() {
     'use strict';
 
     angular
-        .module('app.page_template')
-        .controller('PluginTestCtrl', PluginTestCtrl);
+        .module('app.statistics_report')
+        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
 
-    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
+    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
 
-    function PluginTestCtrl($scope, DictionaryService) {
+    function StatisticsMemberChargeCtrl(UtilityService) {
         var vm = this;
+        /*----------  界面层资源  ----------*/
 
-        //商品测试单位
-        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+        /*----------  内部变量  ----------*/
 
-        vm.treeData = [{
-                "id": 1,
-                "title": "node1",
-                "nodes": [{
-                        "id": 11,
-                        "title": "node1.1",
-                        "nodes": [{
-                            "id": 111,
-                            "title": "node1.1.1",
-                            "nodes": []
-                        }]
-                    },
-                    {
-                        "id": 12,
-                        "title": "node1.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "title": "node2",
-                "nodrop": true,
-                "nodes": [{
-                        "id": 21,
-                        "title": "node2.1",
-                        "nodes": []
-                    },
-                    {
-                        "id": 22,
-                        "title": "node2.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 3,
-                "title": "node3",
-                "nodes": [{
-                    "id": 31,
-                    "title": "node3.1",
-                    "nodes": []
-                }]
-            }
-        ];
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
 
-        vm.showLoading = function() {
-            // $scope.$emit(LOADING_EVENT.show);
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
         }
 
+        init();
     }
 })();
 (function() {
     'use strict';
 
     angular
-        .module('app.page_template')
-        .controller('FormController', FormController);
+        .module('app.statistics_report')
+        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
 
-    FormController.$inject = ['$scope', '$sce'];
+    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
 
-    function FormController($scope, $sce) {
-        $scope.students = [
-            { Name: '小李', Id: '201401201', Grade: '计算机技术' },
-            { Name: '李磊', Id: '201401202', Grade: '计算机技术' },
-            { Name: '夏津', Id: '201401203', Grade: '计算机技术' },
-            { Name: '杭州', Id: '201401204', Grade: '计算机技术' }
-        ];
-        $scope.addStudent = function() { //添加学生函数
-            $scope.students.push({ Name: $scope.newName, Id: $scope.newId, Grade: $scope.newGrade });
-            $scope.newName = '';
-            $scope.newId = '';
-            $scope.newGrade = '';
-        };
-        $scope.deleteStudent = function(student) { //删除一行的内容
-            $scope.students.splice($scope.students.indexOf(student), 1);
-        };
+    function StatisticsMemberConsumptionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
 
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
     }
-
 })();
 (function() {
     'use strict';
@@ -3019,62 +3166,6 @@ $(function() {
         function addUser() {
             debugger;
         }
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
-
-    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberChargeCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
-
-    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberConsumptionCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
 
         /*----------  内部辅助函数  ----------*/
 

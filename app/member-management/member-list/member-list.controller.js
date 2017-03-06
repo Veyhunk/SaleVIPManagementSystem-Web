@@ -53,21 +53,55 @@
                 size: 'lg',
                 controller: function($scope) {
                     let member = restangular.copy(selected[0]);
-                    $scope.vm = {};
+                    let vm = {};
 
-                    $scope.vm.member = member;
-                    $scope.vm.confirmPaymentPassword = member.payment_password;
-                    $scope.vm.hidePaymentPasswordNotice = true;
-                    $scope.vm.edit = edit;
-                    $scope.vm.levelList = vm.levelList;
-                    $scope.vm.checkPaymentPassword = (password, confirmPassword) => {
-
-                        $scope.vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
+                    vm.member = member;
+                    vm.confirmPaymentPassword = member.payment_password;
+                    vm.hidePaymentPasswordNotice = true;
+                    vm.edit = edit;
+                    vm.levelList = vm.levelList;
+                    vm.checkPaymentPassword = (password, confirmPassword) => {
+                        vm.hidePaymentPasswordNotice = memberService.checkPassword(password, confirmPassword);
                     }
+
+                    $scope.vm = vm;
                 }
             });
         }
+        /**
+         * 打开删除会员窗口
+         * 
+         * @param {Array<Object>} items
+         */
+        function openRemoveModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (!selected.length) {
+                utilityService.openNoticeModal({ content: '请先选择需要删除的会员！' });
 
+                return;
+            }
+
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/member-management/member-list/remove.modal.html',
+                controller: function($scope) {
+                    let vm = {};
+
+                    vm.list = selected;
+                    vm.remove = remove;
+
+                    $scope.vm = vm;
+                }
+            });
+        }
+        /**
+         * 删除会员
+         * 
+         * @param {Array<Object>} items
+         */
+        function remove(items) {
+
+        }
         /**
          * 修改会员信息
          * 

@@ -10,19 +10,19 @@
     function GoodsClassCtrl(UtilityService, GoodsModel) {
         let vm = this;
         /*----------  界面层资源  ----------*/
-        // 当前选中商品分类
-        vm.selectedGoodsClass;
-        // 当前新增商品分类
-        vm.currentGoodsClass;
+
         // 商品分类列表
         vm.list;
+        vm.select = select;
         /*----------  内部变量  ----------*/
 
         let utilityService = UtilityService,
             goodsModel = GoodsModel;
         /*----------  内部逻辑函数  ----------*/
 
-
+        function select(item) {
+            debugger;
+        }
         /*----------  内部辅助函数  ----------*/
 
         function initGoodsClass() {
@@ -38,7 +38,8 @@
 
         function initGoodsClassList() {
             goodsModel.getClasses().then(result => {
-                vm.list = result;
+
+                vm.list = utilityService.getTreeData(result);
             });
         }
 

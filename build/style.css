@@ -616,6 +616,9 @@ img {
 .btn {
   cursor: pointer; }
 
+.angular-ui-tree-nodes .angular-ui-tree-nodes {
+  padding-left: 30px; }
+
 /*funtion*/
 .padding {
   padding: 0.6rem; }
@@ -669,6 +672,9 @@ img {
 
 .required-input {
   color: red; }
+
+.pointer {
+  cursor: pointer; }
 
 #system-notice-body {
   font-size: 1.8rem; }

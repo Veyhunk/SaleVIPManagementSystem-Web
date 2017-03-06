@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button type="button" class="close" ng-click="$close(result)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">确认删除会员等级？</h4>
+    <h4 class="modal-title">确认删除商品？</h4>
 </div>
 <div class="modal-body">
     <h4>
@@ -10,6 +10,6 @@
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger " ng-click="vm.delete()">删除</button>
+    <button type="button" class="btn btn-danger " ng-click="vm.remove(vm.list)">删除</button>
     <button type="button" class="btn btn-default " ng-click="$close()">取消</button>
 </div>

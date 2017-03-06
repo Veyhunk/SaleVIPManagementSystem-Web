@@ -16,7 +16,8 @@
             hideLoading: hideLoading,
             getSelected: getSelected,
             toggleItems: toggleItems,
-            openNoticeModal: openNoticeModal
+            openNoticeModal: openNoticeModal,
+            getTreeData: getTreeData
         };
 
         return UtilityService;
@@ -34,6 +35,67 @@
                 item.isChecked = state;
             });
         }
+
+        /**
+         * 组装成具有层级结构的数据
+         * 
+         * @param {Array<Object>} items
+         * @returns 
+         */
+        function getTreeData(items) {
+            let result = [],
+                // 保证数据无序正确组成树
+                repeter = [];
+            let root = {},
+                nodes = {};
+
+            let i,
+                len = items.length;
+
+            for (i = 0; i < len; i++) {
+                let node = items[i];
+
+                if (!node.parent) {
+                    root[node.id] = node;
+                    nodes[node.id] = node;
+                    continue;
+                }
+
+                if (nodes[node.parent]) {
+                    if (!nodes[node.parent].children) {
+                        nodes[node.parent].children = [];
+                    }
+                    nodes[node.parent].children.push(node);
+                } else {
+                    repeter.push(node);
+                }
+
+                nodes[node.id] = node;
+
+            }
+
+            len = repeter.length;
+
+            for (i = 0; i < len; i++) {
+                let node = repeter[i];
+                if (nodes[node.parent]) {
+                    if (!nodes[node.parent].children) {
+                        nodes[node.parent].children = [];
+                    }
+                    nodes[node.parent].children.push(node);
+                } else {
+                    // 还是没有父节点，直接插入根结点 
+                    root[node.id] = node;
+                }
+            }
+
+            let key;
+            for (key in root) {
+                result.push(root[key]);
+            }
+            return result;
+        }
+
         /**
          * 
          * 从列表中获取选中的项
@@ -42,13 +104,14 @@
          */
         function getSelected(items) {
             let result = [];
-            items.forEach((item) => {
+            items.forEach(item => {
                 if (item.isChecked) {
                     result.push(item);
                 }
             });
             return result;
         }
+
         /**
          * 
          * 打开系统提示窗口
@@ -78,6 +141,7 @@
 
             return deferred.promise;
         }
+
         // 获取后台时间，年+月+日+时分秒，如20161118192403
         function getDatetime() {
             let deferred = $q.defer();
@@ -87,6 +151,7 @@
 
             return deferred.promise;
         }
+
         // 初始化分页参数
         function initPagination() {
             let pagination = {
