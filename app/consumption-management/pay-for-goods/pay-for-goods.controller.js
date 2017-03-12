@@ -12,6 +12,8 @@
         $scope.showCustomer = true;
         vm.showAddItemNotice = true;
         /*----------  界面层资源  ----------*/
+        vm.pagination
+
         vm.current = {
             // 当前订单编号
             code: null,
@@ -44,7 +46,8 @@
              * // 获得总积分
              * reward_points
              */
-            billing: initBilling(),
+            billing: null,
+            date: null,
             remark: ''
         };
 
@@ -80,6 +83,7 @@
 
         function calculateBilling(order) {
             let billing = initBilling();
+
             for (let key in order) {
                 billing.quantities = billing.quantities + order[key].quantities;
 
@@ -93,6 +97,9 @@
             vm.current.billing = billing;
         }
 
+        /**
+         * @param {object} item 
+         */
         function removeItem(item) {
             delete vm.current.order[item.id];
             calculateBilling(vm.current.order);
@@ -196,6 +203,7 @@
         function init() {
             vm.current.date = moment().format('YYYY-MM-DD');
             vm.pagination = utilityService.initPagination();
+            vm.current.billing = initBilling();
             getGoods(vm.pagination.configs);
             getCode();
         }

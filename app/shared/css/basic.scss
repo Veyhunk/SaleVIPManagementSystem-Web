@@ -350,8 +350,6 @@ body {
                 overflow-x: hidden;
                 >div {
                     @include size(100%);
-                    display: flex;
-                    flex-direction: column;
                 }
                 & section {
                     border: $dimens-border-width solid $color-basic-border;
@@ -547,6 +545,7 @@ img {
 // layout
 .flexbox {
     display: flex;
+    flex-direction: row;
     @include size(100%);
 }
 

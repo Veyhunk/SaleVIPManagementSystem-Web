@@ -331,9 +331,7 @@ body {
       overflow-x: hidden; }
       body #layout #main #content > div {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column; }
+        height: 100%; }
       body #layout #main #content section {
         border: 0.12rem solid rgba(0, 0, 0, 0.1);
         background-color: white; }
@@ -517,6 +515,7 @@ img {
 }*/
 .flexbox {
   display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%; }
 
