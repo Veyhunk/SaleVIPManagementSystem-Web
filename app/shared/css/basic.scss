@@ -349,6 +349,8 @@ body {
                 padding: $dimens-padding;
                 overflow-x: hidden;
                 >div {
+                    display: flex;
+                    flex-direction: column;
                     @include size(100%);
                 }
                 & section {

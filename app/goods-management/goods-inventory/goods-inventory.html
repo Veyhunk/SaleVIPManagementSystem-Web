@@ -1,129 +1,131 @@
-<div class="flexbox" ng-controller="GoodsInventoryCtrl as vm">
-    <section class="box padding position-relative">
-        <form class="form-horizontal" name="goodsRegisterForm">
-            <!-- 订单号 -->
-            <div class="form-group">
-                <label class="col-sm-3 control-label">商品检索</label>
-                <div class="col-sm-6">
-                    <input class="form-control" placeholder="商品名称或简码" ng-model="goodsRegister.currentGoods.code" required>
+<div ng-controller="GoodsInventoryCtrl as vm">
+    <div class="flexbox">
+        <section class="box padding position-relative">
+            <form class="form-horizontal" name="goodsRegisterForm">
+                <!-- 订单号 -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">商品检索</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" placeholder="商品名称或简码" ng-model="goodsRegister.currentGoods.code" required>
 
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-primary">
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary">
                             搜索
                         </button>
-                </div>
-            </div>
-
-        </form>
-        <hr>
-        <div>
-            <table class="table table-hover table-cursor">
-                <thead>
-                    <tr>
-                        <th>商品名称</th>
-                        <th>商品编码</th>
-                        <th>参考进价</th>
-                        <th>库存数量</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in vm.list" ng-click="vm.addItem(item)">
-                        <td>{{item.name}}</td>
-                        <td>{{item.code}}</td>
-                        <td>{{item.entry_price}}</td>
-                        <td>{{item.inventories}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="pay-for-goods-pagination">
-            上一页，下一页
-        </div>
-    </section>
-    <section class="box-2  margin-left padding">
-        <div>
-            <form class="form-inline text-center">
-                <div class="form-group  margin-right">
-                    <label for="orderCode">入库单号</label>
-                    <input type="text" class="form-control" id="orderCode" ng-model="vm.current.code" readonly>
-                </div>
-                <div class="form-group margin-left">
-                    <label>入库日期</label>
-                    <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
-                        <input type='text' class="form-control" ng-model="vm.current.date" />
-                        <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
                     </div>
                 </div>
+
             </form>
-        </div>
-        <hr>
-        <div>
-            <table class="table table-vertical-middle">
-                <thead>
-                    <tr>
-                        <th>商品名称</th>
-                        <th>入库价格</th>
-                        <th>入库数量</th>
-                        <th>单项合计</th>
+            <hr>
+            <div>
+                <table class="table table-hover table-cursor">
+                    <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>商品编码</th>
+                            <th>参考进价</th>
+                            <th>库存数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.list" ng-click="vm.addItem(item)">
+                            <td>{{item.name}}</td>
+                            <td>{{item.code}}</td>
+                            <td>{{item.entry_price}}</td>
+                            <td>{{item.inventories}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="pay-for-goods-pagination">
+                上一页，下一页
+            </div>
+        </section>
+        <section class="box-2  margin-left padding">
+            <div>
+                <form class="form-inline text-center">
+                    <div class="form-group  margin-right">
+                        <label for="orderCode">入库单号</label>
+                        <input type="text" class="form-control" id="orderCode" ng-model="vm.current.code" readonly>
+                    </div>
+                    <div class="form-group margin-left">
+                        <label>入库日期</label>
+                        <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
+                            <input type='text' class="form-control" ng-model="vm.current.date" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <table class="table table-vertical-middle">
+                    <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>入库价格</th>
+                            <th>入库数量</th>
+                            <th>单项合计</th>
 
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in vm.current.order">
-                        <td>{{item.name}}</td>
-                        <td><input type="number" class="form-control" ng-model="item.entry_price" ng-change="vm.calculateBilling(vm.current.order)"></td>
-                        <td><input type="number" class="form-control" ng-model="item.quantities" ng-change="vm.calculateBilling(vm.current.order)"></td>
-                        <td>{{item.entry_price * item.quantities }}</td>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.current.order">
+                            <td>{{item.name}}</td>
+                            <td><input type="number" class="form-control" ng-model="item.entry_price" ng-change="vm.calculateBilling(vm.current.order)"></td>
+                            <td><input type="number" class="form-control" ng-model="item.quantities" ng-change="vm.calculateBilling(vm.current.order)"></td>
+                            <td>{{item.entry_price * item.quantities }}</td>
 
-                        <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center text-info" ng-show="vm.showAddItemNotice">
-            <b>请点击左侧商品列表，选择需要入库的商品！</b>
-        </div>
-        <div>
-            <table class="table table-vertical-middle">
-                <colgroup>
-                    <col width="100">
-                    <col>
-                    <col width="100">
-                    <col>
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <td>入库总数量</td>
-                        <td>
-                            <span class="large-red-label">
+                            <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center text-info" ng-show="vm.showAddItemNotice">
+                <b>请点击左侧商品列表，选择需要入库的商品！</b>
+            </div>
+            <div>
+                <table class="table table-vertical-middle">
+                    <colgroup>
+                        <col width="100">
+                        <col>
+                        <col width="100">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>入库总数量</td>
+                            <td>
+                                <span class="large-red-label">
                                     {{vm.current.billing.quantities}}
                                 </span>
-                        </td>
-                        <td>入库总金额</td>
-                        <td>
-                            <span class="large-red-label">
+                            </td>
+                            <td>入库总金额</td>
+                            <td>
+                                <span class="large-red-label">
                                     {{vm.current.billing.price|number:2}}
                                 </span>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>入库备注</td>
-                        <td colspan="3">
-                            <textarea class="form-control" rows="3" ng-model="vm.current.remark"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-right">
-                            <button class="btn btn-primary" ng-click="vm.doInventory(vm.current)">入库</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+                        <tr>
+                            <td>入库备注</td>
+                            <td colspan="3">
+                                <textarea class="form-control" rows="3" ng-model="vm.current.remark"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right">
+                                <button class="btn btn-primary" ng-click="vm.doInventory(vm.current)">入库</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 </div>

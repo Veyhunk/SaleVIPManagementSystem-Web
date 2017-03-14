@@ -330,6 +330,8 @@ body {
       padding: 0.6rem;
       overflow-x: hidden; }
       body #layout #main #content > div {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         height: 100%; }
       body #layout #main #content section {

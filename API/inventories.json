@@ -3,7 +3,12 @@
         "id": 1,
         "goods": {
             "code": "20161112121315",
-            "name": "安儿乐护舒宝"
+            "name": "安儿乐护舒宝",
+            "goods_class": {
+                "id": 1,
+                "name": "零食"
+            },
+            "unit": "包"
         },
         "store": 1,
         "price": 23,
@@ -14,7 +19,12 @@
         "id": 2,
         "goods": {
             "code": "20161112121315",
-            "name": "安儿乐护舒宝"
+            "name": "安儿乐护舒宝",
+            "goods_class": {
+                "id": 1,
+                "name": "零食"
+            },
+            "unit": "包"
         },
         "store": 1,
         "price": 24,
