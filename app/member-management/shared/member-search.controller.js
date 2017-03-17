@@ -8,7 +8,7 @@
     MemberSearchCtrl.$inject = ['$scope', 'UtilityService', 'MemberModel', '$uibModal'];
 
     function MemberSearchCtrl($scope, UtilityService, MemberModel, $uibModal) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
         vm.showMemberDetail = false;
         vm.showCustomer = false;
@@ -23,7 +23,7 @@
         vm.selectCustomer = selectCustomer;
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService,
+        let utilityService = UtilityService,
             memberModel = MemberModel;
         /*----------  内部逻辑函数  ----------*/
 
@@ -65,7 +65,7 @@
         /*----------  内部辅助函数  ----------*/
 
         function selectMember(member) {
-            debugger;
+
             vm.current.member = member;
             $scope.$emit('MEMBER_SEARCH_EVENT', member);
         }

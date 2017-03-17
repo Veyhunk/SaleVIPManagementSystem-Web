@@ -45,7 +45,7 @@
             }
 
             if (selected.length == 0) {
-                utilityService.openNoticeModal({ content: '同时只能选中一个会员进行编辑！' });
+                utilityService.openNoticeModal({ content: '请先选择需要编辑的会员！' });
                 return;
             }
             $uibModal.open({

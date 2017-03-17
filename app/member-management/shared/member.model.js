@@ -9,10 +9,10 @@
 
     function MemberModel(Restangular, $q) {
 
-        var members = Restangular.all('members.json'),
+        let members = Restangular.all('members.json'),
             levels = Restangular.all('levels.json');
 
-        var MemberModel = {
+        let MemberModel = {
             getLevels: getLevels,
             getMembers: getMembers,
             createMember: createMember,

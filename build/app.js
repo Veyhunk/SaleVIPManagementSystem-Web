@@ -1673,6 +1673,43 @@ $(function() {
 
     angular
         .module('app.goods_management')
+        .controller('InventoryListCtrl', InventoryListCtrl);
+
+    InventoryListCtrl.$inject = ['UtilityService', 'GoodsModel'];
+
+    function InventoryListCtrl(UtilityService, GoodsModel) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.pagination;
+        vm.list;
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService,
+            goodsModel = GoodsModel;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        function getInventories(configs) {
+            goodsModel.getInventories(configs).then((result) => {
+                result = result.plain();
+                vm.list = result;
+            });
+        }
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+            vm.pagination = utilityService.initPagination();
+            getInventories(vm.pagination.configs);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
         .controller('GoodsRegisterCtrl', GoodsRegisterCtrl);
 
     GoodsRegisterCtrl.$inject = ['GoodsModel', 'DictionaryService', '$filter', 'UtilityService'];
@@ -1782,33 +1819,44 @@ $(function() {
 
     angular
         .module('app.goods_management')
-        .controller('InventoryListCtrl', InventoryListCtrl);
+        .controller('GoodsSearchCtrl', GoodsSearchCtrl);
 
-    InventoryListCtrl.$inject = ['UtilityService', 'GoodsModel'];
+    GoodsSearchCtrl.inject = ['$scope', 'UtilityService', 'GoodsModel'];
 
-    function InventoryListCtrl(UtilityService, GoodsModel) {
-        var vm = this;
+    function GoodsSearchCtrl($scope, UtilityService, GoodsModel) {
+        let vm = this;
         /*----------  界面层资源  ----------*/
-        vm.pagination;
-        vm.list;
+        vm.current = {
+            queryString: '',
+            pagination: ''
+        }
+        vm.search = search;
+
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService,
+        let utilityService = UtilityService,
             goodsModel = GoodsModel;
         /*----------  内部逻辑函数  ----------*/
 
 
-        function getInventories(configs) {
-            goodsModel.getInventories(configs).then((result) => {
+        function search(current) {
+            let search = {
+                search: current.queryString,
+            }
+
+            search = _.assign(search, current.pagination.configs);
+
+            goodsModel.getGoods(search).then((result) => {
                 result = result.plain();
-                vm.list = result;
+
+                $scope.emit('GOODS_SEARCH_EVENT', result);
             });
         }
         /*----------  内部辅助函数  ----------*/
 
+
         function init() {
-            vm.pagination = utilityService.initPagination();
-            getInventories(vm.pagination.configs);
+            vm.current.pagination = utilityService.initPagination();
         }
 
         init();
@@ -1850,62 +1898,6 @@ $(function() {
         function getInventories(configs = {}) {
             return inventories.getList(configs);
         }
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
-
-    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberChargeCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
-
-    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberConsumptionCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
     }
 })();
 (function() {
@@ -2210,7 +2202,7 @@ $(function() {
             }
 
             if (selected.length == 0) {
-                utilityService.openNoticeModal({ content: '同时只能选中一个会员进行编辑！' });
+                utilityService.openNoticeModal({ content: '请先选择需要编辑的会员！' });
                 return;
             }
             $uibModal.open({
@@ -2436,7 +2428,7 @@ $(function() {
     MemberSearchCtrl.$inject = ['$scope', 'UtilityService', 'MemberModel', '$uibModal'];
 
     function MemberSearchCtrl($scope, UtilityService, MemberModel, $uibModal) {
-        var vm = this;
+        let vm = this;
         /*----------  界面层资源  ----------*/
         vm.showMemberDetail = false;
         vm.showCustomer = false;
@@ -2451,7 +2443,7 @@ $(function() {
         vm.selectCustomer = selectCustomer;
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService,
+        let utilityService = UtilityService,
             memberModel = MemberModel;
         /*----------  内部逻辑函数  ----------*/
 
@@ -2493,7 +2485,7 @@ $(function() {
         /*----------  内部辅助函数  ----------*/
 
         function selectMember(member) {
-            debugger;
+
             vm.current.member = member;
             $scope.$emit('MEMBER_SEARCH_EVENT', member);
         }
@@ -2522,10 +2514,10 @@ $(function() {
 
     function MemberModel(Restangular, $q) {
 
-        var members = Restangular.all('members.json'),
+        let members = Restangular.all('members.json'),
             levels = Restangular.all('levels.json');
 
-        var MemberModel = {
+        let MemberModel = {
             getLevels: getLevels,
             getMembers: getMembers,
             createMember: createMember,
@@ -2586,6 +2578,102 @@ $(function() {
             }
         }
     }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('PluginTestCtrl', PluginTestCtrl);
+
+    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
+
+    function PluginTestCtrl($scope, DictionaryService) {
+        var vm = this;
+
+        //商品测试单位
+        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+
+        vm.treeData = [{
+                "id": 1,
+                "title": "node1",
+                "nodes": [{
+                        "id": 11,
+                        "title": "node1.1",
+                        "nodes": [{
+                            "id": 111,
+                            "title": "node1.1.1",
+                            "nodes": []
+                        }]
+                    },
+                    {
+                        "id": 12,
+                        "title": "node1.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "node2",
+                "nodrop": true,
+                "nodes": [{
+                        "id": 21,
+                        "title": "node2.1",
+                        "nodes": []
+                    },
+                    {
+                        "id": 22,
+                        "title": "node2.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "node3",
+                "nodes": [{
+                    "id": 31,
+                    "title": "node3.1",
+                    "nodes": []
+                }]
+            }
+        ];
+
+        vm.showLoading = function() {
+            // $scope.$emit(LOADING_EVENT.show);
+        }
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.page_template')
+        .controller('FormController', FormController);
+
+    FormController.$inject = ['$scope', '$sce'];
+
+    function FormController($scope, $sce) {
+        $scope.students = [
+            { Name: '小李', Id: '201401201', Grade: '计算机技术' },
+            { Name: '李磊', Id: '201401202', Grade: '计算机技术' },
+            { Name: '夏津', Id: '201401203', Grade: '计算机技术' },
+            { Name: '杭州', Id: '201401204', Grade: '计算机技术' }
+        ];
+        $scope.addStudent = function() { //添加学生函数
+            $scope.students.push({ Name: $scope.newName, Id: $scope.newId, Grade: $scope.newGrade });
+            $scope.newName = '';
+            $scope.newId = '';
+            $scope.newGrade = '';
+        };
+        $scope.deleteStudent = function(student) { //删除一行的内容
+            $scope.students.splice($scope.students.indexOf(student), 1);
+        };
+
+    }
+
 })();
 (function() {
     'use strict';
@@ -3185,97 +3273,57 @@ $(function() {
     'use strict';
 
     angular
-        .module('app.page_template')
-        .controller('PluginTestCtrl', PluginTestCtrl);
+        .module('app.statistics_report')
+        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
 
-    PluginTestCtrl.$inject = ['$scope', 'DictionaryService'];
+    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
 
-    function PluginTestCtrl($scope, DictionaryService) {
+    function StatisticsMemberChargeCtrl(UtilityService) {
         var vm = this;
+        /*----------  界面层资源  ----------*/
 
-        //商品测试单位
-        vm.goodsUnits = _.toArray(DictionaryService.get('goods.units'));
+        /*----------  内部变量  ----------*/
 
-        vm.treeData = [{
-                "id": 1,
-                "title": "node1",
-                "nodes": [{
-                        "id": 11,
-                        "title": "node1.1",
-                        "nodes": [{
-                            "id": 111,
-                            "title": "node1.1.1",
-                            "nodes": []
-                        }]
-                    },
-                    {
-                        "id": 12,
-                        "title": "node1.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "title": "node2",
-                "nodrop": true,
-                "nodes": [{
-                        "id": 21,
-                        "title": "node2.1",
-                        "nodes": []
-                    },
-                    {
-                        "id": 22,
-                        "title": "node2.2",
-                        "nodes": []
-                    }
-                ]
-            },
-            {
-                "id": 3,
-                "title": "node3",
-                "nodes": [{
-                    "id": 31,
-                    "title": "node3.1",
-                    "nodes": []
-                }]
-            }
-        ];
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
 
-        vm.showLoading = function() {
-            // $scope.$emit(LOADING_EVENT.show);
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
         }
 
+        init();
     }
 })();
 (function() {
     'use strict';
 
     angular
-        .module('app.page_template')
-        .controller('FormController', FormController);
+        .module('app.statistics_report')
+        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
 
-    FormController.$inject = ['$scope', '$sce'];
+    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
 
-    function FormController($scope, $sce) {
-        $scope.students = [
-            { Name: '小李', Id: '201401201', Grade: '计算机技术' },
-            { Name: '李磊', Id: '201401202', Grade: '计算机技术' },
-            { Name: '夏津', Id: '201401203', Grade: '计算机技术' },
-            { Name: '杭州', Id: '201401204', Grade: '计算机技术' }
-        ];
-        $scope.addStudent = function() { //添加学生函数
-            $scope.students.push({ Name: $scope.newName, Id: $scope.newId, Grade: $scope.newGrade });
-            $scope.newName = '';
-            $scope.newId = '';
-            $scope.newGrade = '';
-        };
-        $scope.deleteStudent = function(student) { //删除一行的内容
-            $scope.students.splice($scope.students.indexOf(student), 1);
-        };
+    function StatisticsMemberConsumptionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
 
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
     }
-
 })();
 (function() {
     'use strict';

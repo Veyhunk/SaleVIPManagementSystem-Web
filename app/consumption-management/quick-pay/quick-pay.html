@@ -1,54 +1,11 @@
 <div ng-controller="QuickPayCtrl as quickPay">
-    <section class="padding">
-        <!--<div class="content-page-head">
-            <h4>会员扫描</h4>
-        <hr>
-        </div>
-        <hr>-->
-        <form class="form-horizontal" name="quickPayForm">
-            <!-- input -->
-            <div class="form-group ">
-                <label class="col-sm-3 control-label">会员检索</label>
-                <div class="col-sm-3">
-                    <input class="form-control" placeholder="请输入会员卡号、姓名、电话" required>
+    <div ng-include="'app/member-management/shared/member-search.tpl.html'"></div>
 
-                </div>
-                <!--<label class="col-sm-3 help-block">*</label>-->
-                <div class=" col-sm-6 ">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-qrcode"></i> 扫码</button>
-                    <div class="checkbox pull-left padding">
-                        <label>
-                            <input type="checkbox"> 散客
-                        </label>
-                    </div>
-                    <!--<button type="button" class="btn btn-default"><i class="fa fa-refresh"></i> 重置</button>-->
-                </div>
-            </div>
-
-            <!-- input -->
-            <div class="form-group marggin-0">
-                <label class="col-sm-3 control-label">会员信息</label>
-                <div class="col-sm-9">
-                    <div class="content-page-body form-control-static">
-                        <ul class="list-inline marggin-0">
-                            <li>姓名<span class="text-info-hightlight">{{memberRegister.currentMember.nam}}</span></li>
-                            <li>等级<span class="text-info-hightlight">{{memberRegister.currentMember.level}}</span></li>
-                            <li>余额<span class="text-info-hightlight">{{memberRegister.currentMember.balance}}</span></li>
-                            <li>积分<span class="text-info-hightlight">{{memberRegister.currentMember.points}}</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-    </section>
     <div class="flexbox">
         <section class="box padding margin-top">
 
 
             <div>
-                <button type="button" class="btn btn-clear pull-right"><i class="fa fa-refresh"></i> 重置</button>
                 <h4>订单信息</h4>
             </div>
             <hr>
@@ -122,8 +79,8 @@
                 <!-- button -->
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="button" class="btn btn-primary btn-block" ng-disabled="!goodsRegisterForm.$valid" ng-click="goodsRegister.addGoods(goodsRegister.currentGoods)">结算</button>
-
+                        <button type="button" class="btn btn-primary " ng-disabled="!goodsRegisterForm.$valid" ng-click="goodsRegister.addGoods(goodsRegister.currentGoods)"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 结算</button>
+                        <button type="button" class="btn btn-default  "><i class="fa fa-refresh"></i> 重置</button>
                     </div>
                 </div>
                 <!-- File inpu -->

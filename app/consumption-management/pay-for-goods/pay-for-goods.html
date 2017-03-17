@@ -2,22 +2,7 @@
     <div ng-include="'app/member-management/shared/member-search.tpl.html'"></div>
     <div class="flexbox">
         <section class="box margin-top padding position-relative">
-            <form class="form-horizontal" name="goodsRegisterForm">
-                <!-- 订单号 -->
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">商品检索</label>
-                    <div class="col-sm-6">
-                        <input class="form-control" placeholder="商品名称或简码" ng-model="goodsRegister.currentGoods.code" required>
-
-                    </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-primary">
-                            搜索
-                        </button>
-                    </div>
-                </div>
-
-            </form>
+            <div ng-include="'app/goods-management/shared/goods-search.tpl.html'"></div>
             <hr>
             <div>
                 <table class="table table-hover table-cursor">
@@ -134,7 +119,8 @@
                         </tr>
                         <tr>
                             <td colspan="4" class="text-right">
-                                <button class="btn btn-primary" ng-click="vm.pay()">结算</button>
+                                <button class="btn btn-primary" ng-click="vm.pay()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 结算</button>
+                                <button type="button" class="btn btn-default  "><i class="fa fa-refresh"></i> 重置</button>
                             </td>
                         </tr>
                     </tbody>
