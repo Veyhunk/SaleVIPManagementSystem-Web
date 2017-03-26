@@ -17,7 +17,8 @@
             getSelected: getSelected,
             toggleItems: toggleItems,
             openNoticeModal: openNoticeModal,
-            getTreeData: getTreeData
+            getTreeData: getTreeData,
+            getParseDictionary: getParseDictionary
         };
 
         return UtilityService;
@@ -29,11 +30,46 @@
         function hideLoading() {
             $rootScope.hideLoading();
         }
-
+        /**
+         * @param {Object} items 
+         * @param {Boolean} state 
+         */
         function toggleItems(items, state) {
             items.forEach((item) => {
                 item.isChecked = state;
             });
+        }
+
+        /**
+         * @param {Object} items 
+         * @param {Boolean} state 
+         */
+        function toggleTreeItems(items, state) {
+            items.forEach((item) => {
+                if (item.children && item.children.length) {
+                    toggleTreeItems(item.children, state);
+                }
+                item.isChecked = state;
+            });
+        }
+
+        /**
+         * 
+         * @param {Object} types 
+         * @returns 
+         */
+        function getParseDictionary(types) {
+            let key,
+                result = [];
+
+            for (key in types) {
+                let tmp = {};
+                tmp.id = parseInt(key);
+                tmp.name = types[key];
+                result.push(tmp);
+            }
+
+            return result;
         }
 
         /**

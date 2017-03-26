@@ -6,7 +6,7 @@
         .filter('dictionary', dictionary);
 
     function dictionary(DictionaryService) {
-        var dictionaryService = DictionaryService;
+        let dictionaryService = DictionaryService;
         return dictionaryFilter;
 
         function dictionaryFilter(value, type) {

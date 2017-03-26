@@ -1,0 +1,87 @@
+<div ng-controller="PermissionCtrl as vm">
+    <div class="flexbox">
+        <section style="width:30%;overflow-y: auto;" class="padding">
+            <h4>权限列表
+                <button class="btn btn-danger btn-xs pull-right margin-left" ng-click="vm.openRemoveModal(vm.listBackup)">
+                    删除权限
+                </button>
+                <button class="btn btn-success btn-xs pull-right" ng-click="vm.onCreate()">
+                    新增权限
+                </button>
+
+            </h4>
+            <hr>
+            <div ui-tree data-drag-enabled="false">
+                <ol ui-tree-nodes="" ng-model="vm.treeList" id="tree-root">
+                    <li ng-repeat="node in vm.treeList" ui-tree-node ng-include="'app/shared/views/tree.tpl.html'"></li>
+                </ol>
+            </div>
+        </section>
+        <section style="width:70%;" class=" padding margin-left">
+            <h4>权限信息</h4>
+            <hr>
+            <form class="form-horizontal" novalidate name="permissionForm">
+                <table class="table table-vertical-middle margin-0-auto">
+                    <tbody>
+                        <tr>
+                            <td>权限名称</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="权限名称" ng-model="vm.current.permission.name">
+                            </td>
+                            <td>权限URL</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="权限Url" ng-model="vm.current.permission.url">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>权限排序</td>
+                            <td>
+                                <input type="number" class="form-control" placeholder="权限排序" ng-model="vm.current.permission.sort"> </td>
+                            <td>父级</td>
+                            <td>
+                                <select class="form-control" ng-model="vm.current.permission.parent" ng-options="item.id as item.name for item in vm.list">     
+                                    <option value="" >根类型</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>权限方法</td>
+                            <td>
+                                <select class="form-control" ng-model="vm.current.permission.method" ng-options="item.id as item.name for item in vm.methods ">     
+                                    <option value="" >========请选择=======</option>
+                                </select>
+                            </td>
+                            <td>权限图标</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="权限图标，暂未启用" ng-model="vm.current.permission.icon">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是API</td>
+                            <td>
+                                <input type="checkbox" class="form-control" ng-model="vm.current.permission.is_API" ng-true-value="1" ng-false-value="0"> </td>
+                            <td>显示在快捷菜单</td>
+                            <td>
+                                <input type="checkbox" class="form-control" ng-model="vm.current.permission.is_shortcut" ng-true-value="1" ng-false-value="0"> </td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>备注</td>
+                            <td colspan="3">
+                                <textarea class="form-control" id="permissionRemark" rows="3" ng-model="vm.current.permission.remark"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="3">
+                                <button type="button" ng-class="{'margin-left':$last && !$first}" ng-repeat="item in vm.current.operation.buttons" class="btn {{item.class}}" ng-click="item.click(vm.current)">{{item.title}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+        </section>
+    </div>
+</div>

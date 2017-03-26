@@ -64,6 +64,8 @@
          * @returns {Menus} result 
          */
         function resolveMenus(menus) {
+            if (!menus) return;
+
             var _menus = menus;
 
             var result = {

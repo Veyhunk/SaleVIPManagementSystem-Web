@@ -28,21 +28,23 @@
         function createMember(member) {
             return members.post(member);
         }
+
         /**
          * 获取会员列表
          * 
          * @param {any} configs
          * @returns
          */
-        function getMembers(configs) {
+        function getMembers(configs = {}) {
             return members.getList(configs);
         }
+
         /**
          * 获取会员等级列表
          */
-        function getLevels(config = '') {
+        function getLevels(configs = {}) {
 
-            return levels.getList();
+            return levels.getList(configs);
 
         }
     }

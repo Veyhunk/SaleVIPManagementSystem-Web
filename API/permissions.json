@@ -249,6 +249,17 @@
         "icon": "",
         "remark": ""
     }, {
+        "id": 22,
+        "name": "权限管理",
+        "url": "app.system_management.permission",
+        "is_API": 0,
+        "is_shortcut": 0,
+        "method": 1,
+        "parent": 19,
+        "sort": 3,
+        "icon": "",
+        "remark": ""
+    }, {
         "id": 100,
         "name": "页面模板",
         "url": "app.page_template",

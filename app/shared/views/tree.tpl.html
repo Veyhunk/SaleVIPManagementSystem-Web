@@ -5,6 +5,6 @@
         }"></span></a><input type="checkbox" class="pointer" ng-model="node.isChecked"><span ng-click="vm.select(node)" class="pointer"> {{node.name}}</span>
 </div>
 <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
-    <li ng-repeat="node in node.children" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'">
+    <li ng-repeat="node in node.children" ui-tree-node ng-include="'app/shared/views/tree.tpl.html'">
     </li>
 </ol>

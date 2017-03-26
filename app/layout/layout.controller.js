@@ -13,7 +13,7 @@
     function LayoutCtrl($rootScope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
         AuthService, Version, $timeout) {
         /*----------  界面层资源  ----------*/
-        var vm = this;
+        let vm = this;
 
         // 快捷菜单切换状态
         vm.isShortcutMenusMini = false;
@@ -32,7 +32,7 @@
         vm.contentLoading = false;
 
         /*----------  内部变量  ----------*/
-        var layoutModel = LayoutModel,
+        let layoutModel = LayoutModel,
             layoutService = LayoutService,
             profileService = ProfileService;
 
@@ -43,7 +43,9 @@
 
         function initMainMenus(permissions) {
 
-            var menus = layoutService.resolveMenus(permissions);
+            let menus = layoutService.resolveMenus(permissions);
+
+            if (!menus) return;
 
             vm.mainMenus = menus.mainMenus;
             vm.shortcutMenus = menus.shortcutMenus;
@@ -73,7 +75,7 @@
 
         function init() {
             // 初始化菜单
-            var permissions = profileService.getPermissions();
+            let permissions = profileService.getPermissions();
             initMainMenus(permissions);
 
             // 初始化用户信息

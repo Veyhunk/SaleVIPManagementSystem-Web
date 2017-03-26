@@ -46,17 +46,7 @@
         function initGoodsTypes() {
             let types = dictionaryService.get('goods.types');
 
-            let key,
-                result = [];
-
-            for (key in types) {
-                let tmp = {};
-                tmp.id = parseInt(key);
-                tmp.name = types[key];
-                result.push(tmp);
-            }
-
-            vm.types = result;
+            vm.types = utilityService.getParseDictionary(types);;
             vm.currentGoods.type = result[0].id;
         }
 

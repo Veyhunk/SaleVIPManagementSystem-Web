@@ -13,7 +13,7 @@
             <hr>
             <div ui-tree data-drag-enabled="false">
                 <ol ui-tree-nodes="" ng-model="vm.treeList" id="tree-root">
-                    <li ng-repeat="node in vm.treeList" ui-tree-node ng-include="'app/goods-management/goods-class/tree.tpl.html'"></li>
+                    <li ng-repeat="node in vm.treeList" ui-tree-node ng-include="'app/shared/views/tree.tpl.html'"></li>
                 </ol>
             </div>
         </section>
@@ -30,15 +30,15 @@
                 <div class="form-group">
                     <label for="goodsClassParent" class="col-sm-2 control-label">父类</label>
                     <div class="col-sm-4">
-                        <select class="form-control" ng-model="vm.current.class.parent" ng-options="item.id as item.name for item in vm.list">     
+                        <select id="goodsClassParent" class="form-control" ng-model="vm.current.class.parent" ng-options="item.id as item.name for item in vm.list">     
                             <option value="" >根类型</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="goodsClassParent" class="col-sm-2 control-label">备注</label>
+                    <label for="goodsClassRemark" class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-4">
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" id="goodsClassRemark" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

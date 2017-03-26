@@ -440,6 +440,15 @@ $(function() {
                         templateUrl: 'app/system-management/role/role.html'
                     }
                 }
+            })
+            .state('app.system_management.permission', {
+                name: '权限管理',
+                url: '/permission',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/system-management/permission/permission.html'
+                    }
+                }
             });
 
     }
@@ -676,7 +685,7 @@ $(function() {
     function LayoutCtrl($rootScope, $state, LayoutModel, LayoutService, DictionaryService, ProfileService,
         AuthService, Version, $timeout) {
         /*----------  界面层资源  ----------*/
-        var vm = this;
+        let vm = this;
 
         // 快捷菜单切换状态
         vm.isShortcutMenusMini = false;
@@ -695,7 +704,7 @@ $(function() {
         vm.contentLoading = false;
 
         /*----------  内部变量  ----------*/
-        var layoutModel = LayoutModel,
+        let layoutModel = LayoutModel,
             layoutService = LayoutService,
             profileService = ProfileService;
 
@@ -706,7 +715,9 @@ $(function() {
 
         function initMainMenus(permissions) {
 
-            var menus = layoutService.resolveMenus(permissions);
+            let menus = layoutService.resolveMenus(permissions);
+
+            if (!menus) return;
 
             vm.mainMenus = menus.mainMenus;
             vm.shortcutMenus = menus.shortcutMenus;
@@ -736,7 +747,7 @@ $(function() {
 
         function init() {
             // 初始化菜单
-            var permissions = profileService.getPermissions();
+            let permissions = profileService.getPermissions();
             initMainMenus(permissions);
 
             // 初始化用户信息
@@ -843,6 +854,8 @@ $(function() {
          * @returns {Menus} result 
          */
         function resolveMenus(menus) {
+            if (!menus) return;
+
             var _menus = menus;
 
             var result = {
@@ -1112,46 +1125,6 @@ $(function() {
 
     angular
         .module('app.consumption_management')
-        .controller('QuickPayCtrl', QuickPayCtrl);
-
-    QuickPayCtrl.$inject = ['UtilityService'];
-
-    function QuickPayCtrl(UtilityService) {
-        let vm = this;
-        /*----------  界面层资源  ----------*/
-        vm.order = {
-            // 订单编号
-            code: ''
-        };
-
-        /*----------  内部变量  ----------*/
-
-        let utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-        // 初始化订单编号
-        function getCode() {
-            utilityService.getOrderCode('KS').then(result => {
-                vm.order.code = result;
-            });
-        }
-
-        function init() {
-            // 获取订单编号
-            getCode();
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.consumption_management')
         .controller('ConsumptionRecordCtrl', ConsumptionRecordCtrl);
 
     ConsumptionRecordCtrl.$inject = ['UtilityService', 'ConsumptionModel'];
@@ -1184,6 +1157,46 @@ $(function() {
         function init() {
             vm.pagination = utilityService.initPagination();
             getRecords(vm.pagination.configs);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
+        .controller('QuickPayCtrl', QuickPayCtrl);
+
+    QuickPayCtrl.$inject = ['UtilityService'];
+
+    function QuickPayCtrl(UtilityService) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.order = {
+            // 订单编号
+            code: ''
+        };
+
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+        // 初始化订单编号
+        function getCode() {
+            utilityService.getOrderCode('KS').then(result => {
+                vm.order.code = result;
+            });
+        }
+
+        function init() {
+            // 获取订单编号
+            getCode();
+
         }
 
         init();
@@ -1312,10 +1325,12 @@ $(function() {
 
             let that = vm;
             $uibModal.open({
-                templateUrl: 'app/goods-management/goods-class/remove.modal.html',
+                templateUrl: 'app/shared/views/remove.modal.html',
                 controller: function($scope) {
 
                     let vm = {};
+
+                    vm.title = '确认删除商品分类？';
 
                     vm.list = selected;
                     vm.remove = remove;
@@ -1716,17 +1731,7 @@ $(function() {
         function initGoodsTypes() {
             let types = dictionaryService.get('goods.types');
 
-            let key,
-                result = [];
-
-            for (key in types) {
-                let tmp = {};
-                tmp.id = parseInt(key);
-                tmp.name = types[key];
-                result.push(tmp);
-            }
-
-            vm.types = result;
+            vm.types = utilityService.getParseDictionary(types);;
             vm.currentGoods.type = result[0].id;
         }
 
@@ -2533,21 +2538,23 @@ $(function() {
         function createMember(member) {
             return members.post(member);
         }
+
         /**
          * 获取会员列表
          * 
          * @param {any} configs
          * @returns
          */
-        function getMembers(configs) {
+        function getMembers(configs = {}) {
             return members.getList(configs);
         }
+
         /**
          * 获取会员等级列表
          */
-        function getLevels(config = '') {
+        function getLevels(configs = {}) {
 
-            return levels.getList();
+            return levels.getList(configs);
 
         }
     }
@@ -2883,7 +2890,7 @@ $(function() {
         .filter('dictionary', dictionary);
 
     function dictionary(DictionaryService) {
-        var dictionaryService = DictionaryService;
+        let dictionaryService = DictionaryService;
         return dictionaryFilter;
 
         function dictionaryFilter(value, type) {
@@ -3118,7 +3125,8 @@ $(function() {
             getSelected: getSelected,
             toggleItems: toggleItems,
             openNoticeModal: openNoticeModal,
-            getTreeData: getTreeData
+            getTreeData: getTreeData,
+            getParseDictionary: getParseDictionary
         };
 
         return UtilityService;
@@ -3130,11 +3138,46 @@ $(function() {
         function hideLoading() {
             $rootScope.hideLoading();
         }
-
+        /**
+         * @param {Object} items 
+         * @param {Boolean} state 
+         */
         function toggleItems(items, state) {
             items.forEach((item) => {
                 item.isChecked = state;
             });
+        }
+
+        /**
+         * @param {Object} items 
+         * @param {Boolean} state 
+         */
+        function toggleTreeItems(items, state) {
+            items.forEach((item) => {
+                if (item.children && item.children.length) {
+                    toggleTreeItems(item.children, state);
+                }
+                item.isChecked = state;
+            });
+        }
+
+        /**
+         * 
+         * @param {Object} types 
+         * @returns 
+         */
+        function getParseDictionary(types) {
+            let key,
+                result = [];
+
+            for (key in types) {
+                let tmp = {};
+                tmp.id = parseInt(key);
+                tmp.name = types[key];
+                result.push(tmp);
+            }
+
+            return result;
         }
 
         /**
@@ -3332,22 +3375,159 @@ $(function() {
         .module('app.system_management')
         .controller('PermissionCtrl', PermissionCtrl);
 
-    PermissionCtrl.$inject = ['UtilityService'];
+    PermissionCtrl.$inject = ['UtilityService', 'Restangular', 'SystemModel', 'DictionaryService', '$uibModal'];
 
-    function PermissionCtrl(UtilityService) {
-        var vm = this;
+    function PermissionCtrl(UtilityService, Restangular, SystemModel, DictionaryService, $uibModal) {
+        let vm = this;
         /*----------  界面层资源  ----------*/
 
+        // 权限树形结构列表
+        vm.treeList;
+
+        // 权限列表
+        vm.list;
+        vm.listBackup;
+
+        vm.methods;
+
+        vm.current = {
+            operation: null,
+            permission: null
+        };
+
+        vm.select = select;
+        vm.openRemoveModal = openRemoveModal;
+        vm.cancel = cancel;
+        vm.onCreate = onCreate;
         /*----------  内部变量  ----------*/
 
-        var utilityService = UtilityService;
+        let utilityService = UtilityService,
+            systemModel = SystemModel,
+            restangular = Restangular,
+            dictionaryService = DictionaryService;
+
+        let operation = {
+            edit: {
+                notice: {
+                    content: '修改成功！'
+                },
+                buttons: [{
+                    title: '保存',
+                    class: 'btn-primary',
+                    click: saveEdit
+                }, {
+                    title: '取消',
+                    class: 'btn-default',
+                    click: cancel
+                }, ]
+            },
+            create: {
+                notice: {
+                    content: '新增成功！'
+                },
+                buttons: [{
+                    title: '添加',
+                    class: 'btn-success',
+                    click: saveCreate,
+                }]
+            }
+
+        };
         /*----------  内部逻辑函数  ----------*/
 
+        function saveEdit() {
+
+        }
+
+        function saveCreate() {
+
+        }
+
+        function remove() {
+
+        }
+        /**
+         * 切换新增模式
+         */
+        function onCreate() {
+            vm.current.operation = operation.create;
+            vm.current.permission = initPermission();
+        }
+
+        function openRemoveModal(items) {
+            let selected = utilityService.getSelected(items);
+            if (!selected.length) {
+                utilityService.openNoticeModal({ content: '请先选择需要删除的权限！' });
+
+                return;
+            }
+
+            let that = vm;
+            $uibModal.open({
+                templateUrl: 'app/shared/views/remove.modal.html',
+                controller: function($scope) {
+
+                    let vm = {};
+
+                    vm.title = '确认删除权限？';
+
+                    vm.list = selected;
+                    vm.remove = remove;
+
+                    $scope.vm = vm;
+                }
+            });
+        }
+
+        function cancel() {
+            vm.current.permission = restangular.copy(vm.current.permissionBackup);
+        }
+
+        function select(item) {
+            vm.current.permission = restangular.copy(item);
+            vm.current.permissionBackup = item;
+            vm.current.operation = operation.edit;
+        }
 
         /*----------  内部辅助函数  ----------*/
 
-        function init() {
+        function initPermission() {
+            let permission = {
+                "name": "",
+                "url": "",
+                "is_API": 0,
+                "is_shortcut": 0,
+                "method": 1,
+                "parent": null,
+                "sort": 1,
+                "icon": "",
+                "remark": ""
+            }
+            return permission;
+        }
 
+        function initMethods() {
+            let methods = dictionaryService.get('http_methods');
+            debugger;
+            vm.methods = utilityService.getParseDictionary(methods);;
+        }
+
+        function initPermissions() {
+
+            systemModel.getPermissions().then(result => {
+                vm.list = restangular.copy(result);
+                vm.listBackup = result;
+                vm.treeList = utilityService.getTreeData(result);
+            });
+
+        }
+
+        function init() {
+            vm.current.operation = operation.create;
+            vm.current.permission = initPermission();
+
+            initMethods();
+            initPermissions();
         }
 
         init();
@@ -3379,6 +3559,36 @@ $(function() {
         }
 
         init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.system_management')
+        .factory('SystemModel', SystemModel);
+
+    SystemModel.inject = ['Restangular'];
+
+    function SystemModel(Restangular) {
+
+        let permissions = Restangular.all('permissions.json');
+
+        let SystemModel = {
+            getPermissions: getPermissions
+        };
+
+        return SystemModel;
+
+
+        /**
+         * 
+         * @param {Object} [configs={}] 
+         * @returns 
+         */
+        function getPermissions(configs = {}) {
+            return permissions.getList(configs);
+        }
     }
 })();
 (function() {

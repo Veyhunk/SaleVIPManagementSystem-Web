@@ -94,10 +94,12 @@
 
             let that = vm;
             $uibModal.open({
-                templateUrl: 'app/goods-management/goods-class/remove.modal.html',
+                templateUrl: 'app/shared/views/remove.modal.html',
                 controller: function($scope) {
 
                     let vm = {};
+
+                    vm.title = '确认删除商品分类？';
 
                     vm.list = selected;
                     vm.remove = remove;

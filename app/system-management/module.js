@@ -30,6 +30,15 @@
                         templateUrl: 'app/system-management/role/role.html'
                     }
                 }
+            })
+            .state('app.system_management.permission', {
+                name: '权限管理',
+                url: '/permission',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/system-management/permission/permission.html'
+                    }
+                }
             });
 
     }
