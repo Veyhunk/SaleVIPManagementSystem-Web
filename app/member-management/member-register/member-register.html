@@ -7,7 +7,7 @@
         <hr>
         <div>
             <form novalidate name="memberRegisterForm">
-                <table class="table vertical-middle margin-0-auto">
+                <table class="table table-vertical-middle margin-0-auto">
                     <tr>
                         <td>会员卡号
                             <span class="required-input">*</span>
@@ -91,8 +91,15 @@
                         <td>
                             <input class="form-control" placeholder="" ng-model="vm.current.member.points">
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>过期时间</td>
+                        <td>
+                            <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
+                                <input type='text' class="form-control" ng-model="vm.current.member.expire_date" />
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </td>
                         <td></td>
                     </tr>
                     <tr>
