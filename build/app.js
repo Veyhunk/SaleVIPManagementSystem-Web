@@ -1125,6 +1125,46 @@ $(function() {
 
     angular
         .module('app.consumption_management')
+        .controller('QuickPayCtrl', QuickPayCtrl);
+
+    QuickPayCtrl.$inject = ['UtilityService'];
+
+    function QuickPayCtrl(UtilityService) {
+        let vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.order = {
+            // 订单编号
+            code: ''
+        };
+
+        /*----------  内部变量  ----------*/
+
+        let utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+        // 初始化订单编号
+        function getCode() {
+            utilityService.getOrderCode('KS').then(result => {
+                vm.order.code = result;
+            });
+        }
+
+        function init() {
+            // 获取订单编号
+            getCode();
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.consumption_management')
         .controller('ConsumptionRecordCtrl', ConsumptionRecordCtrl);
 
     ConsumptionRecordCtrl.$inject = ['UtilityService', 'ConsumptionModel'];
@@ -1157,46 +1197,6 @@ $(function() {
         function init() {
             vm.pagination = utilityService.initPagination();
             getRecords(vm.pagination.configs);
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.consumption_management')
-        .controller('QuickPayCtrl', QuickPayCtrl);
-
-    QuickPayCtrl.$inject = ['UtilityService'];
-
-    function QuickPayCtrl(UtilityService) {
-        let vm = this;
-        /*----------  界面层资源  ----------*/
-        vm.order = {
-            // 订单编号
-            code: ''
-        };
-
-        /*----------  内部变量  ----------*/
-
-        let utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-        // 初始化订单编号
-        function getCode() {
-            utilityService.getOrderCode('KS').then(result => {
-                vm.order.code = result;
-            });
-        }
-
-        function init() {
-            // 获取订单编号
-            getCode();
-
         }
 
         init();
@@ -3316,62 +3316,6 @@ $(function() {
     'use strict';
 
     angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
-
-    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberChargeCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
-
-    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberConsumptionCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
         .module('app.system_management')
         .controller('PermissionCtrl', PermissionCtrl);
 
@@ -3589,6 +3533,62 @@ $(function() {
         function getPermissions(configs = {}) {
             return permissions.getList(configs);
         }
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
+
+    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberConsumptionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
+
+    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberChargeCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
     }
 })();
 (function() {

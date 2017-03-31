@@ -42,8 +42,6 @@
   font-size: 9.6rem; }
 
 /*funtion*/
-
-/*funtion*/
 #palette .table {
   width: 100%;
   max-width: 100%;
@@ -53,6 +51,8 @@
 
 #palette .color-td {
   height: 100px; }
+
+/*funtion*/
 
 #pay-for-goods-pagination {
   position: absolute;

@@ -1,3 +1,18 @@
-<section>
-    角色管理
-</section>
+<div ng-controller="RoleCtrl as vm">
+    <div class="flexbox">
+        <section style="width: 30%; overflow-y: auto;" class=" padding">
+            <h4>角色列表
+                <button class="btn btn-danger btn-xs pull-right margin-left" ng-click="vm.openRemoveModal(vm.listBackup)">
+                    删除角色
+                </button>
+                <button class="btn btn-success btn-xs pull-right" ng-click="vm.onCreate()">
+                    新增角色
+                </button>
+            </h4>
+            <hr>
+        </section>
+        <section style="width:70%;" class=" padding margin-left">
+
+        </section>
+    </div>
+</div>
