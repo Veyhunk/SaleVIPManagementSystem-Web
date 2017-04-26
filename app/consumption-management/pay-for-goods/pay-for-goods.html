@@ -59,14 +59,16 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr ng-repeat="item in vm.current.order">
-                            <td>{{item.name}}</td>
-                            <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
-                            <td><input type="number" class="form-control" ng-model="item.quantities" ng-change="vm.changeQuantities(item)"></td>
-                            <td>{{item.sale_price * item.quantities * vm.current.member.level.discount_rate}}</td>
-                            <td>{{item.quantities*item.reward_points}}</td>
-                            <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
+                    <tbody <tr ng-repeat="item in vm.current.order">
+                        <td>{{item.name}}</td>
+                        <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
+                        <td><button class="pull-left" ng-click="item.quantities=item.quantities-1;item.quantities<=0&&vm.removeItem(item);"> - </button><input class="pull-left" style="width:50px" type="number" class="form-control" ng-model="item.quantities"
+                                ng-change="vm.changeQuantities(item);(item.quantities!=null&&item.quantities<=0)&&'remove'">
+                            <button class="pull-left" ng-click="item.quantities=item.quantities+1"> + </button>
+                        </td>
+                        <td>{{item.sale_price * item.quantities * vm.current.member.level.discount_rate | number:2}}</td>
+                        <td>{{item.quantities*item.reward_points}}</td>
+                        <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
                         </tr>
                     </tbody>
                 </table>
