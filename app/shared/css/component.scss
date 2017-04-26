@@ -1,0 +1,13 @@
+@import 'variables.scss';
+.svms-btn-checkbox {
+    label {
+        margin: 0;
+        input {
+            margin: 0 0 -2px 0;
+        }
+    }
+}
+
+.btn {
+    min-width: $dimens-btn-min-width;
+}

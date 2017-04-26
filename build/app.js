@@ -1688,6 +1688,43 @@ $(function() {
 
     angular
         .module('app.goods_management')
+        .controller('InventoryListCtrl', InventoryListCtrl);
+
+    InventoryListCtrl.$inject = ['UtilityService', 'GoodsModel'];
+
+    function InventoryListCtrl(UtilityService, GoodsModel) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+        vm.pagination;
+        vm.list;
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService,
+            goodsModel = GoodsModel;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        function getInventories(configs) {
+            goodsModel.getInventories(configs).then((result) => {
+                result = result.plain();
+                vm.list = result;
+            });
+        }
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+            vm.pagination = utilityService.initPagination();
+            getInventories(vm.pagination.configs);
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.goods_management')
         .controller('GoodsRegisterCtrl', GoodsRegisterCtrl);
 
     GoodsRegisterCtrl.$inject = ['GoodsModel', 'DictionaryService', '$filter', 'UtilityService'];
@@ -1777,43 +1814,6 @@ $(function() {
             utilityService.getDatetime().then(result => {
                 vm.currentGoods.code = result;
             });
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.goods_management')
-        .controller('InventoryListCtrl', InventoryListCtrl);
-
-    InventoryListCtrl.$inject = ['UtilityService', 'GoodsModel'];
-
-    function InventoryListCtrl(UtilityService, GoodsModel) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-        vm.pagination;
-        vm.list;
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService,
-            goodsModel = GoodsModel;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        function getInventories(configs) {
-            goodsModel.getInventories(configs).then((result) => {
-                result = result.plain();
-                vm.list = result;
-            });
-        }
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-            vm.pagination = utilityService.initPagination();
-            getInventories(vm.pagination.configs);
         }
 
         init();
@@ -3316,6 +3316,62 @@ $(function() {
     'use strict';
 
     angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
+
+    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberChargeCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.statistics_report')
+        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
+
+    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
+
+    function StatisticsMemberConsumptionCtrl(UtilityService) {
+        var vm = this;
+        /*----------  界面层资源  ----------*/
+
+        /*----------  内部变量  ----------*/
+
+        var utilityService = UtilityService;
+        /*----------  内部逻辑函数  ----------*/
+
+
+        /*----------  内部辅助函数  ----------*/
+
+        function init() {
+
+        }
+
+        init();
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
         .module('app.system_management')
         .controller('PermissionCtrl', PermissionCtrl);
 
@@ -3533,62 +3589,6 @@ $(function() {
         function getPermissions(configs = {}) {
             return permissions.getList(configs);
         }
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberConsumptionCtrl', StatisticsMemberConsumptionCtrl);
-
-    StatisticsMemberConsumptionCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberConsumptionCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.statistics_report')
-        .controller('StatisticsMemberChargeCtrl', StatisticsMemberChargeCtrl);
-
-    StatisticsMemberChargeCtrl.$inject = ['UtilityService'];
-
-    function StatisticsMemberChargeCtrl(UtilityService) {
-        var vm = this;
-        /*----------  界面层资源  ----------*/
-
-        /*----------  内部变量  ----------*/
-
-        var utilityService = UtilityService;
-        /*----------  内部逻辑函数  ----------*/
-
-
-        /*----------  内部辅助函数  ----------*/
-
-        function init() {
-
-        }
-
-        init();
     }
 })();
 (function() {

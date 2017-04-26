@@ -42,6 +42,8 @@
   font-size: 9.6rem; }
 
 /*funtion*/
+
+/*funtion*/
 #palette .table {
   width: 100%;
   max-width: 100%;
@@ -51,8 +53,6 @@
 
 #palette .color-td {
   height: 100px; }
-
-/*funtion*/
 
 #pay-for-goods-pagination {
   position: absolute;
@@ -539,6 +539,15 @@ img {
   height: 36px; }
 
 /*funtion*/
+.svms-btn-checkbox label {
+  margin: 0; }
+  .svms-btn-checkbox label input {
+    margin: 0 0 -2px 0; }
+
+.btn {
+  min-width: 7.2rem; }
+
+/*funtion*/
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -622,7 +631,7 @@ img {
 
 /*funtion*/
 .padding {
-  padding: 0.6rem; }
+  padding: 2.1rem; }
 
 .padding-left-right {
   padding-left: 0.6rem;
@@ -644,7 +653,7 @@ img {
   margin-left: auto;
   margin-right: auto; }
 
-.marggin-0 {
+.margin-0 {
   margin-bottom: 0 !important; }
 
 .margin-top {

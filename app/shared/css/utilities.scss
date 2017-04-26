@@ -1,6 +1,6 @@
 @import 'variables.scss';
 .padding {
-    padding: $dimens-padding;
+    padding: $dimens-padding*3.5;
 }
 
 .padding-left-right {
@@ -30,7 +30,7 @@
 }
 
 // tools-layout-marggin
-.marggin-0 {
+.margin-0 {
     margin-bottom: 0 !important;
 }
 
