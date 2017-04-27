@@ -54,20 +54,6 @@
 #palette .color-td {
   height: 100px; }
 
-#pay-for-goods-pagination {
-  position: absolute;
-  bottom: 0;
-  right: 0; }
-
-.large-red-label {
-  color: red;
-  font-size: 1.5em;
-  font-weight: bold; }
-
-.subitem-link {
-  color: cornflowerblue;
-  cursor: pointer; }
-
 /*funtion*/
 body {
   width: 100%;
@@ -546,6 +532,20 @@ img {
 
 .btn {
   min-width: 7.2rem; }
+
+.large-red-label {
+  color: red;
+  font-size: 1.5em;
+  font-weight: bold; }
+
+#pay-for-goods-pagination {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+.subitem-link {
+  color: cornflowerblue;
+  cursor: pointer; }
 
 /*funtion*/
 @-webkit-keyframes spin {

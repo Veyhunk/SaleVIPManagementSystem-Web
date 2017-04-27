@@ -11,3 +11,20 @@
 .btn {
     min-width: $dimens-btn-min-width;
 }
+
+.large-red-label {
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#pay-for-goods-pagination {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.subitem-link {
+    color: cornflowerblue;
+    cursor: pointer;
+}
