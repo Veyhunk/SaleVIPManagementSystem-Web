@@ -62,7 +62,7 @@
                     <tbody <tr ng-repeat="item in vm.current.order">
                         <td>{{item.name}}</td>
                         <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
-                        <td><button class="pull-left" ng-click="item.quantities=item.quantities-1;item.quantities<=0&&vm.removeItem(item);"> - </button><input class="pull-left" style="width:50px" type="number" class="form-control" ng-model="item.quantities"
+                        <td><button class="pull-left" ng-click="item.quantities=item.quantities-1;item.quantities<=0&&vm.removeItem(item);"> - </button><input class="pull-left svms-input-number" type="number" class="form-control" ng-model="item.quantities"
                                 ng-change="vm.changeQuantities(item);(item.quantities!=null&&item.quantities<=0)&&'remove'">
                             <button class="pull-left" ng-click="item.quantities=item.quantities+1"> + </button>
                         </td>

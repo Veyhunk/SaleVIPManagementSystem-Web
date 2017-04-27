@@ -530,6 +530,9 @@ img {
   .svms-btn-checkbox label input {
     margin: 0 0 -2px 0; }
 
+.svms-input-number {
+  width: 6.6rem; }
+
 .btn {
   min-width: 7.2rem; }
 
