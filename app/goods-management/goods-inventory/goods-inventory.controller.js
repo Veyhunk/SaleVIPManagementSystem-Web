@@ -11,7 +11,6 @@
         var vm = this;
         /*----------  界面层资源  ----------*/
         vm.pagination;
-        vm.showAddItemNotice = true;
 
         vm.current = {
             // 当前订单编号
@@ -47,9 +46,6 @@
 
 
         function addItem(item) {
-
-
-            vm.showAddItemNotice = false;
 
             if (!vm.current.order[item.id]) {
                 vm.current.order[item.id] = {

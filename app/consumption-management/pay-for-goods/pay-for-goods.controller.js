@@ -10,7 +10,6 @@
     function PayForGoodsCtrl($scope, UtilityService, GoodsModel, $uibModal) {
         let vm = this;
         $scope.showCustomer = true;
-        vm.showAddItemNotice = true;
         /*----------  界面层资源  ----------*/
         vm.pagination
 
@@ -121,8 +120,6 @@
 
             if (isSaleOut(item)) return;
 
-            vm.showAddItemNotice = false;
-
             if (!vm.current.order[item.id]) {
                 vm.current.order[item.id] = {
                     id: item.id,
@@ -178,7 +175,6 @@
         // 初始化参数 
         function initVariables() {
             vm.current.order = {};
-            vm.showAddItemNotice = true;
             vm.current.billing = initBilling();
         }
 

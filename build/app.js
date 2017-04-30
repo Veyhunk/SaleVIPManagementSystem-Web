@@ -924,7 +924,6 @@ $(function() {
     function PayForGoodsCtrl($scope, UtilityService, GoodsModel, $uibModal) {
         let vm = this;
         $scope.showCustomer = true;
-        vm.showAddItemNotice = true;
         /*----------  界面层资源  ----------*/
         vm.pagination
 
@@ -1035,8 +1034,6 @@ $(function() {
 
             if (isSaleOut(item)) return;
 
-            vm.showAddItemNotice = false;
-
             if (!vm.current.order[item.id]) {
                 vm.current.order[item.id] = {
                     id: item.id,
@@ -1092,7 +1089,6 @@ $(function() {
         // 初始化参数 
         function initVariables() {
             vm.current.order = {};
-            vm.showAddItemNotice = true;
             vm.current.billing = initBilling();
         }
 
@@ -1401,7 +1397,6 @@ $(function() {
         var vm = this;
         /*----------  界面层资源  ----------*/
         vm.pagination;
-        vm.showAddItemNotice = true;
 
         vm.current = {
             // 当前订单编号
@@ -1437,9 +1432,6 @@ $(function() {
 
 
         function addItem(item) {
-
-
-            vm.showAddItemNotice = false;
 
             if (!vm.current.order[item.id]) {
                 vm.current.order[item.id] = {
