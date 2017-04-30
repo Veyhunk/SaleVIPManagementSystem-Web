@@ -248,7 +248,7 @@ body {
       -ms-flex-flow: row nowrap;
       flex-flow: row nowrap; }
     body #layout #main #left-menu {
-      border-right: 0.12rem solid rgba(0, 0, 0, 0.1);
+      border-right: 0.12rem solid #dddddd;
       overflow: auto; }
       body #layout #main #left-menu .nav-group-vertical .nav-pills li {
         margin-top: 0; }
@@ -321,11 +321,11 @@ body {
         width: 100%;
         height: 100%; }
       body #layout #main #content section {
-        border: 0.12rem solid rgba(0, 0, 0, 0.1);
+        border: 0.12rem solid #dddddd;
         background-color: white; }
     body #layout #footer {
       /*display: block;*/
-      border-top: 0.12rem solid rgba(0, 0, 0, 0.1);
+      border-top: 0.12rem solid #dddddd;
       min-height: 3.6rem;
       display: none; }
 
@@ -626,11 +626,38 @@ img {
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite; }
 
+/*funtion*/
 .btn {
   cursor: pointer; }
 
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 30px; }
+
+.padding .form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px; }
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  border-top: 0;
+  border-bottom: 1px solid #dddddd; }
+
+.table > thead > tr:only-of-type > td,
+.table > tbody > tr:only-of-type > td,
+.table > tfoot > tr:only-of-type > td {
+  border-bottom: 0; }
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd; }
+
+.table > tbody + tbody {
+  border-top: 0;
+  border-bottom: 2px solid #dddddd; }
 
 /*funtion*/
 .padding {

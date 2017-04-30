@@ -30,26 +30,28 @@
         </section>
         <section class="box-2 margin-top margin-left padding">
             <div>
-                <form class="form-inline text-center">
-                    <div class="form-group  margin-right">
-                        <label for="orderCode">订单号</label>
-                        <input type="text" class="form-control" id="orderCode" ng-model="vm.current.code" readonly>
-                    </div>
-                    <div class="form-group margin-left">
-                        <label>消费日期</label>
-                        <div class="input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
+                <form class="form-horizontal">
+                    <!-- 订单号 -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="orderCode">订单号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="orderCode" ng-model="vm.current.code" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">消费日期</label>
+                        <div class="col-sm-4 input-group date" datetime-picker data-date-format="yyyy-mm-dd" datetime-picker-options="{ pickerPosition: 'bottom-left', minView: 'month'}">
                             <input type='text' class="form-control" ng-model="vm.current.date" />
-                            <span class="input-group-addon">
+                            <span class="input-group-addon" style="width: initial;">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
                     </div>
+
                 </form>
             </div>
             <hr>
             <div>
                 <table class="table table-vertical-middle">
-                    <thead>
+                    <thead ng-show="vm.current.billing.quantities!=0">
                         <tr>
                             <th>商品名称</th>
                             <th>销售单价</th>
@@ -59,24 +61,29 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody <tr ng-repeat="item in vm.current.order">
-                        <td>{{item.name}}</td>
-                        <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
-                        <td><button class="pull-left" ng-click="item.quantities=item.quantities-1;item.quantities<=0&&vm.removeItem(item);"> - </button><input class="pull-left svms-input-number" type="number" class="form-control" ng-model="item.quantities"
-                                ng-change="vm.changeQuantities(item);(item.quantities!=null&&item.quantities<=0)&&'remove'">
-                            <button class="pull-left" ng-click="item.quantities=item.quantities+1"> + </button>
-                        </td>
-                        <td>{{item.sale_price * item.quantities * vm.current.member.level.discount_rate | number:2}}</td>
-                        <td>{{item.quantities*item.reward_points}}</td>
-                        <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
+                    <tbody>
+                        <tr ng-repeat="item in vm.current.order">
+                            <td>{{item.name}}</td>
+                            <td><input type="number" class="form-control" ng-model="item.sale_price" ng-change="vm.changeQuantities(item)"></td>
+                            <td><button class="pull-left" ng-click="item.quantities=item.quantities-1;item.quantities<=0&&vm.removeItem(item);"> - </button><input class="pull-left svms-input-number" type="number" class="form-control" ng-model="item.quantities"
+                                    ng-change="vm.changeQuantities(item);(item.quantities!=null&&item.quantities<=0)&&'remove'">
+                                <button class="pull-left" ng-click="item.quantities=item.quantities+1"> + </button>
+                            </td>
+                            <td>{{item.sale_price * item.quantities * vm.current.member.level.discount_rate | number:2}}</td>
+                            <td>{{item.quantities*item.reward_points}}</td>
+                            <td><a href="" ng-click="vm.removeItem(item)">删除</a></td>
                         </tr>
+
+                        <tr ng-show="vm.current.billing.quantities==0">
+                            <td class="text-center text-info" colspan="99">
+                                <b>请点击左侧商品列表，选择需要消费的商品！</b>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
-            <div class="text-center text-info" ng-show="vm.showAddItemNotice">
-                <b>请点击左侧商品列表，选择需要消费的商品！</b>
-            </div>
-            <div>
+            <div ng-show="vm.current.billing.quantities!=0">
                 <table class="table table-vertical-middle">
                     <colgroup>
                         <col width="100">
@@ -100,16 +107,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>折后总金额</td>
-                            <td>
-                                <span class="large-red-label">
-                                    {{vm.current.billing.discount_price|number:2}}
-                                </span>
-                            </td>
                             <td>获得总积分</td>
                             <td>
                                 <span class="large-red-label">
                                     {{vm.current.billing.reward_points|number:2}}
+                                </span>
+                            </td>
+                            <td>折后总金额</td>
+                            <td>
+                                <span class="large-red-label">
+                                    {{vm.current.billing.discount_price|number:2}}
                                 </span>
                             </td>
                         </tr>
@@ -119,14 +126,12 @@
                                 <textarea class="form-control" rows="3" ng-model="vm.current.remark"></textarea>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="4" class="text-right">
-                                <button class="btn btn-primary" ng-click="vm.pay()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 结算</button>
-                                <button type="button" class="btn btn-default  "><i class="fa fa-refresh"></i> 重置</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+                <div class="pull-right">
+                    <button class="btn btn-primary" ng-click="vm.pay()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 结算</button>
+                    <button type="button" class="btn btn-default  "><i class="fa fa-refresh"></i> 重置</button>
+                </div>
             </div>
         </section>
 
