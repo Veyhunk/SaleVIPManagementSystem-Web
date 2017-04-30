@@ -58,6 +58,11 @@
 
         function showLoading() {
             vm.contentLoading = true;
+            $timeout(() => {
+                //测试期间，loading自动关闭，方便调试
+                hideLoading();
+            }, 3000);
+
         }
 
         // 挂载全局函数

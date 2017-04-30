@@ -730,6 +730,11 @@ $(function() {
 
         function showLoading() {
             vm.contentLoading = true;
+            $timeout(() => {
+                //测试期间，loading自动关闭，方便调试
+                hideLoading();
+            }, 3000);
+
         }
 
         // 挂载全局函数
@@ -1456,7 +1461,7 @@ $(function() {
                 billing.quantities = billing.quantities + order[key].quantities;
                 billing.price = billing.price + order[key].quantities * order[key].entry_price;
             }
-            debugger;
+
             vm.current.billing = billing;
         }
 
@@ -2453,7 +2458,7 @@ $(function() {
         /*----------  内部逻辑函数  ----------*/
 
         function selectCustomer(isSelectCustomer) {
-            debugger;
+
             if (isSelectCustomer) {
                 selectMember(vm.customer);
             } else {
@@ -3508,7 +3513,7 @@ $(function() {
 
         function initMethods() {
             let methods = dictionaryService.get('http_methods');
-            debugger;
+
             vm.methods = utilityService.getParseDictionary(methods);;
         }
 
@@ -3633,7 +3638,7 @@ $(function() {
         }
 
         function addUser() {
-            debugger;
+
         }
 
         /*----------  内部辅助函数  ----------*/

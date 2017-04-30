@@ -138,7 +138,7 @@
 
         function initMethods() {
             let methods = dictionaryService.get('http_methods');
-            debugger;
+
             vm.methods = utilityService.getParseDictionary(methods);;
         }
 

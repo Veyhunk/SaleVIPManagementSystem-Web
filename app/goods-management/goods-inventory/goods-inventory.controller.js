@@ -71,7 +71,7 @@
                 billing.quantities = billing.quantities + order[key].quantities;
                 billing.price = billing.price + order[key].quantities * order[key].entry_price;
             }
-            debugger;
+
             vm.current.billing = billing;
         }
 

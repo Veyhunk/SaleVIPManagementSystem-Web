@@ -40,7 +40,7 @@
         }
 
         function addUser() {
-            debugger;
+
         }
 
         /*----------  内部辅助函数  ----------*/

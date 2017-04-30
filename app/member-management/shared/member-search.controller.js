@@ -28,7 +28,7 @@
         /*----------  内部逻辑函数  ----------*/
 
         function selectCustomer(isSelectCustomer) {
-            debugger;
+
             if (isSelectCustomer) {
                 selectMember(vm.customer);
             } else {
